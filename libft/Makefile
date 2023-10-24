@@ -17,6 +17,7 @@ SRC = $(SRC_PATH)ft_isalpha.c \
       $(SRC_PATH)ft_isdigit.c \
       $(SRC_PATH)ft_isalnum.c \
       $(SRC_PATH)ft_isprint.c \
+      $(SRC_PATH)ft_isascii.c \
       $(SRC_PATH)ft_strlen.c \
       $(SRC_PATH)ft_memset.c \
       $(SRC_PATH)ft_bzero.c \
@@ -36,7 +37,7 @@ SRC = $(SRC_PATH)ft_isalpha.c \
       $(SRC_PATH)ft_calloc.c \
       $(SRC_PATH)ft_strdup.c
 OBJ = ft_isalpha.o ft_isdigit.o \
-	ft_isalnum.o \
+	ft_isalnum.o ft_isascii.o \
 	ft_isprint.o ft_strlen.o \
 	ft_memset.o ft_bzero.o \
 	ft_memcpy.o ft_memmove.o \
