@@ -23,6 +23,8 @@ static int	ft_isvalid(int minus_count, int plus_count)
 		return (1);
 	if (minus_count == 0 && plus_count == 1)
 		return (1);
+	if (!minus_count && !plus_count)
+		return (1);
 	return (0);
 }
 
@@ -66,6 +68,8 @@ int	ft_atoi(const char *nptr)
 	}
 	if (!ft_isvalid(minus_count, plus_count))
 		return (0);
+	while (*nptr == 48)
+		nptr++;
 	while (ft_isdigit(*nptr) && i < 11)
 		numbers[i++] = *nptr++;
 	return (ft_tonbr(numbers, i, minus_count));
