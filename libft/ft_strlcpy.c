@@ -12,8 +12,20 @@
 
 #include "libft.h"
 
-size_t	ft_strlcpy(char *s1, const char *s2, size_t n)
+size_t	ft_strlcpy(char *dest, const char *src, size_t n)
 {
-	ft_memcpy(s1, s2, n);
-	return (ft_strlen((char *) s2) + 1);
+	size_t	src_len;
+	size_t	i;
+
+	src_len = ft_strlen(src);
+	i = 0;
+	if (n == 0)
+		return (src_len);
+	while (i < src_len && i < n - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = 0;
+	return (src_len);
 }
