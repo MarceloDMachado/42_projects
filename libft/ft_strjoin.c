@@ -6,7 +6,7 @@
 /*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/26 12:22:39 by madias-m          #+#    #+#             */
-/*   Updated: 2023/10/26 12:30:30 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/10/27 19:05:31 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ char	*ft_strjoin(const char *s1, const char *s2)
 
 	len_s1 = ft_strlen(s1);
 	len_s2 = ft_strlen(s2);
-
 	join = (char *) ft_calloc(len_s1 + len_s2 + 1, 1);
 	if (!join)
 		return (0);

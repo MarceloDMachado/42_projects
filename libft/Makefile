@@ -6,7 +6,7 @@
 #    By: madias-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 13:12:13 by madias-m          #+#    #+#              #
-#    Updated: 2023/10/26 13:01:27 by madias-m         ###   ########.fr        #
+#    Updated: 2023/10/27 19:01:35 by madias-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 SRC_PATH = ./
@@ -36,7 +36,8 @@ SRC = $(SRC_PATH)ft_isalpha.c \
       $(SRC_PATH)ft_atoi.c \
       $(SRC_PATH)ft_calloc.c \
       $(SRC_PATH)ft_strdup.c $(SRC_PATH)ft_substr.c \
-      $(SRC_PATH)ft_strjoin.c $(SRC_PATH)ft_strtrim.c
+      $(SRC_PATH)ft_strjoin.c $(SRC_PATH)ft_strtrim.c \
+      $(SRC_PATH)ft_split.c
 OBJ = ft_isalpha.o ft_isdigit.o \
 	ft_isalnum.o ft_isascii.o \
 	ft_isprint.o ft_strlen.o \
@@ -48,7 +49,8 @@ OBJ = ft_isalpha.o ft_isdigit.o \
 	ft_strncmp.o ft_memchr.o \
 	ft_memcmp.o ft_strnstr.o \
 	ft_atoi.o ft_calloc.o ft_strdup.o \
-	ft_substr.o ft_strjoin.o ft_strtrim.o
+	ft_substr.o ft_strjoin.o ft_strtrim.o \
+	ft_split.o
 
 all:	$(NAME)
 
