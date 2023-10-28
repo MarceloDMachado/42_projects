@@ -12,12 +12,10 @@
 
 #include "libft.h"
 
-static int	count_str(char *s, char c)
+static int	count_str(const char *s, char c)
 {
 	int	count;
 
-	if (!ft_strlen(s))
-		return (0);
 	count = 1;
 	while (*s && c != 0)
 	{
@@ -43,58 +41,37 @@ static void	split_free(char ***split)
 	*split = 0;
 }
 
-static char	*set_str(char **dest, char *src, char c)
+static char	**split_allocate(const char *s, char c)
 {
-	char	*end;
-	int		len;
+	int	len;
 
-	end = ft_strchr(src, c);
-	if (!end)
-		len = ft_strlen(src);
-	else
-		len = end - src;
-	*dest = ft_calloc(len + 1, 1);
-	if (*dest)
-		ft_memmove(*dest, src, len);
-	while (end && *end == c && c != 0)
-		end++;
-	return (end);
+	len = count_str(s, c);
+	if (!len)
+		len++;
+	return (ft_calloc(len + 1, sizeof(char *)));
 }
 
 char	**ft_split(const char *s, char c)
 {
 	char	**split;
-	char	*trimmed_s;
 	int		i;
+	int		len;
 
-	trimmed_s = ft_strtrim(s, &c);
-	i = count_str(trimmed_s, c) + 1;
-	split = ft_calloc(i, sizeof(char *));
-	if (i == 2)
-	{
-		split[0] = ft_strdup(trimmed_s);
-		return (split);
-	}
-	if (!split)
+	if (!s || !(split = split_allocate(s, c)))
 		return (0);
 	i = 0;
-	while (trimmed_s && *trimmed_s && split)
+	while (*s && split)
 	{
-		trimmed_s = set_str(&split[i], trimmed_s, c);
-		if (!split[i])
-			split_free(&split);
-		i++;
+		while (*s == c)
+			s++;
+		if (ft_strchr(s, c))
+			len = ft_strchr(s, c) - s;
+		else
+			len = ft_strlen(s);
+		if (len)
+			if (!(split[i++] = ft_substr(s, 0, len)))
+				split_free(&split);
+		s += len;
 	}
 	return (split);
 }
-
-/*int main(void)
-{
-	char *s = "";
- 	char **result = ft_split(s, 122);
-
-	free(result[0]);
-	free(result[1]);
-	free(result);
-	return (0);
-}*/
