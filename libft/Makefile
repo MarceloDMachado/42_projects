@@ -37,7 +37,7 @@ SRC = $(SRC_PATH)ft_isalpha.c \
       $(SRC_PATH)ft_calloc.c \
       $(SRC_PATH)ft_strdup.c $(SRC_PATH)ft_substr.c \
       $(SRC_PATH)ft_strjoin.c $(SRC_PATH)ft_strtrim.c \
-      $(SRC_PATH)ft_split.c
+      $(SRC_PATH)ft_split.c $(SRC_PATH)ft_itoa.c
 OBJ = ft_isalpha.o ft_isdigit.o \
 	ft_isalnum.o ft_isascii.o \
 	ft_isprint.o ft_strlen.o \
@@ -50,7 +50,7 @@ OBJ = ft_isalpha.o ft_isdigit.o \
 	ft_memcmp.o ft_strnstr.o \
 	ft_atoi.o ft_calloc.o ft_strdup.o \
 	ft_substr.o ft_strjoin.o ft_strtrim.o \
-	ft_split.o
+	ft_split.o ft_itoa.o
 
 all:	$(NAME)
 
