@@ -6,7 +6,7 @@
 #    By: madias-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 13:12:13 by madias-m          #+#    #+#              #
-#    Updated: 2023/10/30 12:13:07 by madias-m         ###   ########.fr        #
+#    Updated: 2023/10/30 12:41:08 by madias-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 SRC_PATH = ./
@@ -38,7 +38,8 @@ SRC = $(SRC_PATH)ft_isalpha.c \
       $(SRC_PATH)ft_strdup.c $(SRC_PATH)ft_substr.c \
       $(SRC_PATH)ft_strjoin.c $(SRC_PATH)ft_strtrim.c \
       $(SRC_PATH)ft_split.c $(SRC_PATH)ft_itoa.c \
-	  $(SRC_PATH)ft_strmapi.c $(SRC_PATH)ft_striteri.c
+	  $(SRC_PATH)ft_strmapi.c $(SRC_PATH)ft_striteri.c \
+	  $(SRC_PATH)ft_putchar_fd.c
 OBJ = ft_isalpha.o ft_isdigit.o \
 	ft_isalnum.o ft_isascii.o \
 	ft_isprint.o ft_strlen.o \
@@ -52,7 +53,7 @@ OBJ = ft_isalpha.o ft_isdigit.o \
 	ft_atoi.o ft_calloc.o ft_strdup.o \
 	ft_substr.o ft_strjoin.o ft_strtrim.o \
 	ft_split.o ft_itoa.o ft_strmapi.o \
-	ft_striteri.o
+	ft_striteri.o ft_putchar_fd.o
 
 all:	$(NAME)
 

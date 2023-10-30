@@ -6,7 +6,7 @@
 /*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:31:37 by madias-m          #+#    #+#             */
-/*   Updated: 2023/10/27 19:03:43 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/10/30 12:44:47 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stddef.h>
 # include <stdlib.h>
+# include <unistd.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
