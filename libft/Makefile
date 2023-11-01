@@ -6,7 +6,7 @@
 #    By: madias-m <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/23 13:12:13 by madias-m          #+#    #+#              #
-#    Updated: 2023/11/01 12:12:26 by madias-m         ###   ########.fr        #
+#    Updated: 2023/11/01 12:33:21 by madias-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 SRC_PATH = ./
@@ -32,7 +32,7 @@ SRC = $(SRC_PATH)ft_isalpha.c $(SRC_PATH)ft_isdigit.c \
 	  $(SRC_PATH)ft_putendl_fd.c $(SRC_PATH)ft_putnbr_fd.c
 B_SRC = $(SRC_PATH)ft_lstnew.c $(SRC_PATH)ft_lstadd_front.c \
 		$(SRC_PATH)ft_lstsize.c $(SRC_PATH)ft_lstlast.c \
-		$(SRC_PATH)ft_lstadd_back.c #$(SRC_PATH)ft_lstdelone.c \
+		$(SRC_PATH)ft_lstadd_back.c $(SRC_PATH)ft_lstdelone.c #\
 		$(SRC_PATH)ft_lstclear.c $(SRC_PATH)ft_lstiter.c \
 		$(SRC_PATH)ft_lstmap.c
 OBJ = $(SRC:.c=.o)
