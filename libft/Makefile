@@ -3,12 +3,13 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: madias-m <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/23 13:12:13 by madias-m          #+#    #+#              #
-#    Updated: 2023/11/01 19:21:09 by madias-m         ###   ########.fr        #
+#    Created: 2023/11/03 11:40:10 by madias-m          #+#    #+#              #
+#    Updated: 2023/11/03 11:40:15 by madias-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
 SRC_PATH = ./
 FLAGS = -Wall -Wextra -Werror
 OPTIONS = -c -I ./
