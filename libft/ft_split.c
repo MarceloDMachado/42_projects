@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/03 11:47:20 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/03 11:47:22 by madias-m         ###   ########.fr       */
+/*   Created: 2023/11/03 12:38:37 by madias-m          #+#    #+#             */
+/*   Updated: 2023/11/03 13:50:55 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@ static int	count_str(const char *s, char c)
 {
 	int	count;
 
-	count = 1;
-	while (*s && c != 0)
+	count = 0;
+	while (*s)
 	{
-		if (*s == c && *(s + 1) != c)
+		while (*s == c)
+			s++;
+		if (*s)
 			count++;
-		s++;
+		while (*s && *s != c)
+			s++;
 	}
 	return (count);
 }
@@ -41,7 +44,7 @@ static void	split_free(char ***split)
 	*split = 0;
 }
 
-static char	**split_allocate(const char *s, char c)
+static char	**matrix_allocate(const char *s, char c)
 {
 	int	len;
 
@@ -51,16 +54,13 @@ static char	**split_allocate(const char *s, char c)
 	return (ft_calloc(len + 1, sizeof(char *)));
 }
 
-char	**ft_split(const char *s, char c)
+static void	str_allocate(const char *s, char c, char ***split)
 {
-	char	**split;
-	int		i;
-	int		len;
+	int	i;
+	int	len;
 
-	if (!s || !(split = split_allocate(s, c)))
-		return (0);
 	i = 0;
-	while (*s && split)
+	while (*s && *split)
 	{
 		while (*s == c)
 			s++;
@@ -69,9 +69,25 @@ char	**ft_split(const char *s, char c)
 		else
 			len = ft_strlen(s);
 		if (len)
-			if (!(split[i++] = ft_substr(s, 0, len)))
-				split_free(&split);
+		{
+			(*split)[i] = ft_substr(s, 0, len);
+			if (!(*split)[i])
+				split_free(split);
+			i++;
+		}
 		s += len;
 	}
+}
+
+char	**ft_split(const char *s, char c)
+{
+	char	**split;
+
+	if (!s)
+		return (0);
+	split = matrix_allocate(s, c);
+	if (!split)
+		return (0);
+	str_allocate(s, c, &split);
 	return (split);
 }
