@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:38:37 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/04 12:47:40 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/11/04 17:35:12 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,16 +29,16 @@ static int	count_str(const char *s, char c)
 	return (count);
 }
 
-static void	split_free(char ***split)
+static void	split_free(char ***split, size_t allocated_size)
 {
-	while (*split)
+	size_t	i;
+
+	i = 0;
+	while (i < allocated_size)
 	{
-		if (**split)
-		{
-			free(**split);
-			**split = 0;
-		}
-		(*split)++;
+		free((*split)[i]);
+		(*split)[i] = 0;
+		i++;
 	}
 	free(*split);
 	*split = 0;
@@ -54,8 +54,9 @@ static char	**matrix_allocate(const char *s, char c)
 
 static void	str_allocate(const char *s, char c, char ***split)
 {
-	int	i;
-	int	len;
+	int		i;
+	int		len;
+	char	*temp;
 
 	i = 0;
 	while (*s && *split)
@@ -68,10 +69,11 @@ static void	str_allocate(const char *s, char c, char ***split)
 			len = ft_strlen(s);
 		if (len)
 		{
-			(*split)[i] = ft_substr(s, 0, len);
-			if (!(*split)[i])
-				split_free(split);
-			i++;
+			temp = ft_substr(s, 0, len);
+			if (!temp)
+				split_free(split, i);
+			else
+				(*split)[i++] = temp;
 		}
 		s += len;
 	}
