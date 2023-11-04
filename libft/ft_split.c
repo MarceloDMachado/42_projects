@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 12:38:37 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/03 13:50:55 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/11/04 12:47:40 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ static char	**matrix_allocate(const char *s, char c)
 	int	len;
 
 	len = count_str(s, c);
-	if (!len)
-		len++;
 	return (ft_calloc(len + 1, sizeof(char *)));
 }
 

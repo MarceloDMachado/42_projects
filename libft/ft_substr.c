@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/03 11:51:48 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/03 11:51:51 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/11/04 12:33:12 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 		return (0);
 	if (start >= ft_strlen(s))
 		return (ft_strdup(""));
-	if (len > ft_strlen(s))
-		len = ft_strlen(s);
+	if (len > ft_strlen(&s[start]))
+		len = ft_strlen(&s[start]);
 	substr = ft_calloc(len + 1, 1);
 	if (!substr)
 		return (0);
