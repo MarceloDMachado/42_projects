@@ -1,23 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 13:10:42 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/04 15:15:23 by madias-m         ###   ########.fr       */
+/*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
+/*   Updated: 2023/11/04 15:04:26 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "get_next_line.h"
 
-#include <stddef.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <fcntl.h>
+char	*get_next_line(int fd)
+{
+	static char	c = 0;
+	char		prev_c;
+	char		p_prev_c;
 
-char	*get_next_line(int fd);
-
-#endif
+	prev_c = 0;
+	p_prev_c = 0;
+	while (read(fd, &c, 1))
+	{
+		if (p_prev_c != 92 && prev_c == 32)
+			return (&c);
+		p_prev_c = prev_c;
+		prev_c = c;
+	}
+	return (NULL);
+}
