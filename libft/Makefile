@@ -6,13 +6,13 @@
 #    By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:40:10 by madias-m          #+#    #+#              #
-#    Updated: 2023/11/03 11:40:15 by madias-m         ###   ########.fr        #
+#    Updated: 2023/11/08 20:13:10 by madias-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC_PATH = ./
 FLAGS = -Wall -Wextra -Werror
-OPTIONS = -c -I ./
+OPTIONS = -c $< -I ./
 NAME = libft.a
 SRC = $(SRC_PATH)ft_isalpha.c $(SRC_PATH)ft_isdigit.c \
       $(SRC_PATH)ft_isalnum.c $(SRC_PATH)ft_isprint.c \
@@ -41,13 +41,17 @@ B_OBJ = $(B_SRC:.c=.o)
 
 all:	$(NAME)
 
-$(NAME):
-	gcc $(FLAGS) $(OPTIONS) $(SRC)
-	ar rc $(NAME) $(OBJ)
+%.o: %.c
+	cc $(FLAGS) $(OPTIONS) -o $@
+	ar rc $(NAME) $@
 
-bonus:
-	gcc $(FLAGS) $(OPTIONS) $(SRC) $(B_SRC)
-	ar rc $(NAME) $(OBJ) $(B_OBJ)
+$(NAME): $(OBJ) 
+#	cc $(FLAGS) $(OPTIONS) $(SRC)
+#	ar rc $(NAME) $(OBJ)
+
+bonus: $(B_OBJ)
+#	cc $(FLAGS) $(OPTIONS) $(SRC) $(B_SRC)
+#	ar rc $(NAME) $(OBJ) $(B_OBJ)
 
 clean:
 	rm -f $(OBJ) $(B_OBJ)
