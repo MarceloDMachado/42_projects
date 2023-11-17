@@ -1,27 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_print_alphabet.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/16 20:28:10 by madias-m         ###   ########.fr       */
+/*   Created: 2023/10/03 12:40:12 by madias-m          #+#    #+#             */
+/*   Updated: 2023/10/03 12:40:33 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+void	ft_putchar(char c);
 
-char	*get_next_line(int fd)
+void	ft_print_alphabet(void)
 {
-	static char	*c = 0;
+	char	alphabet_index;
 
-	while(read(fd, c, 1) > 0)
-	{
-		write(1, c, 1);
-	}
-	
-	write(1, "\n", 1);
-
-	return (NULL);
+	alphabet_index = 97;
+	while (alphabet_index <= 122)
+		ft_putchar(alphabet_index++);
 }

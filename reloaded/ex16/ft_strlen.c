@@ -1,27 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/16 20:28:10 by madias-m         ###   ########.fr       */
+/*   Created: 2023/10/03 16:33:11 by madias-m          #+#    #+#             */
+/*   Updated: 2023/10/03 16:37:51 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-char	*get_next_line(int fd)
+int	ft_strlen(char *str)
 {
-	static char	*c = 0;
+	int	size;
 
-	while(read(fd, c, 1) > 0)
+	size = 0;
+	while (*str)
 	{
-		write(1, c, 1);
+		str++;
+		size++;
 	}
-	
-	write(1, "\n", 1);
-
-	return (NULL);
+	return (size);
 }

@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/16 20:28:10 by madias-m         ###   ########.fr       */
+/*   Created: 2023/10/03 13:06:11 by madias-m          #+#    #+#             */
+/*   Updated: 2023/10/03 13:07:39 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-char	*get_next_line(int fd)
+void	ft_swap(int *a, int *b)
 {
-	static char	*c = 0;
+	int	swap;
 
-	while(read(fd, c, 1) > 0)
-	{
-		write(1, c, 1);
-	}
-	
-	write(1, "\n", 1);
-
-	return (NULL);
+	swap = *a;
+	*a = *b;
+	*b = swap;
 }

@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_recursive_factorial.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/16 20:28:10 by madias-m         ###   ########.fr       */
+/*   Created: 2023/10/03 13:52:46 by madias-m          #+#    #+#             */
+/*   Updated: 2023/10/03 13:52:48 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-char	*get_next_line(int fd)
+int	ft_recursive_factorial(int nb)
 {
-	static char	*c = 0;
-
-	while(read(fd, c, 1) > 0)
-	{
-		write(1, c, 1);
-	}
-	
-	write(1, "\n", 1);
-
-	return (NULL);
+	if (nb < 0 || nb > 16)
+		return (0);
+	if (nb <= 1)
+		return (1);
+	return (nb *= ft_recursive_factorial(nb - 1));
 }

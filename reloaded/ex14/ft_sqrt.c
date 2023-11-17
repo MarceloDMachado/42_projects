@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_sqrt.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/16 20:28:10 by madias-m         ###   ########.fr       */
+/*   Created: 2023/10/03 15:28:04 by madias-m          #+#    #+#             */
+/*   Updated: 2023/10/05 19:13:53 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+int	ft_sqrt(int nb)
+{	
+	int	result;
+	int	i;
 
-char	*get_next_line(int fd)
-{
-	static char	*c = 0;
-
-	while(read(fd, c, 1) > 0)
+	result = 0;
+	i = 1;
+	while (result < nb)
 	{
-		write(1, c, 1);
+		result = i * i;
+		i++;
 	}
-	
-	write(1, "\n", 1);
-
-	return (NULL);
+	if (result == nb)
+		return (--i);
+	return (0);
 }

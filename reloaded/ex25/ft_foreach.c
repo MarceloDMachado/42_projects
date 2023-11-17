@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/16 20:28:10 by madias-m         ###   ########.fr       */
+/*   Created: 2023/10/09 17:35:19 by madias-m          #+#    #+#             */
+/*   Updated: 2023/10/09 17:48:40 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-char	*get_next_line(int fd)
+void	ft_foreach(int *tab, int length, void (*f)(int))
 {
-	static char	*c = 0;
+	int	i;
 
-	while(read(fd, c, 1) > 0)
-	{
-		write(1, c, 1);
-	}
-	
-	write(1, "\n", 1);
-
-	return (NULL);
+	i = 0;
+	while (i < length)
+		f(tab[i++]);
 }

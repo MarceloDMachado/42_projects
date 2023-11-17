@@ -1,27 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_strcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
+/*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/16 20:28:10 by madias-m         ###   ########.fr       */
+/*   Created: 2023/10/03 16:57:41 by madias-m          #+#    #+#             */
+/*   Updated: 2023/10/03 17:13:01 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
-
-char	*get_next_line(int fd)
+int	ft_strcmp(char *s1, char *s2)
 {
-	static char	*c = 0;
-
-	while(read(fd, c, 1) > 0)
+	if (s1 == s2)
+		return (0);
+	while (*s1 && *s2)
 	{
-		write(1, c, 1);
+		if (*s1 != *s2)
+			return ((int) *s1 - *s2);
+		s1++;
+		s2++;
 	}
-	
-	write(1, "\n", 1);
-
-	return (NULL);
+	return ((int) *s1 - *s2);
 }
