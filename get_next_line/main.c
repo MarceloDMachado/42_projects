@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:49:46 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/21 18:19:38 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/11/21 20:04:08 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,21 @@
 int	main(void)
 {
 	int	fd;
+	int	count;
+	char	*line;
 
 	fd = open("teste.txt", O_RDONLY);
-	get_next_line(fd);
+	count = 0;
+	line = get_next_line(fd);
+	while (line)
+	{
+		while (line[count])
+		{
+			write(1, &(line[count++]), 1);
+		}
+		count = 0;
+		line = get_next_line(fd);
+	}
 	close(fd);
 	return (0);
 }
