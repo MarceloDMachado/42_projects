@@ -1,2 +1,2 @@
 #!/bin/bash
-cc  -Wall -Wextra -Werror main.c get_next_line.c get_next_line.h get_next_line_utils.c -D BUFFER_SIZE=5 && ./a.out
+cc -g3  main.c get_next_line.c get_next_line.h get_next_line_utils.c -D BUFFER_SIZE=5 && ./a.out

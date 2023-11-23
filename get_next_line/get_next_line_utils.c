@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/21 19:24:51 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/22 20:22:18 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/11/23 20:42:36 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,3 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *) &s[i]);
 	return (0);
 }
-
