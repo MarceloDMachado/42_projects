@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/23 20:41:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:41:57 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 char	*resolve_line(char **readed)
 {
 	int		size;
+	int		aux;
 	char	*line;
 
 	if (ft_strchr(*readed, '\n'))
@@ -26,15 +27,16 @@ char	*resolve_line(char **readed)
 	line = malloc((size + 1) * sizeof(char));
 	if (!line)
 		return (NULL);
-	line[size--] = 0;
-	while (size >= 0)
+	line[size] = 0;
+	aux = 0;
+	while (aux < size)
 	{
-		line[size] = (*readed)[size];
-		size--;
+		line[aux] = (*readed)[aux];
+		aux++;
 	}
+	*readed += size;
 	return (line);
 }
-
 char	*read_file(int fd, char **readed)
 {
 	char	*buff;
@@ -44,18 +46,17 @@ char	*read_file(int fd, char **readed)
 	if (!buff)
 		return (NULL);
 	r_count = BUFFER_SIZE;
-	if (ft_strchr(*readed, '\n'))
-		*readed = ft_strchr(*readed, '\n') + 1;
 	while (r_count == BUFFER_SIZE && !ft_strchr(*readed, '\n'))
 	{
 		r_count = read(fd, buff, BUFFER_SIZE);
 		if (r_count < 0)
-			return (NULL);
-		if (r_count)
 		{
-			buff[r_count] = 0;
-			*readed = ft_strjoin(*readed, buff);
+			free(buff);
+			return (NULL);
 		}
+		buff[r_count] = 0;
+		if(r_count)
+			*readed = ft_strjoin(*readed, buff);
 	}
 	free(buff);
 	return (resolve_line(readed));

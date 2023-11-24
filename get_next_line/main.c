@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 14:49:46 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/23 20:38:55 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/11/24 19:41:41 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	int		count;
 	char	*line;
 
-	fd = open("main.c", O_RDONLY);
+	fd = open("teste.txt", O_RDONLY);
 	count = 0;
 	line = get_next_line(fd);
 	while (line)
