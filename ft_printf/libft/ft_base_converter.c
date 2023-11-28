@@ -6,7 +6,7 @@
 /*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/30 17:07:01 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/28 19:26:53 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/11/28 19:38:01 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ static char	*build_return(char *str, int is_negative, int size)
 {
 	int		i;
 	char	*s;
-
+	
+	if (!size)
+		return (NULL);
 	s = ft_calloc(size + is_negative, sizeof(char));
 	if (!s)
 		return (NULL);
@@ -38,7 +40,7 @@ static char	*convert(long int nbr, int base, char *base_chars)
 	if (nbr < 0)
 		nbr *= -1;
 	index = 0;
-	while (nbr > 0)
+	while (nbr >= 0)
 	{
 		digits[index] = base_chars[(nbr % base)];
 		if (base != 10)
@@ -46,6 +48,8 @@ static char	*convert(long int nbr, int base, char *base_chars)
 		else
 			nbr = (nbr - (nbr % 10)) / 10;
 		index++;
+		if (!nbr)
+			nbr--;
 	}
 	return (build_return(digits, orig_nbr < 0, index));
 }
