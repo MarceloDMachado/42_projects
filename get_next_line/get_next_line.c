@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/24 19:41:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/11/27 21:51:47 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@ char	*resolve_line(char **readed)
 	int		size;
 	int		aux;
 	char	*line;
+	char	*bu;
 
 	if (ft_strchr(*readed, '\n'))
 		size = ft_strchr(*readed, '\n') - *readed + 1;
@@ -34,9 +35,31 @@ char	*resolve_line(char **readed)
 		line[aux] = (*readed)[aux];
 		aux++;
 	}
-	*readed += size;
+	bu = ft_strjoin("", &(*readed)[size]);
+	free(*readed);
+	*readed = bu;
 	return (line);
 }
+
+void	read_file_aux(char **buff, char **readed, int *r_count, int fd)
+{
+	char	*bu;
+
+	*r_count = read(fd, *buff, BUFFER_SIZE);
+	if (*r_count < 0)
+	{
+		free(*buff);
+		*buff = 0;
+		return ;
+	}
+	(*buff)[*r_count] = 0;
+	if (!*r_count)
+		return ;
+	bu = ft_strjoin(*readed, *buff);
+	free(*readed);
+	*readed = bu;
+}
+
 char	*read_file(int fd, char **readed)
 {
 	char	*buff;
@@ -46,19 +69,10 @@ char	*read_file(int fd, char **readed)
 	if (!buff)
 		return (NULL);
 	r_count = BUFFER_SIZE;
-	while (r_count == BUFFER_SIZE && !ft_strchr(*readed, '\n'))
-	{
-		r_count = read(fd, buff, BUFFER_SIZE);
-		if (r_count < 0)
-		{
-			free(buff);
-			return (NULL);
-		}
-		buff[r_count] = 0;
-		if(r_count)
-			*readed = ft_strjoin(*readed, buff);
-	}
-	free(buff);
+	while (r_count == BUFFER_SIZE && !ft_strchr(*readed, '\n') && buff)
+		read_file_aux(&buff, readed, &r_count, fd);
+	if (buff)
+		free(buff);
 	return (resolve_line(readed));
 }
 
@@ -67,8 +81,13 @@ char	*get_next_line(int fd)
 	static char	*readed;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
-		return (0);
+		return (NULL);
 	if (!readed)
-		readed = "";
+	{
+		readed = malloc(sizeof(char));
+		if (!readed)
+			return (NULL);
+		*readed = 0;
+	}
 	return (read_file(fd, &readed));
 }
