@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/27 21:51:47 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/11/30 19:31:05 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,12 @@ void	read_file_aux(char **buff, char **readed, int *r_count, int fd)
 	char	*bu;
 
 	*r_count = read(fd, *buff, BUFFER_SIZE);
-	if (*r_count < 0)
+	if (*r_count < 0 || (!*r_count && !ft_strlen(*readed)))
 	{
 		free(*buff);
 		*buff = 0;
+		free(*readed);
+		*readed = 0;
 		return ;
 	}
 	(*buff)[*r_count] = 0;
@@ -69,10 +71,12 @@ char	*read_file(int fd, char **readed)
 	if (!buff)
 		return (NULL);
 	r_count = BUFFER_SIZE;
-	while (r_count == BUFFER_SIZE && !ft_strchr(*readed, '\n') && buff)
+	while (*readed && r_count == BUFFER_SIZE && !ft_strchr(*readed, 10) && buff)
 		read_file_aux(&buff, readed, &r_count, fd);
 	if (buff)
 		free(buff);
+	if (!*readed)
+		return (NULL);
 	return (resolve_line(readed));
 }
 
