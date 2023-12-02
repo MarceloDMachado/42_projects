@@ -6,7 +6,7 @@
 #    By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:40:10 by madias-m          #+#    #+#              #
-#    Updated: 2023/12/01 20:13:29 by madias-m         ###   ########.fr        #
+#    Updated: 2023/12/02 16:31:02 by madias-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,7 +31,7 @@ SRC = $(SRC_PATH)ft_isalpha.c $(SRC_PATH)ft_isdigit.c \
 	  $(SRC_PATH)ft_strmapi.c $(SRC_PATH)ft_striteri.c \
 	  $(SRC_PATH)ft_putchar_fd.c $(SRC_PATH)ft_putstr_fd.c \
 	  $(SRC_PATH)ft_putendl_fd.c $(SRC_PATH)ft_putnbr_fd.c \
-	  $(SRC_PATH)ft_base_converter.c $(SRC_PATH)ft_putnbr_base_fd.c
+	  $(SRC_PATH)ft_putnbr_base_fd.c 
 B_SRC = $(SRC_PATH)ft_lstnew.c $(SRC_PATH)ft_lstadd_front.c \
 		$(SRC_PATH)ft_lstsize.c $(SRC_PATH)ft_lstlast.c \
 		$(SRC_PATH)ft_lstadd_back.c $(SRC_PATH)ft_lstdelone.c \

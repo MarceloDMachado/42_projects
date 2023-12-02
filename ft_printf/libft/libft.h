@@ -6,7 +6,7 @@
 /*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:31:37 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/30 20:27:01 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/12/02 16:32:50 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,5 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *));
 void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-char	*ft_base_converter(int nbr, char *base);
 void	ft_putnbr_base_fd(int nbr, char *base, int fd);
 #endif
