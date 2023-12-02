@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_base_fd.c                                :+:      :+:    :+:   */
+/*   ft_put_bigint_base_fd.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/30 17:07:01 by madias-m          #+#    #+#             */
-/*   Updated: 2023/12/02 17:00:16 by madias-m         ###   ########.fr       */
+/*   Created: 2023/12/02 16:41:37 by madias-m          #+#    #+#             */
+/*   Updated: 2023/12/02 17:16:24 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	putnbr(char *str, int is_negative, int size, int fd)
+static void	putnbr_fd(char *digits, size_t size, int fd)
 {
-	if (!size)
-		return ;
-	if (is_negative)
-		write(fd, "-", 1);
-	while (size >= is_negative)
-		write(fd, (str + --size), 1);
+	while (size > 0)
+		write(fd, (digits + --size), 1);
 }
 
-static void	convert(long int nbr, int base, char *base_chars, int fd)
+static void	convert(size_t nbr, int base, char *base_chars, int fd)
 {
-	char	digits[33];
+	char	digits[65];
 	int		index;
-	int		orig_nbr;
-
-	orig_nbr = nbr;
-	if (nbr < 0)
-		nbr *= -1;
+	
 	index = 0;
-	while (nbr >= 0)
+	while (nbr > 0)
 	{
 		digits[index] = base_chars[(nbr % base)];
 		if (base != 10)
@@ -40,17 +32,15 @@ static void	convert(long int nbr, int base, char *base_chars, int fd)
 		else
 			nbr = (nbr - (nbr % 10)) / 10;
 		index++;
-		if (!nbr)
-			nbr--;
 	}
-	putnbr(digits, orig_nbr < 0, index, fd);
+	putnbr_fd(digits, index, fd);
 }
 
 static int	check_base(char *base, int len)
 {
-	int	i;
+	int i;
 
-	if (len-- < 2)
+	if (len -- < 2)
 		return (0);
 	while (len >= 0)
 	{
@@ -68,15 +58,13 @@ static int	check_base(char *base, int len)
 	return (1);
 }
 
-void	ft_putnbr_base_fd(int nbr, char *base, int fd)
-{	
-	long int	long_nb;
-	int			len;
+void	ft_put_bigint_base_fd(size_t nbr, char *base, int fd)
+{
+	int len;
 
-	long_nb = (long int) nbr;
 	len = 0;
 	while (base[len])
 		len++;
 	if (check_base(base, len) && fd > 0)
-		convert(long_nb, len, base, fd);
+		convert(nbr, len, base, fd);
 }
