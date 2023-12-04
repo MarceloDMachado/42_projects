@@ -6,21 +6,21 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/02 16:41:37 by madias-m          #+#    #+#             */
-/*   Updated: 2023/12/02 17:16:24 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/12/04 18:53:04 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	putnbr_fd(char *digits, size_t size, int fd)
+static void	putnbr_fd(char *digits, int size, int fd)
 {
-	while (size > 0)
-		write(fd, (digits + --size), 1);
+	while (size >= 0)
+		write(fd, &digits[size--], 1);
 }
 
 static void	convert(size_t nbr, int base, char *base_chars, int fd)
 {
-	char	digits[65];
+	char	digits[64];
 	int		index;
 	
 	index = 0;
