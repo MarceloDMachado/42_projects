@@ -6,7 +6,7 @@
 #    By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/03 11:40:10 by madias-m          #+#    #+#              #
-#    Updated: 2023/11/08 20:13:10 by madias-m         ###   ########.fr        #
+#    Updated: 2023/12/18 19:41:56 by madias-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,19 +39,15 @@ B_SRC = $(SRC_PATH)ft_lstnew.c $(SRC_PATH)ft_lstadd_front.c \
 OBJ = $(SRC:.c=.o)
 B_OBJ = $(B_SRC:.c=.o)
 
-all:	$(NAME)
+all:	$(NAME) bonus
 
 %.o: %.c
 	cc $(FLAGS) $(OPTIONS) -o $@
 	ar rc $(NAME) $@
 
 $(NAME): $(OBJ) 
-#	cc $(FLAGS) $(OPTIONS) $(SRC)
-#	ar rc $(NAME) $(OBJ)
 
 bonus: $(B_OBJ)
-#	cc $(FLAGS) $(OPTIONS) $(SRC) $(B_SRC)
-#	ar rc $(NAME) $(OBJ) $(B_OBJ)
 
 clean:
 	rm -f $(OBJ) $(B_OBJ)
