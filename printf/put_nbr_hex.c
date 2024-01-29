@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 21:41:30 by madias-m          #+#    #+#             */
-/*   Updated: 2024/01/05 22:40:13 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/01/15 20:25:46 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,10 @@ void	put_nbr_hex(size_t n, int is_low, t_flags *f, int *count)
 			put_str("0x", 0, count);
 		else
 			put_str("0X", 0, count);
+		put_zero(ft_count_algarisms(n, 16) + 2, f, count);
 	}
+	else
+		put_zero(ft_count_algarisms(n, 16), f, count);
 	recursive_put(n, is_low, count);
 	after(*count - count_bu, f, count);
 }

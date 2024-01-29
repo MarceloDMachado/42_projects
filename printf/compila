@@ -1,5 +1,0 @@
-#!/bin/bash
-make re clean
-clear
-cc main.c libftprintf.a
-./a.out

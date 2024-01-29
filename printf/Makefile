@@ -6,7 +6,7 @@
 #    By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/12 20:17:15 by madias-m          #+#    #+#              #
-#    Updated: 2024/01/05 20:29:53 by madias-m         ###   ########.fr        #
+#    Updated: 2024/01/13 13:41:36 by madias-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,8 @@ OPTIONS = -c $< -I ./
 NAME = libftprintf.a
 SRC = put_nbr.c put_char.c \
 	  put_str.c ft_printf.c \
-	  put_nbr_hex.c put_space.c
+	  put_nbr_hex.c put_space.c \
+	  put_zero.c
 OBJ = $(SRC:.c=.o)
 LIB = libft.a
 

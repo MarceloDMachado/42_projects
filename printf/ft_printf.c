@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/12 18:44:21 by madias-m          #+#    #+#             */
-/*   Updated: 2024/01/05 22:58:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/01/15 20:08:31 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	dynamic_write(va_list arg_lst, char c, t_flags f, int *count)
 	else if (c == 'd' || c == 'i')
 		put_nbr(va_arg(arg_lst, int), &f, count);
 	else if (c == 'u')
-		put_nbr(va_arg(arg_lst, unsigned int), &f, count);
+		put_unbr(va_arg(arg_lst, unsigned int), &f, count);
 	else if (c == 'X' || c == 'x')
 		put_nbr_hex(va_arg(arg_lst, unsigned int), c - 88, &f, count);
 	else if (c == '%')
@@ -43,12 +43,12 @@ int	identifies_flag(const char *str, char c)
 
 void	move_str(const char **str, t_flags *f)
 {
-	while (ft_strchr("# +-", **str))
+	while (ft_strchr("# +-0.", **str))
 		(*str)++;
-	if (f->space || f->hyphen || ft_atoi(*str))
+	if (f->space || ft_atoi(*str))
 	{
 		f->space_fix = ft_atoi(*str);
-		if (!f->hyphen)
+		if (!f->hyphen && !f->o)
 			f->space = 1;
 		while (ft_isdigit(**str))
 			(*str)++;
@@ -63,6 +63,8 @@ t_flags	init_flags(const char *str)
 	flags.plus = identifies_flag(str, '+');
 	flags.space = identifies_flag(str, ' ');
 	flags.hyphen = identifies_flag(str, '-');
+	flags.o = identifies_flag(str, '0');
+	flags.space_fix = 0;
 	return (flags);
 }
 
