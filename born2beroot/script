@@ -23,18 +23,6 @@ echo 'Defaults    log_input, log_output' | sudo EDITOR='tee -a' visudo
 echo 'Defaults    iolog_dir = "/var/log/sudo"' | sudo EDITOR='tee -a' visudo
 echo 'Defaults    requiretty' | sudo EDITOR='tee -a' visudo
 
-# Configure User
-if ! grep $USERNAME /etc/passwd; then
-	sudo useradd $USERNAME
-fi
-
-if ! grep sudo /etc/group | grep $USERNAME; then
-	sudo usermod sudo $USERNAME
-fi
-
-if ! grep user42 /etc/group | grep $USERNAME; then
-	sudo usernmod user42 $USERNAME
-fi
 
 # Configure SSH
 sudo apt -y install openssh-server
@@ -49,13 +37,23 @@ sudo apt -y install ufw
 sudo ufw enable
 sudo ufw allow 4242
 
-#Configure Password Quality
+#Configure User and Password Quality
 sed -i 's/PASS_MAX_DAYS 99999/PASS_MAX_DAYS 30/g' /etc/login.defs
 sed -i 's/PASS_MIN_DAYS 0/PASS_MAX_DAYS 30/g' /etc/login.defs
 sed -i 's/PASS_WARN_AGE 7/PASS_MAX_DAYS 30/g' /etc/login.defs
 chage --mindays 2 --maxdays 30 --warndays 7 $DEFAULT_USERNAME
 chage --mindays 2 --maxdays 30 --warndays 7 root
+if ! grep $USERNAME /etc/passwd; then
+	sudo useradd -m $USERNAME
+fi
 
+if ! grep sudo /etc/group | grep $USERNAME; then
+	sudo usermod -aG sudo $USERNAME
+fi
+
+if ! grep user42 /etc/group | grep $USERNAME; then
+	sudo usermod -aG user42 $USERNAME
+fi
 sudo apt -y install libpam-pwquality
 sudo sed -i 's/password	requisite			pam_pwquality.so retry=3/password	requisite		pam_pwquality.so retry=3 minlen=10 ucredit=-1 dcredit=-1 maxrepeat=3 reject_username difok=7 enforce_for_root/g' /etc/pam.d/common-password
 
