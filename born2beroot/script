@@ -1,6 +1,7 @@
 #!/bin/bash
 
-USER_NAME="marcelo"
+DEFAULT_USERNAME_NAME="marcelo"
+USERNAME="madias-m42"
 HOSTNAME="madias-m42"
 
 #__Before the script execution, the mannually execution of the commands bellow is a must__
@@ -21,6 +22,19 @@ echo 'Defaults    logfile = "/var/log/sudo/sudo.log"' | sudo EDITOR='tee -a' vis
 echo 'Defaults    log_input, log_output' | sudo EDITOR='tee -a' visudo
 echo 'Defaults    iolog_dir = "/var/log/sudo"' | sudo EDITOR='tee -a' visudo
 echo 'Defaults    requiretty' | sudo EDITOR='tee -a' visudo
+
+# Configure User
+if ! grep $USERNAME /etc/passwd; then
+	sudo useradd $USERNAME
+fi
+
+if ! grep sudo /etc/group | grep $USERNAME; then
+	sudo usermod sudo $USERNAME
+fi
+
+if ! grep user42 /etc/group | grep $USERNAME; then
+	sudo usernmod user42 $USERNAME
+fi
 
 # Configure SSH
 sudo apt -y install openssh-server
