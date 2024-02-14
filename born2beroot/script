@@ -41,7 +41,7 @@ sudo ufw enable
 sudo ufw allow 4242
 
 #Configure User and Password Quality
-echo "Configuring user and passwdor quality..."
+echo "Configuring user and password quality..."
 sed -i 's/PASS_MAX_DAYS 99999/PASS_MAX_DAYS 30/g' /etc/login.defs
 sed -i 's/PASS_MIN_DAYS 0/PASS_MAX_DAYS 30/g' /etc/login.defs
 sed -i 's/PASS_WARN_AGE 7/PASS_MAX_DAYS 30/g' /etc/login.defs
@@ -67,8 +67,19 @@ echo "Changing Hostname..."
 hostnamectl set-hostname $HOSTNAME
 sed -i "s/127.0.1.1	debian/127.0.1.1	$HOSTNAME/g" /etc/hosts
 
+#Create monitoring.sh
+touch ~/monitorig.sh
+chmod +x ~/monitoring.sh
+cat >> ~/monitoring.sh << EOF
+#!/bin/bash
+ARCH=$(uname -a)
+
+wall "
+#Architecture: $ARCH
+"
+EOF
+
 #_____After the Script execution, don't forget to run the fallowing commands:___
 #ssh-keygen -t rsa
-
-
-
+#passwd $USERNAME
+#passwd root
