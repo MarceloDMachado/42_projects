@@ -67,15 +67,48 @@ echo "Changing Hostname..."
 hostnamectl set-hostname $HOSTNAME
 sed -i "s/127.0.1.1	debian/127.0.1.1	$HOSTNAME/g" /etc/hosts
 
+#Install netstat
+sudo apt -y install netstat
+
 #Create monitoring.sh
 touch ~/monitorig.sh
-chmod +x ~/monitoring.sh
-cat >> ~/monitoring.sh << EOF
+chmod 777  ~/monitoring.sh
+cat >> ~/monitoring.sh << 'EOF'
 #!/bin/bash
+
 ARCH=$(uname -a)
+CORE=$(lscpu | grep 'per socket' | awk '{print $4}')
+THREADS=$(nproc)
+U_RAM=$(free --mega | grep Mem | awk '{print $3}')
+T_RAM=$(free --mega | grep Mem | awk '{print $2}')
+RAM_USAGE=$(free --mega | grep Mem | awk '{printf "%.2f%%", $3/$2*100}')
+U_DISK=$(df | grep root | awk '{printf "%.0f", $3/1000}')
+T_DISK=$(df -h | grep root | awk '{printf "%.0f", $2}')
+DISK_USAGE=$(df -h | grep root | awk '{printf "%d%%", $5}')
+FREE_CPU=$(vmstat 1 1| tail -1 | awk '{printf $15}')
+U_CPU=$(expr 100 - $FREE_CPU)
+CPU_LOAD=$(printf "%.1f%%" $U_CPU)
+LAST_BOOT=$(last -F reboot | head -1 | cut -d " " -f 11-15)
+LVM=$(if lsblk | grep -q "lvm"; then echo "yes"; else echo "no"; fi)
+TCP_CONN=$(netstat -an | grep ESTAB | wc -l)
+USER_LOG_COUNT=$(who | wc -l)
+IP_VF=$(hostname -I)
+MAC=$(cat /sys/class/net/*/address | awk 'NR==1')
+SUDO_CMD_COUNT=$(cat /var/log/sudo/sudo.log | wc -l )
 
 wall "
 #Architecture: $ARCH
+#CPU physical : $CORE
+#vCPU : $THREADS
+#Memory Usage: $U_RAM/${T_RAM}MB ($RAM_USAGE)
+#Disk Usage: $U_DISK/${T_DISK}Gb ($DISK_USAGE)
+#CPU load: $CPU_LOAD
+#Last boot: $LAST_BOOT
+#LVM use: $LVM
+#Connection TCP : $TCP_CONN
+#User log: $USER_LOG_COUNT
+#Network: IP $IP_VF ($MAC)
+#Sudo: $SUDO_CMD_COUNT cmd
 "
 EOF
 
