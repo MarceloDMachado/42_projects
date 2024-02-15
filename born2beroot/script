@@ -71,9 +71,9 @@ sed -i "s/127.0.1.1	debian/127.0.1.1	$HOSTNAME/g" /etc/hosts
 sudo apt -y install netstat
 
 #Create monitoring.sh
-touch ~/monitorig.sh
-chmod 777  ~/monitoring.sh
-cat >> ~/monitoring.sh << 'EOF'
+touch /usr/local/bin/monitorig.sh
+chmod 777 /usr/local/bin/monitoring.sh
+cat >> /usr/local/bin/monitoring.sh << 'EOF'
 #!/bin/bash
 
 ARCH=$(uname -a)
@@ -111,6 +111,19 @@ wall "
 #Sudo: $SUDO_CMD_COUNT cmd
 "
 EOF
+touch /usr/local/bin/sleep.sh
+chmod 777 /usr/local/bin/sleep.sh
+cat >> /usr/local/bin/sleep.sh << 'EOF'
+#!/bin/bash
+
+TMP=$(uptime -s | cut -d ":" -f 2)
+MIN=$((tmp%10))
+SEC=$(uptime -s | cut -d ":" -f 3)
+sleep ${MIN}m ${SEC}s
+
+/usr/local/bin/monitoring.sh
+EOF
+{ crontab -l -u root; echo '*/10 * * * * /usr/local/bin/sleep.sh'; } | crontab -u root -
 
 #_____After the Script execution, don't forget to run the fallowing commands:___
 #ssh-keygen -t rsa
