@@ -8,9 +8,9 @@ HOSTNAME="madias-m42"
 # su root
 # apt install sudo
 # sudo groupadd user42
-# sudo usermod -aG sudo $USER_NAME
-# sudo usermod -aG user42 $USER_NAME
-# exit
+# sudo usermod -aG sudo $DEFAULT_USER
+# sudo usermod -aG user42 $DEFAULT_USER
+# reboot
 #__END__
 
 # Configure sudo
@@ -70,7 +70,7 @@ sed -i "s/127.0.1.1	debian/127.0.1.1	$HOSTNAME/g" /etc/hosts
 sudo apt -y install netstat
 
 #Create monitoring.sh
-touch /usr/local/bin/monitorig.sh
+touch /usr/local/bin/monitoring.sh
 chmod 777 /usr/local/bin/monitoring.sh
 cat >> /usr/local/bin/monitoring.sh << 'EOF'
 #!/bin/bash
