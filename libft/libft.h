@@ -6,7 +6,7 @@
 /*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:31:37 by madias-m          #+#    #+#             */
-/*   Updated: 2024/02/26 17:51:00 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/02/26 18:09:06 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ typedef struct s_list
 	void			*content;
 	struct s_list	*next;
 }					t_list;
+
+typedef struct s_flags
+{
+	int	hash;
+	int	space;
+	int	plus;
+	int	space_fix;
+	int	hyphen;
+	int	o;
+}	t_flags;
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
@@ -73,4 +83,14 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_count_algarisms(size_t nbr, int base);
 char	*get_next_line(int fd);
+int		ft_printf(const char *str, ...);
+void	put_char(int c, void *f, int *count);
+void	put_str(char *str, void *f, int *count);
+void	put_nbr(long nbr, t_flags *f, int *count);
+void	put_unbr(unsigned int nbr, t_flags *f, int *count);
+void	put_nbr_hex(size_t n, int is_low, t_flags *f, int *count);
+void	put_ptr(size_t n, t_flags *f, int *count);
+void	before(int len, t_flags *f, int *count);
+void	after(int len, t_flags *f, int *count);
+void	put_zero(int len, t_flags *f, int *count);
 #endif
