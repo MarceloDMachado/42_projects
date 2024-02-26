@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:17:05 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/30 19:31:05 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/12/08 17:28:35 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*resolve_line(char **readed)
 	int		size;
 	int		aux;
 	char	*line;
-	char	*bu;
+	char	*temp;
 
 	if (ft_strchr(*readed, '\n'))
 		size = ft_strchr(*readed, '\n') - *readed + 1;
@@ -35,15 +35,15 @@ char	*resolve_line(char **readed)
 		line[aux] = (*readed)[aux];
 		aux++;
 	}
-	bu = ft_strjoin("", &(*readed)[size]);
+	temp = ft_strjoin("", &(*readed)[size]);
 	free(*readed);
-	*readed = bu;
+	*readed = temp;
 	return (line);
 }
 
 void	read_file_aux(char **buff, char **readed, int *r_count, int fd)
 {
-	char	*bu;
+	char	*temp;
 
 	*r_count = read(fd, *buff, BUFFER_SIZE);
 	if (*r_count < 0 || (!*r_count && !ft_strlen(*readed)))
@@ -57,9 +57,9 @@ void	read_file_aux(char **buff, char **readed, int *r_count, int fd)
 	(*buff)[*r_count] = 0;
 	if (!*r_count)
 		return ;
-	bu = ft_strjoin(*readed, *buff);
+	temp = ft_strjoin(*readed, *buff);
 	free(*readed);
-	*readed = bu;
+	*readed = temp;
 }
 
 char	*read_file(int fd, char **readed)

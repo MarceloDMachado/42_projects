@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/04 13:10:42 by madias-m          #+#    #+#             */
-/*   Updated: 2023/11/24 16:48:12 by madias-m         ###   ########.fr       */
+/*   Updated: 2023/12/08 17:36:34 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,10 @@
 # include <stddef.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <fcntl.h>
+
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 10
+# endif
 
 char	*get_next_line(int fd);
 size_t	ft_strlen(const char *str);
