@@ -6,17 +6,19 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 17:22:06 by madias-m          #+#    #+#             */
-/*   Updated: 2024/02/26 17:29:05 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/02/26 19:29:24 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <mlx.h>
+#include "so_long.h"
 
 int main()
 {
 	void *mlx;
 
 	mlx = mlx_init();
+	test();
 }
 
 
