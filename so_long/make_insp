@@ -1,0 +1,132 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: livieira <livieira@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/15 22:49:56 by livieira          #+#    #+#              #
+#    Updated: 2024/02/26 16:14:04 by livieira         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+#Program name
+NAME		= fractol
+NAME_BONUS	= fractol_bonus
+
+# Compiler
+CC		= gcc
+CFLAGS	= -Werror -Wextra -Wall
+XFLAGS	= -lXext -lX11 -lm -lmlx -O3
+
+# Libft
+LIBFT_PATH	= libft/
+LIBFT_NAME	= libft.a
+LIBFT		= $(LIBFT_PATH)$(LIBFT_NAME)
+
+INC			=	-I ./includes/\
+				-I ./libft/\
+
+INC_B		=	-I ./includes_bonus/\
+				-I ./libft/\
+
+# Sources Mandatory
+SRC_PATH	=	src/
+SRC			=	fractol.c \
+				initialization.c \
+				utils.c\
+				events.c\
+				render.c\
+				color.c \
+				parse_args.c \
+				help_msg.c \
+				fractal_sets/mandelbrot.c \
+				fractal_sets/julia.c \
+				color_schemes/color_interpolated.c \
+				color_schemes/color_special.c \
+				color_schemes/color_striped.c
+SRCS		= $(addprefix $(SRC_PATH), $(SRC))
+
+# Sources Bonus
+SRC_PATH_B	=	src_b/
+SRC_B		=	fractol_bonus.c \
+				initialization_bonus.c \
+				utils_bonus.c \
+				events_bonus.c \
+				render_bonus.c \
+				color_bonus.c \
+				parse_args_bonus.c \
+				help_msg_bonus.c \
+				fractal_sets/mandelbrot_bonus.c \
+				fractal_sets/julia_bonus.c \
+				fractal_sets/burning_ship_bonus.c \
+				fractal_sets/tricorn_bonus.c \
+				fractal_sets/mandelbox_bonus.c \
+				color_schemes/color_interpolated_bonus.c \
+				color_schemes/color_special_bonus.c \
+				color_schemes/color_striped_bonus.c
+SRCS_B		= $(addprefix $(SRC_PATH_B), $(SRC_B))
+
+# Objects Mandatory
+OBJ_PATH	= obj/
+OBJ			= $(SRC:.c=.o)
+OBJS		= $(addprefix $(OBJ_PATH), $(OBJ))
+
+# Objects Bonus
+OBJ_PATH_BONUS	= obj_bonus/
+OBJ_B			= $(SRC_B:.c=.o)
+OBJS_BONUS		= $(addprefix $(OBJ_PATH_BONUS), $(OBJ_B))
+
+
+all: $(NAME)
+	
+$(OBJ_PATH):
+	@mkdir $(OBJ_PATH)
+	@mkdir $(OBJ_PATH)fractal_sets/
+	@mkdir $(OBJ_PATH)color_schemes/
+
+$(OBJ_PATH)%.o: $(SRC_PATH)%.c
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INC)
+
+#$(OBJS): $(OBJ_PATH)
+
+$(LIBFT):
+	@echo "Making Libft..."
+	@make -sC $(LIBFT_PATH)
+
+$(NAME): $(LIBFT) $(OBJ_PATH) $(OBJS)
+	@echo "Compiling Fract-ol..."
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJS) $(LIBFT) $(INC) $(XFLAGS)
+	@echo "Fract-ol is ready."
+
+bonus: $(NAME_BONUS)
+
+$(OBJ_PATH_BONUS):
+	@mkdir $(OBJ_PATH_BONUS)
+	@mkdir $(OBJ_PATH_BONUS)fractal_sets/
+	@mkdir $(OBJ_PATH_BONUS)color_schemes/
+	
+$(OBJ_PATH_BONUS)%.o: $(SRC_PATH_B)%.c
+	@$(CC) $(CFLAGS) -c $< -o $@ $(INC_B)
+
+$(NAME_BONUS): $(LIBFT) $(OBJ_PATH_BONUS) $(OBJS_BONUS)
+
+	@echo "Compiling Fract-ol Bonus..."
+	@$(CC) $(CFLAGS) -o $(NAME_BONUS) $(OBJS_BONUS) $(LIBFT) $(INC_B) $(XFLAGS)
+	@echo "Fractol Bonus is Ready."	
+
+clean:
+	@echo "Removing object files..."
+	@rm -rf $(OBJ_PATH)
+	@rm -rf $(OBJ_PATH_BONUS)
+	@make clean -C $(LIBFT_PATH)
+
+fclean: clean
+	@echo "Removing Fract-ol..."
+	@rm -f $(NAME)
+	@rm -f $(NAME_BONUS)
+	@rm -f $(LIBFT_PATH)$(LIBFT_NAME)
+
+re: fclean all
+
+.PHONY: all bonus clean fclean re
