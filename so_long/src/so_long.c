@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:53:03 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/11 18:59:13 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/11 20:01:50 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,10 @@
 
 int main(void)
 {
-		ft_printf("printf funciona1");
-		sim();
-		just_say_no();
+	void	*mlx;
+	void	*mlx_win;
+
+	mlx = mlx_init();
+	mlx_win = mlx_new_window(mlx, 1280, 720, "uhul!");
+	mlx_loop(mlx);
 }
