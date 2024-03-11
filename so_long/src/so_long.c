@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:53:03 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/11 17:56:26 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/11 18:59:13 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,7 @@
 
 int main(void)
 {
-	ft_printf("printf funciona1");	
+		ft_printf("printf funciona1");
+		sim();
+		just_say_no();
 }

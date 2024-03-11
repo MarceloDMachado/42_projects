@@ -6,24 +6,32 @@
 #    By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/12 20:17:15 by madias-m          #+#    #+#              #
-#    Updated: 2024/03/11 18:03:07 by madias-m         ###   ########.fr        #
+#    Updated: 2024/03/11 19:53:37 by madias-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 W_FLAGS = -Wall -Wextra -Werror
 ML_FLAGS = -lmlx -lX11 -lXext
 NAME = so_long
-SRC = test.c
+INC = -I ./includes/\
+	  -I ./libft/
+SRC = so_long.c \
+	  test.c \
+	  no.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
-LIB = libft.a
+LIB = libft/libft.a
 
 all: $(NAME)
 
+$(NAME): $(LIB) $(OBJ)
+	cc $(W_FLAGS) -o $(NAME) $(OBJ) $(LIB) $(INC) $(ML_FLAGS)
+
+%.o: $(SRC_PATH)%.c
+	cc $(C_FLAGS) -c $< -o $@ $(INC)
 
 $(LIB):
-	make -C libft/ all
-	cp libft/$(LIB) .
+	make -sC libft/ all
 
 bonus: all
 

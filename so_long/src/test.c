@@ -6,11 +6,11 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:54:32 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/09 14:05:08 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/11 18:59:12 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../includes/so_long.h"
 
 int sim(void)
 {
