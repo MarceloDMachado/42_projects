@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:53:03 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/14 19:18:26 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/16 13:18:54 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,6 @@ void	my_mlx_pixel_put(t_canvas *canvas, int x, int y, int color)
 	*(unsigned int*)dst = color;
 }
 
-
-void	build_square(t_canvas *canvas, int x, int y, int color)
-{
-	int size;
-
-	size = 0;
-	while (size <= 40)
-	{
-		my_mlx_pixel_put(canvas, x + size, y, color);
-		my_mlx_pixel_put(canvas, x, y + size, color);
-		size++;
-	}
-	y += size;
-	x += size;
-	while (size > 0)
-	{
-		my_mlx_pixel_put(canvas, x - size, y, color);
-		my_mlx_pixel_put(canvas, x, y - size, color);
-		size--;
-	}
-}
-
 int	main(void)
 {
 	void		*mlx;
@@ -63,10 +41,9 @@ int	main(void)
 
 	mlx = mlx_init();
 	canvas = init_canvas();
-	win = mlx_new_window(mlx, 1280, 720, "so_long");
-	canvas.img = mlx_new_image(mlx, 1280, 720);
+	win = mlx_new_window(mlx, 400, 160, "so_long");
+	canvas.img = mlx_new_image(mlx, 400, 160);
 	canvas.addr = mlx_get_data_addr(canvas.img, &canvas.bits_per_pixel, &canvas.line_len, &canvas.endian);
-	build_square(&canvas, 5, 5, 0x00FF0000);
 	mlx_put_image_to_window(mlx, win, canvas.img, 0, 0);
 	mlx_loop(mlx);
 }

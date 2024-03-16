@@ -1,33 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   validate_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/09 13:56:04 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/15 18:07:41 by madias-m         ###   ########.fr       */
+/*   Created: 2024/03/16 13:36:18 by madias-m          #+#    #+#             */
+/*   Updated: 2024/03/16 18:12:16 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#include "../includes/so_long.h"
 
-# include "../libft/libft.h"
+void	build_map(char *line)
+{
+	char *values;
+	char **splited;
 
-typedef struct s_canvas {
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_len;
-	int		endian;
-}	t_canvas;
+	splited = ft_split(line, 32);
+	while (*splited++)
+	{
+			
+	}
+}
 
 
-typedef struct s_coord {
-	int x;
-	int y;
-}	t_coord;
+int	validate_map(void)
+{
+	char	**map;
+	char	*line;
+	int		fd;
 
-#endif
-
+	fd = open("../maps/default.ber", O_RDONLY);
+	line = get_next_line(fd);
+	while (line)
+	{
+		line = get_next_line(fd);
+	}
+	return (1);
+}
