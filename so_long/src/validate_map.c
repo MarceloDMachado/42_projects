@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:36:18 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/17 16:36:06 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:56:35 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,31 @@ char	**build_map(t_list *lst)
 	return (map);
 }
 
+int	is_rectangular(char **map)
+{
+	int	line_count;
+	int	line_size;
+	int	i;
+
+	i = 0;
+	while (map[i])
+		i++;
+	line_count = i;
+	i = 0;
+	line_size = 0;
+	while (map[i])
+	{
+		if (!line_size)
+			line_size = ft_strlen(map[i]);
+		else
+		{
+			if (line_size != ft_strlen(map[i]))
+				return (0);
+		}
+		i++;
+	}
+	return (line_size != line_count);
+}
 
 int	validate_map(void)
 {
@@ -81,5 +106,6 @@ int	validate_map(void)
 	}
 	map = build_map(list);
 	ft_lstclear(&list, ft_free);
+	ft_printf("%d", is_rectangular(map));
 	return (1);
 }
