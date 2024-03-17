@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:36:18 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/17 17:12:02 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:20:32 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,13 @@ int	is_wall_surrounded(char **map)
 	line_count = i;
 	if (!only_wall(map[0]) || !only_wall(map[line_count - 1]))
 		return (0);
+	i = 1;
+	while (i < line_count - 1)
+	{
+		if (map[i][0] != 49 || map[i][line_size -1] != 49)
+			return (0);
+		i++;
+	}
 	return (1);
 }
 
