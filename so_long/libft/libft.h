@@ -6,7 +6,7 @@
 /*   By: madias-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 11:31:37 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/11 18:54:58 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:26:19 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,4 +93,5 @@ void	put_ptr(size_t n, t_flags *f, int *count);
 void	before(int len, t_flags *f, int *count);
 void	after(int len, t_flags *f, int *count);
 void	put_zero(int len, t_flags *f, int *count);
+void	ft_free(void *pointer);
 #endif
