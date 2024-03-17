@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:36:18 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/17 16:56:35 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/17 17:12:02 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,6 +89,30 @@ int	is_rectangular(char **map)
 	return (line_size != line_count);
 }
 
+int only_wall(char *line)
+{
+	while (*line)
+		if (*line++ != 49)
+			return (0);
+	return (1);
+}
+
+int	is_wall_surrounded(char **map)
+{
+	int line_size;
+	int	line_count;
+	int	i;
+	
+	i = 0;
+	line_size = ft_strlen(map[i]);
+	while (map[i])
+		i++;
+	line_count = i;
+	if (!only_wall(map[0]) || !only_wall(map[line_count - 1]))
+		return (0);
+	return (1);
+}
+
 int	validate_map(void)
 {
 	t_list	*list;
@@ -106,6 +130,6 @@ int	validate_map(void)
 	}
 	map = build_map(list);
 	ft_lstclear(&list, ft_free);
-	ft_printf("%d", is_rectangular(map));
+	ft_printf("%d", is_wall_surrounded(map));
 	return (1);
 }
