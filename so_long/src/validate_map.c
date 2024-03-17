@@ -6,36 +6,80 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:36:18 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/16 18:12:16 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/17 16:36:06 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	build_map(char *line)
+void	count(t_list *lst, int *len, int *lines)
 {
-	char *values;
-	char **splited;
-
-	splited = ft_split(line, 32);
-	while (*splited++)
+	*lines = 1;
+	*len = 0;
+	while (lst->next)
 	{
-			
+		if (*(char *)(lst->content) == 10)
+			(*lines)++;
+		if (ft_strchr("01CEP",*(char *)(lst->content)))
+			(*len)++;
+		lst = lst->next;
 	}
+}
+
+t_list	*fill_line(t_list *lst, char *str)
+{
+	while (lst->next)
+	{
+		if (*(char *)(lst->content) != 10)
+			*str++ = *(char *)(lst->content);
+		else
+		{
+			lst = lst->next;
+			return (lst);
+		}
+		lst = lst->next;
+	}
+	return (lst);
+}
+
+
+char	**build_map(t_list *lst)
+{
+	char	**map;
+	int		len;
+	int		line_count;
+	int		i;
+	
+	count(lst, &len, &line_count);
+	map = ft_calloc(line_count + 1, sizeof(char *));
+	if (!map)
+		return (0);
+	i = 0;
+	while (i < line_count)
+		map[i++] = ft_calloc(len / line_count + 1, sizeof(char));
+	i = 0;
+	while (i < line_count && lst->next)
+		lst = fill_line(lst, map[i++]);
+	return (map);
 }
 
 
 int	validate_map(void)
 {
-	char	**map;
-	char	*line;
+	t_list	*list;
 	int		fd;
+	char	c;
+	char	**map;
 
-	fd = open("../maps/default.ber", O_RDONLY);
-	line = get_next_line(fd);
-	while (line)
+	fd = open("src/default.ber", O_RDONLY);
+	while (read(fd, &c, 1))
 	{
-		line = get_next_line(fd);
+		if (!list)
+			list = ft_lstnew(ft_strdup(&c));
+		else 
+			ft_lstadd_back(&list, ft_lstnew(ft_strdup(&c)));
 	}
+	map = build_map(list);
+	ft_lstclear(&list, ft_free);
 	return (1);
 }

@@ -6,7 +6,7 @@
 #    By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/12 20:17:15 by madias-m          #+#    #+#              #
-#    Updated: 2024/03/11 19:57:21 by madias-m         ###   ########.fr        #
+#    Updated: 2024/03/17 10:24:22 by madias-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,7 @@ NAME = so_long
 INC = -I ./includes/\
 	  -I ./libft/
 SRC = so_long.c \
-	  test.c \
-	  no.c
+	  validate_map.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a

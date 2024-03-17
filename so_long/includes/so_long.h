@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:56:04 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/15 18:07:41 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/17 10:05:43 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ typedef struct s_coord {
 	int x;
 	int y;
 }	t_coord;
+
+int	validate_map(void);
 
 #endif
 
