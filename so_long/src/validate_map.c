@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:36:18 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/18 20:55:50 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:15:39 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,15 +141,24 @@ int	check_elements(char **map)
 	return (check(map, 80) && check(map, 69) && check(map, 67));
 }
 
-int check_invalid(char **map)
+int is_invalid(char **map)
 {
 	int	i;
+	int	j;
 
-	i = 0;
+	i = 1;
+	j = 0;
 	while (map[i])
 	{
-	//continuar daqui	
+		while (map[i][j])
+		{
+			if (!ft_strchr("01CEP", map[i][j++]))
+				return (1);
+		}
+		i++;
 	}
+	return (0);
+}
 
 int	validate_map(void)
 {
@@ -170,6 +179,7 @@ int	validate_map(void)
 	ft_lstclear(&list, ft_free);
 	is_rectangular(map);
 	is_wall_surrounded(map);
+	ft_printf("is inva: %d\n", is_invalid(map));
 	ft_printf("elem: %d", check_elements(map));
 	return (1);
 }
