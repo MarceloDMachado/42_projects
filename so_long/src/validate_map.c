@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:36:18 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/19 17:15:39 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/19 17:30:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int check(char **map, char elem)
 
 int	check_elements(char **map)
 {
-	return (check(map, 80) && check(map, 69) && check(map, 67));
+	return (check(map, 'P') && check(map, 'E') && check(map, 'C'));
 }
 
 int is_invalid(char **map)
