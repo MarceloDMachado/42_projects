@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 17:53:03 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/20 19:34:44 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/21 18:51:31 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,7 @@ int	main(int argc, char**argv)
 	canvas.img = mlx_new_image(mlx, 400, 160);
 	canvas.addr = mlx_get_data_addr(canvas.img, &canvas.bits_per_pixel, &canvas.line_len, &canvas.endian);
 	mlx_put_image_to_window(mlx, win, canvas.img, 0, 0);
-	//canvas.map = build_map(read_map(argv[1]));
+	canvas.map = build_map(read_map(argv[1]));
+	validate_map(&canvas);
 	mlx_loop(mlx);
 }

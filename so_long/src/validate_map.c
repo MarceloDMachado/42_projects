@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:36:18 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/20 18:11:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/21 19:26:06 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ char	**build_map(t_list *lst)
 	int		len;
 	int		line_count;
 	int		i;
-	
+
 	count(lst, &len, &line_count);
 	map = ft_calloc(line_count + 1, sizeof(char *));
 	if (!map)
@@ -59,6 +59,7 @@ char	**build_map(t_list *lst)
 	i = 0;
 	while (i < line_count && lst->next)
 		lst = fill_line(lst, map[i++]);
+	ft_free(lst);//corrigir isso aqui
 	return (map);
 }
 
@@ -171,6 +172,7 @@ t_list	*read_map(char *path)
 		ft_printf("Error\nMap not found!");
 		return (0);
 	}
+	list = 0;
 	while (read(fd, &c, 1))
 	{
 		if (!list)
@@ -183,24 +185,9 @@ t_list	*read_map(char *path)
 
 int	validate_map(t_canvas *canvas)
 {
-	t_list	*list;
-	int		fd;
-	char	c;
-	char	**map;
-
-	fd = open("src/default.ber", O_RDONLY);
-	while (read(fd, &c, 1))
-	{
-		if (!list)
-			list = ft_lstnew(ft_strdup(&c));
-		else 
-			ft_lstadd_back(&list, ft_lstnew(ft_strdup(&c)));
-	}
-	map = build_map(list);
-	ft_lstclear(&list, ft_free);
-	is_rectangular(map);
-	is_wall_surrounded(map);
-	ft_printf("is inva: %d\n", is_invalid(map));
-	ft_printf("elem: %d", check_elements(map));
+	is_rectangular(canvas->map);
+	is_wall_surrounded(canvas->map);
+	is_invalid(canvas->map);
+	check_elements(canvas->map);
 	return (1);
 }
