@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 13:36:18 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/19 17:30:25 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/20 18:11:57 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,6 @@ t_list	*fill_line(t_list *lst, char *str)
 	}
 	return (lst);
 }
-
 
 char	**build_map(t_list *lst)
 {
@@ -160,7 +159,29 @@ int is_invalid(char **map)
 	return (0);
 }
 
-int	validate_map(void)
+t_list	*read_map(char *path)
+{
+	t_list	*list;
+	int		fd;
+	char	c;
+
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+	{
+		ft_printf("Error\nMap not found!");
+		return (0);
+	}
+	while (read(fd, &c, 1))
+	{
+		if (!list)
+			list = ft_lstnew(ft_strdup(&c));
+		else
+			ft_lstadd_back(&list, ft_lstnew(ft_strdup(&c)));
+	}
+	return (list);
+}
+
+int	validate_map(t_canvas *canvas)
 {
 	t_list	*list;
 	int		fd;
