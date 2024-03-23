@@ -46,13 +46,16 @@ int	main(int argc, char**argv)
 		ft_printf("Error\nInvalid args count!");
 	if (!ft_strrchr(argv[1], '.') && !ft_memcmp(ft_strrchr(argv[1], '.'), ".ber", 4))
 		ft_printf("Error\nInvalid file extension!");
-	mlx = mlx_init();
+
 	canvas = init_canvas();
+	canvas.map = build_map(read_map(argv[1]));
+	count_max(&canvas);
+	validate_map(&canvas);
+
+	mlx = mlx_init();
 	win = mlx_new_window(mlx, 400, 160, "so_long");
 	canvas.img = mlx_new_image(mlx, 400, 160);
 	canvas.addr = mlx_get_data_addr(canvas.img, &canvas.bits_per_pixel, &canvas.line_len, &canvas.endian);
 	mlx_put_image_to_window(mlx, win, canvas.img, 0, 0);
-	canvas.map = build_map(read_map(argv[1]));
-	validate_map(&canvas);
 	mlx_loop(mlx);
 }

@@ -12,147 +12,57 @@
 
 #include "../includes/so_long.h"
 
-void	count(t_list *lst, int *len, int *lines)
-{
-	*lines = 1;
-	*len = 0;
-	while (lst->next)
-	{
-		if (*(char *)(lst->content) == 10)
-			(*lines)++;
-		if (ft_strchr("01CEP",*(char *)(lst->content)))
-			(*len)++;
-		lst = lst->next;
-	}
-}
-
-t_list	*fill_line(t_list *lst, char *str)
-{
-	while (lst->next)
-	{
-		if (*(char *)(lst->content) != 10)
-			*str++ = *(char *)(lst->content);
-		else
-		{
-			lst = lst->next;
-			return (lst);
-		}
-		lst = lst->next;
-	}
-	return (lst);
-}
-
-char	**build_map(t_list *lst)
-{
-	char	**map;
-	int		len;
-	int		line_count;
-	int		i;
-
-	count(lst, &len, &line_count);
-	map = ft_calloc(line_count + 1, sizeof(char *));
-	if (!map)
-		return (0);
-	i = 0;
-	while (i < line_count)
-		map[i++] = ft_calloc(len / line_count + 1, sizeof(char));
-	i = 0;
-	while (i < line_count && lst->next)
-		lst = fill_line(lst, map[i++]);
-	ft_free(lst);//corrigir isso aqui
-	return (map);
-}
-
-int	is_rectangular(char **map)
+int	is_rectangular(t_canvas *canvas)
 {
 	int	line_count;
 	int	line_size;
 	int	i;
 
+	line_count = canvas->max_y;
+	line_size = canvas->max_x;
 	i = 0;
-	while (map[i])
-		i++;
-	line_count = i;
-	i = 0;
-	line_size = 0;
-	while (map[i])
+	while (canvas->map[i])
 	{
-		if (!line_size)
-			line_size = ft_strlen(map[i]);
-		else
-		{
-			if (line_size != ft_strlen(map[i]))
-				return (0);
-		}
-		i++;
+		if (line_size != ft_strlen(canvas->map[i++]))
+			return (0);
 	}
 	return (line_size != line_count);
 }
 
-int only_wall(char *line)
+int	is_wall_surrounded(t_canvas *canvas)
 {
-	while (*line)
-		if (*line++ != 49)
-			return (0);
-	return (1);
-}
-
-int	is_wall_surrounded(char **map)
-{
-	int line_size;
-	int	line_count;
 	int	i;
 	
 	i = 0;
-	line_size = ft_strlen(map[i]);
-	while (map[i])
-		i++;
-	line_count = i;
-	if (!only_wall(map[0]) || !only_wall(map[line_count - 1]))
+	if (!only_wall(canvas->map[0]) || !only_wall(canvas->map[canvas->max_y]))
 		return (0);
 	i = 1;
-	while (i < line_count - 1)
+	while (i < canvas->max_y)
 	{
-		if (map[i][0] != 49 || map[i][line_size -1] != 49)
+		if (canvas->map[i][0] != 49 || canvas->map[i][canvas->max_x] != 49)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int check(char **map, char elem)
+int	check_elements(t_canvas *canvas)
 {
-	int line_count;
-	int i;
-
-	i = 0;
-	while (map[i])
-		i++;
-	line_count = i;
-	i = 1;
-	while (i < line_count - 1)
-		if (ft_strchr(map[i++], elem))
-			return (1);
-	return (0);
+	return (check(canvas->map, 'P', 1) && check(canvas->map, 'E', 1) && check(canvas->map, 'C', 0));
 }
 
-int	check_elements(char **map)
-{
-	return (check(map, 'P') && check(map, 'E') && check(map, 'C'));
-}
-
-int is_invalid(char **map)
+int contains_invalid_elements(t_canvas *canvas)
 {
 	int	i;
 	int	j;
 
 	i = 1;
 	j = 0;
-	while (map[i])
+	while (canvas->map[i])
 	{
-		while (map[i][j])
+		while (canvas->map[i][j])
 		{
-			if (!ft_strchr("01CEP", map[i][j++]))
+			if (!ft_strchr("01CEP", canvas->map[i][j++]))
 				return (1);
 		}
 		i++;
@@ -160,34 +70,11 @@ int is_invalid(char **map)
 	return (0);
 }
 
-t_list	*read_map(char *path)
-{
-	t_list	*list;
-	int		fd;
-	char	c;
-
-	fd = open(path, O_RDONLY);
-	if (fd < 0)
-	{
-		ft_printf("Error\nMap not found!");
-		return (0);
-	}
-	list = 0;
-	while (read(fd, &c, 1))
-	{
-		if (!list)
-			list = ft_lstnew(ft_strdup(&c));
-		else
-			ft_lstadd_back(&list, ft_lstnew(ft_strdup(&c)));
-	}
-	return (list);
-}
-
 int	validate_map(t_canvas *canvas)
 {
-	is_rectangular(canvas->map);
-	is_wall_surrounded(canvas->map);
-	is_invalid(canvas->map);
-	check_elements(canvas->map);
+	is_rectangular(canvas);
+	is_wall_surrounded(canvas);
+	contains_invalid_elements(canvas);
+	check_elements(canvas);
 	return (1);
 }
