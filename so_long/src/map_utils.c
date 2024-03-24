@@ -12,9 +12,9 @@
 
 #include "../includes/so_long.h"
 
-int	count_max(t_canvas *canvas)
+void	count_max(t_canvas *canvas)
 {
-	while (canvas->map[canvas->max_y])
+	while (canvas->map[canvas->max_y + 1])
 		canvas->max_y++;
 	canvas->max_x = ft_strlen(canvas->map[0]) - 1;
 }

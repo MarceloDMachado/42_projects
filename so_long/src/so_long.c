@@ -15,47 +15,56 @@
 
 t_canvas	init_canvas(void)
 {
-	t_canvas canvas;
+	t_canvas	canvas;
 
 	canvas.img = (void *)0;
 	canvas.addr = (void *)0;
-	canvas.bits_per_pixel = 0;
+	canvas.bpp = 0;
 	canvas.line_len = 0;
 	canvas.endian = 0;
 	canvas.map = (void *)0;
 	canvas.max_x = 0;
 	canvas.max_y = 0;
+	canvas.is_valid = 1;
 	return (canvas);
 }
 
-void	my_mlx_pixel_put(t_canvas *canvas, int x, int y, int color)
+void	my_mlx_pixel_put(t_canvas *c, int x, int y, int color)
 {
 	char	*dst;
 
-	dst = canvas->addr + (y * canvas->line_len + x * (canvas->bits_per_pixel / 8));
-	*(unsigned int*)dst = color;
+	dst = c->addr + (y * c->line_len + x * (c->bpp / 8));
+	*(unsigned int *)dst = color;
+}
+
+int	check_extension(char *path)
+{
+	if (!ft_strrchr(path, '.'))
+		return (0);
+	if (!ft_memcmp(ft_strrchr(path, '.'), ".ber", 4))
+		return (0);
+	return (1);
 }
 
 int	main(int argc, char**argv)
 {
 	void		*mlx;
 	void		*win;
-	t_canvas	canvas;
+	t_canvas	cvs;
 
 	if (argc != 2)
 		ft_printf("Error\nInvalid args count!");
-	if (!ft_strrchr(argv[1], '.') && !ft_memcmp(ft_strrchr(argv[1], '.'), ".ber", 4))
+	if (!check_extension(argv[1]))
 		ft_printf("Error\nInvalid file extension!");
-
-	canvas = init_canvas();
-	canvas.map = build_map(read_map(argv[1]));
-	count_max(&canvas);
-	validate_map(&canvas);
-
+	cvs = init_canvas();
+	cvs.map = build_map(read_map(argv[1]));
+	count_max(&cvs);
+	if (validate_map(&cvs))
+		return (1);
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 400, 160, "so_long");
-	canvas.img = mlx_new_image(mlx, 400, 160);
-	canvas.addr = mlx_get_data_addr(canvas.img, &canvas.bits_per_pixel, &canvas.line_len, &canvas.endian);
-	mlx_put_image_to_window(mlx, win, canvas.img, 0, 0);
+	cvs.img = mlx_new_image(mlx, 400, 160);
+	cvs.addr = mlx_get_data_addr(cvs.img, &cvs.bpp, &cvs.line_len, &cvs.endian);
+	mlx_put_image_to_window(mlx, win, cvs.img, 0, 0);
 	mlx_loop(mlx);
 }

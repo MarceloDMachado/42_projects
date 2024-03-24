@@ -12,9 +12,9 @@
 
 #include "../includes/so_long.h"
 
-int check(t_canvas *canvas, char elem, int unique)
+int	check(t_canvas *canvas, char elem, int unique)
 {
-	int i;
+	int	i;
 	int	j;
 	int	found;
 
@@ -32,11 +32,11 @@ int check(t_canvas *canvas, char elem, int unique)
 		i++;
 	}
 	if (!found || (unique && found > 1))
-		return 0;
+		return (0);
 	return (1);
 }
 
-int only_wall(char *line)
+int	only_wall(char *line)
 {
 	while (*line)
 		if (*line++ != 49)

@@ -19,7 +19,7 @@ int	is_rectangular(t_canvas *canvas)
 	int	i;
 
 	line_count = canvas->max_y;
-	line_size = canvas->max_x;
+	line_size = canvas->max_x + 1;
 	i = 0;
 	while (canvas->map[i])
 	{
@@ -29,29 +29,29 @@ int	is_rectangular(t_canvas *canvas)
 	return (line_size != line_count);
 }
 
-int	is_wall_surrounded(t_canvas *canvas)
+int	is_wall_surrounded(t_canvas *c)
 {
 	int	i;
-	
+
 	i = 0;
-	if (!only_wall(canvas->map[0]) || !only_wall(canvas->map[canvas->max_y]))
+	if (!only_wall(c->map[0]) || !only_wall(c->map[c->max_y]))
 		return (0);
 	i = 1;
-	while (i < canvas->max_y)
+	while (i < c->max_y)
 	{
-		if (canvas->map[i][0] != 49 || canvas->map[i][canvas->max_x] != 49)
+		if (c->map[i][0] != 49 || c->map[i][c->max_x] != 49)
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-int	check_elements(t_canvas *canvas)
+int	constains_necessary_elements(t_canvas *c)
 {
-	return (check(canvas->map, 'P', 1) && check(canvas->map, 'E', 1) && check(canvas->map, 'C', 0));
+	return (check(c, 'P', 1) && check(c, 'E', 1) && check(c, 'C', 0));
 }
 
-int contains_invalid_elements(t_canvas *canvas)
+int	contains_invalid_elements(t_canvas *canvas)
 {
 	int	i;
 	int	j;
@@ -72,9 +72,13 @@ int contains_invalid_elements(t_canvas *canvas)
 
 int	validate_map(t_canvas *canvas)
 {
-	is_rectangular(canvas);
-	is_wall_surrounded(canvas);
-	contains_invalid_elements(canvas);
-	check_elements(canvas);
-	return (1);
+	if (!is_rectangular(canvas))
+		return (ft_printf("Error\nThe chose map is not rectangular!"));
+	if (!is_wall_surrounded(canvas))
+		return (ft_printf("Error\nThe chose map is not closed by walls!"));
+	if (contains_invalid_elements(canvas))
+		return (ft_printf("Error\nThe chose map contains invalid elements!"));
+	if (!constains_necessary_elements(canvas))
+		return (ft_printf("Error\nThe chose map does not contains all necessary elements to start"));
+	return (0);
 }

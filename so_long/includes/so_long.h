@@ -18,12 +18,13 @@
 typedef struct s_canvas {
 	void	*img;
 	char	*addr;
-	int		bits_per_pixel;
+	int		bpp;
 	int		line_len;
 	int		endian;
 	char	**map;
 	int		max_x;
 	int		max_y;
+	int		is_valid;
 }	t_canvas;
 
 
@@ -35,7 +36,9 @@ typedef struct s_coord {
 int		validate_map(t_canvas *canvas);
 char	**build_map(t_list *lst);
 t_list	*read_map(char *path);
-int		count_max(t_canvas *canvas);
+void	count_max(t_canvas *canvas);
+int		check(t_canvas *canvas, char elem, int unique);
+int		only_wall(char *line);
 
 #endif
 
