@@ -18,3 +18,13 @@ void	count_max(t_canvas *canvas)
 		canvas->max_y++;
 	canvas->max_x = ft_strlen(canvas->map[0]) - 1;
 }
+
+void	free_map(t_canvas *canvas)
+{
+	int	i;
+
+	i = 0;
+	while (canvas->map[i])
+		free(canvas->map[i++]);
+	free(canvas->map);
+}

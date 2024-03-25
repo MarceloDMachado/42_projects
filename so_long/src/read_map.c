@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   read_map.c                                         :+:      :+:    :+:   */
+/*   parse_file_to_list.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-t_list	*read_map(char *path)
+t_list	*parse_file_to_list(char *path)
 {
 	t_list	*list;
 	int		fd;
@@ -32,6 +32,7 @@ t_list	*read_map(char *path)
 		else
 			ft_lstadd_back(&list, ft_lstnew(ft_strdup(&c)));
 	}
+	close(fd);
 	return (list);
 }
 

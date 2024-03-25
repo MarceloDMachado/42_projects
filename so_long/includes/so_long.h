@@ -35,10 +35,11 @@ typedef struct s_coord {
 
 int		validate_map(t_canvas *canvas);
 char	**build_map(t_list *lst);
-t_list	*read_map(char *path);
+t_list	*parse_file_to_list(char *path);
 void	count_max(t_canvas *canvas);
 int		check(t_canvas *canvas, char elem, int unique);
 int		only_wall(char *line);
+void	free_map(t_canvas *canvas);
 
 #endif
 

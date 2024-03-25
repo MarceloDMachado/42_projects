@@ -55,10 +55,13 @@ int	main(int argc, char**argv)
 	if (invalid_extension(argv[1]))
 		return (ft_printf("Error\nInvalid file extension!"));
 	cvs = init_canvas();
-	cvs.map = build_map(read_map(argv[1]));
+	cvs.map = build_map(parse_file_to_list(argv[1]));
 	count_max(&cvs);
 	if (validate_map(&cvs))
+	{
+		free_map(&cvs);
 		return (1);
+	}
 	mlx = mlx_init();
 	win = mlx_new_window(mlx, 1920, 1080, "so_long");
 	cvs.img = mlx_new_image(mlx, 1920, 1080);
