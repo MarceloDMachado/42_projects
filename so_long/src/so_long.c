@@ -37,13 +37,11 @@ void	my_mlx_pixel_put(t_canvas *c, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int	check_extension(char *path)
+int	invalid_extension(char *path)
 {
-	if (!ft_strrchr(path, '.'))
-		return (0);
-	if (!ft_memcmp(ft_strrchr(path, '.'), ".ber", 4))
-		return (0);
-	return (1);
+	if (!ft_strrchr(path, '.') || ft_memcmp(ft_strrchr(path, '.'), ".ber", 4))
+		return (1);
+	return (0);
 }
 
 int	main(int argc, char**argv)
@@ -53,17 +51,17 @@ int	main(int argc, char**argv)
 	t_canvas	cvs;
 
 	if (argc != 2)
-		ft_printf("Error\nInvalid args count!");
-	if (!check_extension(argv[1]))
-		ft_printf("Error\nInvalid file extension!");
+		return (ft_printf("Error\nInvalid args count!"));
+	if (invalid_extension(argv[1]))
+		return (ft_printf("Error\nInvalid file extension!"));
 	cvs = init_canvas();
 	cvs.map = build_map(read_map(argv[1]));
 	count_max(&cvs);
 	if (validate_map(&cvs))
 		return (1);
 	mlx = mlx_init();
-	win = mlx_new_window(mlx, 400, 160, "so_long");
-	cvs.img = mlx_new_image(mlx, 400, 160);
+	win = mlx_new_window(mlx, 1920, 1080, "so_long");
+	cvs.img = mlx_new_image(mlx, 1920, 1080);
 	cvs.addr = mlx_get_data_addr(cvs.img, &cvs.bpp, &cvs.line_len, &cvs.endian);
 	mlx_put_image_to_window(mlx, win, cvs.img, 0, 0);
 	mlx_loop(mlx);
