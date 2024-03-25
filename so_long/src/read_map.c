@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parse_file_to_list.c                                         :+:      :+:    :+:   */
+/*   read_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 15:25:52 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/23 15:26:25 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/25 16:22:08 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,25 +36,33 @@ t_list	*parse_file_to_list(char *path)
 	return (list);
 }
 
-static void	count_nodes(t_list *lst, int *len, int *lines)
+static void	count_nodes(t_list *lst, int *len, int *row_count)
 {
-	*lines = 1;
+	char	last;
+
+	*row_count = 0;
 	*len = 0;
-	while (lst->next)
+	last = 0;
+	while (lst)
 	{
-		if (*(char *)(lst->content) == 10)
-			(*lines)++;
-		if (ft_strchr("01CEP",*(char *)(lst->content)))
+		if (*(char *)(lst->content) == '\n' && last == '\n')
+			break;
+		if (*(char *)(lst->content) == '\n')
+			(*row_count)++;
+		else
 			(*len)++;
+		last = *(char *)lst->content;
 		lst = lst->next;
 	}
+	if (last != '\n')
+		(*row_count)++;
 }
 
-static t_list	*fill_line(t_list *lst, char *str)
+static t_list	*fill_row(t_list *lst, char *str)
 {
-	while (lst->next)
+	while (lst)
 	{
-		if (*(char *)(lst->content) != 10)
+		if (*(char *)lst->content != '\n')
 			*str++ = *(char *)(lst->content);
 		else
 		{
@@ -70,21 +78,21 @@ char	**build_map(t_list *lst)
 {
 	char	**map;
 	int		len;
-	int		line_count;
+	int		row_count;
 	int		i;
 	t_list	*init;
 
 	init = lst;
-	count_nodes(lst, &len, &line_count);
-	map = ft_calloc(line_count + 1, sizeof(char *));
+	count_nodes(lst, &len, &row_count);
+	map = ft_calloc(row_count + 1, sizeof(char *));
 	if (!map)
 		return (0);
 	i = 0;
-	while (i < line_count)
-		map[i++] = ft_calloc(len / line_count + 1, sizeof(char));
+	while (i < row_count)
+		map[i++] = ft_calloc(len / row_count + 1, sizeof(char));
 	i = 0;
-	while (i < line_count && lst->next)
-		lst = fill_line(lst, map[i++]);
+	while (i < row_count && lst->next)
+		lst = fill_row(lst, map[i++]);
 	ft_lstclear(&init, ft_free);
 	return (map);
 }
