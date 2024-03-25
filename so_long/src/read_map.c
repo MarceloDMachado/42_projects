@@ -46,7 +46,7 @@ static void	count_nodes(t_list *lst, int *len, int *row_count)
 	while (lst)
 	{
 		if (*(char *)(lst->content) == '\n' && last == '\n')
-			break;
+			break ;
 		if (*(char *)(lst->content) == '\n')
 			(*row_count)++;
 		else
