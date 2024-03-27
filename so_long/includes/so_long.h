@@ -25,6 +25,7 @@ typedef struct s_canvas {
 	int		max_x;
 	int		max_y;
 	int		is_valid;
+	t_elements	elements;
 }	t_canvas;
 
 
@@ -32,6 +33,16 @@ typedef struct s_coord {
 	int x;
 	int y;
 }	t_coord;
+
+typedef struct s_elements {
+	void	*floor;
+	void	*wall;
+	void	*collectable;
+	void	*player_l;
+	void	*player_r;
+	void	*exit;
+	void	*enemy;
+}	t_elements;
 
 int		validate_map(t_canvas *canvas);
 char	**build_map(t_list *lst);
