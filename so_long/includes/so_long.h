@@ -25,6 +25,7 @@ typedef struct s_canvas {
 	int		max_x;
 	int		max_y;
 	int		is_valid;
+	int		collectables_count;
 	t_elements	elements;
 }	t_canvas;
 
