@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
 #include "../includes/so_long.h"
 
 t_canvas	init_canvas(void)
@@ -46,8 +45,6 @@ int	invalid_extension(char *path)
 
 int	main(int argc, char**argv)
 {
-	void		*mlx;
-	void		*win;
 	t_canvas	cvs;
 
 	if (argc != 2)
@@ -62,10 +59,5 @@ int	main(int argc, char**argv)
 		free_map(&cvs);
 		return (1);
 	}
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 1920, 1080, "so_long");
-	cvs.img = mlx_new_image(mlx, 1920, 1080);
-	cvs.addr = mlx_get_data_addr(cvs.img, &cvs.bpp, &cvs.line_len, &cvs.endian);
-	mlx_put_image_to_window(mlx, win, cvs.img, 0, 0);
-	mlx_loop(mlx);
+	start_game(&cvs);
 }

@@ -14,6 +14,19 @@
 # define SO_LONG_H
 
 # include "../libft/libft.h"
+# include <mlx.h>
+
+# define PIXEL 48
+
+typedef struct s_elements {
+	void	*floor;
+	void	*wall;
+	void	*collectable;
+	void	*player_l;
+	void	*player_r;
+	void	*exit;
+	void	*enemy;
+}	t_elements;
 
 typedef struct s_canvas {
 	void	*img;
@@ -29,22 +42,12 @@ typedef struct s_canvas {
 	t_elements	elements;
 }	t_canvas;
 
-
 typedef struct s_coord {
 	int x;
 	int y;
 }	t_coord;
 
-typedef struct s_elements {
-	void	*floor;
-	void	*wall;
-	void	*collectable;
-	void	*player_l;
-	void	*player_r;
-	void	*exit;
-	void	*enemy;
-}	t_elements;
-
+void    start_game(t_canvas *cvs);
 int		validate_map(t_canvas *canvas);
 char	**build_map(t_list *lst);
 t_list	*parse_file_to_list(char *path);

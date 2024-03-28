@@ -23,7 +23,6 @@ int	is_rectangular(t_canvas *canvas)
 	i = 0;
 	while (canvas->map[i])
 	{
-		ft_printf("%s\n", canvas->map[i]);
 		if (line_size != ft_strlen(canvas->map[i++]))
 			return (0);
 	}
