@@ -12,30 +12,6 @@
 
 #include "../includes/so_long.h"
 
-t_canvas	init_canvas(void)
-{
-	t_canvas	canvas;
-
-	canvas.img = (void *)0;
-	canvas.addr = (void *)0;
-	canvas.bpp = 0;
-	canvas.line_len = 0;
-	canvas.endian = 0;
-	canvas.map = (void *)0;
-	canvas.max_x = 0;
-	canvas.max_y = 0;
-	canvas.is_valid = 1;
-	return (canvas);
-}
-
-void	my_mlx_pixel_put(t_canvas *c, int x, int y, int color)
-{
-	char	*dst;
-
-	dst = c->addr + (y * c->line_len + x * (c->bpp / 8));
-	*(unsigned int *)dst = color;
-}
-
 int	invalid_extension(char *path)
 {
 	if (!ft_strrchr(path, '.') || ft_memcmp(ft_strrchr(path, '.'), ".ber", 4))
@@ -51,7 +27,6 @@ int	main(int argc, char**argv)
 		return (ft_printf("Error\nInvalid args count!"));
 	if (invalid_extension(argv[1]))
 		return (ft_printf("Error\nInvalid file extension!"));
-	cvs = init_canvas();
 	cvs.map = build_map(parse_file_to_list(argv[1]));
 	count_max(&cvs);
 	if (validate_map(&cvs))

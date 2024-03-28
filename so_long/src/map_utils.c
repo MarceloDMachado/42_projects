@@ -28,7 +28,6 @@ static	int	count_collectables(char **map)
 				count++;
 		i++;
 	}
-	ft_printf("count: %d", count);
 	return (count);
 }
 
@@ -42,10 +41,10 @@ void	count_max(t_canvas *canvas)
 
 void	free_map(t_canvas *canvas)
 {
-	int	i;
+	int	y;
 
-	i = 0;
-	while (canvas->map[i])
-		free(canvas->map[i++]);
+	y = 0;
+	while (canvas->map[y])
+		free(canvas->map[y++]);
 	free(canvas->map);
 }

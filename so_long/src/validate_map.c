@@ -62,7 +62,7 @@ int	contains_invalid_elements(t_canvas *canvas)
 	{
 		while (canvas->map[i][j])
 		{
-			if (!ft_strchr("01CEP", canvas->map[i][j++]))
+			if (!ft_strchr("01CEPK", canvas->map[i][j++]))
 				return (1);
 		}
 		i++;

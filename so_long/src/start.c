@@ -12,14 +12,32 @@
 
 #include "../includes/so_long.h"
 
-void    start_game(t_canvas *cvs)
+static void	set_sprites(t_canvas *c, int pixel)
 {
-    void		*mlx;
-	void		*win;
+	c->sprites.floor = mlx_xpm_file_to_image(c->mlx, \
+		"./sprites/floor.xpm", &pixel, &pixel);
+	c->sprites.enemy = mlx_xpm_file_to_image(c->mlx, \
+		"./sprites/enemy.xpm", &pixel, &pixel);
+	c->sprites.player_l = mlx_xpm_file_to_image(c->mlx, \
+		"./sprites/player_l.xpm", &pixel, &pixel);
+	c->sprites.player_r = mlx_xpm_file_to_image(c->mlx, \
+		"./sprites/player_r.xpm", &pixel, &pixel);
+	c->sprites.collectable = mlx_xpm_file_to_image(c->mlx, \
+		"./sprites/collectable.xpm", &pixel, &pixel);
+	c->sprites.exit = mlx_xpm_file_to_image(c->mlx, \
+		"./sprites/exit.xpm", &pixel, &pixel);
+	c->sprites.wall = mlx_xpm_file_to_image(c->mlx, \
+		"./sprites/wall.xpm", &pixel, &pixel);
+}
 
-    mlx = mlx_init();
-	win = mlx_new_window(mlx, (cvs->max_x + 1) * PIXEL, (cvs->max_y + 1) * PIXEL, "so_long");
-	cvs->img = mlx_new_image(mlx, 1920, 1080);
-	cvs->addr = mlx_get_data_addr(cvs->img, cvs->bpp, cvs->line_len, cvs->endian);
-	mlx_put_image_to_window(mlx, win, cvs->img, 0, 0);
+void	start_game(t_canvas *cvs)
+{
+	void	*win;
+
+	cvs->mlx = mlx_init();
+	cvs->win = mlx_new_window(cvs->mlx, (cvs->max_x + 1) * PIXEL, \
+		(cvs->max_y + 1) * PIXEL, "so_long");
+	set_sprites(cvs, PIXEL);
+	mlx_expose_hook(cvs->win, &render, cvs);
+	mlx_loop(cvs->mlx);
 }

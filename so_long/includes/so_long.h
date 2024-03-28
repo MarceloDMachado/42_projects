@@ -18,7 +18,7 @@
 
 # define PIXEL 48
 
-typedef struct s_elements {
+typedef struct s_sprites {
 	void	*floor;
 	void	*wall;
 	void	*collectable;
@@ -26,20 +26,18 @@ typedef struct s_elements {
 	void	*player_r;
 	void	*exit;
 	void	*enemy;
-}	t_elements;
+}	t_sprites;
 
 typedef struct s_canvas {
-	void	*img;
-	char	*addr;
-	int		bpp;
-	int		line_len;
-	int		endian;
+	void	*mlx;
+	void	*win;
 	char	**map;
 	int		max_x;
 	int		max_y;
 	int		is_valid;
 	int		collectables_count;
-	t_elements	elements;
+	int		player_moves;
+	t_sprites	sprites;
 }	t_canvas;
 
 typedef struct s_coord {
@@ -55,6 +53,9 @@ void	count_max(t_canvas *canvas);
 int		check(t_canvas *canvas, char elem, int unique);
 int		only_wall(char *line);
 void	free_map(t_canvas *canvas);
+void    put_sprite(t_canvas *cvs, int y, int x, void *sprite);
+int		render(t_canvas *cvs);
+void	draw_pos(t_canvas *cvs, int y, int x);
 
 #endif
 

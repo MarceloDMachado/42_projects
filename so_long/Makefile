@@ -17,7 +17,8 @@ INC = -I ./includes/\
 	  -I ./libft/
 SRC = so_long.c \
 	  validate_map.c validate_map_utils.c \
-	  read_map.c map_utils.c start.c
+	  read_map.c map_utils.c start.c \
+	  draw.c draw_utils.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a
