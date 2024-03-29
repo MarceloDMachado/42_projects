@@ -80,5 +80,7 @@ int	validate_map(t_canvas *canvas)
 		return (ft_printf("Error\nThe chose map contains invalid elements!"));
 	if (!constains_necessary_elements(canvas))
 		return (ft_printf("Error\nNecessary element is missing!"));
+	if (!check_flood_fill(canvas))
+		return (ft_printf("Error\nNo valid path exit"));
 	return (0);
 }

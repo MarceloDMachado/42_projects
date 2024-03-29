@@ -26,7 +26,7 @@ static	void	free_sprites(t_canvas *cvs)
 void	quit_game(t_canvas *cvs, int exit_as)
 {
 	free_sprites(cvs);
-	free_map(cvs);
+	free_map(&(cvs->map));
 	mlx_destroy_window(cvs->mlx, cvs->win);
 	mlx_destroy_display(cvs->mlx);
 	free(cvs->mlx);

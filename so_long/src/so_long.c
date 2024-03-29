@@ -31,7 +31,7 @@ int	main(int argc, char**argv)
 	count_max(&cvs);
 	if (validate_map(&cvs))
 	{
-		free_map(&cvs);
+		free_map(&(cvs.map));
 		return (1);
 	}
 	start_game(&cvs);

@@ -57,13 +57,15 @@ t_list	*parse_file_to_list(char *path);
 void	count_max(t_canvas *canvas);
 int		check(t_canvas *canvas, char elem, int unique);
 int		only_wall(char *line);
-void	free_map(t_canvas *canvas);
+void	free_map(char ***map);
 void	put_sprite(t_canvas *cvs, int y, int x, void *sprite);
 int		render(t_canvas *cvs);
 void	draw_pos(t_canvas *cvs, int y, int x);
 void	quit_game(t_canvas *cvs, int exit_as);
 int		on_key_press(int key, t_canvas *cvs);
 void	move_player(int key, t_canvas *cvs);
-t_coord	get_player_pos(char **map);
+t_coord	get_element_pos(char **map, char element);
+char	**clone_map(t_canvas *cvs);
+int		check_flood_fill(t_canvas *cvs);
 
 #endif

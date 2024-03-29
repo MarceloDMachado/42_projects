@@ -16,7 +16,7 @@ static void	move(t_canvas *cvs, int y, int x)
 {
 	t_coord	p_pos;
 
-	p_pos = get_player_pos(cvs->map);
+	p_pos = get_element_pos(cvs->map, 'P');
 	if (cvs->map[p_pos.y + y][p_pos.x + x] == '1')
 		return ;
 	cvs->player_moves++;

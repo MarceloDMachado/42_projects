@@ -39,17 +39,17 @@ void	count_max(t_canvas *canvas)
 	canvas->collectables_count = count_collectables(canvas->map);
 }
 
-void	free_map(t_canvas *canvas)
+void	free_map(char ***map)
 {
 	int	y;
 
 	y = 0;
-	while (canvas->map[y])
-		free(canvas->map[y++]);
-	free(canvas->map);
+	while ((*map)[y])
+		free((*map)[y++]);
+	free(*map);
 }
 
-t_coord	get_player_pos(char **map)
+t_coord	get_element_pos(char **map, char element)
 {
 	t_coord	result;
 	int		y;
@@ -57,10 +57,10 @@ t_coord	get_player_pos(char **map)
 	y = 1;
 	while (map[y])
 	{
-		if (ft_strchr(map[y], 'P'))
+		if (ft_strchr(map[y], element))
 		{
 			result.y = y;
-			result.x = ft_strchr(map[y], 'P') - map[y];
+			result.x = ft_strchr(map[y], element) - map[y];
 			return (result);
 		}
 		y++;
@@ -68,4 +68,22 @@ t_coord	get_player_pos(char **map)
 	result.y = -1;
 	result.x = -1;
 	return (result);
+}
+
+
+char	**clone_map(t_canvas *cvs)
+{
+	char	**clone;
+	int		y;
+
+	clone = ft_calloc(cvs->max_y + 1, sizeof (char *));
+	if (!clone)
+		return (0);
+	y = 0;
+	while (y <= cvs->max_y)
+	{
+		clone[y] = ft_strdup(cvs->map[y]);
+		y++;
+	}
+	return (clone);
 }
