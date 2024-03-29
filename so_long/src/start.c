@@ -39,5 +39,6 @@ void	start_game(t_canvas *cvs)
 		(cvs->max_y + 1) * PIXEL, "so_long");
 	set_sprites(cvs, PIXEL);
 	mlx_expose_hook(cvs->win, &render, cvs);
+	mlx_key_hook(cvs->win, on_key_press, cvs);
 	mlx_loop(cvs->mlx);
 }

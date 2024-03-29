@@ -16,7 +16,12 @@
 # include "../libft/libft.h"
 # include <mlx.h>
 
-# define PIXEL 48
+# define PIXEL	48
+# define ESC	65307
+# define UP		0xff52
+# define DOWN	0xff54
+# define LEFT	0xff51
+# define RIGHT	0xff53
 
 typedef struct s_sprites {
 	void	*floor;
@@ -56,6 +61,10 @@ void	free_map(t_canvas *canvas);
 void    put_sprite(t_canvas *cvs, int y, int x, void *sprite);
 int		render(t_canvas *cvs);
 void	draw_pos(t_canvas *cvs, int y, int x);
+void	quit_game(t_canvas *cvs);
+int		on_key_press(int key, t_canvas *cvs);
+void	move_player(int key, t_canvas *cvs);
+
 
 #endif
 
