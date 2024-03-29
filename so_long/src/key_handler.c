@@ -15,7 +15,7 @@
 int	on_key_press(int key, t_canvas *cvs)
 {
 	if (key == ESC)
-		quit_game(cvs);
+		quit_game(cvs, EXIT_FAILURE);
 	else
 		move_player(key, cvs);
 	return (0);

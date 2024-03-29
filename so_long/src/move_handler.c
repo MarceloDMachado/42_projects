@@ -29,9 +29,15 @@ static void	move(t_canvas *cvs, int y, int x)
 		render(cvs);
 	}
 	else if (cvs->map[p_pos.y + y][p_pos.x + x] == 'K')
+	{
 		ft_printf("game over...");
+		quit_game(cvs, EXIT_FAILURE);
+	}
 	else if (cvs->map[p_pos.y + y][p_pos.x + x] == 'E')
+	{
 		ft_printf("you won!");
+		quit_game(cvs, EXIT_SUCCESS);
+	}
 }
 
 void	move_player(int key, t_canvas *cvs)

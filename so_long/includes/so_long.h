@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:56:04 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/20 18:32:56 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/28 23:12:49 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ void	free_map(t_canvas *canvas);
 void	put_sprite(t_canvas *cvs, int y, int x, void *sprite);
 int		render(t_canvas *cvs);
 void	draw_pos(t_canvas *cvs, int y, int x);
-void	quit_game(t_canvas *cvs);
+void	quit_game(t_canvas *cvs, int exit_as);
 int		on_key_press(int key, t_canvas *cvs);
 void	move_player(int key, t_canvas *cvs);
 t_coord	get_player_pos(char **map);
