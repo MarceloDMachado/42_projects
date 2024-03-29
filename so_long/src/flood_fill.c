@@ -39,11 +39,13 @@ int	check_flood_fill(t_canvas *cvs)
 	{
 		x = 0;
 		while (map_clone[y][x])
+		{
 			if (ft_strchr("CEP", map_clone[y][x++]))
 			{
 				free_map(&map_clone);
 				return (0);
 			}
+		}
 		y++;
 	}
 	free_map(&map_clone);

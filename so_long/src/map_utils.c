@@ -70,7 +70,6 @@ t_coord	get_element_pos(char **map, char element)
 	return (result);
 }
 
-
 char	**clone_map(t_canvas *cvs)
 {
 	char	**clone;
