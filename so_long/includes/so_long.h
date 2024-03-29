@@ -34,23 +34,23 @@ typedef struct s_sprites {
 }	t_sprites;
 
 typedef struct s_canvas {
-	void	*mlx;
-	void	*win;
-	char	**map;
-	int		max_x;
-	int		max_y;
-	int		is_valid;
-	int		collectables_count;
-	int		player_moves;
+	void		*mlx;
+	void		*win;
+	char		**map;
+	int			max_x;
+	int			max_y;
+	int			is_valid;
+	int			collectables_count;
+	int			player_moves;
 	t_sprites	sprites;
 }	t_canvas;
 
 typedef struct s_coord {
-	int x;
-	int y;
+	int	x;
+	int	y;
 }	t_coord;
 
-void    start_game(t_canvas *cvs);
+void	start_game(t_canvas *cvs);
 int		validate_map(t_canvas *canvas);
 char	**build_map(t_list *lst);
 t_list	*parse_file_to_list(char *path);
@@ -58,7 +58,7 @@ void	count_max(t_canvas *canvas);
 int		check(t_canvas *canvas, char elem, int unique);
 int		only_wall(char *line);
 void	free_map(t_canvas *canvas);
-void    put_sprite(t_canvas *cvs, int y, int x, void *sprite);
+void	put_sprite(t_canvas *cvs, int y, int x, void *sprite);
 int		render(t_canvas *cvs);
 void	draw_pos(t_canvas *cvs, int y, int x);
 void	quit_game(t_canvas *cvs);
@@ -67,4 +67,3 @@ void	move_player(int key, t_canvas *cvs);
 t_coord	get_player_pos(char **map);
 
 #endif
-
