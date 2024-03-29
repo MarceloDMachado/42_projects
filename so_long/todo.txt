@@ -1,4 +1,5 @@
 - adicionar contador de passos na tela
+- corrigir direcionamento do personagem
 - animacao do coletavel
 - animacao do personagem
 - animacao do killer
