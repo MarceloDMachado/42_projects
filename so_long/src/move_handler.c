@@ -12,7 +12,36 @@
 
 #include "../includes/so_long.h"
 
+static void	move(t_canvas *cvs, int y, int x)
+{
+	t_coord	p_pos;
+
+	p_pos = get_player_pos(cvs->map);
+	if (cvs->map[p_pos.y + y][p_pos.x + x] == '1')
+		return ;
+	cvs->player_moves++;
+	if (ft_strchr("C0", cvs->map[p_pos.y + y][p_pos.x + x]))
+	{
+		if (cvs->map[p_pos.y + y][p_pos.x + x] == 'C')
+			cvs->collectables_count++;
+		cvs->map[p_pos.y + y][p_pos.x + x] = 'P';
+		cvs->map[p_pos.y][p_pos.x] = '0';
+		render(cvs);
+	}
+	else if (cvs->map[p_pos.y + y][p_pos.x + x] == 'K')
+		ft_printf("game over...");
+	else if (cvs->map[p_pos.y + y][p_pos.x + x] == 'E')
+		ft_printf("you won!");
+}
+
 void	move_player(int key, t_canvas *cvs)
 {
-	ft_printf("key: %d", key);
+	if (key == 'w' || key == UP)
+		move(cvs, -1, 0);
+	else if (key == 's' || key == DOWN)
+		move(cvs, 1, 0);
+	else if (key == 'd' || key == RIGHT)
+		move(cvs, 0, 1);
+	else if (key == 'a' || key == LEFT)
+		move(cvs, 0, -1);
 }

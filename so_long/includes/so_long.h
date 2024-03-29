@@ -64,7 +64,7 @@ void	draw_pos(t_canvas *cvs, int y, int x);
 void	quit_game(t_canvas *cvs);
 int		on_key_press(int key, t_canvas *cvs);
 void	move_player(int key, t_canvas *cvs);
-
+t_coord	get_player_pos(char **map);
 
 #endif
 

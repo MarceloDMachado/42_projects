@@ -48,3 +48,24 @@ void	free_map(t_canvas *canvas)
 		free(canvas->map[y++]);
 	free(canvas->map);
 }
+
+t_coord	get_player_pos(char **map)
+{
+	t_coord	result;
+	int		y;
+
+	y = 1;
+	while (map[y])
+	{
+		if (ft_strchr(map[y], 'P'))
+		{
+			result.y = y;
+			result.x = ft_strchr(map[y], 'P') - map[y];
+			return (result);
+		}
+		y++;
+	}
+	result.y = -1;
+	result.x = -1;
+	return (result);
+}
