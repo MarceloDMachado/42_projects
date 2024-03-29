@@ -10,10 +10,10 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/so_long.h"
+#include "../includes/so_long.h"
 
-void    put_sprite(t_canvas *cvs, int y, int x, void *sprite)
+void	put_sprite(t_canvas *cvs, int y, int x, void *sprite)
 {
-    mlx_put_image_to_window(cvs->mlx, cvs->win, sprite, \
+	mlx_put_image_to_window(cvs->mlx, cvs->win, sprite, \
 		x * PIXEL, y * PIXEL);
 }
