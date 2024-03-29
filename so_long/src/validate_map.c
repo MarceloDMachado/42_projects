@@ -46,9 +46,15 @@ int	is_wall_surrounded(t_canvas *c)
 	return (1);
 }
 
-int	constains_necessary_elements(t_canvas *c)
+int	check_necessary_elements(t_canvas *c)
 {
-	return (check(c, 'P', 1) && check(c, 'E', 1) && check(c, 'C', 0));
+	if (!check(c, 'P', 1))
+		return (ft_printf("Error\nPlayer's quatity is wrong!"));
+	if (!check(c, 'E', 1))
+		return (ft_printf("Error\nExit's quatity is wrong!"));
+	if (!check(c, 'C', 0))
+		return(ft_printf("Error\nNo Collectables detected!"));
+	return (0);
 }
 
 int	contains_invalid_elements(t_canvas *canvas)
@@ -78,8 +84,8 @@ int	validate_map(t_canvas *canvas)
 		return (ft_printf("Error\nThe chose map is not closed by walls!"));
 	if (contains_invalid_elements(canvas))
 		return (ft_printf("Error\nThe chose map contains invalid elements!"));
-	if (!constains_necessary_elements(canvas))
-		return (ft_printf("Error\nNecessary element is missing!"));
+	if (check_necessary_elements(canvas))
+		return (1);
 	if (!check_flood_fill(canvas))
 		return (ft_printf("Error\nNo valid path exit"));
 	return (0);
