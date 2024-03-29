@@ -36,8 +36,6 @@ $(NAME): $(LIB) $(OBJ)
 $(LIB):
 	make -sC libft/ all
 
-bonus: all
-
 clean:
 	rm -f $(OBJ)
 	make -C libft/ clean
