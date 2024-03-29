@@ -1,0 +1,9 @@
+- adicionar contador de passos na tela
+- animacao do coletavel
+- animacao do personagem
+- animacao do killer
+- sprite do player = Ivan
+- sprite do inimigo = medicos
+- sprite da saida = hospital
+- sprite da parede = trilhos (talvez botar trilhos apenas na parede inferior com animacao do bonde passando)
+- criar animacao do bonde passando com o behemoth
