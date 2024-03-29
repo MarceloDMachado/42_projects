@@ -27,8 +27,8 @@ typedef struct s_sprites {
 	void	*floor;
 	void	*wall;
 	void	*collectable;
-	void	*player_l;
 	void	*player_r;
+	void	*player_l;
 	void	*exit;
 	void	*enemy;
 }	t_sprites;
