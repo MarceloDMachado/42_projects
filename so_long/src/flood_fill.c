@@ -37,6 +37,7 @@ int	check_flood_fill(t_canvas *cvs)
 	y = 0;
 	while (map_clone[y])
 	{
+		ft_printf("%s\n", map_clone[y]);
 		x = 0;
 		while (map_clone[y][x])
 		{

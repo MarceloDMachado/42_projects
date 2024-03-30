@@ -75,7 +75,8 @@ char	**clone_map(t_canvas *cvs)
 	char	**clone;
 	int		y;
 
-	clone = ft_calloc(cvs->max_y + 1, sizeof (char *));
+	
+	clone = ft_calloc(cvs->max_y + 2, sizeof (char *));
 	if (!clone)
 		return (0);
 	y = 0;
