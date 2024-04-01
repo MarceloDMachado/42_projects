@@ -37,6 +37,7 @@ void	start_game(t_canvas *cvs)
 	cvs->mlx = mlx_init();
 	cvs->win = mlx_new_window(cvs->mlx, (cvs->max_x + 1) * PIXEL, \
 		(cvs->max_y + 1) * PIXEL, "so_long");
+	cvs->player_moves++;
 	set_sprites(cvs, PIXEL);
 	mlx_expose_hook(cvs->win, &render, cvs);
 	mlx_key_hook(cvs->win, on_key_press, cvs);

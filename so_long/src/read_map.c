@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/23 15:25:52 by madias-m          #+#    #+#             */
-/*   Updated: 2024/03/25 16:22:08 by madias-m         ###   ########.fr       */
+/*   Updated: 2024/03/31 01:03:17 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ t_list	*parse_file_to_list(char *path)
 		return (0);
 	}
 	list = 0;
+	if (!read(fd, &c, 1))
+		exit(1);
 	while (read(fd, &c, 1))
 	{
 		if (!list)
