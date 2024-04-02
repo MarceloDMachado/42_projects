@@ -19,13 +19,13 @@ static void	move(t_canvas *cvs, int y, int x)
 	p_pos = get_element_pos(cvs->map, 'P');
 	if (cvs->map[p_pos.y + y][p_pos.x + x] == '1')
 		return ;
+	cvs->player_moves++;
 	if (ft_strchr("C0", cvs->map[p_pos.y + y][p_pos.x + x]))
 	{
 		if (cvs->map[p_pos.y + y][p_pos.x + x] == 'C')
 			cvs->collectables_count++;
 		cvs->map[p_pos.y + y][p_pos.x + x] = 'P';
 		cvs->map[p_pos.y][p_pos.x] = '0';
-		cvs->player_moves++;
 		render(cvs);
 	}
 	else if (cvs->map[p_pos.y + y][p_pos.x + x] == 'K')
@@ -42,9 +42,8 @@ static void	move(t_canvas *cvs, int y, int x)
 
 void	move_player(int key, t_canvas *cvs)
 {
-	char	*move_count;
+	//char	*move_count;
 
-	move_count = ft_itoa((cvs->player_moves));
 	if (key == 'w' || key == UP)
 		move(cvs, -1, 0);
 	else if (key == 's' || key == DOWN)
@@ -53,6 +52,7 @@ void	move_player(int key, t_canvas *cvs)
 		move(cvs, 0, 1);
 	else if (key == 'a' || key == LEFT)
 		move(cvs, 0, -1);
-	mlx_string_put(cvs->mlx, cvs->win, 24, 24, 0x42f593, move_count);
-	free(move_count);
+	//move_count = ft_itoa((cvs->player_moves));
+	//mlx_string_put(cvs->mlx, cvs->win, 24, 24, 0x42f593, move_count);
+	//free(move_count);
 }

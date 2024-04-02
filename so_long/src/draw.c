@@ -34,6 +34,7 @@ int	render(t_canvas *cvs)
 {
 	int		y;
 	int		x;
+	char	*move_count;
 
 	y = 0;
 	while (cvs->map[y])
@@ -43,5 +44,8 @@ int	render(t_canvas *cvs)
 			draw_pos(cvs, y, x++);
 		y++;
 	}
+	move_count = ft_itoa((cvs->player_moves));
+	mlx_string_put(cvs->mlx, cvs->win, 24, 24, 0x42f593, move_count);
+	free(move_count);
 	return (0);
 }
