@@ -42,8 +42,6 @@ static void	move(t_canvas *cvs, int y, int x)
 
 void	move_player(int key, t_canvas *cvs)
 {
-	//char	*move_count;
-
 	if (key == 'w' || key == UP)
 		move(cvs, -1, 0);
 	else if (key == 's' || key == DOWN)
@@ -52,7 +50,4 @@ void	move_player(int key, t_canvas *cvs)
 		move(cvs, 0, 1);
 	else if (key == 'a' || key == LEFT)
 		move(cvs, 0, -1);
-	//move_count = ft_itoa((cvs->player_moves));
-	//mlx_string_put(cvs->mlx, cvs->win, 24, 24, 0x42f593, move_count);
-	//free(move_count);
 }

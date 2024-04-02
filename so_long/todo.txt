@@ -1,4 +1,4 @@
-- adicionar contador de passos na tela
+- adicionar contador de passos na tela (Done)
 - corrigir direcionamento do personagem
 - animacao do coletavel
 - animacao do personagem
