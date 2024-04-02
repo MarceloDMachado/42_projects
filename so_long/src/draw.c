@@ -28,7 +28,7 @@ static	void	put_player(t_canvas *cvs, int y, int x)
 		put_sprite(cvs, y, x, cvs->sprites.player_l);
 }
 
-void	draw_pos(t_canvas *cvs, int y, int x)
+static	void	draw_pos(t_canvas *cvs, int y, int x)
 {
 	if (cvs->map[y][x] == '1')
 		put_wall(cvs, y, x);
