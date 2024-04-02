@@ -12,7 +12,9 @@
 
 #include "../includes/so_long.h"
 
-int animate(t_canvas cvs)
+int animate(t_canvas *cvs)
 {
-    static 
+    static int  count;
+
+    
 }

@@ -23,7 +23,7 @@ static void	set_sprites(t_canvas *c, int pixel)
 	c->sprites.player_r = mlx_xpm_file_to_image(c->mlx, \
 		"./sprites/player_r.xpm", &pixel, &pixel);
 	c->sprites.collectable = mlx_xpm_file_to_image(c->mlx, \
-		"./sprites/collectable.xpm", &pixel, &pixel);
+		"./sprites/collectable_a.xpm", &pixel, &pixel);
 	c->sprites.exit = mlx_xpm_file_to_image(c->mlx, \
 		"./sprites/exit.xpm", &pixel, &pixel);
 	c->sprites.wall = mlx_xpm_file_to_image(c->mlx, \
@@ -44,7 +44,7 @@ void	start_game(t_canvas *cvs)
 	mlx_string_put(cvs->mlx, cvs->win, 24, 24, 0x42f593, "0");
 	set_sprites(cvs, PIXEL);
 	mlx_expose_hook(cvs->win, render, cvs);
-	mlx_loop_hook(cvs->win, animate, cvs);
+	//mlx_loop_hook(cvs->win, animate, cvs);
 	mlx_key_hook(cvs->win, on_key_press, cvs);
 	mlx_loop(cvs->mlx);
 }

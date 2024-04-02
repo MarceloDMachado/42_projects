@@ -12,18 +12,30 @@
 
 #include "../includes/so_long.h"
 
+static	void	put_wall(t_canvas *cvs, int y, int x)
+{
+	if (y == cvs->max_y)
+		put_sprite(cvs, y, x, cvs->sprites.trail);
+	else
+		put_sprite(cvs, y, x, cvs->sprites.wall);
+}
+
+static	void	put_player(t_canvas *cvs, int y, int x)
+{
+	if (cvs->player_dir == 'r')
+		put_sprite(cvs, y, x, cvs->sprites.player_r);
+	else
+		put_sprite(cvs, y, x, cvs->sprites.player_l);
+}
+
 void	draw_pos(t_canvas *cvs, int y, int x)
 {
-	if (cvs->map[y][x] == '1' && y == cvs->max_y)
-		put_sprite(cvs, y, x, cvs->sprites.trail);
-	else if (cvs->map[y][x] == '1')
-		put_sprite(cvs, y, x, cvs->sprites.wall);
+	if (cvs->map[y][x] == '1')
+		put_wall(cvs, y, x);
 	else if (cvs->map[y][x] == '0')
 		put_sprite(cvs, y, x, cvs->sprites.floor);
-	else if (cvs->map[y][x] == 'P' && cvs->player_dir == 'r')
-		put_sprite(cvs, y, x, cvs->sprites.player_r);
-	else if (cvs->map[y][x] == 'P' && cvs->player_dir == 'l')
-		put_sprite(cvs, y, x, cvs->sprites.player_l);
+	else if (cvs->map[y][x] == 'P')
+		put_player(cvs, y, x);
 	else if (cvs->map[y][x] == 'C')
 		put_sprite(cvs, y, x, cvs->sprites.collectable);
 	else if (cvs->map[y][x] == 'K')
@@ -46,7 +58,7 @@ int	render(t_canvas *cvs)
 			draw_pos(cvs, y, x++);
 		y++;
 	}
-	move_count = ft_itoa((cvs->player_moves));
+	move_count = ft_itoa(cvs->player_moves);
 	mlx_string_put(cvs->mlx, cvs->win, 24, 24, 0x42f593, move_count);
 	free(move_count);
 	return (0);
