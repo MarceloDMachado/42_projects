@@ -15,25 +15,27 @@
 static void	move(t_canvas *cvs, int y, int x)
 {
 	t_coord	p_pos;
+	char	*destiny;
 
 	p_pos = get_element_pos(cvs->map, 'P');
-	if (cvs->map[p_pos.y + y][p_pos.x + x] == '1')
+	destiny = &(cvs->map[p_pos.y + y][p_pos.x + x]);
+	if (*destiny == '1')
 		return ;
 	cvs->player_moves++;
-	if (ft_strchr("C0", cvs->map[p_pos.y + y][p_pos.x + x]))
+	if (ft_strchr("C0", *destiny))
 	{
-		if (cvs->map[p_pos.y + y][p_pos.x + x] == 'C')
-			cvs->collectables_count++;
-		cvs->map[p_pos.y + y][p_pos.x + x] = 'P';
+		if (*destiny == 'C')
+			cvs->collectables_count--;
+		*destiny = 'P';
 		cvs->map[p_pos.y][p_pos.x] = '0';
 		render(cvs);
 	}
-	else if (cvs->map[p_pos.y + y][p_pos.x + x] == 'K')
+	else if (*destiny == 'K')
 	{
 		ft_printf("game over...");
 		quit_game(cvs, EXIT_FAILURE);
 	}
-	else if (cvs->map[p_pos.y + y][p_pos.x + x] == 'E')
+	else if (*destiny == 'E' && !cvs->collectables_count)
 	{
 		ft_printf("you won!");
 		quit_game(cvs, EXIT_SUCCESS);
