@@ -18,9 +18,9 @@ void	draw_pos(t_canvas *cvs, int y, int x)
 		put_sprite(cvs, y, x, cvs->sprites.wall);
 	else if (cvs->map[y][x] == '0')
 		put_sprite(cvs, y, x, cvs->sprites.floor);
-	else if (cvs->map[y][x] == 'P' && cvs->player_moves % 2 == 0)
+	else if (cvs->map[y][x] == 'P' && cvs->player_dir == 'r')
 		put_sprite(cvs, y, x, cvs->sprites.player_r);
-	else if (cvs->map[y][x] == 'P' && cvs->player_moves % 2 == 1)
+	else if (cvs->map[y][x] == 'P' && cvs->player_dir == 'l')
 		put_sprite(cvs, y, x, cvs->sprites.player_l);
 	else if (cvs->map[y][x] == 'C')
 		put_sprite(cvs, y, x, cvs->sprites.collectable);

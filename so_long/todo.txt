@@ -1,5 +1,6 @@
 - adicionar contador de passos na tela (Done)
-- corrigir direcionamento do personagem
+- corrigir direcionamento do personagem (Done)
+- Liberar Exit apenas quando zerar os coletaveis
 - animacao do coletavel
 - animacao do personagem
 - animacao do killer

@@ -42,6 +42,7 @@ typedef struct s_canvas {
 	int			is_valid;
 	int			collectables_count;
 	int			player_moves;
+	char		player_dir;
 	t_sprites	sprites;
 }	t_canvas;
 

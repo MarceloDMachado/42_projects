@@ -47,7 +47,13 @@ void	move_player(int key, t_canvas *cvs)
 	else if (key == 's' || key == DOWN)
 		move(cvs, 1, 0);
 	else if (key == 'd' || key == RIGHT)
+	{
+		cvs->player_dir = 'r';
 		move(cvs, 0, 1);
+	}
 	else if (key == 'a' || key == LEFT)
+	{
+		cvs->player_dir = 'l';
 		move(cvs, 0, -1);
+	}
 }
