@@ -25,8 +25,6 @@ t_list	*parse_file_to_list(char *path)
 		return (0);
 	}
 	list = 0;
-	if (!read(fd, &c, 1))
-		exit(1);
 	while (read(fd, &c, 1))
 	{
 		if (!list)
@@ -84,6 +82,11 @@ char	**build_map(t_list *lst)
 	int		i;
 	t_list	*init;
 
+	if (!lst)
+	{
+		ft_printf("Error\nEmpty file detected!");
+		exit(1);
+	}
 	init = lst;
 	count_nodes(lst, &len, &row_count);
 	map = ft_calloc(row_count + 1, sizeof(char *));
