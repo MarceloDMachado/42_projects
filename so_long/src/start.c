@@ -28,6 +28,8 @@ static void	set_sprites(t_canvas *c, int pixel)
 		"./sprites/exit.xpm", &pixel, &pixel);
 	c->sprites.wall = mlx_xpm_file_to_image(c->mlx, \
 		"./sprites/wall.xpm", &pixel, &pixel);
+	c->sprites.trail = mlx_xpm_file_to_image(c->mlx, \
+		"./sprites/trail.xpm", &pixel, &pixel);
 }
 
 void	start_game(t_canvas *cvs)
@@ -42,6 +44,7 @@ void	start_game(t_canvas *cvs)
 	mlx_string_put(cvs->mlx, cvs->win, 24, 24, 0x42f593, "0");
 	set_sprites(cvs, PIXEL);
 	mlx_expose_hook(cvs->win, render, cvs);
+	mlx_loop_hook(cvs->win, animate, cvs);
 	mlx_key_hook(cvs->win, on_key_press, cvs);
 	mlx_loop(cvs->mlx);
 }

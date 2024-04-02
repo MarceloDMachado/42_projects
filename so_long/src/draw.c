@@ -14,7 +14,9 @@
 
 void	draw_pos(t_canvas *cvs, int y, int x)
 {
-	if (cvs->map[y][x] == '1')
+	if (cvs->map[y][x] == '1' && y == cvs->max_y)
+		put_sprite(cvs, y, x, cvs->sprites.trail);
+	else if (cvs->map[y][x] == '1')
 		put_sprite(cvs, y, x, cvs->sprites.wall);
 	else if (cvs->map[y][x] == '0')
 		put_sprite(cvs, y, x, cvs->sprites.floor);

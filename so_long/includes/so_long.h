@@ -31,6 +31,7 @@ typedef struct s_sprites {
 	void	*player_l;
 	void	*exit;
 	void	*enemy;
+	void	*trail;
 }	t_sprites;
 
 typedef struct s_canvas {
