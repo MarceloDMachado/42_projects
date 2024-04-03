@@ -53,7 +53,7 @@ int	check_necessary_elements(t_canvas *c)
 	if (!check(c, 'E', 1))
 		return (ft_printf("Error\nExit's quatity is wrong!"));
 	if (!check(c, 'C', 0))
-		return (ft_printf("Error\nNo Collectables detected!"));
+		return (ft_printf("Error\nNo collectibles detected!"));
 	return (0);
 }
 

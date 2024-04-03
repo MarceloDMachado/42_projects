@@ -26,7 +26,7 @@
 typedef struct s_sprites {
 	void	*floor;
 	void	*wall;
-	void	*collectable;
+	void	*collectible;
 	void	*player_r;
 	void	*player_l;
 	void	*exit;
@@ -41,7 +41,7 @@ typedef struct s_canvas {
 	int			max_x;
 	int			max_y;
 	int			is_valid;
-	int			collectables_count;
+	int			collectibles_count;
 	int			player_moves;
 	char		player_dir;
 	t_sprites	sprites;
@@ -62,7 +62,6 @@ int		only_wall(char *line);
 void	free_map(char ***map);
 void	put_sprite(t_canvas *cvs, int y, int x, void *sprite);
 int		render(t_canvas *cvs);
-void	draw_pos(t_canvas *cvs, int y, int x);
 void	quit_game(t_canvas *cvs, int exit_as);
 int		on_key_press(int key, t_canvas *cvs);
 void	move_player(int key, t_canvas *cvs);

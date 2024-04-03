@@ -19,7 +19,7 @@ static	void	free_sprites(t_canvas *cvs)
 	mlx_destroy_image(cvs->mlx, cvs->sprites.player_r);
 	mlx_destroy_image(cvs->mlx, cvs->sprites.player_l);
 	mlx_destroy_image(cvs->mlx, cvs->sprites.enemy);
-	mlx_destroy_image(cvs->mlx, cvs->sprites.collectable);
+	mlx_destroy_image(cvs->mlx, cvs->sprites.collectible);
 	mlx_destroy_image(cvs->mlx, cvs->sprites.exit);
 }
 

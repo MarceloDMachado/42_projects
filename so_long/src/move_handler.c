@@ -25,7 +25,7 @@ static void	move(t_canvas *cvs, int y, int x)
 	if (ft_strchr("C0", *destiny))
 	{
 		if (*destiny == 'C')
-			cvs->collectables_count--;
+			cvs->collectibles_count--;
 		*destiny = 'P';
 		cvs->map[p_pos.y][p_pos.x] = '0';
 		render(cvs);
@@ -35,7 +35,7 @@ static void	move(t_canvas *cvs, int y, int x)
 		ft_printf("game over...");
 		quit_game(cvs, EXIT_FAILURE);
 	}
-	else if (*destiny == 'E' && !cvs->collectables_count)
+	else if (*destiny == 'E' && !cvs->collectibles_count)
 	{
 		ft_printf("you won!");
 		quit_game(cvs, EXIT_SUCCESS);

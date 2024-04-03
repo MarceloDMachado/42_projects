@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-static	int	count_collectables(char **map)
+static	int	count_collectibles(char **map)
 {
 	int	i;
 	int	j;
@@ -36,7 +36,7 @@ void	count_max(t_canvas *canvas)
 	while (canvas->map[canvas->max_y + 1])
 		canvas->max_y++;
 	canvas->max_x = ft_strlen(canvas->map[0]) - 1;
-	canvas->collectables_count = count_collectables(canvas->map);
+	canvas->collectibles_count = count_collectibles(canvas->map);
 }
 
 void	free_map(char ***map)

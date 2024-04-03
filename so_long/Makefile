@@ -21,7 +21,7 @@ SRC = so_long.c \
 	  draw.c draw_utils.c \
 	  quit.c start.c \
 	  key_handler.c move_handler.c \
-	  flood_fill.c
+	  flood_fill.c animation_handler.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a

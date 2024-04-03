@@ -37,7 +37,7 @@ static	void	draw_pos(t_canvas *cvs, int y, int x)
 	else if (cvs->map[y][x] == 'P')
 		put_player(cvs, y, x);
 	else if (cvs->map[y][x] == 'C')
-		put_sprite(cvs, y, x, cvs->sprites.collectable);
+		put_sprite(cvs, y, x, cvs->sprites.collectible);
 	else if (cvs->map[y][x] == 'K')
 		put_sprite(cvs, y, x, cvs->sprites.enemy);
 	else if (cvs->map[y][x] == 'E')
