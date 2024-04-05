@@ -12,6 +12,15 @@
 
 #include "../includes/so_long.h"
 
+static void	change_player(t_canvas *cvs, char *destiny, t_coord p_pos)
+{
+	if (*destiny == 'C')
+			cvs->collectibles_count--;
+	*destiny = 'P';
+	cvs->map[p_pos.y][p_pos.x] = '0';
+	render(cvs);
+}
+
 static void	move(t_canvas *cvs, int y, int x)
 {
 	t_coord	p_pos;
@@ -23,13 +32,7 @@ static void	move(t_canvas *cvs, int y, int x)
 		return ;
 	cvs->player_moves++;
 	if (ft_strchr("C0", *destiny))
-	{
-		if (*destiny == 'C')
-			cvs->collectibles_count--;
-		*destiny = 'P';
-		cvs->map[p_pos.y][p_pos.x] = '0';
-		render(cvs);
-	}
+		change_player(cvs, destiny, p_pos);
 	else if (*destiny == 'K')
 	{
 		ft_printf("game over...");
