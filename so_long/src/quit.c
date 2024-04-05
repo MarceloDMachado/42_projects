@@ -12,7 +12,7 @@
 
 #include "../includes/so_long.h"
 
-static	void	free_sprites(t_canvas *cvs)
+void	free_sprites(t_canvas *cvs)
 {
 	mlx_destroy_image(cvs->mlx, cvs->sprites.wall);
 	mlx_destroy_image(cvs->mlx, cvs->sprites.floor);

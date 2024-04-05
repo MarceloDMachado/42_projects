@@ -61,11 +61,13 @@ void enemy(t_canvas *c, int pixel)
     state++;
 }
 
-int animate(t_canvas *cvs)
+int animate(void *ptr)
 {
     static int  count;
+    t_canvas    *cvs;
 
     ft_printf("count: %d\n", count);
+    cvs = ptr;
     if (count == 1000)
         collectible(cvs, PIXEL);
     else if (count == 1300)

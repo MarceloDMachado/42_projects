@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 W_FLAGS = -Wall -Wextra -Werror
-ML_FLAGS = -lmlx -lX11 -lXext
+ML_FLAGS = -lmlx -lX11 -lXext -g3
 NAME = so_long
 INC = -I ./includes/\
 	  -I ./libft/

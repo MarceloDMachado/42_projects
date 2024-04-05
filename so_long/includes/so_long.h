@@ -68,6 +68,8 @@ void	move_player(int key, t_canvas *cvs);
 t_coord	get_element_pos(char **map, char element);
 char	**clone_map(t_canvas *cvs);
 int		check_flood_fill(t_canvas *cvs);
-int		animate(t_canvas *cvs);
+int		animate(void *ptr);
+void	free_sprites(t_canvas *cvs);
+void	set_sprites(t_canvas *c, int pixel);
 
 #endif

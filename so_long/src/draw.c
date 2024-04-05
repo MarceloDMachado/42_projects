@@ -51,6 +51,8 @@ int	render(t_canvas *cvs)
 	char	*move_count;
 
 	y = 0;
+	free_sprites(cvs);
+	set_sprites(cvs, PIXEL);
 	while (cvs->map[y])
 	{
 		x = 0;
