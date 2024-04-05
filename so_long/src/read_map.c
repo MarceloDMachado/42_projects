@@ -21,7 +21,7 @@ t_list	*parse_file_to_list(char *path)
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
 	{
-		ft_printf("Error\nMap not found!");
+		ft_printf("Error\nMap not found!\n");
 		return (0);
 	}
 	list = 0;
@@ -84,7 +84,7 @@ char	**build_map(t_list *lst)
 
 	if (!lst)
 	{
-		ft_printf("Error\nEmpty file detected!");
+		ft_printf("Error\nEmpty file detected!\n");
 		exit(1);
 	}
 	init = lst;

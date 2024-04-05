@@ -14,8 +14,8 @@
 
 int	is_rectangular(t_canvas *canvas)
 {
-	int	line_count;
-	int	line_size;
+	size_t	line_count;
+	size_t	line_size;
 	int	i;
 
 	line_count = canvas->max_y;
@@ -49,11 +49,11 @@ int	is_wall_surrounded(t_canvas *c)
 int	check_necessary_elements(t_canvas *c)
 {
 	if (!check(c, 'P', 1))
-		return (ft_printf("Error\nPlayer's quatity is wrong!"));
+		return (ft_printf("Error\nPlayer's quatity is wrong!\n"));
 	if (!check(c, 'E', 1))
-		return (ft_printf("Error\nExit's quatity is wrong!"));
+		return (ft_printf("Error\nExit's quatity is wrong!\n"));
 	if (!check(c, 'C', 0))
-		return (ft_printf("Error\nNo collectibles detected!"));
+		return (ft_printf("Error\nNo collectibles detected!\n"));
 	return (0);
 }
 
@@ -79,14 +79,14 @@ int	contains_invalid_elements(t_canvas *canvas)
 int	validate_map(t_canvas *canvas)
 {
 	if (!is_rectangular(canvas))
-		return (ft_printf("Error\nThe chose map is not rectangular!"));
+		return (ft_printf("Error\nThe chose map is not rectangular!\n"));
 	if (!is_wall_surrounded(canvas))
-		return (ft_printf("Error\nThe chose map is not closed by walls!"));
+		return (ft_printf("Error\nThe chose map is not closed by walls!\n"));
 	if (contains_invalid_elements(canvas))
-		return (ft_printf("Error\nThe chose map contains invalid elements!"));
+		return (ft_printf("Error\nThe chose map contains invalid elements!\n"));
 	if (check_necessary_elements(canvas))
 		return (1);
 	if (!check_flood_fill(canvas))
-		return (ft_printf("Error\nNo valid path exit"));
+		return (ft_printf("Error\nNo valid path exit\n"));
 	return (0);
 }

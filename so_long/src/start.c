@@ -34,8 +34,6 @@ void	set_sprites(t_canvas *c, int pixel)
 
 void	start_game(t_canvas *cvs)
 {
-	void	*win;
-
 	cvs->mlx = mlx_init();
 	cvs->win = mlx_new_window(cvs->mlx, (cvs->max_x + 1) * PIXEL, \
 		(cvs->max_y + 1) * PIXEL, "so_long");

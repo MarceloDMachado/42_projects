@@ -12,6 +12,16 @@
 
 #include "../includes/so_long.h"
 
+t_canvas	init_canvas()
+{
+	t_canvas	cvs;
+
+	cvs.max_x = -1;
+	cvs.max_y = -1;
+
+	return (cvs);
+}
+
 int	invalid_extension(char *path)
 {
 	if (!ft_strrchr(path, '.') || ft_memcmp(ft_strrchr(path, '.'), ".ber", 4))
@@ -24,9 +34,10 @@ int	main(int argc, char**argv)
 	t_canvas	cvs;
 
 	if (argc != 2)
-		return (ft_printf("Error\nInvalid args count!"));
+		return (ft_printf("Error\nInvalid args count!\n"));
 	if (invalid_extension(argv[1]))
-		return (ft_printf("Error\nInvalid file extension!"));
+		return (ft_printf("Error\nInvalid file extension!\n"));
+	cvs = init_canvas();
 	cvs.map = build_map(parse_file_to_list(argv[1]));
 	count_max(&cvs);
 	if (validate_map(&cvs))
