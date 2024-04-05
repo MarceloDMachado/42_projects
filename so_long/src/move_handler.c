@@ -28,7 +28,6 @@ static void	move(t_canvas *cvs, int y, int x)
 			cvs->collectibles_count--;
 		*destiny = 'P';
 		cvs->map[p_pos.y][p_pos.x] = '0';
-		
 		render(cvs);
 	}
 	else if (*destiny == 'K')

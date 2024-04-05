@@ -12,13 +12,12 @@
 
 #include "../includes/so_long.h"
 
-t_canvas	init_canvas()
+t_canvas	init_canvas(void)
 {
 	t_canvas	cvs;
 
 	cvs.max_x = -1;
 	cvs.max_y = -1;
-
 	return (cvs);
 }
 

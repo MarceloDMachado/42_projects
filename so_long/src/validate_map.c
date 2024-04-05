@@ -16,7 +16,7 @@ int	is_rectangular(t_canvas *canvas)
 {
 	size_t	line_count;
 	size_t	line_size;
-	int	i;
+	int		i;
 
 	line_count = canvas->max_y;
 	line_size = canvas->max_x + 1;
