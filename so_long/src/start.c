@@ -43,13 +43,8 @@ void	start_game(t_canvas *cvs)
 	cvs->player_dir = 'r';
 	mlx_string_put(cvs->mlx, cvs->win, 24, 24, 0x42f593, "0");
 	set_sprites(cvs, PIXEL);
-<<<<<<< HEAD
 	mlx_loop_hook(cvs->win, animate, cvs);
 	mlx_expose_hook(cvs->win, render, cvs);
-=======
-	mlx_loop_hook(cvs->win, &animate, cvs);
-	mlx_expose_hook(cvs->win, &render, cvs);
->>>>>>> 33761a5e503712bd45e4751a5d134cd8b51c2792
 	mlx_key_hook(cvs->win, on_key_press, cvs);
 	mlx_loop(cvs->mlx);
 }
