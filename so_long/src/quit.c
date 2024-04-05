@@ -22,7 +22,6 @@ void	free_sprites(t_canvas *cvs)
 	mlx_destroy_image(cvs->mlx, cvs->sprites.collectible);
 	mlx_destroy_image(cvs->mlx, cvs->sprites.exit);
 	mlx_destroy_image(cvs->mlx, cvs->sprites.trail);
-
 }
 
 void	quit_game(t_canvas *cvs, int exit_as)
