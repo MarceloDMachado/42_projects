@@ -16,14 +16,14 @@ t_canvas	init_canvas(void)
 {
 	t_canvas	cvs;
 
-	cvs.max_x = -1;
-	cvs.max_y = -1;
+	cvs.max_x = 0;
+	cvs.max_y = 0;
 	return (cvs);
 }
 
 int	invalid_extension(char *path)
 {
-	if (!ft_strrchr(path, '.') || ft_memcmp(ft_strrchr(path, '.'), ".ber", 4))
+	if (!ft_strrchr(path, '.') || ft_memcmp(ft_strrchr(path, '.'), ".ber", 5))
 		return (1);
 	return (0);
 }

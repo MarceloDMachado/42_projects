@@ -35,12 +35,12 @@ static void	move(t_canvas *cvs, int y, int x)
 		change_player(cvs, destiny, p_pos);
 	else if (*destiny == 'K')
 	{
-		ft_printf("game over...");
+		ft_printf("game over...\n");
 		quit_game(cvs, EXIT_FAILURE);
 	}
 	else if (*destiny == 'E' && !cvs->collectibles_count)
 	{
-		ft_printf("you won!");
+		ft_printf("you won!\n");
 		quit_game(cvs, EXIT_SUCCESS);
 	}
 }

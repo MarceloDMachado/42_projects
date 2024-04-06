@@ -22,7 +22,7 @@ t_list	*parse_file_to_list(char *path)
 	if (fd < 0)
 	{
 		ft_printf("Error\nMap not found!\n");
-		return (0);
+		exit(1);
 	}
 	list = 0;
 	while (read(fd, &c, 1))
