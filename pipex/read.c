@@ -1,25 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   pipex.h                                            :+:      :+:    :+:   */
+/*   read.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/07 16:15:09 by madias-m          #+#    #+#             */
-/*   Updated: 2024/04/07 18:13:57 by madias-m         ###   ########.fr       */
+/*   Created: 2024/04/15 17:12:21 by madias-m          #+#    #+#             */
+/*   Updated: 2024/04/15 17:12:27 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PIPEX_H
-# define PIPEX_H
+#include "includes/pipex.h"
 
-# include "../libft/libft.h"
-# include <sys/types.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <sys/wait.h>
+int	ft_read(char *path)
+{
+	int fd;
+	int i;
+	char c;
+	int fd2;
 
+	fd = open(path, O_RDONLY);
+	if (fd < 0)
+		return (ft_printf("invalid path!"));
+	i = 0;
+	while (i < 5)
+	{
+		read(fd, &c, 1);
+		ft_printf("%c",c);
+		i++;
+	}
+	ft_printf("\n");
+	dup2(fd, fd2);
+	close(fd);
+	while (i < 10)
+	{
+		read(fd2, &c, 1);
+		ft_printf("%c",c);
+		i++;
+	}
+	return (0);
+}
 
-int    ft_read(char *path);
-
-#endif
