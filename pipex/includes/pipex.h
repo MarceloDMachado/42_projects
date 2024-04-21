@@ -19,8 +19,8 @@
 # include <stdio.h>
 # include <sys/wait.h>
 
-#define NULL_TERMINATOR 1
+# define NULL_TERMINATOR 1
 
-int    ft_read(char *path);
+int	ft_read(char *path);
 
 #endif
