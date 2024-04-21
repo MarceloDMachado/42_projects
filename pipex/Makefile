@@ -14,7 +14,7 @@ W_FLAGS = -Wall -Wextra -Werror -g3
 NAME = pipex
 INC = -I ./includes/\
 	  -I ./libft/
-SRC = main.c read.c 
+SRC = main.c read.c redirect.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a
@@ -25,7 +25,7 @@ $(NAME): $(LIB) $(OBJ)
 	cc $(W_FLAGS) -o $(NAME) $(OBJ) $(LIB) $(INC)
 
 %.o: $(SRC_PATH)%.c
-	cc $(W_FLAGS) -c $< -o $@ $(INC)
+	cc -c $< -o $@ $(INC)
 
 $(LIB):
 	make -sC libft/ all
