@@ -12,7 +12,7 @@
 
 #include "../includes/pipex.h"
 
-void    redirect(int *fds)
+void	redirect(int *fds)
 {
-    ft_printf("should redirect!");    
+	ft_printf("should redirect!");
 }

@@ -21,9 +21,9 @@ int	*get_pid_array(int argc)
 	return (pid_array);
 }
 
-int *fork_all(int *pid_array, int argc)
+int	*fork_all(int *pid_array, int argc)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < argc - 3)
@@ -41,9 +41,9 @@ int *fork_all(int *pid_array, int argc)
 
 void	parent_process(int **ids, char *path)
 {
-	int *init;
+	int	*init;
 	int	status;
-	
+
 	init = *ids;
 	while (**ids)
 	{
@@ -58,7 +58,7 @@ void	parent_process(int **ids, char *path)
 
 void	child_process(int argc, char **argv)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < 10)

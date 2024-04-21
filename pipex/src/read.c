@@ -14,10 +14,10 @@
 
 int	ft_read(char *path)
 {
-	int fd;
-	int i;
-	char c;
-	int fd2;
+	int		fd;
+	int		fd2;
+	int		i;
+	char	c;
 
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
@@ -26,19 +26,17 @@ int	ft_read(char *path)
 	while (i < 5)
 	{
 		read(fd, &c, 1);
-		ft_printf("%c",c);
+		ft_printf("%c", c);
 		i++;
 	}
 	ft_printf("\n");
 	dup2(fd, fd2);
 	close(fd);
-	ft_printf("%d", fd2);
 	while (i < 10)
 	{
 		read(fd2, &c, 1);
-		ft_printf("%c",c);
+		ft_printf("%c", c);
 		i++;
 	}
 	return (0);
 }
-
