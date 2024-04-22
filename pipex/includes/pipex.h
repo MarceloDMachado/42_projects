@@ -19,8 +19,9 @@
 # include <stdio.h>
 # include <sys/wait.h>
 
-# define NULL_TERMINATOR 1
+# define NT 1
 
 int	ft_read(char *path);
+int my_pipe(void);
 
 #endif

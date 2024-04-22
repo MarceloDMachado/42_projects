@@ -17,7 +17,7 @@ int	*get_pid_array(int argc)
 {
 	int	*pid_array;
 
-	pid_array = ft_calloc((argc - 3) + NULL_TERMINATOR, sizeof(int));
+	pid_array = ft_calloc((argc - 3) + NT, sizeof(int));
 	return (pid_array);
 }
 

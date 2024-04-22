@@ -30,6 +30,7 @@ int	ft_read(char *path)
 		i++;
 	}
 	ft_printf("\n");
+	fd2 = 0;
 	dup2(fd, fd2);
 	close(fd);
 	while (i < 10)
