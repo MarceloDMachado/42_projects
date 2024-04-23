@@ -73,6 +73,17 @@ int	*fork_all(int *pid_array, int argc)
 	return (pid_array);
 }
 
+int	test_static(void)
+{
+	static int *value = 0;
+
+	if (!value)
+		value = ft_calloc(1, sizeof(int));
+	printf("%p\n", value);
+	*value += 1;
+	return (*value);
+}
+
 void	parent_process(int **ids, int *end)
 {
 	int		*init;
@@ -87,21 +98,17 @@ void	parent_process(int **ids, int *end)
 		(*ids)++;
 	}
 	while (read(end[0], &c, 1))
-	{
 		write(1, &c, 1);
-	}
 	close(end[0]);
 	free(init);
 }
 
 void	child_process(char *argv, int *end)
 {
-	//int	i;
-
 	close(end[0]);
+	ft_printf("c:%d\n", test_static());
 	write(end[1], "child!\n", 8);
 	close(end[1]);
-	//ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
@@ -111,6 +118,7 @@ int	main(int argc, char **argv)
 
 	//if (argc < 5)
 	//	return (ft_printf("invalid arguments count"));
+	test_static();
 	pipe(end);
 	ids = fork_all(get_pid_array(argv[1], &argc), argc);
 	if (ids != 0)
