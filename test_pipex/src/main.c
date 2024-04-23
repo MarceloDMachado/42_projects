@@ -73,40 +73,49 @@ int	*fork_all(int *pid_array, int argc)
 	return (pid_array);
 }
 
-void	parent_process(int **ids, char *path)
+void	parent_process(int **ids, int *end)
 {
-	int	*init;
-	int	status;
+	int		*init;
+	int		status;
+	char	c;
 
+	close(end[1]);
 	init = *ids;
 	while (**ids)
 	{
 		waitpid(**ids, &status, 0);
 		(*ids)++;
 	}
+	while (read(end[0], &c, 1))
+	{
+		write(1, &c, 1);
+	}
+	close(end[0]);
 	free(init);
 }
 
-void	child_process(int argc, char **argv)
+void	child_process(char *argv, int *end)
 {
-	int	i;
+	//int	i;
 
-	i = 0;
-	while (i < 4)
-		ft_printf("%d", i++);
-	ft_printf("\n");
+	close(end[0]);
+	write(end[1], "child!\n", 8);
+	close(end[1]);
+	//ft_printf("\n");
 }
 
 int	main(int argc, char **argv)
 {
 	int	*ids;
+	int end[2];
 
 	//if (argc < 5)
 	//	return (ft_printf("invalid arguments count"));
+	pipe(end);
 	ids = fork_all(get_pid_array(argv[1], &argc), argc);
 	if (ids != 0)
-		parent_process(&ids, "./test.txt");
+		parent_process(&ids, end);
 	else
-		child_process(argc, argv);
+		child_process(argv[1], end);
 	return (0);
 }
