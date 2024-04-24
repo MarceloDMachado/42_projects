@@ -53,7 +53,6 @@ void	parent_process(t_ctrl *data, int pid)
 		write(1, &c, 1);
 	close(data->end[0]);
 	free(data->end);
-	//write(1, "waiting", 8);
 }
 
 void	child_process(char *argv, int *end)
@@ -103,7 +102,6 @@ void	build_ctrl(t_ctrl *data, char **argv)
 {
 	data->cmd_count = count_cmds(argv);
 	data->cmds = get_cmds(argv);
-	//data->end = get_pipe();
 	data->in = argv[1];
 	data->out = argv[ft_matrixlen(argv) - 1];
 }
@@ -116,9 +114,8 @@ int	birth_ctrl(t_ctrl *data, int *pid_array)
 	pid_array[i] = fork();
 	if (pid_array[i] == 0)
 	{
-		free(pid_array);
 		child_process(data->cmds[i++], data->end);
-		//quit(data);
+		free(data->end);
 		return (0);
 	}
 	parent_process(data, pid_array[i]);
@@ -136,5 +133,7 @@ int	main(int argc, char **argv)
 	build_ctrl(&data, argv);
 	while (birth_ctrl(&data, get_pid_array(&data)))
 		i = 0;
+	ft_free_matrix(&(data.cmds));
+	free(get_pid_array(&data));
 	return (0);
 }
