@@ -33,97 +33,106 @@ void	ft_free_matrix(char ***matrix)
 	free(*matrix);
 }
 
-int	ft_divide(int dividend, int divisor)
+int	*get_pid_array(t_ctrl *data)
 {
-	int	i_value;
+	static int	*pid_array = 0;
 
-	i_value = dividend / divisor;
-	if ((float)dividend / (float)divisor - i_value > 0.0)
-		i_value++;
-	return (i_value);
-}
-
-int	*get_pid_array(char *str_args, int *size)
-{
-	int		*pid_array;
-	char	**splited;
-
-	splited = ft_split(str_args, ',');
-	*size = ft_divide(ft_matrixlen(splited) , 3);
-	pid_array = ft_calloc(*size + NT, sizeof(int));
-	ft_free_matrix(&splited);
+	if (!pid_array)	
+		pid_array = ft_calloc(data->cmd_count + NT, sizeof(int));
 	return (pid_array);
 }
 
-int	*fork_all(int *pid_array, int argc)
+void	parent_process(t_ctrl *data, int pid)
 {
-	int	i;
-
-	i = 0;
-	while (i < argc)
-	{
-		pid_array[i] = fork();
-		if (pid_array[i] == 0)
-		{
-			free(pid_array);
-			return (0);
-		}
-		i++;
-	}
-	return (pid_array);
-}
-
-int	test_static(void)
-{
-	static int *value = 0;
-
-	if (!value)
-		value = ft_calloc(1, sizeof(int));
-	printf("%p\n", value);
-	*value += 1;
-	return (*value);
-}
-
-void	parent_process(int **ids, int *end)
-{
-	int		*init;
 	int		status;
 	char	c;
 
-	close(end[1]);
-	init = *ids;
-	while (**ids)
-	{
-		waitpid(**ids, &status, 0);
-		(*ids)++;
-	}
-	while (read(end[0], &c, 1))
+	//close(data->end[1]);
+	waitpid(pid, &status, 0);
+	while (read(data->end[0], &c, 1))
 		write(1, &c, 1);
-	close(end[0]);
-	free(init);
+	//close(data->end[0]);
+	//write(1, "waiting", 8);
 }
 
 void	child_process(char *argv, int *end)
 {
-	close(end[0]);
-	ft_printf("c:%d\n", test_static());
+	//close(end[0]);
 	write(end[1], "child!\n", 8);
-	close(end[1]);
+	//close(end[1]);
+}
+
+int	count_cmds(char **argv)
+{
+	int	program;
+	int	files;
+	
+	program = 1;
+	files = 2;
+	return (ft_matrixlen(argv) - program - files);
+}
+
+char	**get_cmds(char **argv)
+{
+	char	**result;
+	int		size;
+	int		i;
+
+	size = count_cmds(argv);
+	result = ft_calloc(size + NT, sizeof(void *));
+	i = 0;
+	while (i < size)
+	{
+		result[i] = ft_strdup(argv[i + 2]);
+		i++;
+	}
+	return (result);
+}
+
+int *get_pipe()
+{
+	int *end;
+
+	end = malloc(2 * sizeof(int));
+	pipe(end);
+	return (end);
+}
+
+void	build_ctrl(t_ctrl *data, char **argv)
+{
+	data->cmd_count = count_cmds(argv);
+	data->cmds = get_cmds(argv);
+	data->end = get_pipe();
+	data->in = argv[1];
+	data->out = argv[ft_matrixlen(argv) - 1];
+}
+
+int	birth_ctrl(t_ctrl *data, int *pid_array)
+{
+	static int	i = 0;
+
+	pid_array[i] = fork();
+	if (pid_array[i] == 0)
+	{
+		free(pid_array);
+		child_process(data->cmds[i++], data->end);
+		//quit(data);
+		return (0);
+	}
+	parent_process(data, pid_array[i]);
+	return (i++ < data->cmd_count - 1);
 }
 
 int	main(int argc, char **argv)
 {
-	int	*ids;
-	int end[2];
+	int		i;
+	t_ctrl	data;
 
-	//if (argc < 5)
+	//if (argc != 5)
 	//	return (ft_printf("invalid arguments count"));
-	test_static();
-	pipe(end);
-	ids = fork_all(get_pid_array(argv[1], &argc), argc);
-	if (ids != 0)
-		parent_process(&ids, end);
-	else
-		child_process(argv[1], end);
+	//ids = birth_ctrl(get_pid_array(argv[1], &argc), argc);
+	build_ctrl(&data, argv);
+	while (birth_ctrl(&data, get_pid_array(&data)))
+		i = 0;
 	return (0);
 }
