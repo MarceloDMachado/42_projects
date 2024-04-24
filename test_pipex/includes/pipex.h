@@ -21,7 +21,16 @@
 
 # define NT 1
 
+typedef struct s_ctrl
+{
+	char	**cmds;
+	char	*in;
+	char	*out;
+	int		*end;
+	int		cmd_count;
+}	t_ctrl;
+
 int	ft_read(char *path);
-int my_pipe(void);
+int	my_pipe(void);
 
 #endif
