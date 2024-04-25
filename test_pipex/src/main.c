@@ -55,10 +55,11 @@ void	parent_process(t_ctrl *data, int pid)
 	free(data->end);
 }
 
-void	child_process(char *argv, int *end)
+void	child_process(char *argv, int *end, char **envp)
 {
+	char *args[] = {"cat", NULL};
 	close(end[0]);
-	write(end[1], "child!\n", 8);
+	execve("/bin/cat", args, NULL);
 	close(end[1]);
 }
 
@@ -94,16 +95,23 @@ int *get_pipe()
 	int *end;
 
 	end = malloc(2 * sizeof(int));
+	dup2(end[1], 1);
 	pipe(end);
 	return (end);
 }
 
-void	build_ctrl(t_ctrl *data, char **argv)
+void	build_ctrl(t_ctrl *data, char **argv, char **envp)
 {
 	data->cmd_count = count_cmds(argv);
+	data->envp = envp;
 	data->cmds = get_cmds(argv);
 	data->in = argv[1];
 	data->out = argv[ft_matrixlen(argv) - 1];
+}
+
+void	open_files(t_ctrl *data)
+{
+
 }
 
 int	birth_ctrl(t_ctrl *data, int *pid_array)
@@ -114,7 +122,7 @@ int	birth_ctrl(t_ctrl *data, int *pid_array)
 	pid_array[i] = fork();
 	if (pid_array[i] == 0)
 	{
-		child_process(data->cmds[i++], data->end);
+		child_process(data->cmds[i++], data->end, data->envp);
 		free(data->end);
 		return (0);
 	}
@@ -122,7 +130,7 @@ int	birth_ctrl(t_ctrl *data, int *pid_array)
 	return (i++ < data->cmd_count - 1);
 }
 
-int	main(int argc, char **argv)
+int	main(int argc, char **argv, char **envp)
 {
 	int		i;
 	t_ctrl	data;
@@ -130,7 +138,7 @@ int	main(int argc, char **argv)
 	//if (argc != 5)
 	//	return (ft_printf("invalid arguments count"));
 	//ids = birth_ctrl(get_pid_array(argv[1], &argc), argc);
-	build_ctrl(&data, argv);
+	build_ctrl(&data, argv, envp);
 	while (birth_ctrl(&data, get_pid_array(&data)))
 		i = 0;
 	ft_free_matrix(&(data.cmds));

@@ -24,6 +24,7 @@
 typedef struct s_ctrl
 {
 	char	**cmds;
+	char	**envp;
 	char	*in;
 	char	*out;
 	int		*end;
