@@ -55,12 +55,18 @@ void	parent_process(t_ctrl *data, int pid)
 	free(data->end);
 }
 
-void	child_process(char *argv, int *end, char **envp)
+void	child_process(t_ctrl *data, int	cmd_index)
 {
 	char *args[] = {"cat", NULL};
-	close(end[0]);
-	execve("/bin/cat", args, NULL);
-	close(end[1]);
+	if(cmd_index == 0)
+		write(1, "First cmd\n", 11);
+	else if (cmd_index < data->cmd_count - 1)
+		write(1, "Middle cmd\n", 12);
+	else
+		write(1, "Last cmd\n", 10);
+	close(data->end[0]);
+	//execve("/bin/cat", args, data->envp);
+	close(data->end[1]);
 }
 
 int	count_cmds(char **argv)
@@ -109,11 +115,6 @@ void	build_ctrl(t_ctrl *data, char **argv, char **envp)
 	data->out = argv[ft_matrixlen(argv) - 1];
 }
 
-void	open_files(t_ctrl *data)
-{
-
-}
-
 int	birth_ctrl(t_ctrl *data, int *pid_array)
 {
 	static int	i = 0;
@@ -122,7 +123,7 @@ int	birth_ctrl(t_ctrl *data, int *pid_array)
 	pid_array[i] = fork();
 	if (pid_array[i] == 0)
 	{
-		child_process(data->cmds[i++], data->end, data->envp);
+		child_process(data, i++);
 		free(data->end);
 		return (0);
 	}
