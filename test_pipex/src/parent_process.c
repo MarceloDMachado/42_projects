@@ -10,7 +10,6 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "../includes/pipex.h"
 
 void	ft_parent_process(t_ctrl *data, int pid)

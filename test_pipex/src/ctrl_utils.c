@@ -16,7 +16,7 @@ int	count_cmds(char **argv)
 {
 	int	program;
 	int	files;
-	
+
 	program = 1;
 	files = 2;
 	return (ft_matrixlen(argv) - program - files);

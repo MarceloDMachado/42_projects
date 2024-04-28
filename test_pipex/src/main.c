@@ -17,13 +17,14 @@ int	*ft_get_pid_arr(t_ctrl *data)
 {
 	static int	*pid_array = 0;
 
-	if (!pid_array)	
+	if (!pid_array)
 		pid_array = ft_calloc(data->cmd_count + NT, sizeof(int));
 	return (pid_array);
 }
 
-int *get_pipe(){
-	int *end;
+int	*get_pipe(void)
+{
+	int	*end;
 
 	end = malloc(2 * sizeof(int));
 	pipe(end);
