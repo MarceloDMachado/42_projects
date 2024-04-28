@@ -46,26 +46,43 @@ void	parent_process(t_ctrl *data, int pid)
 {
 	int		status;
 	char	c;
+	int		fd_out;
 
 	close(data->end[1]);
 	waitpid(pid, &status, 0);
+	//fd_out = open(data->out, O_WRONLY);
+	//printf("out: %zd", read(data->end[0], &c, 1));
 	while (read(data->end[0], &c, 1))
+	{
+		c -= 32;
 		write(1, &c, 1);
+	}
 	close(data->end[0]);
 	free(data->end);
 }
 
+void	first_cmd_escope(t_ctrl *data, int cmd_index)
+{
+	dup2(data->end[1], 1);
+	ft_execve(data, 1);
+	
+}
+
 void	child_process(t_ctrl *data, int	cmd_index)
 {
-	char *args[] = {"cat", NULL};
-	if(cmd_index == 0)
-		write(1, "First cmd\n", 11);
-	else if (cmd_index < data->cmd_count - 1)
-		write(1, "Middle cmd\n", 12);
-	else
-		write(1, "Last cmd\n", 10);
+	char *args[] = {"ls", NULL};
+	
 	close(data->end[0]);
-	//execve("/bin/cat", args, data->envp);
+	if(cmd_index == 0)
+		first_cmd_escope(data, cmd_index);
+	else if (cmd_index < data->cmd_count - 1)
+		middle_cmd_escope(data);
+	else
+		last_cmd_escope(data);
+	//close(data->end[0]);
+	//close(1);
+	//write(data->end[1], "a", 1);
+	//execve("/bin/ls", args, data->envp);
 	close(data->end[1]);
 }
 
@@ -101,7 +118,6 @@ int *get_pipe()
 	int *end;
 
 	end = malloc(2 * sizeof(int));
-	dup2(end[1], 1);
 	pipe(end);
 	return (end);
 }
