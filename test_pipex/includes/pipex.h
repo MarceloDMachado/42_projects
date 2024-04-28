@@ -29,6 +29,7 @@ typedef struct s_ctrl
 	char	*out;
 	int		*end;
 	int		cmd_count;
+	void	*fun_cmd_scope;
 }	t_ctrl;
 
 int	ft_read(char *path);

@@ -33,7 +33,7 @@ void	ft_free_matrix(char ***matrix)
 	free(*matrix);
 }
 
-int	*get_pid_array(t_ctrl *data)
+int	*ft_get_pid_arr(t_ctrl *data)
 {
 	static int	*pid_array = 0;
 
@@ -42,7 +42,7 @@ int	*get_pid_array(t_ctrl *data)
 	return (pid_array);
 }
 
-void	parent_process(t_ctrl *data, int pid)
+void	ft_parent_process(t_ctrl *data, int pid)
 {
 	int		status;
 	char	c;
@@ -61,11 +61,17 @@ void	parent_process(t_ctrl *data, int pid)
 	free(data->end);
 }
 
-void	first_cmd_escope(t_ctrl *data, int cmd_index)
+void	ft_first_cmd_scope(t_ctrl *data, int cmd_index)
 {
 	dup2(data->end[1], 1);
+	ft_exec_cmd(data, 1);
+}
+
+void	middle_cmd_escope(t_ctrl *data, int cmd_index)
+{
+	dup2(data->end[1], 1);
+	dup2(data->in, 0);
 	ft_execve(data, 1);
-	
 }
 
 void	child_process(t_ctrl *data, int	cmd_index)
@@ -74,11 +80,11 @@ void	child_process(t_ctrl *data, int	cmd_index)
 	
 	close(data->end[0]);
 	if(cmd_index == 0)
-		first_cmd_escope(data, cmd_index);
+		ft_first_cmd_scope(data, cmd_index);
 	else if (cmd_index < data->cmd_count - 1)
-		middle_cmd_escope(data);
+		ft_middle_cmd_scope(data);
 	else
-		last_cmd_escope(data);
+		ft_last_cmd_scope(data);
 	//close(data->end[0]);
 	//close(1);
 	//write(data->end[1], "a", 1);
@@ -129,6 +135,7 @@ void	build_ctrl(t_ctrl *data, char **argv, char **envp)
 	data->cmds = get_cmds(argv);
 	data->in = argv[1];
 	data->out = argv[ft_matrixlen(argv) - 1];
+	data->fun_cmd_scope = ft_first_cmd_scope;
 }
 
 int	birth_ctrl(t_ctrl *data, int *pid_array)
@@ -143,7 +150,7 @@ int	birth_ctrl(t_ctrl *data, int *pid_array)
 		free(data->end);
 		return (0);
 	}
-	parent_process(data, pid_array[i]);
+	ft_parent_process(data, pid_array[i]);
 	return (i++ < data->cmd_count - 1);
 }
 
@@ -154,11 +161,11 @@ int	main(int argc, char **argv, char **envp)
 
 	//if (argc != 5)
 	//	return (ft_printf("invalid arguments count"));
-	//ids = birth_ctrl(get_pid_array(argv[1], &argc), argc);
+	//ids = birth_ctrl(ft_get_pid_arr(argv[1], &argc), argc);
 	build_ctrl(&data, argv, envp);
-	while (birth_ctrl(&data, get_pid_array(&data)))
+	while (birth_ctrl(&data, ft_get_pid_arr(&data)))
 		i = 0;
 	ft_free_matrix(&(data.cmds));
-	free(get_pid_array(&data));
+	free(ft_get_pid_arr(&data));
 	return (0);
 }
