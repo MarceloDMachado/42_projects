@@ -14,7 +14,8 @@ W_FLAGS = -Wall -Wextra -Werror -g3
 NAME = pipex
 INC = -I ./includes/\
 	  -I ./libft/
-SRC = main.c exec_handler.c
+SRC = main.c exec_handler.c \
+	parent_process.c matrix_utils.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a

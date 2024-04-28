@@ -1,22 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_handler.c                                     :+:      :+:    :+:   */
+/*   matrix_utils.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 15:17:00 by madias-m          #+#    #+#             */
-/*   Updated: 2024/04/28 15:19:13 by madias-m         ###   ########.fr       */
+/*   Created: 2024/04/28 15:23:14 by madias-m          #+#    #+#             */
+/*   Updated: 2024/04/28 15:23:16 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_exec_cmd(t_ctrl *data, char *cmd)
+int	ft_matrixlen(char **matrix)
 {
-	char	**splitted;
+	int	size;
 
-	splitted = ft_split(cmd, " ");
-	execve(splitted[0], splitted, data->envp);
-	ft_free_matrix(splitted);
+	size = 0;
+	while (matrix[size])
+		size++;
+	return (size);
+}
+
+void	ft_free_matrix(char ***matrix)
+{
+	int	y;
+
+	y = 0;
+	while ((*matrix)[y])
+		free((*matrix)[y++]);
+	free(*matrix);
 }

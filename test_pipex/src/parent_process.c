@@ -1,22 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_handler.c                                     :+:      :+:    :+:   */
+/*   parent_process.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 15:17:00 by madias-m          #+#    #+#             */
-/*   Updated: 2024/04/28 15:19:13 by madias-m         ###   ########.fr       */
+/*   Created: 2024/04/28 15:32:07 by madias-m          #+#    #+#             */
+/*   Updated: 2024/04/28 15:32:09 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+
 #include "../includes/pipex.h"
 
-void	ft_exec_cmd(t_ctrl *data, char *cmd)
+void	ft_parent_process(t_ctrl *data, int pid)
 {
-	char	**splitted;
+	int		status;
+	char	c;
+	int		fd_in;
+	int		fd_out;
 
-	splitted = ft_split(cmd, " ");
-	execve(splitted[0], splitted, data->envp);
-	ft_free_matrix(splitted);
+	close(data->end[1]);
+	waitpid(pid, &status, 0);
+	fd_in = open(data->in, O_RDWR);
+	while (read(data->end[0], &c, 1))
+		write(fd_in, &c, 1);
+	fd_out = open(data->out, O_WRONLY);
+	close(data->end[0]);
+	free(data->end);
 }
