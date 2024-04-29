@@ -40,7 +40,7 @@ char	*get_path_env(char **envp)
 	i = 0;
 	path = 0;
 	while (envp[i] && !path)
-		path = ft_strnstr(envp[i++], "PATH", 5);
+		path = ft_memcmp(envp[i++], "PATH=", 5);
 	if (path)
 		path = ft_strchr(path, '=') + 1;
 	return (path);
