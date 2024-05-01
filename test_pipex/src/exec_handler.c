@@ -14,20 +14,26 @@
 
 char	*find_path(char **paths, char *program)
 {
-	char	*correct_path;
+	char	*half_join;
+	char	*full_join;
 	int		i;
 
 	i = 0;
+	half_join = ft_strjoin("/", program);
 	while (paths[i])
 	{
-		// pode ser via LS (fork e execve)
-		// pode ser via open com concat de strings
-		// pode ser via outra forma que desconheço
+		full_join = ft_strjoin(paths[i++], half_join);
+		if (access(full_join, F_OK) == 0)
+		{
+			free(half_join);
+			return (full_join);
+		}
+		free(full_join);
 	}
 	return (0);
 }
 
-char	*extract_paths(char *path_env)
+char	**extract(char *path_env)
 {
 	return (ft_split(path_env, ':'));
 }
@@ -52,7 +58,9 @@ void	ft_exec_cmd(t_ctrl *data, char *cmd)
 	char	*path;
 
 	sptd_cmd = ft_split(cmd, " ");
-	path = find_path(extract_paths(get_path_env(data->envp)), sptd_cmd[0]);
-	execve(sptd_cmd[0], sptd_cmd, data->envp);
+	path = find_path(extract(get_path_env(data->envp)), sptd_cmd[0]);
+	execve(path, sptd_cmd, data->envp);
+	if (path)
+		free(path);
 	ft_free_matrix(sptd_cmd);
 }
