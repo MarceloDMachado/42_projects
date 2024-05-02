@@ -29,16 +29,16 @@ typedef struct s_ctrl
 	char	*out;
 	int		*end;
 	int		cmd_count;
+	int		is_last_cmd;
 }	t_ctrl;
 
 int		ft_matrixlen(char **matrix);
 void	ft_free_matrix(char ***matrix);
 void	ft_parent_process(t_ctrl *data, int pid);
-void	ft_first_cmd_scope(t_ctrl *data, int cmd_index);
-void	middle_cmd_escope(t_ctrl *data, int cmd_index);
-void	child_process(t_ctrl *data, int	cmd_index);
+void	child_process(t_ctrl *data, int cmd_index);
 int		count_cmds(char **argv);
 char	**get_cmds(char **argv);
-void	build_ctrl(t_ctrl *data, char **argv, char **envp);
+void	init_ctrl(t_ctrl *data, char **argv, char **envp);
+void	ft_exec_cmd(t_ctrl *data, char *cmd);
 
 #endif

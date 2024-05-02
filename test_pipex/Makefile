@@ -15,7 +15,8 @@ NAME = pipex
 INC = -I ./includes/\
 	  -I ./libft/
 SRC = main.c exec_handler.c \
-	parent_process.c matrix_utils.c
+	parent_process.c matrix_utils.c \
+	ctrl_utils.c child_process.c 
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a

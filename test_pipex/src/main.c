@@ -35,6 +35,7 @@ int	birth_ctrl(t_ctrl *data, int *pid_array)
 {
 	static int	i = 0;
 
+	data->is_last_cmd = i == data->cmd_count - 1;
 	data->end = get_pipe();
 	pid_array[i] = fork();
 	if (pid_array[i] == 0)

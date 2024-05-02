@@ -46,9 +46,11 @@ char	*get_path_env(char **envp)
 	i = 0;
 	path = 0;
 	while (envp[i] && !path)
-		path = ft_memcmp(envp[i++], "PATH=", 5);
-	if (path)
-		path = ft_strchr(path, '=') + 1;
+	{
+		if (!ft_memcmp(envp[i], "PATH=", 5))
+			path = ft_strchr(envp[i], '=') + 1;
+		i++;
+	}
 	return (path);
 }
 
@@ -57,10 +59,10 @@ void	ft_exec_cmd(t_ctrl *data, char *cmd)
 	char	**sptd_cmd;
 	char	*path;
 
-	sptd_cmd = ft_split(cmd, " ");
+	sptd_cmd = ft_split(cmd, ' ');
 	path = find_path(extract(get_path_env(data->envp)), sptd_cmd[0]);
 	execve(path, sptd_cmd, data->envp);
 	if (path)
 		free(path);
-	ft_free_matrix(sptd_cmd);
+	ft_free_matrix(&sptd_cmd);
 }
