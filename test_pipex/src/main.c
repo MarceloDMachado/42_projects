@@ -40,7 +40,7 @@ int	birth_ctrl(t_ctrl *data, int *pid_array)
 	pid_array[i] = fork();
 	if (pid_array[i] == 0)
 	{
-		child_process(data, i++);
+		ft_child_process(data, i++);
 		free(data->end);
 		return (0);
 	}

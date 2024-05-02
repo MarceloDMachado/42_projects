@@ -35,7 +35,7 @@ typedef struct s_ctrl
 int		ft_matrixlen(char **matrix);
 void	ft_free_matrix(char ***matrix);
 void	ft_parent_process(t_ctrl *data, int pid);
-void	child_process(t_ctrl *data, int cmd_index);
+void	ft_child_process(t_ctrl *data, int cmd_index);
 int		count_cmds(char **argv);
 char	**get_cmds(char **argv);
 void	init_ctrl(t_ctrl *data, char **argv, char **envp);

@@ -32,7 +32,7 @@ void	ft_last_cmd_scope(t_ctrl *data, int cmd_index)
 	ft_exec_cmd(data, data->cmds[cmd_index]);
 }
 
-void	child_process(t_ctrl *data, int cmd_index)
+void	ft_child_process(t_ctrl *data, int cmd_index)
 {
 	close(data->end[0]);
 	if (cmd_index == 0)
