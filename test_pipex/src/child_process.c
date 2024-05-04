@@ -12,34 +12,15 @@
 
 #include "../includes/pipex.h"
 
-void	ft_first_cmd_scope(t_ctrl *data, int cmd_index)
-{
-	dup2(data->end[1], 1);
-	ft_exec_cmd(data, data->cmds[cmd_index]);
-}
-
-void	ft_middle_cmd_scope(t_ctrl *data, int cmd_index)
-{
-	dup2(data->end[1], 1);
-	dup2(open(data->in, O_RDONLY), 0);
-	ft_exec_cmd(data, data->cmds[cmd_index]);
-}
-
-void	ft_last_cmd_scope(t_ctrl *data, int cmd_index)
-{
-	dup2(data->end[1], 1);
-	dup2(open(data->in, O_RDONLY), 0);
-	ft_exec_cmd(data, data->cmds[cmd_index]);
-}
-
 void	ft_child_process(t_ctrl *data, int cmd_index)
 {
+	int	alt_input;
+
 	close(data->end[0]);
-	if (cmd_index == 0)
-		ft_first_cmd_scope(data, cmd_index);
-	else if (cmd_index < data->cmd_count - 1)
-		ft_middle_cmd_scope(data, cmd_index);
-	else
-		ft_last_cmd_scope(data, cmd_index);
+	alt_input = open(data->out, O_RDONLY);
+	dup2(data->end[1], 1);
+	dup2(alt_input, 0);
+	ft_exec_cmd(data, data->cmds[cmd_index]);
 	close(data->end[1]);
+	close(alt_input);
 }
