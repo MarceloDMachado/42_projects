@@ -20,6 +20,8 @@ char	*find_path(char **paths, char *program)
 
 	i = 0;
 	half_join = ft_strjoin("/", program);
+	if (ft_strchr(program, '/'))
+		return (ft_strdup(program));
 	while (paths[i])
 	{
 		full_join = ft_strjoin(paths[i++], half_join);

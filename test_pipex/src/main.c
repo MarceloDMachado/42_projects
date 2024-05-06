@@ -58,6 +58,21 @@ int	main(int argc, char **argv, char **envp)
 	init_ctrl(&data, argv, envp);
 	while (birth_ctrl(&data, ft_get_pid_arr(&data)))
 		i = 0;
+	
+	/*int pid_last;
+	int num;
+	int ret_code;
+	int pid_wait;
+
+	pid_wait = wait(&num);
+
+	while (pid_wait != -1)
+	{
+		if (pid_wait == pid_last)
+			ret_code = (num >> 8) & 0xFF;
+		pid_wait = wait(&num);
+	}
+	*/
 	ft_free_matrix(&(data.cmds));
 	free(ft_get_pid_arr(&data));
 	return (0);

@@ -18,8 +18,8 @@ void	ft_child_process(t_ctrl *data, int cmd_index)
 
 	close(data->end[0]);
 	alt_input = open(data->out, O_RDONLY);
-	dup2(data->end[1], 1);
-	dup2(alt_input, 0);
+	dup2(data->end[1], STDOUT_FILENO);
+	dup2(alt_input, STDIN_FILENO);
 	ft_exec_cmd(data, data->cmds[cmd_index]);
 	close(data->end[1]);
 	close(alt_input);
