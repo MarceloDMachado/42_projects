@@ -1,27 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   child_process.c                                    :+:      :+:    :+:   */
+/*   error_handler.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 15:35:28 by madias-m          #+#    #+#             */
-/*   Updated: 2024/04/28 15:35:29 by madias-m         ###   ########.fr       */
+/*   Created: 2024/05/06 18:18:38 by madias-m          #+#    #+#             */
+/*   Updated: 2024/05/06 18:18:40 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/pipex.h"
 
-void	ft_child_process(t_ctrl *data, int cmd_index)
+void    ft_throw_exception(char *error_msg)
 {
-	int	alt_input;
-
-	close(data->end[0]);
-	alt_input = open(data->out, O_RDONLY);
-	dup2(data->end[1], STDOUT_FILENO);
-	dup2(alt_input, STDIN_FILENO);
-	if (ft_exec_cmd(data, data->cmds[cmd_index]))
-		ft_throw_exception("pipex: invalid command!\n");
-	close(data->end[1]);
-	close(alt_input);
+    while (*error_msg)
+        write(1, error_msg++, 1);
 }

@@ -56,15 +56,18 @@ char	*get_path_env(char **envp)
 	return (path);
 }
 
-void	ft_exec_cmd(t_ctrl *data, char *cmd)
+int	ft_exec_cmd(t_ctrl *data, char *cmd)
 {
 	char	**sptd_cmd;
 	char	*path;
 
 	sptd_cmd = ft_split(cmd, ' ');
 	path = find_path(extract(get_path_env(data->envp)), sptd_cmd[0]);
+	if (!path)
+		return (1);
 	execve(path, sptd_cmd, data->envp);
 	if (path)
 		free(path);
 	ft_free_matrix(&sptd_cmd);
+	return (0);
 }

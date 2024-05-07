@@ -39,6 +39,7 @@ void	ft_child_process(t_ctrl *data, int cmd_index);
 int		count_cmds(char **argv);
 char	**get_cmds(char **argv);
 void	init_ctrl(t_ctrl *data, char **argv, char **envp);
-void	ft_exec_cmd(t_ctrl *data, char *cmd);
+int		ft_exec_cmd(t_ctrl *data, char *cmd);
+void    ft_throw_exception(char *error_msg);
 
 #endif
