@@ -21,7 +21,7 @@ void	ft_child_process(t_ctrl *data, int cmd_index)
 	dup2(data->end[1], STDOUT_FILENO);
 	dup2(alt_input, STDIN_FILENO);
 	if (ft_exec_cmd(data, data->cmds[cmd_index]))
-		ft_throw_exception("pipex: invalid command!\n");
+		perror(0);
 	close(data->end[1]);
 	close(alt_input);
 }

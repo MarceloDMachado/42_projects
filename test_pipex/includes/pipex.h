@@ -17,6 +17,7 @@
 # include <sys/types.h>
 # include <unistd.h>
 # include <stdio.h>
+# include <string.h>
 # include <sys/wait.h>
 
 # define NT 1
