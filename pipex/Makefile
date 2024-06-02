@@ -14,10 +14,8 @@ W_FLAGS = -Wall -Wextra -Werror -g3
 NAME = pipex
 INC = -I ./includes/\
 	  -I ./libft/
-SRC = main.c exec_handler.c \
-	parent_process.c matrix_utils.c \
-	ctrl_utils.c child_process.c \
-	error_handler.c
+SRC = main.c cmd_utils.c matrix_utils.c status.c \
+	erase_outfile.c check_file.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a
@@ -28,7 +26,7 @@ $(NAME): $(LIB) $(OBJ)
 	cc $(W_FLAGS) -o $(NAME) $(OBJ) $(LIB) $(INC)
 
 %.o: $(SRC_PATH)%.c
-	cc -c $< -o $@ $(INC)
+	cc $(W_FLAGS) -c $< -o $@ $(INC)
 
 $(LIB):
 	make -sC libft/ all

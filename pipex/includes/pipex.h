@@ -14,33 +14,14 @@
 # define PIPEX_H
 
 # include "../libft/libft.h"
-# include <sys/types.h>
-# include <unistd.h>
-# include <stdio.h>
-# include <string.h>
-# include <sys/wait.h>
 
-# define NT 1
-
-typedef struct s_ctrl
-{
-	char	**cmds;
-	char	**envp;
-	char	*in;
-	char	*out;
-	int		*end;
-	int		cmd_count;
-	int		is_last_cmd;
-}	t_ctrl;
-
-int		ft_matrixlen(char **matrix);
-void	ft_free_matrix(char ***matrix);
-void	ft_parent_process(t_ctrl *data, int pid);
-void	ft_child_process(t_ctrl *data, int cmd_index);
-int		count_cmds(char **argv);
-char	**get_cmds(char **argv);
-void	init_ctrl(t_ctrl *data, char **argv, char **envp);
-int		ft_exec_cmd(t_ctrl *data, char *cmd);
-void    ft_throw_exception(char *error_msg);
+int		check_infile(char *file, int flag);
+int		check_outfile(char *file);
+int		erase_outfile(char *file);
+void	run_cmd(char **envp, char *cmd);
+void	free_matrix(char **matrix);
+int		status(int (*f)(int, int), int new);
+int		get(int old, int new);
+int		set(int old, int new);
 
 #endif

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exec_handler.c                                     :+:      :+:    :+:   */
+/*   cmd_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/28 15:17:00 by madias-m          #+#    #+#             */
-/*   Updated: 2024/04/28 15:19:13 by madias-m         ###   ########.fr       */
+/*   Created: 2024/05/29 17:35:18 by madias-m          #+#    #+#             */
+/*   Updated: 2024/05/29 17:35:21 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,27 @@
 
 char	*find_path(char **paths, char *program)
 {
+	int		i;
 	char	*half_join;
 	char	*full_join;
-	int		i;
 
-	i = 0;
-	half_join = ft_strjoin("/", program);
 	if (ft_strchr(program, '/'))
 		return (ft_strdup(program));
+	i = 0;
+	half_join = ft_strjoin("/", program);
 	while (paths[i])
 	{
 		full_join = ft_strjoin(paths[i++], half_join);
 		if (access(full_join, F_OK) == 0)
 		{
 			free(half_join);
+			free_matrix(paths);
 			return (full_join);
 		}
 		free(full_join);
 	}
+	free(half_join);
+	free_matrix(paths);
 	return (0);
 }
 
@@ -56,18 +59,33 @@ char	*get_path_env(char **envp)
 	return (path);
 }
 
-int	ft_exec_cmd(t_ctrl *data, char *cmd)
+char	**get_spltd_cmd(char *cmd)
 {
-	char	**sptd_cmd;
-	char	*path;
+	static char	**spltd_cmd = 0;
 
-	sptd_cmd = ft_split(cmd, ' ');
-	path = find_path(extract(get_path_env(data->envp)), sptd_cmd[0]);
+	if (spltd_cmd)
+		return (spltd_cmd);
+	spltd_cmd = ft_split(cmd, ' ');
+	return (spltd_cmd);
+}
+
+void	run_cmd(char **envp, char *cmd)
+{
+	char		*path;
+
+	if (!get_spltd_cmd(cmd))
+		return ;
+	path = find_path(extract(get_path_env(envp)), get_spltd_cmd(cmd)[0]);
 	if (!path)
-		return (1);
-	execve(path, sptd_cmd, data->envp);
-	if (path)
-		free(path);
-	ft_free_matrix(&sptd_cmd);
-	return (0);
+	{
+		ft_putstr_fd("./pipex: command not found: ", 2);
+		ft_putendl_fd(get_spltd_cmd(cmd)[0], 2);
+		free_matrix(get_spltd_cmd(cmd));
+		status(set, 127);
+		return ;
+	}
+	execve(path, get_spltd_cmd(cmd), envp);
+	status(set, 1);
+	free_matrix(get_spltd_cmd(cmd));
+	free(path);
 }
