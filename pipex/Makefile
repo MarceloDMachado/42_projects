@@ -15,7 +15,7 @@ NAME = pipex
 INC = -I ./includes/\
 	  -I ./libft/
 SRC = main.c cmd_utils.c matrix_utils.c status.c \
-	erase_outfile.c check_file.c
+	check_files.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a

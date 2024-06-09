@@ -15,9 +15,7 @@
 
 # include "../libft/libft.h"
 
-int		check_infile(char *file, int flag);
-int		check_outfile(char *file);
-int		erase_outfile(char *file);
+void	check_files(char *infile, char *outfile);
 void	run_cmd(char **envp, char *cmd);
 void	free_matrix(char **matrix);
 int		status(int (*f)(int, int), int new);
