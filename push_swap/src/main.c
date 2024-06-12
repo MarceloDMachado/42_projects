@@ -20,22 +20,52 @@ void	exit_werror(void)
 
 int	check_params(char **argv)
 {
-	while (*argv)
+	int	i;
+	int	j;
+
+	i = 0;
+	while (argv[i])
 	{
-		while (**argv)
+		j = 0;
+		while (argv[i][j])
 		{
-			if (!ft_isdigit(**argv) && **argv != 45)
+			if (!ft_isdigit(argv[i][j]) && argv[i][j] != 45)
 				return (1);
-			(*argv)++;
+			j++;
 		}
-		argv++;
+		i++;
 	}
 	return (0);
+}
+
+static int	add(int *set, int n)
+{
+	while (*set)
+	{
+		if (*set == n)
+			return (0);
+		set++;
+	}
+	*set = n;
+	return (1);
+}
+
+int	check_duplicates(int n, char **argv)
+{
+	int	*set;
+
+	set = ft_calloc(n, sizeof(int));
+	while (*argv && add(set, ft_atoi(*argv)))
+		argv++;
+	free(set);
+	return (*argv != 0);
 }
 
 int	main(int argc, char **argv)
 {
 	if (argc <= 2 || check_params(&argv[1]))
+		exit_werror();
+	if (check_duplicates(argc, &argv[1]))
 		exit_werror();
 	return (0);
 }
