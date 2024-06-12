@@ -14,7 +14,7 @@
 
 void	exit_werror(void)
 {
-	ft_printf("Error\n", 2);
+	write(1, "Error\n", 7);
 	exit(1);
 }
 
@@ -40,6 +40,15 @@ int	check_params(char **argv)
 
 static int	add(int *set, int n)
 {
+	static char contains_zero = 0;
+
+	if (contains_zero && n == 0)
+		return (0);
+	if (n == 0)
+	{
+		contains_zero = 1;
+		return (1);
+	}
 	while (*set)
 	{
 		if (*set == n)
