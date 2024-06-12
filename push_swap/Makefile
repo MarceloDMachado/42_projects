@@ -14,7 +14,7 @@ W_FLAGS = -Wall -Wextra -Werror -g3
 NAME = push_swap
 INC = -I ./includes/\
 	  -I ./libft/
-SRC = main.c
+SRC = main.c stack.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a

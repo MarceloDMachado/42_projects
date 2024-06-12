@@ -15,4 +15,11 @@
 
 # include "../libft/libft.h"
 
+int		get_argc(int n);
+int		**get_stack_a(void);
+int		**get_stack_b(void);
+void	free_stack(int **(*stack)(void));
+void	fill_stack(int **(*stack)(void), char **argv);
+
+
 #endif

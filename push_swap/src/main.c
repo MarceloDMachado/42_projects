@@ -40,7 +40,7 @@ int	check_params(char **argv)
 
 static int	add(int *set, int n)
 {
-	static char contains_zero = 0;
+	static char	contains_zero = 0;
 
 	if (contains_zero && n == 0)
 		return (0);
@@ -59,7 +59,7 @@ static int	add(int *set, int n)
 	return (1);
 }
 
-int	check_duplicates(int n, char **argv)
+int	check_dups(int n, char **argv)
 {
 	int	*set;
 
@@ -72,9 +72,12 @@ int	check_duplicates(int n, char **argv)
 
 int	main(int argc, char **argv)
 {
-	if (argc <= 2 || check_params(&argv[1]))
+	if (argc <= 2 || check_params(&argv[1]) || check_dups(argc, &argv[1]))
 		exit_werror();
-	if (check_duplicates(argc, &argv[1]))
-		exit_werror();
+	get_argc(argc);
+	fill_stack(get_stack_a, &argv[1]);
+	get_stack_b();
+	free_stack(get_stack_a);
+	free_stack(get_stack_b);
 	return (0);
 }
