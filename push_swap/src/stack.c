@@ -12,15 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-int	get_argc(int n)
-{
-	static int	argc = 0;
-
-	if (!argc)
-		argc = n;
-	return (argc);
-}
-
 int	**get_stack_a(void)
 {
 	static int	**stack_a = 0;
@@ -65,4 +56,14 @@ void	free_stack(int **(*stack)(void))
 	while (i < get_argc(0))
 		free(stack()[i++]);
 	free(stack());
+}
+
+int	stack_len(int **(*stack)(void))
+{
+	int	i;
+
+	i = 0;
+	while(stack()[i])
+		i++;
+	return (i);
 }

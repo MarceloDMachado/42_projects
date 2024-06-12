@@ -12,10 +12,13 @@
 
 #include "../includes/push_swap.h"
 
-void	exit_werror(void)
+int	get_argc(int n)
 {
-	write(1, "Error\n", 7);
-	exit(1);
+	static int	argc = 0;
+
+	if (!argc)
+		argc = n;
+	return (argc);
 }
 
 int	check_params(char **argv)
@@ -59,11 +62,11 @@ static int	add(int *set, int n)
 	return (1);
 }
 
-int	check_dups(int n, char **argv)
+int	check_dups(char **argv)
 {
 	int	*set;
 
-	set = ft_calloc(n, sizeof(int));
+	set = ft_calloc(get_argc(0), sizeof(int));
 	while (*argv && add(set, ft_atoi(*argv)))
 		argv++;
 	free(set);
@@ -72,11 +75,10 @@ int	check_dups(int n, char **argv)
 
 int	main(int argc, char **argv)
 {
-	if (argc <= 2 || check_params(&argv[1]) || check_dups(argc, &argv[1]))
-		exit_werror();
 	get_argc(argc);
+	if (argc <= 2 || check_params(&argv[1]) || check_dups(&argv[1]))
+		return (write(1, "Error\n", 7));
 	fill_stack(get_stack_a, &argv[1]);
-	get_stack_b();
 	free_stack(get_stack_a);
 	free_stack(get_stack_b);
 	return (0);
