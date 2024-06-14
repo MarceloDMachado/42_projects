@@ -63,7 +63,7 @@ int	stack_len(int **(*stack)(void))
 	int	i;
 
 	i = 0;
-	while(stack()[i])
+	while (stack()[i])
 		i++;
 	return (i);
 }

@@ -10,4 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/push_swap.h"
 
+void	rra(void)
+{
+	int	len;
+
+	len = stack_len(get_stack_a);
+	while (--len > 0)
+		get_stack_a()[len] = get_stack_a()[len - 1];
+}
+
+void	rrb(void)
+{
+	int	len;
+
+	len = stack_len(get_stack_b);
+	while (--len > 0)
+		get_stack_b()[len] = get_stack_b()[len - 1];
+}
+
+void	rrr(void)
+{
+	rra();
+	rrb();
+}

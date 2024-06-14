@@ -14,7 +14,7 @@
 
 void	ra(void)
 {
-	int len;
+	int	len;
 	int	i;
 	int	j;
 
@@ -27,7 +27,7 @@ void	ra(void)
 
 void	rb(void)
 {
-	int len;
+	int	len;
 	int	i;
 	int	j;
 
