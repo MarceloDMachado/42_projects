@@ -21,7 +21,7 @@ int	**get_stack_a(void)
 		return (stack_a);
 	i = 0;
 	stack_a = ft_calloc(get_argc(0), sizeof(void *));
-	while (i < get_argc(0))
+	while (i < get_argc(0) - 1)
 		stack_a[i++] = ft_calloc(1, sizeof(int));
 	return (stack_a);
 }

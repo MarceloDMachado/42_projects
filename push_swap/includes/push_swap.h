@@ -16,10 +16,23 @@
 # include "../libft/libft.h"
 
 int		get_argc(int n);
+int		is_signal(char c);
 int		**get_stack_a(void);
 int		**get_stack_b(void);
 void	free_stack(int **(*stack)(void));
 void	fill_stack(int **(*stack)(void), char **argv);
 int		stack_len(int **(*stack)(void));
+void	sa(void);
+void	sb(void);
+void	ss(void);
+void	pa(void);
+void	pb(void);
+void	ra(void);
+void	rb(void);
+void	rr(void);
+void	rra(void);
+void	rrb(void);
+void	rrr(void);
+void	print(int **(*stack)(void));
 
 #endif

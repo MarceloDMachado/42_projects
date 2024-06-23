@@ -32,7 +32,9 @@ int	check_params(char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (!ft_isdigit(argv[i][j]) && argv[i][j] != 45)
+			if (!ft_isdigit(argv[i][j]) && !is_signal(argv[i][j]))
+				return (1);
+			if (is_signal(argv[i][j]) && j != 0)
 				return (1);
 			j++;
 		}
@@ -79,6 +81,7 @@ int	main(int argc, char **argv)
 	if (argc <= 2 || check_params(&argv[1]) || check_dups(&argv[1]))
 		return (write(1, "Error\n", 7));
 	fill_stack(get_stack_a, &argv[1]);
+	print(get_stack_a);
 	free_stack(get_stack_a);
 	free_stack(get_stack_b);
 	return (0);
