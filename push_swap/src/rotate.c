@@ -22,7 +22,7 @@ void	ra(void)
 	i = 0;
 	j = 1;
 	while (j < len)
-		get_stack_a()[i++] = get_stack_a()[j++];
+		swap_pointer(&(get_stack_a()[i++]), &(get_stack_a()[j++]));
 }
 
 void	rb(void)
@@ -35,7 +35,7 @@ void	rb(void)
 	i = 0;
 	j = 1;
 	while (j <= len)
-		get_stack_b()[i++] = get_stack_b()[j++];
+		swap_pointer(&(get_stack_b()[i++]), &(get_stack_b()[j++]));
 }
 
 void	rr(void)

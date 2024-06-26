@@ -14,3 +14,12 @@ int	is_signal(char c)
 {
 	return (c == 45 || c == 43);
 }
+
+void	swap_pointer(int **a, int **b)
+{
+	int	*temp;
+
+	temp = *a;
+	*a = *b;
+	*b = temp;
+}
