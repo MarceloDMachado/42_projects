@@ -14,36 +14,10 @@
 
 void	pa(void)
 {
-	int	i;
+	int	len;
 
-	i = stack_len(get_stack_a);
-	while (i > 0)
-	{
-		get_stack_a()[i] = get_stack_a()[i - 1];
-		i--;
-	}
-	get_stack_a()[i] = get_stack_b()[i];
-	while (get_stack_b()[i])
-	{
-		get_stack_b()[i] = get_stack_b()[i + 1];
-		i++;
-	}
+	len = stack_len(get_stack_a);
+	
 }
 
-void	pb(void)
-{
-	int	i;
-
-	i = stack_len(get_stack_b);
-	while (i > 0)
-	{
-		get_stack_b()[i] = get_stack_b()[i - 1];
-		i--;
-	}
-	get_stack_b()[i] = get_stack_a()[i];
-	while (get_stack_a()[i])
-	{
-		get_stack_a()[i] = get_stack_a()[i + 1];
-		i++;
-	}
-}
+void	pb(void){}
