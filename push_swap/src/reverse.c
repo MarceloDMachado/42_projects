@@ -18,7 +18,7 @@ void	rra(void)
 
 	len = stack_len(get_stack_a);
 	while (--len > 0)
-		get_stack_a()[len] = get_stack_a()[len - 1];
+		swap_pointer(&(get_stack_a()[len]), &(get_stack_a()[len - 1]));
 }
 
 void	rrb(void)
@@ -27,7 +27,7 @@ void	rrb(void)
 
 	len = stack_len(get_stack_b);
 	while (--len > 0)
-		get_stack_b()[len] = get_stack_b()[len - 1];
+		swap_pointer(&(get_stack_b()[len]), &(get_stack_b()[len - 1]));
 }
 
 void	rrr(void)
