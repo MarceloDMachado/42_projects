@@ -23,14 +23,14 @@ void	reverse(int **(*stack)(void))
 
 void	rra(void)
 {
-	//ft_printf("rra\n");
+	ft_printf("rra\n");
 	reverse(get_stack_a);
 }
 
 void	rrb(void)
 {
-	//ft_printf("rrb\n");
-	reverse(get_stack_b);	
+	ft_printf("rrb\n");
+	reverse(get_stack_b);
 }
 
 void	rrr(void)

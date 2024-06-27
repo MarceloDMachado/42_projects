@@ -12,30 +12,29 @@
 
 #include "../includes/push_swap.h"
 
-void	ra(void)
+static void	rotate(int **(*stack)(void))
 {
 	int	len;
 	int	i;
 	int	j;
 
-	len = stack_len(get_stack_a);
+	len = stack_len(stack);
 	i = 0;
 	j = 1;
 	while (j < len)
-		swap_pointer(&(get_stack_a()[i++]), &(get_stack_a()[j++]));
+		swap_pointer(&(stack()[i++]), &(stack()[j++]));
+}
+
+void	ra(void)
+{
+	ft_printf("ra\n");
+	rotate(get_stack_a);
 }
 
 void	rb(void)
 {
-	int	len;
-	int	i;
-	int	j;
-
-	len = stack_len(get_stack_b);
-	i = 0;
-	j = 1;
-	while (j <= len)
-		swap_pointer(&(get_stack_b()[i++]), &(get_stack_b()[j++]));
+	ft_printf("rb\n");
+	rotate(get_stack_b);
 }
 
 void	rr(void)

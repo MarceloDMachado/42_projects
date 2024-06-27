@@ -24,7 +24,6 @@ void	swap_pointer(int **a, int **b)
 	*b = temp;
 }
 
-
 void	fix_stack(int **(*stack)(void))
 {
 	int	i;
