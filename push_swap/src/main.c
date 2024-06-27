@@ -90,6 +90,7 @@ int	main(int argc, char **argv)
 	print(get_stack_a);
 	ft_printf("after pb (a): \n");
 	pb();
+	pb();
 	print(get_stack_a);
 	ft_printf("after pb (b): \n");
 	print(get_stack_b);
