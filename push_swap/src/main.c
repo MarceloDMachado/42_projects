@@ -88,8 +88,11 @@ int	main(int argc, char **argv)
 	ft_printf("after rra: \n");
 	rra();
 	print(get_stack_a);
-	ft_printf("after pb: \n");
+	ft_printf("after pb (a): \n");
 	pb();
+	print(get_stack_a);
+	ft_printf("after pb (b): \n");
+	print(get_stack_b);
 	free_stack(get_stack_a);
 	free_stack(get_stack_b);
 	return (0);
