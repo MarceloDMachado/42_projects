@@ -23,3 +23,19 @@ void	swap_pointer(int **a, int **b)
 	*a = *b;
 	*b = temp;
 }
+
+
+void	fix_stack(int **(*stack)(void))
+{
+	int	i;
+
+	if (stack()[0])
+		return ;
+	i = 0;
+	while (stack()[i + 1])
+	{
+		stack()[i] = stack()[i + 1];
+		i++;
+	}
+	stack()[i] = 0;
+}

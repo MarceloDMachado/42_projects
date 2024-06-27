@@ -14,10 +14,14 @@
 
 void	pa(void)
 {
-	int	len;
+	int	len_a;
+	int	len_b;
+	int	*elem;
 
-	len = stack_len(get_stack_a);
-	
+	elem = get_stack_b()[0];
+	if (!elem)
+		return ;
+		
 }
 
 void	pb(void){}

@@ -12,22 +12,25 @@
 
 #include "../includes/push_swap.h"
 
-void	rra(void)
+void	reverse(int **(*stack)(void))
 {
 	int	len;
 
-	len = stack_len(get_stack_a);
+	len = stack_len(stack);
 	while (--len > 0)
-		swap_pointer(&(get_stack_a()[len]), &(get_stack_a()[len - 1]));
+		swap_pointer(&(stack()[len]), &(stack()[len - 1]));
+}
+
+void	rra(void)
+{
+	//ft_printf("rra\n");
+	reverse(get_stack_a);
 }
 
 void	rrb(void)
 {
-	int	len;
-
-	len = stack_len(get_stack_b);
-	while (--len > 0)
-		swap_pointer(&(get_stack_b()[len]), &(get_stack_b()[len - 1]));
+	//ft_printf("rrb\n");
+	reverse(get_stack_b);	
 }
 
 void	rrr(void)

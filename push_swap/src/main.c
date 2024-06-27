@@ -85,6 +85,11 @@ int	main(int argc, char **argv)
 	ft_printf("after ra: \n");
 	ra();
 	print(get_stack_a);
+	ft_printf("after rra: \n");
+	rra();
+	print(get_stack_a);
+	ft_printf("after pb: \n");
+	pb();
 	free_stack(get_stack_a);
 	free_stack(get_stack_b);
 	return (0);
