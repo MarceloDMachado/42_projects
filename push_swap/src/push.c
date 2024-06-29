@@ -20,6 +20,7 @@ void	pa(void)
 	elem = get_stack_b()[0];
 	if (!elem)
 		return ;
+	ft_printf("pa\n");
 	get_stack_b()[0] = 0;
 	fix_stack(get_stack_b);
 	len = stack_len(get_stack_a);
@@ -35,6 +36,7 @@ void	pb(void)
 	elem = get_stack_a()[0];
 	if (!elem)
 		return ;
+	ft_printf("pb\n");
 	get_stack_a()[0] = 0;
 	fix_stack(get_stack_a);
 	len = stack_len(get_stack_b);
