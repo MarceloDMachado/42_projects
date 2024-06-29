@@ -94,6 +94,9 @@ int	main(int argc, char **argv)
 	print(get_stack_a);
 	ft_printf("after pb (b): \n");
 	print(get_stack_b);
+	ft_printf("after sb: \n");
+	sb();
+	print(get_stack_b);
 	free_stack(get_stack_a);
 	free_stack(get_stack_b);
 	return (0);
