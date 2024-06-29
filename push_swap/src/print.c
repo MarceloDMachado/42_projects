@@ -22,3 +22,23 @@ void	print(int **(*stack)(void))
 	while (i < len)
 		ft_printf("%d\n", *(stack()[i++]));
 }
+
+void	test(void)
+{
+	print(get_stack_a);
+	ft_printf("after ra: \n");
+	ra();
+	print(get_stack_a);
+	ft_printf("after rra: \n");
+	rra();
+	print(get_stack_a);
+	ft_printf("after pb (a): \n");
+	pb();
+	pb();
+	print(get_stack_a);
+	ft_printf("after pb (b): \n");
+	print(get_stack_b);
+	ft_printf("after sb: \n");
+	sb();
+	print(get_stack_b);
+}

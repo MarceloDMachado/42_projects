@@ -81,22 +81,6 @@ int	main(int argc, char **argv)
 	if (argc <= 2 || check_params(&argv[1]) || check_dups(&argv[1]))
 		return (write(1, "Error\n", 7));
 	fill_stack(get_stack_a, &argv[1]);
-	print(get_stack_a);
-	ft_printf("after ra: \n");
-	ra();
-	print(get_stack_a);
-	ft_printf("after rra: \n");
-	rra();
-	print(get_stack_a);
-	ft_printf("after pb (a): \n");
-	pb();
-	pb();
-	print(get_stack_a);
-	ft_printf("after pb (b): \n");
-	print(get_stack_b);
-	ft_printf("after sb: \n");
-	sb();
-	print(get_stack_b);
 	free_stack(get_stack_a);
 	free_stack(get_stack_b);
 	return (0);
