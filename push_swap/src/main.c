@@ -81,6 +81,8 @@ int	main(int argc, char **argv)
 	if (argc <= 2 || check_params(&argv[1]) || check_dups(&argv[1]))
 		return (write(1, "Error\n", 7));
 	fill_stack(get_stack_a, &argv[1]);
+	sort();
+	print(get_stack_a);
 	free_stack(get_stack_a);
 	free_stack(get_stack_b);
 	return (0);

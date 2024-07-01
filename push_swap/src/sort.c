@@ -14,5 +14,16 @@
 
 void	sort(void)
 {
-	
+	int i;
+
+	i = 0;
+	while (i < stack_len(get_stack_a) - 1)
+	{
+		if(get_stack_a()[i] > get_stack_a()[i + 1])
+		{
+			sa();
+			i = 0;
+		}
+		i++;
+	}
 }
