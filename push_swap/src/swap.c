@@ -14,17 +14,17 @@
 
 void	sa(void)
 {
+	ft_printf("sa\n");
 	if (!get_stack_a()[1])
 		return ;
-	ft_printf("sa\n");
 	swap_pointer(&(get_stack_a()[0]), &(get_stack_a()[1]));
 }
 
 void	sb(void)
 {
+	ft_printf("sb\n");
 	if (!get_stack_b()[1])
 		return ;
-	ft_printf("sb\n");
 	swap_pointer(&(get_stack_b()[0]), &(get_stack_b()[1]));
 }
 
