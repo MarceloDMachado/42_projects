@@ -12,12 +12,13 @@
 
 #include "../includes/push_swap.h"
 
-static void	rotate(int **(*stack)(void))
+void	rotate(int **(*stack)(void))
 {
 	int	len;
 	int	i;
 	int	j;
 
+	ft_printf("rotate\n");
 	len = stack_len(stack);
 	i = 0;
 	j = 1;
