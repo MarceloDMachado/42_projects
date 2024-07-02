@@ -18,7 +18,6 @@ void	rotate(int **(*stack)(void))
 	int	i;
 	int	j;
 
-	ft_printf("rotate\n");
 	len = stack_len(stack);
 	i = 0;
 	j = 1;

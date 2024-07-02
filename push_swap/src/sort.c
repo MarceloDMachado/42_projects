@@ -12,15 +12,27 @@
 
 #include "../includes/push_swap.h"
 
-void	(*get_rotate_func(int **(*f)(void), int i)) (int **(*f)(void))
+void	(*get_rotate_func(int **(*f)(void), int i)) (void)
 {
-	int	len;
+	int		len;
+	void	(*func)(void);
 
 	len = stack_len(f);
 	if (i >= (len / 2))
-		return (reverse);
+	{
+		if (f == get_stack_a)
+			func = rra;
+		else
+			func = rrb;
+	}
 	else
-		return (rotate);
+	{
+		if (f == get_stack_a)
+			func = ra;
+		else
+			func = rb;
+	}
+	return (func);
 }
 
 int	get_index_of(int **(*stack)(void), int *element)
@@ -50,5 +62,15 @@ int	*get_max(int **(*stack)(void))
 
 void	sort(void)
 {
-	get_rotate_func(get_stack_a, get_index_of(get_stack_a, get_max(get_stack_a)))(get_stack_a);
+	while (get_stack_a()[0])
+	{
+		while (get_index_of(get_stack_a, get_max(get_stack_a)) != 0)
+			get_rotate_func(get_stack_a, get_index_of(get_stack_a, get_max(get_stack_a)))();
+		pb();
+	}
+	while (get_stack_b()[0])
+	{
+		rrb();
+		pa();
+	}
 }

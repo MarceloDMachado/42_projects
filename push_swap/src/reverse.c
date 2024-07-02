@@ -16,7 +16,6 @@ void	reverse(int **(*stack)(void))
 {
 	int	len;
 
-	ft_printf("reverse\n");
 	len = stack_len(stack);
 	while (--len > 0)
 		swap_pointer(&(stack()[len]), &(stack()[len - 1]));
