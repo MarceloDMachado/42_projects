@@ -15,24 +15,12 @@
 void	(*get_rotate_func(int **(*f)(void), int i)) (void)
 {
 	int		len;
-	void	(*func)(void);
 
 	len = stack_len(f);
 	if (i >= (len / 2))
-	{
-		if (f == get_stack_a)
-			func = rra;
-		else
-			func = rrb;
-	}
+		return (rra);
 	else
-	{
-		if (f == get_stack_a)
-			func = ra;
-		else
-			func = rb;
-	}
-	return (func);
+		return (ra);
 }
 
 int	get_index_of(int **(*stack)(void), int *element)
@@ -45,32 +33,31 @@ int	get_index_of(int **(*stack)(void), int *element)
 	return (i);
 }
 
-int	*get_max(int **(*stack)(void))
+int	*get_min(int **(*stack)(void))
 {
-	int	*max;
+	int	*min;
 	int	i;
 
 	i = 0;
-	max = stack()[i];
+	min = stack()[i];
 	while (++i < stack_len(stack))
 	{
-		if (*(stack()[i]) > *max)
-			max = stack()[i];
+		if (*(stack()[i]) < *min)
+			min = stack()[i];
 	}
-	return (max);
+	return (min);
 }
 
 void	sort(void)
 {
 	while (get_stack_a()[0])
 	{
-		while (get_index_of(get_stack_a, get_max(get_stack_a)) != 0)
-			get_rotate_func(get_stack_a, get_index_of(get_stack_a, get_max(get_stack_a)))();
+		while (get_index_of(get_stack_a, get_min(get_stack_a)) != 0)
+			get_rotate_func(get_stack_a, get_index_of(get_stack_a, get_min(get_stack_a)))();
 		pb();
 	}
 	while (get_stack_b()[0])
 	{
-		rrb();
 		pa();
 	}
 }
