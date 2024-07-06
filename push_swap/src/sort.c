@@ -75,46 +75,49 @@ int	*get_max(int **(*stack)(void))
 	return (max);
 }
 
-int	*get_smaller_than(int **(*stack)(void), int *n)
+int	is_sorted(void)
 {
-	int	*smaller;
 	int	i;
+	int	len;
 
-	i = stack_len(stack) - 1;
-	smaller = 0;
+	i = get_index_of(get_stack_a, get_min(get_stack_a));
+	len = stack_len(get_stack_a);
+	while (i < len - 1)
+	{
+		if (*(get_stack_a()[i]) > *(get_stack_a()[i + 1]))
+			return (0);
+		i++;
+	}
+	i = get_index_of(get_stack_a, get_min(get_stack_a));
 	while (i > 0)
 	{
-		if (*(stack()[i]) < *n && *(stack()[i - 1]) > *n)
-			smaller = stack()[i];
+		if (*(get_stack_a()[i]) < *(get_stack_a()[i - 1]))
+			return (0);
 		i--;
 	}
-	if (*(stack()[i]) < *n && *(stack()[stack_len(stack) - 1]) > *n)
-	{
-		//ft_printf("sim\nn:%d, len:%d, *i:%d, *len:%d\n", *n, stack_len(stack) - 1, *(stack()[i]), *(stack()[stack_len(stack) - 1]));
-		smaller = stack()[i];
-	}
-	return (smaller);
+	if (get_index_of(get_stack_a, get_min(get_stack_a)) != 0)
+		return (0);
+	if (get_index_of(get_stack_a, get_max(get_stack_a)) != len -1)
+		return (0);
+	return (1);
 }
 
 void	sort(void)
 {
-	while (get_index_of(get_stack_a, get_min(get_stack_a)) != 0)
-		get_rotate_func(get_stack_a, get_index_of(get_stack_a, get_min(get_stack_a)))();
-	pb();
-	while (get_stack_a()[0])
+	while (!is_sorted())
 	{
-		print(get_stack_b);
-		if (*(get_stack_a()[0]) > *(get_max(get_stack_b)))
-			pb();
+		if (*(get_stack_a()[0]) > *(get_stack_a()[1]))
+		{
+			sa();
+			rra();
+		}
 		else
 		{
-			while (get_index_of(get_stack_b, get_smaller_than(get_stack_b, get_stack_a()[0])) != 0)
-				get_rotate_func(get_stack_b, get_index_of(get_stack_b, get_smaller_than(get_stack_b, get_stack_a()[0])))();
 			pb();
+			ft_printf("b: %d\n", *(*get_stack_b()));
+			ra();
+			ft_printf("a: %d\n", *(*get_stack_a()));
+			pa();
 		}
 	}
-	while (get_index_of(get_stack_b, get_max(get_stack_b)) != 0)
-		get_rotate_func(get_stack_b, get_index_of(get_stack_b, get_max(get_stack_b)))();
-	while (get_stack_b()[0])
-		pa();
 }
