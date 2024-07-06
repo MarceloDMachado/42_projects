@@ -89,10 +89,12 @@ int	*get_smaller_than(int **(*stack)(void), int *n)
 		i--;
 	}
 	if (*(stack()[i]) < *n && *(stack()[stack_len(stack) - 1]) > *n)
-			smaller = stack()[i];
+	{
+		//ft_printf("sim\nn:%d, len:%d, *i:%d, *len:%d\n", *n, stack_len(stack) - 1, *(stack()[i]), *(stack()[stack_len(stack) - 1]));
+		smaller = stack()[i];
+	}
 	return (smaller);
 }
-
 
 void	sort(void)
 {
@@ -101,6 +103,7 @@ void	sort(void)
 	pb();
 	while (get_stack_a()[0])
 	{
+		print(get_stack_b);
 		if (*(get_stack_a()[0]) > *(get_max(get_stack_b)))
 			pb();
 		else
