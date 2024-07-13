@@ -113,10 +113,7 @@ void	sort(void)
 		}
 		else
 		{
-			pb();
-			rra();
-			pa();
-			rra();
+			ra();
 		}
 	}
 	while (index_of(get_stack_a, get_min(get_stack_a)) != 0)
