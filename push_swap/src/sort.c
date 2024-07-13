@@ -35,7 +35,7 @@ void	(*get_rotate_func(int **(*f)(void), int i)) (void)
 	return (func);
 }
 
-int	get_index_of(int **(*stack)(void), int *element)
+int	index_of(int **(*stack)(void), int *element)
 {
 	int	i;
 
@@ -80,7 +80,7 @@ int	is_sorted(void)
 	int	i;
 	int	len;
 
-	i = get_index_of(get_stack_a, get_min(get_stack_a));
+	i = index_of(get_stack_a, get_min(get_stack_a));
 	len = stack_len(get_stack_a);
 	while (i < len - 1)
 	{
@@ -88,18 +88,14 @@ int	is_sorted(void)
 			return (0);
 		i++;
 	}
-	i = get_index_of(get_stack_a, get_min(get_stack_a));
+	i = index_of(get_stack_a, get_min(get_stack_a)) - 1;
 	while (i > 0)
 	{
 		if (*(get_stack_a()[i]) < *(get_stack_a()[i - 1]))
 			return (0);
 		i--;
 	}
-	if (get_index_of(get_stack_a, get_min(get_stack_a)) != 0)
-		return (0);
-	if (get_index_of(get_stack_a, get_max(get_stack_a)) != len -1)
-		return (0);
-	return (1);
+	return (*(get_stack_a()[0]) > *(get_stack_a()[stack_len(get_stack_a) - 1]));
 }
 
 void	sort(void)
@@ -111,13 +107,18 @@ void	sort(void)
 			sa();
 			rra();
 		}
+		else if (*(get_stack_a()[0]) > *(get_stack_a()[stack_len(get_stack_a) - 1]))
+		{
+			rra();
+			sa();
+		}
 		else
 		{
 			pb();
-			ft_printf("b: %d\n", *(*get_stack_b()));
-			ra();
-			ft_printf("a: %d\n", *(*get_stack_a()));
+			rra();
 			pa();
 		}
 	}
+	while (index_of(get_stack_a, get_min(get_stack_a)) != 0)
+		get_rotate_func(get_stack_a, index_of(get_stack_a, get_min(get_stack_a)))();
 }

@@ -39,5 +39,6 @@ void	swap_pointer(int **a, int **b);
 void	fix_stack(int **(*stack)(void));
 void    sort(void);
 void	rotate(int **(*stack)(void));
+int     is_sorted(void);
 
 #endif
