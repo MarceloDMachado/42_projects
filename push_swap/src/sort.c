@@ -88,6 +88,8 @@ int	is_sorted(void)
 			return (0);
 		i++;
 	}
+	if (index_of(get_stack_a, get_min(get_stack_a)) == 0)
+		return (1);
 	i = index_of(get_stack_a, get_min(get_stack_a)) - 1;
 	while (i > 0)
 	{
@@ -103,10 +105,7 @@ void	sort(void)
 	while (!is_sorted())
 	{
 		if (*(get_stack_a()[0]) > *(get_stack_a()[1]))
-		{
 			sa();
-			rra();
-		}
 		else if (*(get_stack_a()[0]) > *(get_stack_a()[stack_len(get_stack_a) - 1]))
 		{
 			rra();
@@ -117,6 +116,7 @@ void	sort(void)
 			pb();
 			rra();
 			pa();
+			rra();
 		}
 	}
 	while (index_of(get_stack_a, get_min(get_stack_a)) != 0)
