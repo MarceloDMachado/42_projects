@@ -106,7 +106,7 @@ void	sort(void)
 	{
 		if (*(get_stack_a()[0]) > *(get_stack_a()[1]))
 			sa();
-		else if (*(get_stack_a()[0]) > *(get_stack_a()[stack_len(get_stack_a) - 1]))
+		else if (*(get_stack_a()[0]) < *(get_stack_a()[stack_len(get_stack_a) - 1]))
 		{
 			rra();
 			sa();
