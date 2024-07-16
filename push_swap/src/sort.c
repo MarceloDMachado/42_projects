@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-void	(*get_rotate_func(int **(*f)(void), int i)) (void)
+void	(*rotate_func(int **(*f)(void), int i)) (void)
 {
 	int		len;
 	void	(*func)(void);
@@ -35,12 +35,12 @@ void	(*get_rotate_func(int **(*f)(void), int i)) (void)
 	return (func);
 }
 
-int	index_of(int **(*stack)(void), int *element)
+int	index_of(int **(*stack)(void), int *(*f)(int **(*s)(void)))
 {
 	int	i;
 
 	i = 0;
-	while (stack()[i] != element)
+	while (stack()[i] != f(stack))
 		i++;
 	return (i);
 }
@@ -80,7 +80,7 @@ int	is_sorted(void)
 	int	i;
 	int	len;
 
-	i = index_of(get_stack_a, get_min(get_stack_a));
+	i = index_of(get_stack_a, get_min);
 	len = stack_len(get_stack_a);
 	while (i < len - 1)
 	{
@@ -88,9 +88,9 @@ int	is_sorted(void)
 			return (0);
 		i++;
 	}
-	if (index_of(get_stack_a, get_min(get_stack_a)) == 0)
+	if (index_of(get_stack_a, get_min) == 0)
 		return (1);
-	i = index_of(get_stack_a, get_min(get_stack_a)) - 1;
+	i = index_of(get_stack_a, get_min) - 1;
 	while (i > 0)
 	{
 		if (*(get_stack_a()[i]) < *(get_stack_a()[i - 1]))
@@ -114,11 +114,9 @@ void	sort(void)
 				ra();
 		}
 		else
-		{
-			while (index_of(get_stack_a, get_max(get_stack_a)) != 0)
-				get_rotate_func(get_stack_a, index_of(get_stack_a, get_max(get_stack_a)))();
-		}
+			while (index_of(get_stack_a, get_max) != 0)
+				rotate_func(get_stack_a, index_of(get_stack_a, get_max))();
 	}
-	while (index_of(get_stack_a, get_min(get_stack_a)) != 0)
-		get_rotate_func(get_stack_a, index_of(get_stack_a, get_min(get_stack_a)))();
+	while (index_of(get_stack_a, get_min) != 0)
+		rotate_func(get_stack_a, index_of(get_stack_a, get_min))();
 }
