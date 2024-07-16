@@ -110,10 +110,13 @@ void	sort(void)
 		{
 			rra();
 			sa();
+			if (get_argc(0) > 3)
+				ra();
 		}
 		else
 		{
-			ra();
+			while (index_of(get_stack_a, get_max(get_stack_a)) != 0)
+				get_rotate_func(get_stack_a, index_of(get_stack_a, get_max(get_stack_a)))();
 		}
 	}
 	while (index_of(get_stack_a, get_min(get_stack_a)) != 0)
