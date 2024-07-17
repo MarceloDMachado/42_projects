@@ -14,7 +14,7 @@ W_FLAGS = -Wall -Wextra -Werror -g3
 NAME = push_swap
 INC = -I ./includes/\
 	  -I ./libft/
-SRC = main.c stack.c swap.c rotate.c reverse.c print.c utils.c push.c sort.c
+SRC = main.c stack.c stack_utils.c swap.c rotate.c reverse.c print.c utils.c push.c sort.c sort_utils.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 LIB = libft/libft.a

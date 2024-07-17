@@ -40,5 +40,15 @@ void	fix_stack(int **(*stack)(void));
 void    sort(void);
 void	rotate(int **(*stack)(void));
 int     is_sorted(void);
+void	(*handle_sort(void))(void);
+int		index_of(int **(*stack)(void), int *(*f)(int **(*s)(void)));
+int		*get_min(int **(*stack)(void));
+int		*get_max(int **(*stack)(void));
+int		*last_elem(int **(stack)(void));
+int		is_sorted(void);
+
+
+
+
 
 #endif

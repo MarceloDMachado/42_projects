@@ -81,9 +81,7 @@ int	main(int argc, char **argv)
 	if (argc <= 2 || check_params(&argv[1]) || check_dups(&argv[1]))
 		return (write(1, "Error\n", 7));
 	fill_stack(get_stack_a, &argv[1]);
-	sort();
-	//ft_printf("sorted: %d", is_sorted());
-	//print(get_stack_a);
+	handle_sort()();
 	free_stack(get_stack_a);
 	free_stack(get_stack_b);
 	return (0);
