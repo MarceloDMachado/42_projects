@@ -35,6 +35,7 @@ void	rrb(void)
 
 void	rrr(void)
 {
-	rra();
-	rrb();
+	ft_printf("rrr\n");
+	reverse(get_stack_a);
+	reverse(get_stack_b);
 }

@@ -39,6 +39,7 @@ void	rb(void)
 
 void	rr(void)
 {
-	ra();
-	rb();
+	ft_printf("rr");
+	rotate(get_stack_a);
+	rotate(get_stack_b);
 }

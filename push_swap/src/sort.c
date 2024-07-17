@@ -14,7 +14,7 @@
 
 void	(*rotate_func(int **(*f)(void), int i)) (void)
 {
-	int		len;
+		int		len;
 	void	(*func)(void);
 
 	len = stack_len(f);

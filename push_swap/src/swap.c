@@ -12,24 +12,29 @@
 
 #include "../includes/push_swap.h"
 
+void	swap(int **(*stack)(void))
+{
+	if(!stack()[1])
+		return ;
+	swap_pointer(&(stack()[0]), &(stack()[1]));
+}
+
+
 void	sa(void)
 {
 	ft_printf("sa\n");
-	if (!get_stack_a()[1])
-		return ;
-	swap_pointer(&(get_stack_a()[0]), &(get_stack_a()[1]));
+	swap(get_stack_a);
 }
 
 void	sb(void)
 {
 	ft_printf("sb\n");
-	if (!get_stack_b()[1])
-		return ;
-	swap_pointer(&(get_stack_b()[0]), &(get_stack_b()[1]));
+	swap(get_stack_b);
 }
 
 void	ss(void)
 {
-	sa();
-	sb();
+	ft_printf("ss\n");
+	swap(get_stack_a);
+	swap(get_stack_b);
 }
