@@ -115,8 +115,6 @@ void	sort(void)
 		}
 		else
 		{
-			//while (index_of(get_stack_a, get_max) != 0)
-			//	rotate_func(get_stack_a, index_of(get_stack_a, get_max))();
 			if (index_of(get_stack_a, get_max) == 0)
 				pb();
 			else
