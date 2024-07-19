@@ -46,6 +46,8 @@ int		*get_min(int **(*stack)(void));
 int		*get_max(int **(*stack)(void));
 int		*last_elem(int **(stack)(void));
 int		is_sorted(void);
+int		*get_cheapest(int **(*stack)(void));
+
 
 
 

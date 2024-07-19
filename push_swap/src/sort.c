@@ -14,7 +14,7 @@
 
 void	(*rotate_func(int **(*f)(void), int i)) (void)
 {
-		int		len;
+	int		len;
 	void	(*func)(void);
 
 	len = stack_len(f);
@@ -38,6 +38,9 @@ void	(*rotate_func(int **(*f)(void), int i)) (void)
 void	sort(void)
 {
 	pb();
+	pb();
+	while (index_of(get_stack_a, get_cheapest(get_stack_a)) != 0)
+		rotate_func(get_stack_a, *(get_cheapest(get_stack_a)))();
 	pb();
 }
 
