@@ -12,6 +12,14 @@
 
 #include "../includes/push_swap.h"
 
+int	get_distance(int **(*stack)(void), int *n)
+{
+	if (index_of(stack, n) <= stack_len(stack) / 2)
+		return (index_of(stack, n));
+	else
+		return (stack_len(stack) - index_of(stack, n));
+}
+
 int	*calc_price(int *n)
 {
 	return (n);
