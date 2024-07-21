@@ -12,9 +12,9 @@
 
 #include "../includes/push_swap.h"
 
-int	calc_price(int *n)
+int	*calc_price(int *n)
 {
-	
+	return (n);
 }
 
 int	*get_cheapest(int **(*stack)(void))
@@ -26,6 +26,6 @@ int	*get_cheapest(int **(*stack)(void))
 	cheapest = stack()[i];
 	while (++i < stack_len(stack))
 		if (calc_price(stack()[i]) < calc_price(cheapest))
-			cheapest = calc_price(stack()[i]);
+			cheapest = stack()[i];
 	return (cheapest);
 }

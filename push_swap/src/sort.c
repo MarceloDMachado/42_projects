@@ -37,11 +37,6 @@ void	(*rotate_func(int **(*f)(void), int i)) (void)
 
 void	sort(void)
 {
-	pb();
-	pb();
-	while (index_of(get_stack_a, get_cheapest(get_stack_a)) != 0)
-		rotate_func(get_stack_a, *(get_cheapest(get_stack_a)))();
-	pb();
 }
 
 void	sort_three(void)
@@ -56,8 +51,8 @@ void	sort_three(void)
 			sa();
 		}
 	}
-	while (index_of(get_stack_a, get_min) != 0)
-		rotate_func(get_stack_a, index_of(get_stack_a, get_min))();
+	while (index_of(get_stack_a, get_min(get_stack_a)) != 0)
+		rotate_func(get_stack_a, index_of(get_stack_a, get_min(get_stack_a)))();
 }
 
 void	(*handle_sort(void))(void)

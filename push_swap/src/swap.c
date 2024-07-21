@@ -14,11 +14,10 @@
 
 void	swap(int **(*stack)(void))
 {
-	if(!stack()[1])
+	if (!stack()[1])
 		return ;
 	swap_pointer(&(stack()[0]), &(stack()[1]));
 }
-
 
 void	sa(void)
 {

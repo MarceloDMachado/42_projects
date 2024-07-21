@@ -12,12 +12,12 @@
 
 #include "../includes/push_swap.h"
 
-int	index_of(int **(*stack)(void), int *(*f)(int **(*s)(void)))
+int	index_of(int **(*stack)(void), int *n)
 {
 	int	i;
 
 	i = 0;
-	while (stack()[i] != f(stack))
+	while (stack()[i] != n)
 		i++;
 	return (i);
 }
