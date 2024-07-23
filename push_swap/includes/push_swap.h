@@ -46,11 +46,11 @@ int		*get_min(int **(*stack)(void));
 int		*get_max(int **(*stack)(void));
 int		*last_elem(int **(stack)(void));
 int		is_sorted(void);
-int		*get_cheapest(int **(*stack)(void));
-
-
-
-
+int		calc_distance(int **(*stack)(void), int *n);
+void	(*rotate_func(int **(*f)(void), int i)) (void);
+void	**func_matrix(void);
+void	free_func_matrix(void);
+void	price(void);
 
 
 #endif

@@ -82,6 +82,8 @@ int	main(int argc, char **argv)
 		return (write(1, "Error\n", 7));
 	fill_stack(get_stack_a, &argv[1]);
 	handle_sort()();
+	//ft_printf("dis %d\n", get_distance(get_stack_a, get_stack_a()[4]));
+	//rotate_func(get_stack_a, 4)();
 	free_stack(get_stack_a);
 	free_stack(get_stack_b);
 	return (0);

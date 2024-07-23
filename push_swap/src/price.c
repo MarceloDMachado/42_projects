@@ -1,33 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calc.c                                             :+:      :+:    :+:   */
+/*   price.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/07/17 20:01:24 by madias-m          #+#    #+#             */
-/*   Updated: 2024/07/17 20:01:25 by madias-m         ###   ########.fr       */
+/*   Created: 2024/07/22 21:23:43 by madias-m          #+#    #+#             */
+/*   Updated: 2024/07/22 21:23:45 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	calc_distance(int **(*stack)(void), int *n)
+
+void    func(int **(*stack)(void), int *n)
 {
-	if (index_of(stack, n) <= stack_len(stack) / 2)
-		return (index_of(stack, n));
-	else
-		return (stack_len(stack) - index_of(stack, n));
+    void    *func_array;
+
+    func_array = func_matrix()[index_of(stack, n)];
+    func_array[0] = rotate_func(stack, index_of(stack, n));
 }
 
-void	(*rotate_func(int **(*f)(void), int i)) (void)
-{	
-	if (i <= stack_len(f) / 2 && f == get_stack_a)
-		return (ra);
-	else if (i <= stack_len(f) / 2 && f == get_stack_b)
-		return (rb);
-	else if (f == get_stack_a)
-		return (rra);
-	else
-		return (rrb);
+void	price(void)
+{
+    int	i;
+
+	i = -1;
+    func_matrix();
+    while (get_stack_a()[++i])
+		func(get_stack_a, get_stack_a()[i]);
 }

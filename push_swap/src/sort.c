@@ -12,29 +12,6 @@
 
 #include "../includes/push_swap.h"
 
-void	(*rotate_func(int **(*f)(void), int i)) (void)
-{
-	int		len;
-	void	(*func)(void);
-
-	len = stack_len(f);
-	if (i >= (len / 2))
-	{
-		if (f == get_stack_a)
-			func = rra;
-		else
-			func = rrb;
-	}
-	else
-	{
-		if (f == get_stack_a)
-			func = ra;
-		else
-			func = rb;
-	}
-	return (func);
-}
-
 void	sort(void)
 {
 }
