@@ -50,7 +50,7 @@ int		*last_elem(int **(stack)(void));
 int		is_sorted(void);
 int		calc_distance(int **(*stack)(void), int *n);
 void	(*rotate_func(int **(*f)(void), int i))(void);
-void	**func_matrix(void);
+t_func	**func_matrix(void);
 void	free_func_matrix(void);
 void	price(void);
 

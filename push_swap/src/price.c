@@ -21,7 +21,8 @@ void    func(int **(*stack)(void), int *n)
     index = index_of(stack, n);
     funcs = func_matrix()[index];
     funcs[0] = rotate_func(stack, index);
-    ft_printf("\n");
+    ft_printf("func: \n");
+    funcs[0]();
 }
 
 void	price(void)
