@@ -14,6 +14,7 @@
 
 void	sort(void)
 {
+	ft_printf("sim\n");
 }
 
 void	sort_three(void)
