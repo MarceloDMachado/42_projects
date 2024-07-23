@@ -15,6 +15,8 @@
 
 # include "../libft/libft.h"
 
+typedef void	(*t_func)(void);
+
 int		get_argc(int n);
 int		is_signal(char c);
 int		**get_stack_a(void);
@@ -37,9 +39,9 @@ void	rrr(void);
 void	print(int **(*stack)(void));
 void	swap_pointer(int **a, int **b);
 void	fix_stack(int **(*stack)(void));
-void    sort(void);
+void	sort(void);
 void	rotate(int **(*stack)(void));
-int     is_sorted(void);
+int		is_sorted(void);
 void	(*handle_sort(void))(void);
 int		index_of(int **(*stack)(void), int *n);
 int		*get_min(int **(*stack)(void));
@@ -47,10 +49,9 @@ int		*get_max(int **(*stack)(void));
 int		*last_elem(int **(stack)(void));
 int		is_sorted(void);
 int		calc_distance(int **(*stack)(void), int *n);
-void	(*rotate_func(int **(*f)(void), int i)) (void);
+void	(*rotate_func(int **(*f)(void), int i))(void);
 void	**func_matrix(void);
 void	free_func_matrix(void);
 void	price(void);
-
 
 #endif

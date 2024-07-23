@@ -17,17 +17,17 @@ int	alloc_size(void)
 	return ((stack_len(get_stack_a) / 2) + (stack_len(get_stack_b) / 2) + 2);
 }
 
-void	**func_matrix(void)
+t_func	**func_matrix(void)
 {
-	static void	**func_matrix = 0;
-	int			i;
+	static t_func	**func_matrix = 0;
+	int				i;
 
 	if (func_matrix)
 		return (func_matrix);
 	i = 0;
 	func_matrix = ft_calloc(stack_len(get_stack_a) + 1, sizeof(void *));
 	while (i < stack_len(get_stack_a))
-		func_matrix[i++] = ft_calloc(alloc_size(), sizeof(void *)); 
+		func_matrix[i++] = ft_calloc(alloc_size(), sizeof(void *));
 	return (func_matrix);
 }
 

@@ -15,10 +15,13 @@
 
 void    func(int **(*stack)(void), int *n)
 {
-    void    *func_array;
+    int index;
+    t_func *funcs;
 
-    func_array = func_matrix()[index_of(stack, n)];
-    func_array[0] = rotate_func(stack, index_of(stack, n));
+    index = index_of(stack, n);
+    funcs = func_matrix()[index];
+    funcs[0] = rotate_func(stack, index);
+    ft_printf("\n");
 }
 
 void	price(void)
