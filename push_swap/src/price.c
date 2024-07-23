@@ -15,12 +15,12 @@
 
 void    func(int **(*stack)(void), int *n)
 {
-    int index;
     t_func *funcs;
 
-    index = index_of(stack, n);
-    funcs = func_matrix()[index];
-    funcs[0] = rotate_func(stack, index);
+    if (index_of(stack, n) == 0)
+        return ;
+    funcs = func_matrix()[index_of(stack, n)];
+    funcs[0] = rotate_func(stack, index_of(stack, n));
     ft_printf("func: \n");
     funcs[0]();
 }
