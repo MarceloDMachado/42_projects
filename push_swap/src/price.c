@@ -12,17 +12,24 @@
 
 #include "../includes/push_swap.h"
 
-void	func(int **(*stack)(void), int *n)
+int find_destiny(int index)
 {
-	t_func	*funcs;
+	if (is_biggest(get_stack_a()[index]))
+		return (index_of(get_stack_b, get_max(get_stack_b)));
+	else if (is_smallest(get_stack_a()[index]))
+		return (index_of(get_stack_b, get_min(get_stack_b)));
+	else
+		return (index_of(get_stack_b, get_nearest(index)));
+}
 
-	if (index_of(stack, n) == 0)
-		return ;
-	funcs = func_matrix()[index_of(stack, n)];
-	append(funcs, rotate_func(stack, index_of(stack, n)));
-	//ft_printf("index: %d  | func: \n", index_of(stack, n));
-	reply(funcs, calc_distance(stack, n));
-	//ft_printf("n: %d | distante: %d | farray_len: %d\n", *n, calc_distance(stack, n), farray_len(funcs));
+void	build_farray(int **(*stack)(void), int index)
+{
+	append(fmatrix()[index], rotate_func(stack, index));
+	replicate(fmatrix()[index], last_func(fmatrix()[index]), calc_distance(stack, stack()[index]));
+	append(fmatrix()[index], rotate_func(get_stack_b, find_destiny(index)));
+	replicate(fmatrix()[index], last_func(fmatrix()[index]), calc_distance(get_stack_b, get_stack_b()[find_destiny(index)]));
+	append(fmatrix()[index], pb);
+	reduce(fmatrix()[index]);
 }
 
 void	price(void)
@@ -30,7 +37,7 @@ void	price(void)
 	int	i;
 
 	i = -1;
-	func_matrix();
+	fmatrix();
 	while (get_stack_a()[++i])
-		func(get_stack_a, get_stack_a()[i]);
+		build_farray(get_stack_a, i);		
 }

@@ -15,7 +15,7 @@
 
 # include "../libft/libft.h"
 
-typedef void	(*t_func)(void);
+typedef void	(*t_farray)(void);
 
 int		get_argc(int n);
 int		is_signal(char c);
@@ -46,15 +46,21 @@ void	(*handle_sort(void))(void);
 int		index_of(int **(*stack)(void), int *n);
 int		*get_min(int **(*stack)(void));
 int		*get_max(int **(*stack)(void));
+int		*get_nearest(int target);
 int		*last_elem(int **(stack)(void));
 int		is_sorted(void);
 int		calc_distance(int **(*stack)(void), int *n);
 void	(*rotate_func(int **(*f)(void), int i))(void);
-t_func	**func_matrix(void);
+t_farray	**fmatrix(void);
 void	free_func_matrix(void);
 void	price(void);
-void	append(t_func *f_array, t_func new_func);
-void	reply(t_func *f_array, unsigned int n);
-int		farray_len(t_func *f_array);
+void	append(t_farray *f_array, t_farray new_func);
+t_farray	last_func(t_farray *f_array);
+void	replicate(t_farray *f_array, t_farray new_func, unsigned int n);
+void	reduce(t_farray *f_array);
+int		farray_len(t_farray *f_array);
+int		is_biggest(int *n);
+int		is_smallest(int *n);
+int		is_middle(int *n);
 
 #endif

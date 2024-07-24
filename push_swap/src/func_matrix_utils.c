@@ -12,20 +12,48 @@
 
 #include "../includes/push_swap.h"
 
-void	append(t_func *f_array, t_func new_func)
+void	append(t_farray *f_array, t_farray new_func)
 {
 	while (*f_array)
 		f_array++;
 	*f_array = new_func;
 }
 
-void	reply(t_func *f_array, unsigned int n)
+t_farray	last_func(t_farray *f_array)
 {
-	if (n <= 1)
-		return ;
-	while (n-- > 1)
-	{
-		*(f_array + 1) = *f_array;
+	while (*f_array)
 		f_array++;
+	return (*(--f_array));
+}
+
+void	replicate(t_farray *f_array, t_farray new_func, unsigned int n)
+{
+	while (n-- > 1)
+		append(f_array, new_func);
+}
+
+void	reduce(t_farray *f_array)
+{
+	int i;
+	int	j;
+
+	i = 0;
+	while (f_array[i] != pb)
+	{
+		if (f_array[i] == rb)
+		{
+			j = 0;
+			while (f_array[j] != ra)
+				j++;
+			f_array[j] = rr;
+		}
+		else if (f_array[i] == rrb)
+		{
+			j = 0;
+			while (f_array[j] != rra)
+				j++;
+			f_array[j] = rrr;
+		}
+		i++;
 	}
 }

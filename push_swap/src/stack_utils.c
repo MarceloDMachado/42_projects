@@ -52,6 +52,23 @@ int	*get_max(int **(*stack)(void))
 	return (max);
 }
 
+int	*get_nearest(int target)
+{
+	int	*nearest;
+	int	i;
+
+	i = 0;
+	nearest = get_min(get_stack_b);
+	while (get_stack_b()[i])
+	{
+		if (*get_stack_b()[i] < *get_stack_a()[target])
+			if(*get_stack_b()[i] > *nearest)
+				nearest = get_stack_b()[i];
+		i++;
+	}
+	return (nearest);
+}
+
 int	*last_elem(int **(stack)(void))
 {
 	return (stack()[stack_len(stack) - 1]);

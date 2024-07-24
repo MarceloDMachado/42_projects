@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   func_matrix.c                                      :+:      :+:    :+:   */
+/*   fmatrix.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.b      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -17,18 +17,18 @@ int	alloc_size(void)
 	return ((stack_len(get_stack_a) / 2) + (stack_len(get_stack_b) / 2) + 2);
 }
 
-t_func	**func_matrix(void)
+t_farray	**fmatrix(void)
 {
-	static t_func	**func_matrix = 0;
+	static t_farray	**fmatrix = 0;
 	int				i;
 
-	if (func_matrix)
-		return (func_matrix);
+	if (fmatrix)
+		return (fmatrix);
 	i = 0;
-	func_matrix = ft_calloc(stack_len(get_stack_a) + 1, sizeof(void *));
+	fmatrix = ft_calloc(stack_len(get_stack_a) + 1, sizeof(void *));
 	while (i < stack_len(get_stack_a))
-		func_matrix[i++] = ft_calloc(alloc_size(), sizeof(void *));
-	return (func_matrix);
+		fmatrix[i++] = ft_calloc(alloc_size(), sizeof(void *));
+	return (fmatrix);
 }
 
 void	free_func_matrix(void)
@@ -37,11 +37,11 @@ void	free_func_matrix(void)
 
 	i = 0;
 	while (i < get_argc(0))
-		free(func_matrix()[i++]);
-	free(func_matrix());
+		free(fmatrix()[i++]);
+	free(fmatrix());
 }
 
-int	farray_len(t_func *f_array)
+int	farray_len(t_farray *f_array)
 {
 	int	i;
 
