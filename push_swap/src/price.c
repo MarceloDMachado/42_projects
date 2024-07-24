@@ -20,8 +20,8 @@ void    func(int **(*stack)(void), int *n)
     if (index_of(stack, n) == 0)
         return ;
     funcs = func_matrix()[index_of(stack, n)];
-    funcs[0] = rotate_func(stack, index_of(stack, n));
-    ft_printf("func: \n");
+    append(funcs, rotate_func(stack, index_of(stack, n)));
+    ft_printf("index: %d  | func: \n", index_of(stack, n));
     funcs[0]();
 }
 

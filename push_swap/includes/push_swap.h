@@ -53,5 +53,6 @@ void	(*rotate_func(int **(*f)(void), int i))(void);
 t_func	**func_matrix(void);
 void	free_func_matrix(void);
 void	price(void);
+void	append(t_func *f_array, t_func new_func);
 
 #endif
