@@ -31,13 +31,6 @@ t_func	**func_matrix(void)
 	return (func_matrix);
 }
 
-void	append(t_func *f_array, t_func new_func)
-{
-	while(*f_array)
-		f_array++;
-	*f_array = new_func;
-}
-
 void	free_func_matrix(void)
 {
 	int	i;
@@ -46,4 +39,17 @@ void	free_func_matrix(void)
 	while (i < get_argc(0))
 		free(func_matrix()[i++]);
 	free(func_matrix());
+}
+
+int	farray_len(t_func *f_array)
+{
+	int	i;
+
+	i = 0;
+	while (*f_array)
+	{
+		f_array++;
+		i++;
+	}
+	return (i);
 }

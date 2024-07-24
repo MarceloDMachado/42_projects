@@ -54,5 +54,7 @@ t_func	**func_matrix(void);
 void	free_func_matrix(void);
 void	price(void);
 void	append(t_func *f_array, t_func new_func);
+void	reply(t_func *f_array, unsigned int n);
+int		farray_len(t_func *f_array);
 
 #endif
