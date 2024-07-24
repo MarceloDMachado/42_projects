@@ -12,27 +12,25 @@
 
 #include "../includes/push_swap.h"
 
-
-void    func(int **(*stack)(void), int *n)
+void	func(int **(*stack)(void), int *n)
 {
-    t_func *funcs;
+	t_func	*funcs;
 
-    if (index_of(stack, n) == 0)
-        return ;
-    funcs = func_matrix()[index_of(stack, n)];
-    append(funcs, rotate_func(stack, index_of(stack, n)));
-    ft_printf("index: %d  | func: \n", index_of(stack, n));
-    reply(funcs, calc_distance(stack, n));
-    ft_printf("n: %d | distante: %d | farray_len: %d\n", *n, calc_distance(stack, n), farray_len(funcs));
-
+	if (index_of(stack, n) == 0)
+		return ;
+	funcs = func_matrix()[index_of(stack, n)];
+	append(funcs, rotate_func(stack, index_of(stack, n)));
+	//ft_printf("index: %d  | func: \n", index_of(stack, n));
+	reply(funcs, calc_distance(stack, n));
+	//ft_printf("n: %d | distante: %d | farray_len: %d\n", *n, calc_distance(stack, n), farray_len(funcs));
 }
 
 void	price(void)
 {
-    int	i;
+	int	i;
 
 	i = -1;
-    func_matrix();
-    while (get_stack_a()[++i])
+	func_matrix();
+	while (get_stack_a()[++i])
 		func(get_stack_a, get_stack_a()[i]);
 }

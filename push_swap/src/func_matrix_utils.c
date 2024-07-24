@@ -14,7 +14,7 @@
 
 void	append(t_func *f_array, t_func new_func)
 {
-	while(*f_array)
+	while (*f_array)
 		f_array++;
 	*f_array = new_func;
 }
