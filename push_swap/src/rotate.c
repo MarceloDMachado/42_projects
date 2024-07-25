@@ -28,18 +28,18 @@ void	rotate(int **(*stack)(void))
 void	ra(void)
 {
 	ft_printf("ra\n");
-	rotate(get_stack_a);
+	rotate(stack_a);
 }
 
 void	rb(void)
 {
 	ft_printf("rb\n");
-	rotate(get_stack_b);
+	rotate(stack_b);
 }
 
 void	rr(void)
 {
 	ft_printf("rr");
-	rotate(get_stack_a);
-	rotate(get_stack_b);
+	rotate(stack_a);
+	rotate(stack_b);
 }

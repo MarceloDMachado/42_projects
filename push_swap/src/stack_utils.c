@@ -58,12 +58,12 @@ int	*get_nearest(int target)
 	int	i;
 
 	i = 0;
-	nearest = get_min(get_stack_b);
-	while (get_stack_b()[i])
+	nearest = get_min(stack_b);
+	while (stack_b()[i])
 	{
-		if (*get_stack_b()[i] < *get_stack_a()[target])
-			if(*get_stack_b()[i] > *nearest)
-				nearest = get_stack_b()[i];
+		if (*stack_b()[i] < *stack_a()[target])
+			if(*stack_b()[i] > *nearest)
+				nearest = stack_b()[i];
 		i++;
 	}
 	return (nearest);

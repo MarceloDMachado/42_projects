@@ -14,22 +14,22 @@
 
 int find_destiny(int index)
 {
-	if (is_biggest(get_stack_a()[index]))
-		return (index_of(get_stack_b, get_max(get_stack_b)));
-	else if (is_smallest(get_stack_a()[index]))
-		return (index_of(get_stack_b, get_min(get_stack_b)));
+	if (is_biggest(stack_a()[index]))
+		return (index_of(stack_b, get_max(stack_b)));
+	else if (is_smallest(stack_a()[index]))
+		return (index_of(stack_b, get_min(stack_b)));
 	else
-		return (index_of(get_stack_b, get_nearest(index)));
+		return (index_of(stack_b, get_nearest(index)));
 }
 
 void	build_farray(int **(*stack)(void), int index)
 {
-	append(fmatrix()[index], rotate_func(stack, index));
-	replicate(fmatrix()[index], last_func(fmatrix()[index]), calc_distance(stack, stack()[index]));
-	append(fmatrix()[index], rotate_func(get_stack_b, find_destiny(index)));
-	replicate(fmatrix()[index], last_func(fmatrix()[index]), calc_distance(get_stack_b, get_stack_b()[find_destiny(index)]));
-	append(fmatrix()[index], pb);
-	reduce(fmatrix()[index]);
+	t_farray *farray;
+
+	farray = fmatrix()[index];
+	append(farray, rotate_func(stack, index));
+	replicate(farray, last_func(farray), calc_distance(stack, stack()[index]));
+	//dynamic_append(farray, rotate_func(stack_b, find_destiny(index)));
 }
 
 void	price(void)
@@ -38,6 +38,6 @@ void	price(void)
 
 	i = -1;
 	fmatrix();
-	while (get_stack_a()[++i])
-		build_farray(get_stack_a, i);		
+	while (stack_a()[++i])
+		build_farray(stack_a, i);		
 }

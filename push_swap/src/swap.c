@@ -22,18 +22,18 @@ void	swap(int **(*stack)(void))
 void	sa(void)
 {
 	ft_printf("sa\n");
-	swap(get_stack_a);
+	swap(stack_a);
 }
 
 void	sb(void)
 {
 	ft_printf("sb\n");
-	swap(get_stack_b);
+	swap(stack_b);
 }
 
 void	ss(void)
 {
 	ft_printf("ss\n");
-	swap(get_stack_a);
-	swap(get_stack_b);
+	swap(stack_a);
+	swap(stack_b);
 }

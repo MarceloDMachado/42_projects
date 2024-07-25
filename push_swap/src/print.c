@@ -25,20 +25,20 @@ void	print(int **(*stack)(void))
 
 void	test(void)
 {
-	print(get_stack_a);
+	print(stack_a);
 	ft_printf("after ra: \n");
 	ra();
-	print(get_stack_a);
+	print(stack_a);
 	ft_printf("after rra: \n");
 	rra();
-	print(get_stack_a);
+	print(stack_a);
 	ft_printf("after pb (a): \n");
 	pb();
 	pb();
-	print(get_stack_a);
+	print(stack_a);
 	ft_printf("after pb (b): \n");
-	print(get_stack_b);
+	print(stack_b);
 	ft_printf("after sb: \n");
 	sb();
-	print(get_stack_b);
+	print(stack_b);
 }

@@ -14,7 +14,7 @@
 
 int	alloc_size(void)
 {
-	return ((stack_len(get_stack_a) / 2) + (stack_len(get_stack_b) / 2) + 2);
+	return ((stack_len(stack_a) / 2) + (stack_len(stack_b) / 2) + 2);
 }
 
 t_farray	**fmatrix(void)
@@ -25,8 +25,8 @@ t_farray	**fmatrix(void)
 	if (fmatrix)
 		return (fmatrix);
 	i = 0;
-	fmatrix = ft_calloc(stack_len(get_stack_a) + 1, sizeof(void *));
-	while (i < stack_len(get_stack_a))
+	fmatrix = ft_calloc(stack_len(stack_a) + 1, sizeof(void *));
+	while (i < stack_len(stack_a))
 		fmatrix[i++] = ft_calloc(alloc_size(), sizeof(void *));
 	return (fmatrix);
 }

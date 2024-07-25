@@ -18,14 +18,14 @@ void	pa(void)
 	int	*elem;
 
 	ft_printf("pa\n");
-	elem = get_stack_b()[0];
+	elem = stack_b()[0];
 	if (!elem)
 		return ;
-	get_stack_b()[0] = 0;
-	fix_stack(get_stack_b);
-	len = stack_len(get_stack_a);
-	get_stack_a()[len] = elem;
-	reverse(get_stack_a);
+	stack_b()[0] = 0;
+	fix_stack(stack_b);
+	len = stack_len(stack_a);
+	stack_a()[len] = elem;
+	reverse(stack_a);
 }
 
 void	pb(void)
@@ -34,12 +34,12 @@ void	pb(void)
 	int	*elem;
 
 	ft_printf("pb\n");
-	elem = get_stack_a()[0];
+	elem = stack_a()[0];
 	if (!elem)
 		return ;
-	get_stack_a()[0] = 0;
-	fix_stack(get_stack_a);
-	len = stack_len(get_stack_b);
-	get_stack_b()[len] = elem;
-	reverse(get_stack_b);
+	stack_a()[0] = 0;
+	fix_stack(stack_a);
+	len = stack_len(stack_b);
+	stack_b()[len] = elem;
+	reverse(stack_b);
 }

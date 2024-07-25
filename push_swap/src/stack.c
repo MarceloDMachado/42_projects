@@ -12,7 +12,7 @@
 
 #include "../includes/push_swap.h"
 
-int	**get_stack_a(void)
+int	**stack_a(void)
 {
 	static int	**stack_a = 0;
 	int			i;
@@ -26,7 +26,7 @@ int	**get_stack_a(void)
 	return (stack_a);
 }
 
-int	**get_stack_b(void)
+int	**stack_b(void)
 {
 	static int	**stack_b = 0;
 

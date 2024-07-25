@@ -14,12 +14,12 @@
 
 int	is_biggest(int *n)
 {
-	return (*n > *(get_max(get_stack_b)));
+	return (*n > *(get_max(stack_b)));
 }
 
 int	is_smallest(int *n)
 {
-	return (*n < *(get_min(get_stack_b)));
+	return (*n < *(get_min(stack_b)));
 }
 
 int is_middle(int *n)

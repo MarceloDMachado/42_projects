@@ -24,18 +24,18 @@ void	reverse(int **(*stack)(void))
 void	rra(void)
 {
 	ft_printf("rra\n");
-	reverse(get_stack_a);
+	reverse(stack_a);
 }
 
 void	rrb(void)
 {
 	ft_printf("rrb\n");
-	reverse(get_stack_b);
+	reverse(stack_b);
 }
 
 void	rrr(void)
 {
 	ft_printf("rrr\n");
-	reverse(get_stack_a);
-	reverse(get_stack_b);
+	reverse(stack_a);
+	reverse(stack_b);
 }

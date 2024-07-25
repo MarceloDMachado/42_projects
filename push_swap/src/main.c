@@ -80,12 +80,12 @@ int	main(int argc, char **argv)
 	get_argc(argc);
 	if (argc <= 2 || check_params(&argv[1]) || check_dups(&argv[1]))
 		return (write(1, "Error\n", 7));
-	fill_stack(get_stack_a, &argv[1]);
+	fill_stack(stack_a, &argv[1]);
 	handle_sort()();
-	//ft_printf("dis %d\n", get_distance(get_stack_a, get_stack_a()[4]));
-	//rotate_func(get_stack_a, 4)();
+	//ft_printf("dis %d\n", get_distance(stack_a, stack_a()[4]));
+	//rotate_func(stack_a, 4)();
 	free_func_matrix();
-	free_stack(get_stack_a);
-	free_stack(get_stack_b);
+	free_stack(stack_a);
+	free_stack(stack_b);
 	return (0);
 }

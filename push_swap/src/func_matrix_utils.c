@@ -32,28 +32,7 @@ void	replicate(t_farray *f_array, t_farray new_func, unsigned int n)
 		append(f_array, new_func);
 }
 
-void	reduce(t_farray *f_array)
+void	dynamic_append(t_farray *farray, t_farray new_func, unsigned int n)
 {
-	int i;
-	int	j;
-
-	i = 0;
-	while (f_array[i] != pb)
-	{
-		if (f_array[i] == rb)
-		{
-			j = 0;
-			while (f_array[j] != ra)
-				j++;
-			f_array[j] = rr;
-		}
-		else if (f_array[i] == rrb)
-		{
-			j = 0;
-			while (f_array[j] != rra)
-				j++;
-			f_array[j] = rrr;
-		}
-		i++;
-	}
+	// do nothing
 }

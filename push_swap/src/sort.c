@@ -21,21 +21,21 @@ void	sort_three(void)
 {
 	while (!is_sorted())
 	{
-		if (*(get_stack_a()[0]) > *(get_stack_a()[1]))
+		if (*(stack_a()[0]) > *(stack_a()[1]))
 			sa();
-		else if (*(get_stack_a()[0]) < *(last_elem(get_stack_a)))
+		else if (*(stack_a()[0]) < *(last_elem(stack_a)))
 		{
 			rra();
 			sa();
 		}
 	}
-	while (index_of(get_stack_a, get_min(get_stack_a)) != 0)
-		rotate_func(get_stack_a, index_of(get_stack_a, get_min(get_stack_a)))();
+	while (index_of(stack_a, get_min(stack_a)) != 0)
+		rotate_func(stack_a, index_of(stack_a, get_min(stack_a)))();
 }
 
 void	(*handle_sort(void))(void)
 {
-	if (stack_len(get_stack_a) > 3)
+	if (stack_len(stack_a) > 3)
 		return (sort);
 	return (sort_three);
 }
