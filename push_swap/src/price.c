@@ -46,7 +46,7 @@ void	print_farray(t_farray *farray)
 
 void	build_farray(int index)
 {
-	t_farray *farray;
+	t_farray	*farray;
 
 	farray = fmatrix()[index];
 	append(farray, rotate_func(stack_a, index));
