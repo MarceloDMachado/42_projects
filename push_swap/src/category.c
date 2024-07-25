@@ -22,7 +22,7 @@ int	is_smallest(int *n)
 	return (*n < *(get_min(stack_b)));
 }
 
-int is_middle(int *n)
+int	is_middle(int *n)
 {
 	return (!is_biggest(n) && !is_smallest(n));
 }

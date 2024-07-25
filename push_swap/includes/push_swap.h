@@ -55,6 +55,7 @@ t_farray	**fmatrix(void);
 void	free_func_matrix(void);
 void	price(void);
 void	append(t_farray *f_array, t_farray new_func);
+void	dynamic_append(t_farray *farray, t_farray new_func, unsigned int n);
 t_farray	last_func(t_farray *f_array);
 void	replicate(t_farray *f_array, t_farray new_func, unsigned int n);
 void	reduce(t_farray *f_array);

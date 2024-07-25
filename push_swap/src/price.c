@@ -22,14 +22,24 @@ int find_destiny(int index)
 		return (index_of(stack_b, get_nearest(index)));
 }
 
-void	build_farray(int **(*stack)(void), int index)
+void	print_farray(t_farray *farray)
+{
+	while (*farray)
+	{
+		farray++;
+	}
+}
+
+void	build_farray(int index)
 {
 	t_farray *farray;
 
 	farray = fmatrix()[index];
-	append(farray, rotate_func(stack, index));
-	replicate(farray, last_func(farray), calc_distance(stack, stack()[index]));
-	//dynamic_append(farray, rotate_func(stack_b, find_destiny(index)));
+	append(farray, rotate_func(stack_a, index));
+	replicate(farray, last_func(farray), calc_distance(stack_a, stack_a()[index]));
+	dynamic_append(farray, rotate_func(stack_b, find_destiny(index)), calc_distance(stack_b, stack_b()[find_destiny(index)]));
+	append(farray, pb);
+	ft_printf("index: %d | v: %d | f_len: %d\n", index, *(stack_a()[index]), farray_len(farray));
 }
 
 void	price(void)
@@ -39,5 +49,5 @@ void	price(void)
 	i = -1;
 	fmatrix();
 	while (stack_a()[++i])
-		build_farray(stack_a, i);		
+		build_farray(i);		
 }

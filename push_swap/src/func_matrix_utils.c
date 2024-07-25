@@ -12,27 +12,54 @@
 
 #include "../includes/push_swap.h"
 
-void	append(t_farray *f_array, t_farray new_func)
+void	append(t_farray *farray, t_farray new_func)
 {
-	while (*f_array)
-		f_array++;
-	*f_array = new_func;
+	while (*farray)
+		farray++;
+	*farray = new_func;
 }
 
-t_farray	last_func(t_farray *f_array)
+t_farray	last_func(t_farray *farray)
 {
-	while (*f_array)
-		f_array++;
-	return (*(--f_array));
+	while (*farray)
+		farray++;
+	return (*(--farray));
 }
 
-void	replicate(t_farray *f_array, t_farray new_func, unsigned int n)
+void	replicate(t_farray *farray, t_farray new_func, unsigned int n)
 {
 	while (n-- > 1)
-		append(f_array, new_func);
+		append(farray, new_func);
+}
+
+t_farray	*find_f(t_farray *farray, t_farray func)
+{
+	while (*farray)
+	{
+		if (*farray == func)
+			return (farray);
+		farray++;
+	}
+	return (0);
 }
 
 void	dynamic_append(t_farray *farray, t_farray new_func, unsigned int n)
 {
-	// do nothing
+	while (n-- > 0)
+	{
+		if (new_func == rb)
+		{
+			if (find_f(farray, ra))
+				*(find_f(farray, ra)) = rr;
+			else
+				append(farray, new_func);
+		}
+		else
+		{
+			if (find_f(farray, rra))
+				*(find_f(farray, rra)) = rrr;
+			else
+				append(farray, new_func);
+		}
+	}
 }

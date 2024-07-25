@@ -14,6 +14,8 @@
 
 void	sort(void)
 {
+	pb();
+	pb();
 	price();
 }
 

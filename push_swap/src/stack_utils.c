@@ -62,7 +62,7 @@ int	*get_nearest(int target)
 	while (stack_b()[i])
 	{
 		if (*stack_b()[i] < *stack_a()[target])
-			if(*stack_b()[i] > *nearest)
+			if (*stack_b()[i] > *nearest)
 				nearest = stack_b()[i];
 		i++;
 	}
