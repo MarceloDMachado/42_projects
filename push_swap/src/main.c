@@ -84,7 +84,7 @@ int	main(int argc, char **argv)
 	handle_sort()();
 	//ft_printf("dis %d\n", get_distance(stack_a, stack_a()[4]));
 	//rotate_func(stack_a, 4)();
-	//free_func_matrix();
+	free_func_matrix();
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

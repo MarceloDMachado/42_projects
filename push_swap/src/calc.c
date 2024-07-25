@@ -22,7 +22,9 @@ int	calc_distance(int **(*stack)(void), int *n)
 
 void	(*rotate_func(int **(*f)(void), int i)) (void)
 {	
-	if (i <= stack_len(f) / 2 && f == stack_a)
+	if (i == 0)
+		return (0);
+	else if (i <= stack_len(f) / 2 && f == stack_a)
 		return (ra);
 	else if (i <= stack_len(f) / 2 && f == stack_b)
 		return (rb);

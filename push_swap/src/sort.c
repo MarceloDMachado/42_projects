@@ -16,7 +16,12 @@ void	sort(void)
 {
 	pb();
 	pb();
-	price();
+	//while (stack_len(stack_a) > 1)
+	//{
+		price();
+	//	move(get_cheapest());
+//		free_func_matrix();
+//	}
 }
 
 void	sort_three(void)

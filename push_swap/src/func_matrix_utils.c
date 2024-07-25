@@ -21,6 +21,8 @@ void	append(t_farray *farray, t_farray new_func)
 
 t_farray	last_func(t_farray *farray)
 {
+	if (!farray_len(farray))
+		return (0);
 	while (*farray)
 		farray++;
 	return (*(--farray));

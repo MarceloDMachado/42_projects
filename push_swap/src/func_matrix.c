@@ -35,9 +35,9 @@ void	free_func_matrix(void)
 {
 	int	i;
 
-	i = 0;
-	while (i < get_argc(0))
-		free(fmatrix()[i++]);
+	i = -1;
+	while (fmatrix()[++i])
+		free(fmatrix()[i]);
 	free(fmatrix());
 }
 
