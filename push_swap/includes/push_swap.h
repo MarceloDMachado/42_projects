@@ -63,5 +63,7 @@ int		farray_len(t_farray *f_array);
 int		is_biggest(int *n);
 int		is_smallest(int *n);
 int		is_middle(int *n);
+t_farray	*get_cheapest(void);
+
 
 #endif

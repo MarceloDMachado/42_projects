@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+#include <stdio.h>
 
 int find_destiny(int index)
 {
@@ -53,7 +54,7 @@ void	build_farray(int index)
 	replicate(farray, last_func(farray), calc_distance(stack_a, stack_a()[index]));
 	dynamic_append(farray, rotate_func(stack_b, find_destiny(index)), calc_distance(stack_b, stack_b()[find_destiny(index)]));
 	append(farray, pb);
-	//ft_printf("index: %d | v: %d | f_len: %d | distance: %d\n", index, *(stack_a()[index]), farray_len(farray), calc_distance(stack_a, stack_a()[index]));
+	//printf("index: %d | v: %d | f_len: %d | distance: %d\n", index, *(stack_a()[index]), farray_len(farray), calc_distance(stack_a, stack_a()[index]));
 	//print_farray(farray);
 }
 

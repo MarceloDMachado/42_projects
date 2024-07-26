@@ -12,6 +12,15 @@
 
 #include "../includes/push_swap.h"
 
+void	move(t_farray *farray)
+{
+	while (*farray)
+	{
+		(*farray)();
+		farray++;
+	}
+}
+
 void	sort(void)
 {
 	pb();
@@ -20,7 +29,7 @@ void	sort(void)
 	{
 		price();
 		move(get_cheapest());
-		free_func_matrix();
+		//free_func_matrix();
 	}
 }
 

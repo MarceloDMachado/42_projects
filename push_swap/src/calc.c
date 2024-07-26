@@ -12,6 +12,22 @@
 
 #include "../includes/push_swap.h"
 
+t_farray *get_cheapest(void)
+{
+	t_farray *cheapest;
+	int i;
+
+	cheapest = fmatrix()[0];
+	i = 0;
+	while (stack_a()[++i])
+	{
+		if (farray_len(fmatrix()[i]) < farray_len(cheapest))
+			cheapest = fmatrix()[i];
+		//else if (farray_len(fmatrix()[i]) == farray_len(cheapest))
+	}
+	return (cheapest);
+}
+
 int	calc_distance(int **(*stack)(void), int *n)
 {
 	if (index_of(stack, n) <= stack_len(stack) / 2)
