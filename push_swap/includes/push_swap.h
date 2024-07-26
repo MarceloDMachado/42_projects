@@ -64,6 +64,6 @@ int		is_biggest(int *n);
 int		is_smallest(int *n);
 int		is_middle(int *n);
 t_farray	*get_cheapest(void);
-
+void	clean_func_matrix(void);
 
 #endif

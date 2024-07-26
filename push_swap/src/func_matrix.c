@@ -31,6 +31,20 @@ t_farray	**fmatrix(void)
 	return (fmatrix);
 }
 
+void	clean_func_matrix(void)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (fmatrix()[++i])
+	{
+		j = -1;
+		while (fmatrix()[i][++j])
+			fmatrix()[i][j] = 0;
+	}
+}
+
 void	free_func_matrix(void)
 {
 	int	i;
