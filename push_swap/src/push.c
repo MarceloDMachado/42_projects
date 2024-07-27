@@ -17,7 +17,7 @@ void	pa(void)
 	int	len;
 	int	*elem;
 
-	write(1, "pa\n", 4);
+	write(1, "pa\n", 3);
 	elem = stack_b()[0];
 	if (!elem)
 		return ;
@@ -33,7 +33,7 @@ void	pb(void)
 	int	len;
 	int	*elem;
 
-	write(1, "pb\n", 4);
+	write(1, "pb\n", 3);
 	elem = stack_a()[0];
 	if (!elem)
 		return ;

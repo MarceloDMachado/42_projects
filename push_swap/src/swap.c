@@ -21,19 +21,19 @@ void	swap(int **(*stack)(void))
 
 void	sa(void)
 {
-	ft_printf("sa\n");
+	write(1, "sa\n", 3);
 	swap(stack_a);
 }
 
 void	sb(void)
 {
-	ft_printf("sb\n");
+	write(1, "sb\n", 3);
 	swap(stack_b);
 }
 
 void	ss(void)
 {
-	ft_printf("ss\n");
+	write(1, "ss\n", 3);
 	swap(stack_a);
 	swap(stack_b);
 }

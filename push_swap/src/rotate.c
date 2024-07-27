@@ -27,19 +27,19 @@ void	rotate(int **(*stack)(void))
 
 void	ra(void)
 {
-	write(1, "ra\n", 4);
+	write(1, "ra\n", 3);
 	rotate(stack_a);
 }
 
 void	rb(void)
 {
-	write(1, "rb\n", 4);
+	write(1, "rb\n", 3);
 	rotate(stack_b);
 }
 
 void	rr(void)
 {
-	write(1, "rr\n", 4);
+	write(1, "rr\n", 3);
 	rotate(stack_a);
 	rotate(stack_b);
 }
