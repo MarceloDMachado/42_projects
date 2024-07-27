@@ -25,12 +25,13 @@ void	sort(void)
 {
 	pb();
 	pb();
-	while (stack_len(stack_a) != 0)
+	while (stack_len(stack_a) > 1)
 	{
 		price();
 		move(get_cheapest());
 		clean_func_matrix();
 	}
+	print(stack_a);
 	while (index_of(stack_b, get_max(stack_b)) != 0)
 		rotate_func(stack_b, index_of(stack_b, get_max(stack_b)))();
 	while (stack_b()[0])

@@ -12,6 +12,11 @@
 
 #include "../includes/push_swap.h"
 
+t_farray *prioritize(t_farray *cheapest, t_farray *new)
+{
+	
+}
+
 t_farray *get_cheapest(void)
 {
 	t_farray *cheapest;
@@ -23,7 +28,8 @@ t_farray *get_cheapest(void)
 	{
 		if (farray_len(fmatrix()[i]) < farray_len(cheapest))
 			cheapest = fmatrix()[i];
-		//else if (farray_len(fmatrix()[i]) == farray_len(cheapest))
+		else if (farray_len(fmatrix()[i]) == farray_len(cheapest))
+			prioritize(cheapest, fmatrix()[i]);
 	}
 	return (cheapest);
 }

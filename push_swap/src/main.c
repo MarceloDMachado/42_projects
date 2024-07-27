@@ -82,7 +82,7 @@ int	main(int argc, char **argv)
 		return (write(1, "Error\n", 7));
 	fill_stack(stack_a, &argv[1]);
 	handle_sort()();
-	//print(stack_a);
+	print(stack_a);
 	free_func_matrix();
 	free_stack(stack_a);
 	free_stack(stack_b);
