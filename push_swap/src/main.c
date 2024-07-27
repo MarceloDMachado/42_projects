@@ -79,10 +79,9 @@ int	main(int argc, char **argv)
 {
 	get_argc(argc);
 	if (argc <= 2 || check_params(&argv[1]) || check_dups(&argv[1]))
-		return (write(1, "Error\n", 7));
+		return (write(1, "Error\n", 6));
 	fill_stack(stack_a, &argv[1]);
 	handle_sort()();
-	print(stack_a);
 	free_func_matrix();
 	free_stack(stack_a);
 	free_stack(stack_b);

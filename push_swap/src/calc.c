@@ -12,24 +12,22 @@
 
 #include "../includes/push_swap.h"
 
-t_farray *prioritize(t_farray *cheapest, t_farray *new)
-{
-	
-}
+//t_farray *prioritize(t_farray *cheapest, t_farray *new)
+//{
+//	ret
+//}
 
-t_farray *get_cheapest(void)
+t_farray	*get_cheapest(void)
 {
-	t_farray *cheapest;
-	int i;
+	t_farray	*cheapest;
+	int			i;
 
 	cheapest = fmatrix()[0];
 	i = 0;
 	while (stack_a()[++i])
 	{
-		if (farray_len(fmatrix()[i]) < farray_len(cheapest))
+		if (farray_len(fmatrix()[i]) < farray_len(cheapest) && index_of(stack_a, get_min(stack_a)) != i)
 			cheapest = fmatrix()[i];
-		else if (farray_len(fmatrix()[i]) == farray_len(cheapest))
-			prioritize(cheapest, fmatrix()[i]);
 	}
 	return (cheapest);
 }
