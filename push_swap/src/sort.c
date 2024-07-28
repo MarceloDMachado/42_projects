@@ -20,18 +20,21 @@ void	move(t_farray *farray)
 
 void	sort(void)
 {
-	pb();
-	pb();
-	while (stack_len(stack_a) != 0)
+	while (!is_sorted())
 	{
-		price();
-		move(get_cheapest());
-		clean_func_matrix();
+		pb();
+		pb();
+		while (stack_len(stack_a) != 0)
+		{
+			price();
+			move(get_cheapest());
+			clean_func_matrix();
+		}
+		while (index_of(stack_b, get_max(stack_b)) != 0)
+			rotate_func(stack_b, index_of(stack_b, get_max(stack_b)))();
+		while (stack_b()[0])
+			pa();
 	}
-	while (index_of(stack_b, get_max(stack_b)) != 0)
-		rotate_func(stack_b, index_of(stack_b, get_max(stack_b)))();
-	while (stack_b()[0])
-		pa();
 	while (index_of(stack_a, get_min(stack_a)) != 0)
 		rotate_func(stack_a, index_of(stack_a, get_min(stack_a)))();
 }
