@@ -12,24 +12,41 @@
 
 #include "../includes/push_swap.h"
 
-//t_farray *prioritize(t_farray *cheapest, t_farray *new)
-//{
-//	ret
-//}
+int	get_smaller(int cur, int next)
+{
+	if (*(stack_a()[cur]) < *(stack_a()[next]))
+		return (cur);
+	else
+		return (next);
+}
+
+int prioritize(int cur, int next)
+{
+	if (is_biggest(stack_a()[cur]) && is_biggest(stack_a()[next]))
+		return (get_smaller(cur, next));
+	else if (is_middle(stack_a()[cur]) && is_middle(stack_a()[next]))
+		return (get_smaller(cur, next));
+	else if (is_smallest(stack_a()[cur]))
+		return (next);
+	else
+		return (cur);
+}
 
 t_farray	*get_cheapest(void)
 {
-	t_farray	*cheapest;
-	int			i;
+	int	cheapest;
+	int	i;
 
-	cheapest = fmatrix()[0];
+	cheapest = 0;
 	i = 0;
 	while (stack_a()[++i])
 	{
-		if (farray_len(fmatrix()[i]) < farray_len(cheapest) && index_of(stack_a, get_min(stack_a)) != i)
-			cheapest = fmatrix()[i];
+		if (farray_len(fmatrix()[i]) < farray_len(fmatrix()[cheapest]))
+			cheapest = i;
+		else if (farray_len(fmatrix()[i]) == farray_len(fmatrix()[cheapest]))
+			cheapest = prioritize(cheapest, i);
 	}
-	return (cheapest);
+	return (fmatrix()[cheapest]);
 }
 
 int	calc_distance(int **(*stack)(void), int *n)

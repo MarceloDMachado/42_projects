@@ -28,10 +28,10 @@ t_farray	last_func(t_farray *farray)
 	return (*(--farray));
 }
 
-void	replicate(t_farray *farray, t_farray new_func, unsigned int n)
+void	replicate(t_farray *farray, int distance)
 {
-	while (n-- > 1)
-		append(farray, new_func);
+	while (distance-- > 1)
+		append(farray, last_func(farray));
 }
 
 t_farray	*find_f(t_farray *farray, t_farray func)
@@ -45,9 +45,9 @@ t_farray	*find_f(t_farray *farray, t_farray func)
 	return (0);
 }
 
-void	dynamic_append(t_farray *farray, t_farray new_func, unsigned int n)
+void	dynamic_append(t_farray *farray, t_farray new_func, int distance)
 {
-	while (n-- > 0)
+	while (distance-- > 0)
 	{
 		if (new_func == rb)
 		{

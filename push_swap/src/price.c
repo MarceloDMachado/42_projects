@@ -13,7 +13,7 @@
 #include "../includes/push_swap.h"
 #include <stdio.h>
 
-int	find_destiny(int index)
+int	find_dest(int index)
 {
 	if (is_biggest(stack_a()[index]))
 		return (index_of(stack_b, get_max(stack_b)));
@@ -29,8 +29,12 @@ void	build_farray(int index)
 
 	farray = fmatrix()[index];
 	append(farray, rotate_func(stack_a, index));
-	replicate(farray, last_func(farray), calc_distance(stack_a, stack_a()[index]));
-	dynamic_append(farray, rotate_func(stack_b, find_destiny(index)), calc_distance(stack_b, stack_b()[find_destiny(index)]));
+	replicate(farray, calc_distance(stack_a, stack_a()[index]));
+	dynamic_append(\
+		fmatrix()[index], \
+		rotate_func(stack_b, find_dest(index)), \
+		calc_distance(stack_b, stack_b()[find_dest(index)] \
+	));
 	append(farray, pb);
 }
 
