@@ -20,7 +20,7 @@ int	get_smaller(int cur, int next)
 		return (next);
 }
 
-int prioritize(int cur, int next)
+int	prioritize(int cur, int next)
 {
 	if (is_biggest(stack_a()[cur]) && is_biggest(stack_a()[next]))
 		return (get_smaller(cur, next));
