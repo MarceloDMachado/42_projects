@@ -18,27 +18,6 @@ void	move(t_farray *farray)
 		(*farray++)();
 }
 
-void	sort(void)
-{
-	while (!is_sorted())
-	{
-		pb();
-		pb();
-		while (stack_len(stack_a) != 0)
-		{
-			price();
-			move(get_cheapest());
-			clean_func_matrix();
-		}
-		while (index_of(stack_b, get_max(stack_b)) != 0)
-			rotate_func(stack_b, index_of(stack_b, get_max(stack_b)))();
-		while (stack_b()[0])
-			pa();
-	}
-	while (index_of(stack_a, get_min(stack_a)) != 0)
-		rotate_func(stack_a, index_of(stack_a, get_min(stack_a)))();
-}
-
 void	sort_three(void)
 {
 	while (!is_sorted())
@@ -59,15 +38,36 @@ void	sort_five(void)
 {
 	while (!is_sorted())
 	{
-		while (index_of(stack_a, get_min(stack_a)) != 0)
-			rotate_func(stack_a, index_of(stack_a, get_min(stack_a)))();
-		pb();
-		while (index_of(stack_a, get_min(stack_a)) != 0)
-			rotate_func(stack_a, index_of(stack_a, get_min(stack_a)))();
-		pb();
+		while (stack_len(stack_a) > 3)
+		{
+			while (index_of(stack_a, get_min(stack_a)) != 0)
+				rotate_func(stack_a, index_of(stack_a, get_min(stack_a)))();
+			pb();
+		}
 		sort_three();
 		pa();
 		pa();
+	}
+	while (index_of(stack_a, get_min(stack_a)) != 0)
+		rotate_func(stack_a, index_of(stack_a, get_min(stack_a)))();
+}
+
+void	sort(void)
+{
+	while (!is_sorted())
+	{
+		pb();
+		pb();
+		while (stack_a()[0])
+		{
+			price();
+			move(get_cheapest());
+			clean_func_matrix();
+		}
+		while (index_of(stack_b, get_max(stack_b)) != 0)
+			rotate_func(stack_b, index_of(stack_b, get_max(stack_b)))();
+		while (stack_b()[0])
+			pa();
 	}
 	while (index_of(stack_a, get_min(stack_a)) != 0)
 		rotate_func(stack_a, index_of(stack_a, get_min(stack_a)))();

@@ -39,7 +39,6 @@ void		reverse(int **(*stack)(void));
 void		rra(void);
 void		rrb(void);
 void		rrr(void);
-void		print(int **(*stack)(void));
 void		swap_pointer(int **a, int **b);
 void		fix_stack(int **(*stack)(void));
 void		sort(void);
