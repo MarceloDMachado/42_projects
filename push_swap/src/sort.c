@@ -45,8 +45,8 @@ void	sort_five(void)
 			pb();
 		}
 		sort_three();
-		pa();
-		pa();
+		while (stack_b()[0])
+			pa();
 	}
 	while (index_of(stack_a, get_min(stack_a)) != 0)
 		rotate_func(stack_a, index_of(stack_a, get_min(stack_a)))();
@@ -75,9 +75,7 @@ void	sort(void)
 
 void	(*handle_sort(void))(void)
 {
-	if (stack_len(stack_a) == 3)
-		return (sort_three);
-	if (stack_len(stack_a) == 5)
+	if (stack_len(stack_a) <= 5)
 		return (sort_five);
 	return (sort);
 }
