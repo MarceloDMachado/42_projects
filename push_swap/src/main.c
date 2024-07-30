@@ -82,9 +82,9 @@ int	check_dups(char **argv)
 int	main(int argc, char **argv)
 {
 	get_argc(argc);
-	if (argc == 1)
+	if (argc <= 2)
 		return (0);
-	if (argc < 2 || check_params(&argv[1]) || check_dups(&argv[1]))
+	if (check_params(&argv[1]) || check_dups(&argv[1]))
 		return (write(1, "Error\n", 6) / 6);
 	fill_stack(stack_a, &argv[1]);
 	handle_sort()();
