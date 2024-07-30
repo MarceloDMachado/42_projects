@@ -38,3 +38,12 @@ void	fix_stack(int **(*stack)(void))
 	}
 	stack()[i] = 0;
 }
+
+int	get_argc(int n)
+{
+	static int	argc = 0;
+
+	if (!argc)
+		argc = n;
+	return (argc);
+}

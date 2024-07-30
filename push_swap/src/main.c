@@ -12,13 +12,17 @@
 
 #include "../includes/push_swap.h"
 
-int	get_argc(int n)
+int	check_int(char **argv)
 {
-	static int	argc = 0;
-
-	if (!argc)
-		argc = n;
-	return (argc);
+	while (*argv)
+	{
+		if (ft_atol(*argv) > (long) 2147483647)
+			return (1);
+		if (ft_atol(*argv) < (long) -2147483648)
+			return (1);
+		argv++;
+	}
+	return (0);
 }
 
 int	check_params(char **argv)
@@ -40,7 +44,7 @@ int	check_params(char **argv)
 		}
 		i++;
 	}
-	return (0);
+	return (check_int(argv));
 }
 
 static int	add(int *set, int n)
@@ -78,8 +82,10 @@ int	check_dups(char **argv)
 int	main(int argc, char **argv)
 {
 	get_argc(argc);
-	if (argc <= 2 || check_params(&argv[1]) || check_dups(&argv[1]))
-		return (write(1, "Error\n", 6));
+	if (argc == 1)
+		return (0);
+	if (argc < 2 || check_params(&argv[1]) || check_dups(&argv[1]))
+		return (write(1, "Error\n", 6) / 6);
 	fill_stack(stack_a, &argv[1]);
 	handle_sort()();
 	free_func_matrix();
