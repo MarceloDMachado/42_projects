@@ -40,6 +40,8 @@ int	check_params(char **argv)
 				return (1);
 			if (is_signal(argv[i][j]) && j != 0)
 				return (1);
+			if (is_signal(argv[i][j]) && !ft_isdigit(argv[i][j + 1]))
+				return (1);
 			j++;
 		}
 		i++;
@@ -82,7 +84,7 @@ int	check_dups(char **argv)
 int	main(int argc, char **argv)
 {
 	get_argc(argc);
-	if (argc <= 2)
+	if (argc < 2)
 		return (0);
 	if (check_params(&argv[1]) || check_dups(&argv[1]))
 		return (write(2, "Error\n", 6) / 6);
