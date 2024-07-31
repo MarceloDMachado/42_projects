@@ -34,6 +34,8 @@ int	check_params(char **argv)
 	while (argv[i])
 	{
 		j = 0;
+		if (ft_strlen(argv[i]) == 0)
+			return (1);
 		while (argv[i][j])
 		{
 			if (!ft_isdigit(argv[i][j]) && !is_signal(argv[i][j]))
@@ -84,8 +86,6 @@ int	check_dups(char **argv)
 int	main(int argc, char **argv)
 {
 	get_argc(argc);
-	if (argc < 2)
-		return (0);
 	if (check_params(&argv[1]) || check_dups(&argv[1]))
 		return (write(2, "Error\n", 6) / 6);
 	fill_stack(stack_a, &argv[1]);
