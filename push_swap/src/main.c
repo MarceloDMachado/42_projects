@@ -85,7 +85,7 @@ int	main(int argc, char **argv)
 	if (argc <= 2)
 		return (0);
 	if (check_params(&argv[1]) || check_dups(&argv[1]))
-		return (write(1, "Error\n", 6) / 6);
+		return (write(2, "Error\n", 6) / 6);
 	fill_stack(stack_a, &argv[1]);
 	handle_sort()();
 	free_func_matrix();
