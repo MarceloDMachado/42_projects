@@ -18,7 +18,7 @@ void	rotate(int **(*stack)(void))
 	int	i;
 	int	j;
 
-	len = stack_len(stack);
+	len = size(stack, get, 0);
 	i = 0;
 	j = 1;
 	while (j < len)

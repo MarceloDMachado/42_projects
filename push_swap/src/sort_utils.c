@@ -18,7 +18,7 @@ int	is_sorted(void)
 	int	len;
 
 	i = index_of(stack_a, get_min(stack_a));
-	len = stack_len(stack_a);
+	len = size(stack_a, get, 0);
 	while (i < len - 1)
 	{
 		if (*(stack_a()[i]) > *(stack_a()[i + 1]))

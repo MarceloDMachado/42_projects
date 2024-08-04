@@ -29,7 +29,7 @@ int	*get_min(int **(*stack)(void))
 
 	i = 0;
 	min = stack()[i];
-	while (++i < stack_len(stack))
+	while (++i < size(stack, get, 0))
 	{
 		if (*(stack()[i]) < *min)
 			min = stack()[i];
@@ -44,7 +44,7 @@ int	*get_max(int **(*stack)(void))
 
 	i = 0;
 	max = stack()[i];
-	while (++i < stack_len(stack))
+	while (++i < size(stack, get, 0))
 	{
 		if (*(stack()[i]) > *max)
 			max = stack()[i];
@@ -71,5 +71,5 @@ int	*get_nearest(int target)
 
 int	*last_elem(int **(stack)(void))
 {
-	return (stack()[stack_len(stack) - 1]);
+	return (stack()[size(stack, get, 0) - 1]);
 }

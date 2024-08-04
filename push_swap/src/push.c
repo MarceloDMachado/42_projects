@@ -23,8 +23,10 @@ void	pa(void)
 		return ;
 	stack_b()[0] = 0;
 	fix_stack(stack_b);
-	len = stack_len(stack_a);
+	len = size(stack_a, get, 0);
 	stack_a()[len] = elem;
+	size(stack_a, set, size(stack_a, get, 0) + 1);
+	size(stack_b, set, size(stack_b, get, 0) - 1);
 	reverse(stack_a);
 }
 
@@ -39,7 +41,9 @@ void	pb(void)
 		return ;
 	stack_a()[0] = 0;
 	fix_stack(stack_a);
-	len = stack_len(stack_b);
+	len = size(stack_b, get, 0);
 	stack_b()[len] = elem;
+	size(stack_a, set, size(stack_a, get, 0) - 1);
+	size(stack_b, set, size(stack_b, get, 0) + 1);
 	reverse(stack_b);
 }

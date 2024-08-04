@@ -38,7 +38,7 @@ void	sort_five(void)
 {
 	while (!is_sorted())
 	{
-		while (stack_len(stack_a) > 3)
+		while (size(stack_a, get, 0) > 3)
 		{
 			while (index_of(stack_a, get_min(stack_a)) != 0)
 				rotate_func(stack_a, index_of(stack_a, get_min(stack_a)))();
@@ -75,7 +75,7 @@ void	sort(void)
 
 void	(*handle_sort(void))(void)
 {
-	if (stack_len(stack_a) <= 5)
+	if (size(stack_a, get, 0) <= 5)
 		return (sort_five);
 	return (sort);
 }

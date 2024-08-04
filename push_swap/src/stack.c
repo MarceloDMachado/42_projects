@@ -46,6 +46,7 @@ void	fill_stack(int **(*stack)(void), char **argv)
 		*(stack()[i]) = ft_atoi(argv[i]);
 		i++;
 	}
+	size(stack_a, set, i);
 }
 
 void	free_stack(int **(*stack)(void))

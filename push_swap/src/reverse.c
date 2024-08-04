@@ -16,7 +16,7 @@ void	reverse(int **(*stack)(void))
 {
 	int	len;
 
-	len = stack_len(stack);
+	len = size(stack, get, 0);
 	while (--len > 0)
 		swap_pointer(&(stack()[len]), &(stack()[len - 1]));
 }

@@ -63,5 +63,9 @@ int			farray_len(t_farray *f_array);
 int			is_biggest(int *n);
 int			is_smallest(int *n);
 int			is_middle(int *n);
+int			set(int *old, int new);
+int			get(int *old, int new);
+int			size(int **(*stack)(void), int (*f)(int *, int), int n);
+void		print_cur_sizes(void);
 
 #endif
