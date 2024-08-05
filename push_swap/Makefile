@@ -15,7 +15,7 @@ NAME = push_swap
 INC = -I ./includes/\
 	  -I ./libft/
 SRC = main.c stack.c stack_utils.c swap.c rotate.c reverse.c \
-utils.c push.c sort.c sort_utils.c calc.c \
+utils.c push.c sort.c sort_utils.c calc.c size.c\
 func_matrix.c func_matrix_utils.c price.c category.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
