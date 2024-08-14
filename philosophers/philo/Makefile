@@ -10,10 +10,10 @@
 #                                                                              #
 # **************************************************************************** #
 
-W_FLAGS = -Wall -Wextra -Werror -g3
+W_FLAGS = -Wall -Wextra -Werror -pthread
 NAME = philo
 INC = -I ./includes/
-SRC = main.c
+SRC = main.c ft_atoi.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 
