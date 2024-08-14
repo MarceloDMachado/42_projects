@@ -23,6 +23,19 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->number_of_times_each_philosopher_must_eat = ft_atoi(argv[4]);
 }
 
+int	check_data(t_data *data)
+{
+	if (data->number_of_philosophers > 200)
+		return (1);
+	if (data->time_to_die < 60)
+		return (1);
+	if (data->time_to_eat < 60)
+		return (1);
+	if (data->time_to_sleep < 60)
+		return (1);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_data	data;
@@ -30,5 +43,7 @@ int	main(int argc, char **argv)
 	if (argc < 5 || argc > 6)
 		return (1);
 	init_data(&data, argc, &argv[1]);
+	if (check_data(&data))
+		return (1);
 	return (0);
 }
