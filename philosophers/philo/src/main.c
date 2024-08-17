@@ -44,10 +44,15 @@ void	mount_table(t_data *data)
 	i = -1;
 	while (++i < data->number_of_philosophers)
 		pthread_mutex_init(data->table.forks + i, NULL);
-	data->table.philos = malloc((data->number_of_philosophers + 1) * sizeof(pthread_t));
+	data->table.philos = malloc((data->number_of_philosophers + 1) * sizeof(t_philosopher));
+	data->table.data = data;
 	i = -1;
 	while (++i < data->number_of_philosophers)
-		pthread_create(data->table.philos + i, NULL, dinner_prepare, data);
+	{
+		data->table.philos[i].table = &data->table;
+		data->table.philos[i].id = i + 1;
+		pthread_create(&data->table.philos[i].thread, NULL, dinner_prepare, data->table.philos + i);
+	}
 }
 
 void	dismount_table(t_data *data)
@@ -56,7 +61,10 @@ void	dismount_table(t_data *data)
 
 	i = -1;
 	while (++i < data->number_of_philosophers)
-		pthread_join(data->table.philos[i], (void **)0);
+	{
+		pthread_join(data->table.philos[i].thread, (void *)0);
+		pthread_mutex_destroy(data->table.forks + i);
+	}
 }
 
 int	main(int argc, char **argv)
@@ -70,5 +78,7 @@ int	main(int argc, char **argv)
 		return (1);
 	mount_table(&data);
 	dismount_table(&data);
+	free(data.table.philos);
+	free(data.table.forks);
 	return (0);
 }

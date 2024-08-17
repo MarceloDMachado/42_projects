@@ -14,9 +14,9 @@
 
 void *dinner_prepare(void *p)
 {
-    t_data  *data;
+    t_philosopher  *philo;
 
-    data = (t_data*)p;
-    printf("%d\n", data->number_of_philosophers);
+    philo = (t_philosopher*)p;
+    printf("my ID: %d yeah!\n", philo->id);
     return (NULL);
 }

@@ -18,13 +18,31 @@
 # include <string.h>
 # include <pthread.h>
 
-typedef struct s_table
-{
-	pthread_t		*philos;
-	pthread_mutex_t	*forks;
-}	t_table;
+typedef struct s_philosopher t_philosopher;
+typedef struct s_table t_table;
+typedef struct s_rule t_rule;
+typedef struct s_data t_data;
 
-typedef struct s_data
+struct s_philosopher {
+	int			id;
+	pthread_t	thread;
+	t_table		*table;
+};
+
+struct s_table {
+	t_philosopher	*philos;
+	pthread_mutex_t	*forks;
+	int				ready_philos;
+	t_data			*data;
+};
+ 
+struct s_rule
+{
+	pthread_mutex_t should_start;
+	pthread_mutex_t should_stop;
+};
+
+struct s_data
 {
 	int		number_of_philosophers;
 	int		time_to_die;
@@ -32,7 +50,8 @@ typedef struct s_data
 	int		time_to_sleep;
 	int		number_of_times_each_philosopher_must_eat;
 	t_table	table;
-}	t_data;
+	t_rule rules;
+};
 
 int		ft_atoi(const char *nptr);
 void	*dinner_prepare(void *data);
