@@ -14,9 +14,9 @@
 
 void	handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *))
 {
-	int own;
-	int neighbor;
-	
+	int	own;
+	int	neighbor;
+
 	own = philo->id - 1;
 	if (own == philo->table->data->number_of_philosophers)
 		neighbor = 0;
@@ -26,7 +26,7 @@ void	handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *))
 	f(philo->table->forks + neighbor);
 }
 
-void	handle_action(t_philosopher * philo, void (*action)(int))
+void	handle_action(t_philosopher *philo, void (*action)(int))
 {
 	if (1)
 		action(philo->id);
