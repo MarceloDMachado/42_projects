@@ -26,8 +26,8 @@ void	handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *))
 	f(philo->table->forks + neighbor);
 }
 
-void	handle_action(t_philosopher *philo, void (*action)(int))
+void	handle_action(t_philosopher *philo, void (*action)(t_philosopher *))
 {
 	if (1)
-		action(philo->id);
+		action(philo);
 }

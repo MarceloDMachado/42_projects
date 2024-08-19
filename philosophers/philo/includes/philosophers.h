@@ -55,13 +55,13 @@ struct	s_data
 
 int		ft_atoi(const char *nptr);
 void	*dinner_prepare(void *data);
-void	take_fork(int id);
-void	eat(int id);
-void	sleep(int id);
-void	think(int id);
-void	die(int id);
+void	take_fork(t_philosopher *);
+void	eat(t_philosopher *);
+void	sleep(t_philosopher *);
+void	think(t_philosopher *);
+void	die(t_philosopher *);
 void	*ft_calloc(size_t nmemb, size_t size);
 void	handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *));
-void	handle_action(t_philosopher *philo, void (*action)(int));
+void	handle_action(t_philosopher *philo, void (*f)(t_philosopher *));
 
 #endif

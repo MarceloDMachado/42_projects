@@ -12,27 +12,27 @@
 
 #include "../includes/philosophers.h"
 
-void	take_fork(int id)
+void	take_fork(t_philosopher *philo)
 {
-	printf("%d %d has taken a fork\n", 100, id);
+	printf("%d %d has taken a fork\n", 100, philo->id);
 }
 
-void	eat(int id)
+void	eat(t_philosopher *philo)
 {
-	printf("%d %d is eating\n", 100, id);
+	printf("%d %d is eating\n", 100, philo->id);
 }
 
-void	sleep(int id)
+void	sleep(t_philosopher *philo)
 {
-	printf("%d %d is sleeping\n", 100, id);
+	printf("%d %d is sleeping\n", 100, philo->id);
 }
 
-void	think(int id)
+void	think(t_philosopher *philo)
 {
-	printf("%d %d is thinking\n", 100, id);
+	printf("%d %d is thinking\n", 100, philo->id);
 }
 
-void	die(int id)
+void	die(t_philosopher *philo)
 {
-	printf("%d %d died\n", 100, id);
+	printf("%d %d died\n", 100, philo->id);
 }
