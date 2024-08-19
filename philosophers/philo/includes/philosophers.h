@@ -61,5 +61,7 @@ void	sleep(int id);
 void	think(int id);
 void	die(int id);
 void	*ft_calloc(size_t nmemb, size_t size);
+void	handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *));
+void	handle_action(t_philosopher *philo, void (*action)(int));
 
 #endif
