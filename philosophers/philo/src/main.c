@@ -46,6 +46,7 @@ void	mount_table(t_data *data)
 		pthread_mutex_init(data->table.forks + i, NULL);
 	data->table.philos = ft_calloc((data->number_of_philosophers + 1), sizeof(t_philosopher));
 	data->table.data = data;
+	data->table.ready_philos = 0;
 	i = -1;
 	while (++i < data->number_of_philosophers)
 	{

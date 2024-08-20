@@ -17,6 +17,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <pthread.h>
+# include <unistd.h>
 
 typedef struct s_philosopher	t_philosopher;
 typedef struct s_table			t_table;
@@ -57,7 +58,7 @@ int		ft_atoi(const char *nptr);
 void	*dinner_prepare(void *data);
 void	take_fork(t_philosopher *);
 void	eat(t_philosopher *);
-void	sleep(t_philosopher *);
+void	to_sleep(t_philosopher *);
 void	think(t_philosopher *);
 void	die(t_philosopher *);
 void	*ft_calloc(size_t nmemb, size_t size);

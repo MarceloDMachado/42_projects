@@ -19,10 +19,9 @@ void	*dinner_prepare(void *p)
 	philo = (t_philosopher *)p;
 	handle_fork(philo, pthread_mutex_lock);
 	handle_action(philo, take_fork);
+	handle_action(philo, take_fork);
 	handle_action(philo, eat);
-	handle_action(philo, sleep);
-	handle_action(philo, think);
-	handle_action(philo, die);
 	handle_fork(philo, pthread_mutex_unlock);
+	handle_action(philo, to_sleep);
 	return (NULL);
 }

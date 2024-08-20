@@ -20,11 +20,13 @@ void	take_fork(t_philosopher *philo)
 void	eat(t_philosopher *philo)
 {
 	printf("%d %d is eating\n", 100, philo->id);
+	usleep(1000 * philo->table->data->time_to_eat);
 }
 
-void	sleep(t_philosopher *philo)
+void	to_sleep(t_philosopher *philo)
 {
 	printf("%d %d is sleeping\n", 100, philo->id);
+	usleep(1000 * philo->table->data->time_to_sleep);
 }
 
 void	think(t_philosopher *philo)

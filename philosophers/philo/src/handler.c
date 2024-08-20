@@ -28,6 +28,5 @@ void	handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *))
 
 void	handle_action(t_philosopher *philo, void (*action)(t_philosopher *))
 {
-	if (1)
-		action(philo);
+	action(philo);
 }
