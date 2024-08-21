@@ -22,8 +22,16 @@ void	handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *))
 		neighbor = 0;
 	else
 		neighbor = own + 1;
-	f(philo->table->forks + own);
-	f(philo->table->forks + neighbor);
+	if (f == pthread_mutex_unlock)
+	{
+		f(philo->table->forks + own);
+		f(philo->table->forks + neighbor);
+	}
+	else
+	{
+		f(philo->table->forks + neighbor);
+		f(philo->table->forks + own);
+	}
 }
 
 void	handle_action(t_philosopher *philo, void (*action)(t_philosopher *))

@@ -40,20 +40,25 @@ void	mount_table(t_data *data)
 {
 	int	i;
 
+	data->table.data = data;
+	data->table.someone_died = 0;
 	data->table.forks = ft_calloc((data->number_of_philosophers + 1), sizeof(pthread_mutex_t));
 	i = -1;
 	while (++i < data->number_of_philosophers)
 		pthread_mutex_init(data->table.forks + i, NULL);
 	data->table.philos = ft_calloc((data->number_of_philosophers + 1), sizeof(t_philosopher));
-	data->table.data = data;
-	data->table.ready_philos = 0;
 	i = -1;
+	pthread_mutex_init(&data->rules.mtx, NULL);
 	while (++i < data->number_of_philosophers)
 	{
 		data->table.philos[i].table = &data->table;
 		data->table.philos[i].id = i + 1;
+		data->table.philos[i].start_time = get_cur_time();
+		data->table.philos[i].last_meal = data->table.philos[i].start_time;
 		pthread_create(&data->table.philos[i].thread, NULL, dinner_prepare, data->table.philos + i);
 	}
+	while (!check_death(data))
+		;
 }
 
 void	dismount_table(t_data *data)

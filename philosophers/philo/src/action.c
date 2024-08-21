@@ -14,27 +14,32 @@
 
 void	take_fork(t_philosopher *philo)
 {
-	printf("%d %d has taken a fork\n", 100, philo->id);
+	handle_fork(philo, pthread_mutex_lock);
+	printf("%ld %d has taken a fork\n", get_cur_time() - philo->start_time, philo->id);
+	printf("%ld %d has taken a fork\n", get_cur_time() - philo->start_time, philo->id);
 }
 
 void	eat(t_philosopher *philo)
 {
-	printf("%d %d is eating\n", 100, philo->id);
+	printf("%ld %d is eating\n", get_cur_time() - philo->start_time, philo->id);
+	philo->meals++;
+	philo->last_meal = get_cur_time();
 	usleep(1000 * philo->table->data->time_to_eat);
+	handle_fork(philo, pthread_mutex_unlock);
 }
 
 void	to_sleep(t_philosopher *philo)
 {
-	printf("%d %d is sleeping\n", 100, philo->id);
+	printf("%ld %d is sleeping\n", get_cur_time() - philo->start_time, philo->id);
 	usleep(1000 * philo->table->data->time_to_sleep);
 }
 
 void	think(t_philosopher *philo)
 {
-	printf("%d %d is thinking\n", 100, philo->id);
+	printf("%ld %d is thinking\n", get_cur_time() - philo->start_time, philo->id);
 }
 
 void	die(t_philosopher *philo)
 {
-	printf("%d %d died\n", 100, philo->id);
+	printf("%ld %d died\n", get_cur_time() - philo->start_time, philo->id);
 }

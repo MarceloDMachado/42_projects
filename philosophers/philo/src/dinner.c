@@ -12,16 +12,30 @@
 
 #include "../includes/philosophers.h"
 
+static int	check(t_philosopher *philo)
+{
+	int	i;
+
+	pthread_mutex_lock(&philo->table->data->rules.mtx);
+	i = philo->table->someone_died;
+	pthread_mutex_unlock(&philo->table->data->rules.mtx);
+	return (i);
+}
+
 void	*dinner_prepare(void *p)
 {
+	int				i;
 	t_philosopher	*philo;
+	static void		(*f[4])(t_philosopher *) = {take_fork, eat, to_sleep, think};
 
 	philo = (t_philosopher *)p;
-	handle_fork(philo, pthread_mutex_lock);
-	handle_action(philo, take_fork);
-	handle_action(philo, take_fork);
-	handle_action(philo, eat);
-	handle_fork(philo, pthread_mutex_unlock);
-	handle_action(philo, to_sleep);
+	philo->meals = 0;
+	i = 0;
+	while (!check(philo))
+	{
+		handle_action(philo, f[i++]);
+		if (i == 4)
+			i = 0;
+	}
 	return (NULL);
 }

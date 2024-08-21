@@ -18,6 +18,7 @@
 # include <string.h>
 # include <pthread.h>
 # include <unistd.h>
+# include <sys/time.h>
 
 typedef struct s_philosopher	t_philosopher;
 typedef struct s_table			t_table;
@@ -25,44 +26,48 @@ typedef struct s_rule			t_rule;
 typedef struct s_data			t_data;
 
 struct	s_philosopher {
-	int			id;
-	pthread_t	thread;
-	t_table		*table;
+	int				id;
+	int				meals;
+	long			last_meal;
+	long int		start_time;
+	pthread_t		thread;
+	t_table			*table;
 };
 
 struct	s_table {
 	t_philosopher	*philos;
 	pthread_mutex_t	*forks;
-	int				ready_philos;
+	int				someone_died;
 	t_data			*data;
 };
 
 struct	s_rule
 {
-	pthread_mutex_t	should_start;
-	pthread_mutex_t	should_stop;
+	pthread_mutex_t	mtx;
 };
 
 struct	s_data
 {
-	int		number_of_philosophers;
-	int		time_to_die;
-	int		time_to_eat;
-	int		time_to_sleep;
-	int		number_of_times_each_philosopher_must_eat;
-	t_table	table;
-	t_rule	rules;
+	int				number_of_philosophers;
+	int				time_to_die;
+	int				time_to_eat;
+	int				time_to_sleep;
+	int				number_of_times_each_philosopher_must_eat;
+	t_table			table;
+	t_rule			rules;
 };
 
-int		ft_atoi(const char *nptr);
-void	*dinner_prepare(void *data);
-void	take_fork(t_philosopher *);
-void	eat(t_philosopher *);
-void	to_sleep(t_philosopher *);
-void	think(t_philosopher *);
-void	die(t_philosopher *);
-void	*ft_calloc(size_t nmemb, size_t size);
-void	handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *));
-void	handle_action(t_philosopher *philo, void (*f)(t_philosopher *));
+int			ft_atoi(const char *nptr);
+void		*dinner_prepare(void *data);
+void		take_fork(t_philosopher *philo);
+void		eat(t_philosopher *philo);
+void		to_sleep(t_philosopher *philo);
+void		think(t_philosopher *philo);
+void		die(t_philosopher *philo);
+void		*ft_calloc(size_t nmemb, size_t size);
+void		handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *));
+void		handle_action(t_philosopher *philo, void (*f)(t_philosopher *));
+int			check_death(t_data *data);
+long int	get_cur_time(void);
 
 #endif
