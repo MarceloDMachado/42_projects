@@ -15,18 +15,23 @@
 int	check_death(t_data *data)
 {
 	int	i;
+	long	last_meal;
 
 	i = -1;
 	while (++i < data->nbr_of_philos)
 	{
-		if ((get_time() - data->table.philos[i].last_meal) > data->time_to_die)
+		pthread_mutex_lock(&data->table.philos[i].last_meal_mtx);
+		last_meal = data->table.philos[i].last_meal;
+		if ((get_time() - last_meal) > data->time_to_die)
 		{
-			pthread_mutex_lock(&data->rules.mtx);
+			pthread_mutex_lock(&data->rules.death_mtx);
 			data->table.someone_died = 1;
 			handle_action(&data->table.philos[i], die);
-			pthread_mutex_unlock(&data->rules.mtx);
+			pthread_mutex_unlock(&data->rules.death_mtx);
+			pthread_mutex_unlock(&data->table.philos[i].last_meal_mtx);
 			return (1);
 		}
+		pthread_mutex_unlock(&data->table.philos[i].last_meal_mtx);
 	}
 	return (0);
 }

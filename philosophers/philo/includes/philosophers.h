@@ -31,6 +31,7 @@ struct	s_philo {
 	int				meals;
 	long			last_meal;
 	long int		start_time;
+	pthread_mutex_t last_meal_mtx;
 	pthread_t		thread;
 	t_table			*table;
 };
@@ -44,7 +45,8 @@ struct	s_table {
 
 struct	s_rule
 {
-	pthread_mutex_t	mtx;
+	pthread_mutex_t	death_mtx;
+	pthread_mutex_t	write_mtx;
 };
 
 struct	s_data
@@ -71,5 +73,6 @@ void		handle_action(t_philo *philo, void (*f)(t_philo *));
 int			check_death(t_data *data);
 int			check(t_philo *philo);
 long int	get_time(void);
+void		print(char *str, t_philo *philo);
 
 #endif

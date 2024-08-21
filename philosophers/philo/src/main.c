@@ -50,13 +50,15 @@ void	mount_table(t_data *data)
 		pthread_mutex_init(table->forks + i, NULL);
 	data->table.philos = ft_calloc((data->nbr_of_philos + 1), sizeof(t_philo));
 	i = -1;
-	pthread_mutex_init(&data->rules.mtx, NULL);
+	pthread_mutex_init(&data->rules.death_mtx, NULL);
+	pthread_mutex_init(&data->rules.write_mtx, NULL);
 	while (++i < data->nbr_of_philos)
 	{
 		data->table.philos[i].table = &data->table;
 		data->table.philos[i].id = i + 1;
 		data->table.philos[i].start_time = get_time();
 		data->table.philos[i].last_meal = table->philos[i].start_time;
+		pthread_mutex_init(&data->table.philos[i].last_meal_mtx, NULL);
 		pthread_create(&table->philos[i].thread, 0, dinner, table->philos + i);
 	}
 	while (!check_death(data))
@@ -71,8 +73,11 @@ void	dismount_table(t_data *data)
 	while (++i < data->nbr_of_philos)
 	{
 		pthread_join(data->table.philos[i].thread, (void *)0);
+		pthread_mutex_destroy(&data->table.philos[i].last_meal_mtx);
 		pthread_mutex_destroy(data->table.forks + i);
 	}
+	pthread_mutex_destroy(&data->rules.death_mtx);
+	pthread_mutex_destroy(&data->rules.write_mtx);
 }
 
 int	main(int argc, char **argv)

@@ -16,9 +16,9 @@ int	check(t_philo *philo)
 {
 	int	i;
 
-	pthread_mutex_lock(&philo->table->data->rules.mtx);
+	pthread_mutex_lock(&philo->table->data->rules.death_mtx);
 	i = philo->table->someone_died;
-	pthread_mutex_unlock(&philo->table->data->rules.mtx);
+	pthread_mutex_unlock(&philo->table->data->rules.death_mtx);
 	return (i);
 }
 
