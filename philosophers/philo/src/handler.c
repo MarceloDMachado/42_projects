@@ -12,13 +12,13 @@
 
 #include "../includes/philosophers.h"
 
-void	handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *))
+void	handle_fork(t_philo *philo, int (*f)(pthread_mutex_t *))
 {
 	int	own;
 	int	neighbor;
 
 	own = philo->id - 1;
-	if (own == philo->table->data->number_of_philosophers)
+	if (own == philo->table->data->nbr_of_philos)
 		neighbor = 0;
 	else
 		neighbor = own + 1;
@@ -34,7 +34,7 @@ void	handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *))
 	}
 }
 
-void	handle_action(t_philosopher *philo, void (*action)(t_philosopher *))
+void	handle_action(t_philo *philo, void (*action)(t_philo *))
 {
 	action(philo);
 }

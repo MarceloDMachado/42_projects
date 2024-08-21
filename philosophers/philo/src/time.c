@@ -12,7 +12,7 @@
 
 #include "../includes/philosophers.h"
 
-long int	get_cur_time(void)
+long int	get_time(void)
 {
 	struct timeval	tv;
 

@@ -12,34 +12,40 @@
 
 #include "../includes/philosophers.h"
 
-void	take_fork(t_philosopher *philo)
+void	take_fork(t_philo *philo)
 {
+	long int	time;
+
 	handle_fork(philo, pthread_mutex_lock);
-	printf("%ld %d has taken a fork\n", get_cur_time() - philo->start_time, philo->id);
-	printf("%ld %d has taken a fork\n", get_cur_time() - philo->start_time, philo->id);
+	time = get_time() - philo->start_time;
+	printf("%ld %d has taken a fork\n", time, philo->id);
+	printf("%ld %d has taken a fork\n", time, philo->id);
 }
 
-void	eat(t_philosopher *philo)
+void	eat(t_philo *philo)
 {
-	printf("%ld %d is eating\n", get_cur_time() - philo->start_time, philo->id);
+	long int	time;
+
+	time = get_time() - philo->start_time;
 	philo->meals++;
-	philo->last_meal = get_cur_time();
+	philo->last_meal = get_time();
+	printf("%ld %d is eating\n", time, philo->id);
 	usleep(1000 * philo->table->data->time_to_eat);
 	handle_fork(philo, pthread_mutex_unlock);
 }
 
-void	to_sleep(t_philosopher *philo)
+void	to_sleep(t_philo *philo)
 {
-	printf("%ld %d is sleeping\n", get_cur_time() - philo->start_time, philo->id);
+	printf("%ld %d is sleeping\n", get_time() - philo->start_time, philo->id);
 	usleep(1000 * philo->table->data->time_to_sleep);
 }
 
-void	think(t_philosopher *philo)
+void	think(t_philo *philo)
 {
-	printf("%ld %d is thinking\n", get_cur_time() - philo->start_time, philo->id);
+	printf("%ld %d is thinking\n", get_time() - philo->start_time, philo->id);
 }
 
-void	die(t_philosopher *philo)
+void	die(t_philo *philo)
 {
-	printf("%ld %d died\n", get_cur_time() - philo->start_time, philo->id);
+	printf("%ld %d died\n", get_time() - philo->start_time, philo->id);
 }

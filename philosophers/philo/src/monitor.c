@@ -17,9 +17,9 @@ int	check_death(t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i < data->number_of_philosophers)
+	while (++i < data->nbr_of_philos)
 	{
-		if ((get_cur_time() - data->table.philos[i].last_meal) > data->time_to_die)
+		if ((get_time() - data->table.philos[i].last_meal) > data->time_to_die)
 		{
 			pthread_mutex_lock(&data->rules.mtx);
 			data->table.someone_died = 1;

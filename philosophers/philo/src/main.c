@@ -14,7 +14,7 @@
 
 void	init_data(t_data *data, int argc, char **argv)
 {
-	data->number_of_philosophers = ft_atoi(argv[0]);
+	data->nbr_of_philos = ft_atoi(argv[0]);
 	data->time_to_die = ft_atoi(argv[1]);
 	data->time_to_eat = ft_atoi(argv[2]);
 	data->time_to_sleep = ft_atoi(argv[3]);
@@ -25,7 +25,7 @@ void	init_data(t_data *data, int argc, char **argv)
 
 int	check_data(t_data *data)
 {
-	if (data->number_of_philosophers > 200)
+	if (data->nbr_of_philos > 200)
 		return (1);
 	if (data->time_to_die < 60)
 		return (1);
@@ -38,24 +38,26 @@ int	check_data(t_data *data)
 
 void	mount_table(t_data *data)
 {
-	int	i;
+	int		i;
+	t_table	*table;
 
-	data->table.data = data;
-	data->table.someone_died = 0;
-	data->table.forks = ft_calloc((data->number_of_philosophers + 1), sizeof(pthread_mutex_t));
+	table = &data->table;
+	table->data = data;
+	table->someone_died = 0;
+	table->forks = ft_calloc((data->nbr_of_philos + 1), sizeof(t_mtx));
 	i = -1;
-	while (++i < data->number_of_philosophers)
-		pthread_mutex_init(data->table.forks + i, NULL);
-	data->table.philos = ft_calloc((data->number_of_philosophers + 1), sizeof(t_philosopher));
+	while (++i < data->nbr_of_philos)
+		pthread_mutex_init(table->forks + i, NULL);
+	data->table.philos = ft_calloc((data->nbr_of_philos + 1), sizeof(t_philo));
 	i = -1;
 	pthread_mutex_init(&data->rules.mtx, NULL);
-	while (++i < data->number_of_philosophers)
+	while (++i < data->nbr_of_philos)
 	{
 		data->table.philos[i].table = &data->table;
 		data->table.philos[i].id = i + 1;
-		data->table.philos[i].start_time = get_cur_time();
-		data->table.philos[i].last_meal = data->table.philos[i].start_time;
-		pthread_create(&data->table.philos[i].thread, NULL, dinner_prepare, data->table.philos + i);
+		data->table.philos[i].start_time = get_time();
+		data->table.philos[i].last_meal = table->philos[i].start_time;
+		pthread_create(&table->philos[i].thread, 0, dinner, table->philos + i);
 	}
 	while (!check_death(data))
 		;
@@ -66,7 +68,7 @@ void	dismount_table(t_data *data)
 	int	i;
 
 	i = -1;
-	while (++i < data->number_of_philosophers)
+	while (++i < data->nbr_of_philos)
 	{
 		pthread_join(data->table.philos[i].thread, (void *)0);
 		pthread_mutex_destroy(data->table.forks + i);

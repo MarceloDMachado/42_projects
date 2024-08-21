@@ -12,7 +12,7 @@
 
 #include "../includes/philosophers.h"
 
-static int	check(t_philosopher *philo)
+static int	check(t_philo *philo)
 {
 	int	i;
 
@@ -22,13 +22,13 @@ static int	check(t_philosopher *philo)
 	return (i);
 }
 
-void	*dinner_prepare(void *p)
+void	*dinner(void *p)
 {
+	static void		(*f[4])(t_philo *) = {take_fork, eat, to_sleep, think};
 	int				i;
-	t_philosopher	*philo;
-	static void		(*f[4])(t_philosopher *) = {take_fork, eat, to_sleep, think};
+	t_philo			*philo;
 
-	philo = (t_philosopher *)p;
+	philo = (t_philo *)p;
 	philo->meals = 0;
 	i = 0;
 	while (!check(philo))

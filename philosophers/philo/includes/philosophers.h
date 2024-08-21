@@ -20,12 +20,13 @@
 # include <unistd.h>
 # include <sys/time.h>
 
-typedef struct s_philosopher	t_philosopher;
+typedef pthread_mutex_t			t_mtx;
+typedef struct s_philo			t_philo;
 typedef struct s_table			t_table;
 typedef struct s_rule			t_rule;
 typedef struct s_data			t_data;
 
-struct	s_philosopher {
+struct	s_philo {
 	int				id;
 	int				meals;
 	long			last_meal;
@@ -35,7 +36,7 @@ struct	s_philosopher {
 };
 
 struct	s_table {
-	t_philosopher	*philos;
+	t_philo			*philos;
 	pthread_mutex_t	*forks;
 	int				someone_died;
 	t_data			*data;
@@ -48,7 +49,7 @@ struct	s_rule
 
 struct	s_data
 {
-	int				number_of_philosophers;
+	int				nbr_of_philos;
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
@@ -58,16 +59,16 @@ struct	s_data
 };
 
 int			ft_atoi(const char *nptr);
-void		*dinner_prepare(void *data);
-void		take_fork(t_philosopher *philo);
-void		eat(t_philosopher *philo);
-void		to_sleep(t_philosopher *philo);
-void		think(t_philosopher *philo);
-void		die(t_philosopher *philo);
+void		*dinner(void *data);
+void		take_fork(t_philo *philo);
+void		eat(t_philo *philo);
+void		to_sleep(t_philo *philo);
+void		think(t_philo *philo);
+void		die(t_philo *philo);
 void		*ft_calloc(size_t nmemb, size_t size);
-void		handle_fork(t_philosopher *philo, int (*f)(pthread_mutex_t *));
-void		handle_action(t_philosopher *philo, void (*f)(t_philosopher *));
+void		handle_fork(t_philo *philo, int (*f)(pthread_mutex_t *));
+void		handle_action(t_philo *philo, void (*f)(t_philo *));
 int			check_death(t_data *data);
-long int	get_cur_time(void);
+long int	get_time(void);
 
 #endif
