@@ -18,8 +18,13 @@ void	take_fork(t_philo *philo)
 
 	handle_fork(philo, pthread_mutex_lock);
 	time = get_time() - philo->start_time;
-	printf("%ld %d has taken a fork\n", time, philo->id);
-	printf("%ld %d has taken a fork\n", time, philo->id);
+	if (!check(philo))
+	{
+		printf("%ld %d has taken a fork\n", time, philo->id);
+		printf("%ld %d has taken a fork\n", time, philo->id);
+	}
+	else
+		handle_fork(philo, pthread_mutex_unlock);
 }
 
 void	eat(t_philo *philo)

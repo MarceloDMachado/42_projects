@@ -69,6 +69,7 @@ void		*ft_calloc(size_t nmemb, size_t size);
 void		handle_fork(t_philo *philo, int (*f)(pthread_mutex_t *));
 void		handle_action(t_philo *philo, void (*f)(t_philo *));
 int			check_death(t_data *data);
+int			check(t_philo *philo);
 long int	get_time(void);
 
 #endif

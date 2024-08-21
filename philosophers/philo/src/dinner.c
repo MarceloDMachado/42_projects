@@ -12,7 +12,7 @@
 
 #include "../includes/philosophers.h"
 
-static int	check(t_philo *philo)
+int	check(t_philo *philo)
 {
 	int	i;
 
