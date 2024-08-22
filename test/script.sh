@@ -1,4 +1,5 @@
 #!/bin/bash
 
-echo test
+FILES=$(git diff main | grep "diff --git")
 
+echo $FILES
