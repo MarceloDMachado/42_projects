@@ -16,8 +16,10 @@ void	take_fork(t_philo *philo)
 {
 	handle_fork(philo, pthread_mutex_lock);
 	if (!check(philo))
+	{
 		print("%ld %d has taken a fork\n", philo);
-	handle_fork(philo, pthread_mutex_unlock);
+		print("%ld %d has taken a fork\n", philo);
+	}
 }
 
 void	eat(t_philo *philo)

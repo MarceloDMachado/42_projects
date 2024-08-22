@@ -52,6 +52,7 @@ void	mount_table(t_data *data)
 	i = -1;
 	pthread_mutex_init(&data->rules.death_mtx, NULL);
 	pthread_mutex_init(&data->rules.write_mtx, NULL);
+	i = -1;
 	while (++i < data->nbr_of_philos)
 	{
 		data->table.philos[i].table = &data->table;
@@ -71,8 +72,10 @@ void	dismount_table(t_data *data)
 
 	i = -1;
 	while (++i < data->nbr_of_philos)
-	{
 		pthread_join(data->table.philos[i].thread, (void *)0);
+	i = -1;
+	while (++i < data->nbr_of_philos)
+	{
 		pthread_mutex_destroy(&data->table.philos[i].last_meal_mtx);
 		pthread_mutex_destroy(data->table.forks + i);
 	}
