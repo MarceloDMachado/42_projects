@@ -20,6 +20,8 @@ void	take_fork(t_philo *philo)
 		print("%ld %d has taken a fork\n", philo);
 		print("%ld %d has taken a fork\n", philo);
 	}
+	else
+		handle_fork(philo, pthread_mutex_unlock);
 }
 
 void	eat(t_philo *philo)

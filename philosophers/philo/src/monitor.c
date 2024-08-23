@@ -14,7 +14,7 @@
 
 int	check_death(t_data *data)
 {
-	int	i;
+	int		i;
 	long	last_meal;
 
 	i = -1;
