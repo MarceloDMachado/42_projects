@@ -30,6 +30,7 @@ void	*dinner(void *p)
 
 	philo = (t_philo *)p;
 	philo->meals = 0;
+	philo->start_time = get_time();
 	i = 0;
 	while (!check(philo))
 	{
