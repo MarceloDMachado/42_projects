@@ -19,8 +19,9 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->time_to_eat = ft_atoi(argv[2]);
 	data->time_to_sleep = ft_atoi(argv[3]);
 	if (argc < 6)
-		return ;
-	data->number_of_times_each_philosopher_must_eat = ft_atoi(argv[4]);
+		data->number_of_times_each_philosopher_must_eat = -1;
+	else
+		data->number_of_times_each_philosopher_must_eat = ft_atoi(argv[4]);
 }
 
 int	check_data(t_data *data)

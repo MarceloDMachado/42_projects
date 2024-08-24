@@ -36,6 +36,9 @@ void	handle_fork(t_philo *philo, int (*f)(pthread_mutex_t *))
 
 void	handle_action(t_philo *philo, void (*action)(t_philo *))
 {
-	if (philo->meals < philo->table->data->number_of_times_each_philosopher_must_eat)
+	//int limit;
+
+	//limit = philo->table->data->number_of_times_each_philosopher_must_eat;
+	//if (limit < 0 || philo->meals < limit)
 		action(philo);
 }
