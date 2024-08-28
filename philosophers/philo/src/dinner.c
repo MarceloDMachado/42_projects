@@ -12,6 +12,13 @@
 
 #include "../includes/philosophers.h"
 
+static void	handle_single_philo(t_philo *philo)
+{
+	pthread_mutex_lock(philo->table->forks);
+	print("%ld %d has taken a fork\n", philo);
+	pthread_mutex_unlock(philo->table->forks);
+}
+
 int	check(t_philo *philo)
 {
 	int	i;
@@ -30,10 +37,14 @@ void	*dinner(void *p)
 
 	philo = (t_philo *)p;
 	philo->meals = 0;
-	philo->start_time = get_time();
 	i = 0;
 	while (!check(philo))
 	{
+		if (philo->table->data->nbr_of_philos == 1)
+		{
+			handle_single_philo(philo);
+			return (NULL);
+		}
 		handle_action(philo, f[i++]);
 		if (i == 4)
 			i = 0;

@@ -12,12 +12,12 @@
 
 #include "../includes/philosophers.h"
 
-void    print(char *str, t_philo *philo)
+void	print(char *str, t_philo *philo)
 {
-    long int	time;
-    
-    time = get_time() - philo->start_time;
-    pthread_mutex_lock(&philo->table->data->rules.write_mtx);
-    printf(str, time, philo->id);
-    pthread_mutex_unlock(&philo->table->data->rules.write_mtx);
+	long int	time;
+
+	time = get_time() - philo->start_time;
+	pthread_mutex_lock(&philo->table->data->rules.write_mtx);
+	printf(str, time, philo->id);
+	pthread_mutex_unlock(&philo->table->data->rules.write_mtx);
 }

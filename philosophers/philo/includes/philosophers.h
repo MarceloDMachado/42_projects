@@ -31,7 +31,7 @@ struct	s_philo {
 	int				meals;
 	long			last_meal;
 	long int		start_time;
-	pthread_mutex_t last_meal_mtx;
+	pthread_mutex_t	last_meal_mtx;
 	pthread_t		thread;
 	t_table			*table;
 };
