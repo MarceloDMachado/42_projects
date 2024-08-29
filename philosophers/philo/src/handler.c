@@ -22,10 +22,8 @@ void	handle_fork(t_philo *philo, int (*f)(pthread_mutex_t *))
 		neighbor = 0;
 	else
 		neighbor = own + 1;
-	while (f(philo->table->forks + own))
-		;
-	while (f(philo->table->forks + neighbor))
-		;
+	f(philo->table->forks + own);
+	f(philo->table->forks + neighbor);
 }
 
 void	handle_action(t_philo *philo, void (*action)(t_philo *))
