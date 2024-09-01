@@ -55,7 +55,7 @@ struct	s_data
 	int				time_to_die;
 	int				time_to_eat;
 	int				time_to_sleep;
-	int				number_of_times_each_philosopher_must_eat;
+	int				eat_limit;
 	t_table			table;
 	t_rule			rules;
 };
@@ -74,5 +74,6 @@ int			check_death(t_data *data);
 int			check(t_philo *philo);
 long int	get_time(void);
 void		print(char *str, t_philo *philo);
+int			ft_abs(int n);
 
 #endif

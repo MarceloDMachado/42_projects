@@ -22,15 +22,23 @@ void	handle_fork(t_philo *philo, int (*f)(pthread_mutex_t *))
 		neighbor = 0;
 	else
 		neighbor = own + 1;
-	f(philo->table->forks + own);
-	f(philo->table->forks + neighbor);
+	if (own % 2)
+	{
+		f(philo->table->forks + own);
+		f(philo->table->forks + neighbor);
+	}
+	else
+	{
+		f(philo->table->forks + neighbor);
+		f(philo->table->forks + own);
+	}
 }
 
 void	handle_action(t_philo *philo, void (*action)(t_philo *))
 {
 	int	limit;
 
-	limit = philo->table->data->number_of_times_each_philosopher_must_eat;
+	limit = philo->table->data->eat_limit;
 	if (limit < 0 || philo->meals < limit)
 		action(philo);
 }

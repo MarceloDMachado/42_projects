@@ -49,7 +49,7 @@ static int	ft_tonbr(char *str, int len, int neg)
 	return (nbr);
 }
 
-int	ft_atoi(const char *nptr)
+int	ft_atoi(char const *nptr)
 {
 	char	numbers[11];
 	int		i;

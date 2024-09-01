@@ -19,9 +19,9 @@ void	init_data(t_data *data, int argc, char **argv)
 	data->time_to_eat = ft_atoi(argv[2]);
 	data->time_to_sleep = ft_atoi(argv[3]);
 	if (argc < 6)
-		data->number_of_times_each_philosopher_must_eat = -1;
+		data->eat_limit = -1;
 	else
-		data->number_of_times_each_philosopher_must_eat = ft_atoi(argv[4]);
+		data->eat_limit = ft_atoi(argv[4]);
 }
 
 int	check_data(t_data *data)
@@ -61,6 +61,8 @@ void	mount_table(t_data *data)
 		data->table.philos[i].start_time = get_time();
 		data->table.philos[i].last_meal = table->philos[i].start_time;
 		pthread_create(&table->philos[i].thread, 0, dinner, table->philos + i);
+		if (i % 2 == 0)
+			usleep(200);
 	}
 	while (!check_death(data))
 		;
