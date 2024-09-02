@@ -39,28 +39,20 @@ int	check_data(t_data *data)
 
 void	mount_table(t_data *data)
 {
-	int		i;
 	t_table	*table;
+	int		i;
 
-	table = &data->table;
-	table->data = data;
-	table->someone_died = 0;
-	table->forks = ft_calloc((data->nbr_of_philos + 1), sizeof(t_mtx));
-	i = -1;
-	while (++i < data->nbr_of_philos)
-		pthread_mutex_init(table->forks + i, NULL);
-	data->table.philos = ft_calloc((data->nbr_of_philos + 1), sizeof(t_philo));
+	init_table(data);
+	alloc_forks(data);
+	alloc_philos(data);
 	pthread_mutex_init(&data->rules.death_mtx, NULL);
 	pthread_mutex_init(&data->rules.write_mtx, NULL);
+	table = &data->table;
 	i = -1;
 	while (++i < data->nbr_of_philos)
 	{
-		pthread_mutex_init(&data->table.philos[i].last_meal_mtx, NULL);
-		data->table.philos[i].table = &data->table;
-		data->table.philos[i].id = i + 1;
-		data->table.philos[i].start_time = get_time();
-		data->table.philos[i].last_meal = table->philos[i].start_time;
-		pthread_create(&table->philos[i].thread, 0, dinner, table->philos + i);
+		prepare_philos(data, i);
+		pthread_create(&table->philos[i].thread, 0, dinner, &table->philos[i]);
 		if (i % 2 == 0)
 			usleep(200);
 	}
