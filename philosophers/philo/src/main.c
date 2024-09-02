@@ -27,13 +27,13 @@ void	init_data(t_data *data, int argc, char **argv)
 int	check_data(t_data *data)
 {
 	if (data->nbr_of_philos > 200)
-		return (1);
+		return (printf("Invalid quantity of Philosophers\n"));
 	if (data->time_to_die < 60)
-		return (1);
+		return (printf("Time to die must be more than 60.\n"));
 	if (data->time_to_eat < 60)
-		return (1);
+		return (printf("Time to eat must be more than 60.\n"));
 	if (data->time_to_sleep < 60)
-		return (1);
+		return (printf("Time to sleep must be more than 60.\n"));
 	return (0);
 }
 
