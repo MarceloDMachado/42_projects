@@ -13,7 +13,7 @@
 W_FLAGS = -Wall -Wextra -Werror -pthread
 NAME = philo
 INC = -I ./includes/
-SRC = main.c ft_atoi.c dinner.c action.c ft_calloc.c handler.c monitor.c time.c print.c
+SRC = main.c ft_atoi.c dinner.c action.c ft_calloc.c handler.c monitor.c time.c print.c table_utils.c
 SRC_PATH = src/
 OBJ = $(SRC:.c=.o)
 

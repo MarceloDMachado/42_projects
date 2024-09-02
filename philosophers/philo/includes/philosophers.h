@@ -75,5 +75,9 @@ int			check(t_philo *philo);
 long int	get_time(void);
 void		print(char *str, t_philo *philo);
 int			ft_abs(int n);
+void		init_table(t_data *data);
+void		alloc_forks(t_data *data);
+void		alloc_philos(t_data *data);
+void		prepare_philos(t_data *data, int i);
 
 #endif
