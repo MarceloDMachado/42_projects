@@ -48,5 +48,5 @@ void	think(t_philo *philo)
 
 void	die(t_philo *philo)
 {
-	print("%ld %d died\n", philo);
+	print_red("%ld %d died\n", philo);
 }
