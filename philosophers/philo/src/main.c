@@ -53,8 +53,6 @@ void	mount_table(t_data *data)
 	{
 		prepare_philos(data, i);
 		pthread_create(&table->philos[i].thread, 0, dinner, &table->philos[i]);
-		if (i % 2 == 0)
-			usleep(200);
 	}
 	while (!check_death(data))
 		;

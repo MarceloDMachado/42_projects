@@ -36,7 +36,6 @@ void	*dinner(void *p)
 	t_philo			*philo;
 
 	philo = (t_philo *)p;
-	philo->meals = 0;
 	i = 0;
 	while (!check(philo))
 	{
@@ -49,5 +48,7 @@ void	*dinner(void *p)
 		if (i == 4)
 			i = 0;
 	}
+	if (i == 1)
+		handle_fork(philo, pthread_mutex_unlock);
 	return (NULL);
 }

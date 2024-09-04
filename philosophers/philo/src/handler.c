@@ -39,6 +39,6 @@ void	handle_action(t_philo *philo, void (*action)(t_philo *))
 	int	limit;
 
 	limit = philo->table->data->eat_limit;
-	if (limit < 0 || philo->meals < limit)
+	if ((limit < 0 || philo->meals < limit))
 		action(philo);
 }

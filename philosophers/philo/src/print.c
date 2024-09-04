@@ -18,12 +18,3 @@ void	print(char *str, t_philo *philo)
 	printf(str, get_time() - philo->start_time, philo->id);
 	pthread_mutex_unlock(&philo->table->data->rules.write_mtx);
 }
-
-void	print_red(char *str, t_philo *philo)
-{
-	pthread_mutex_lock(&philo->table->data->rules.write_mtx);
-	printf("\033[1;31m");
-	printf(str, get_time() - philo->start_time, philo->id);
-	printf("\033[0m");
-	pthread_mutex_unlock(&philo->table->data->rules.write_mtx);
-}

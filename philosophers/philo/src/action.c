@@ -17,11 +17,9 @@ void	take_fork(t_philo *philo)
 	handle_fork(philo, pthread_mutex_lock);
 	if (!check(philo))
 	{
-		print("%ld %d has taken a fork\n", philo);
-		print("%ld %d has taken a fork\n", philo);
+		print("\033[0;38m%ld %d has taken a fork\n\033[0m", philo);
+		print("\033[0;38m%ld %d has taken a fork\n\033[0m", philo);
 	}
-	else
-		handle_fork(philo, pthread_mutex_unlock);
 }
 
 void	eat(t_philo *philo)
@@ -30,23 +28,24 @@ void	eat(t_philo *philo)
 	pthread_mutex_lock(&philo->last_meal_mtx);
 	philo->last_meal = get_time();
 	pthread_mutex_unlock(&philo->last_meal_mtx);
-	print("%ld %d is eating\n", philo);
+	print("\033[1;32m%ld %d is eating\n\033[0m", philo);
 	usleep(1000 * philo->table->data->time_to_eat);
 	handle_fork(philo, pthread_mutex_unlock);
 }
 
 void	to_sleep(t_philo *philo)
 {
-	print("%ld %d is sleeping\n", philo);
+	if (!check(philo))
+		print("\033[0;34m%ld %d is sleeping\n\033[0m", philo);
 	usleep(1000 * philo->table->data->time_to_sleep);
 }
 
 void	think(t_philo *philo)
 {
-	print("%ld %d is thinking\n", philo);
+	print("\033[0;36m%ld %d is thinking\n\033[0m", philo);
 }
 
 void	die(t_philo *philo)
 {
-	print_red("%ld %d died\n", philo);
+	print("\033[0;31m%ld %d died\n", philo);
 }
