@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 10:42:10 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/24 12:45:07 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:32:32 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <cstring>
+#include <string>
 #include "../src/Contact.hpp"
 
 #endif

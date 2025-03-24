@@ -6,29 +6,28 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:48:10 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/24 12:51:08 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/24 14:32:56 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include "Contact.hpp"
 #include "../inc/phonebook.h"
 
-const char	*Contact::get_name(void)
+std::string	Contact::get_name(void)
 {
 	return (this->Name);
 }
 
-void	Contact::set_name(const char *name)
+void	Contact::set_name(std::string name)
 {
 	this->Name = name;
 }
 
-const char	*Contact::get_phone(void)
+std::string	Contact::get_phone(void)
 {
 	return (this->Phone);
 }
 
-void	Contact::set_phone(const char *phone)
+void	Contact::set_phone(std::string phone)
 {
 	this->Phone = phone;
 }
