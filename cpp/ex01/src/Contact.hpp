@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 12:44:20 by marcelodmac       #+#    #+#             */
-/*   Updated: 2025/03/24 10:37:30 by madias-m         ###   ########.fr       */
+/*   Created: 2025/03/24 11:50:59 by madias-m          #+#    #+#             */
+/*   Updated: 2025/03/24 12:51:26 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef CONTACT_HPP
+# define CONTACT_HPP
 
-int main(int argc, char **argv)
-{
-	int i;
-	int j;
-	
-    if (argc > 1)
-	{
-		j = 0;
-		while (argv[++j])
-		{
-			i = -1;
-			while (argv[j][++i])
-				argv[j][i] = ::toupper(argv[j][i]);
-			std::cout << argv[j];
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n"; 
-	return (0);
-}
+class Contact {
+	public:
+		const char 	*get_name(void);
+		void	set_name(const char *name);
+		const char	*get_phone(void);
+		void	set_phone(const char *phone);
+	private: 
+		const char	*Name;
+		const char	*Phone;
+};
+
+#endif

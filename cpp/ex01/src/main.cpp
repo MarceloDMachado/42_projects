@@ -1,35 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 12:44:20 by marcelodmac       #+#    #+#             */
-/*   Updated: 2025/03/24 10:37:30 by madias-m         ###   ########.fr       */
+/*   Created: 2025/03/24 10:40:24 by madias-m          #+#    #+#             */
+/*   Updated: 2025/03/24 12:47:34 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "../inc/phonebook.h"
 
-int main(int argc, char **argv)
+int main(void)
 {
-	int i;
-	int j;
-	
-    if (argc > 1)
-	{
-		j = 0;
-		while (argv[++j])
-		{
-			i = -1;
-			while (argv[j][++i])
-				argv[j][i] = ::toupper(argv[j][i]);
-			std::cout << argv[j];
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n"; 
+	Contact cont;
+
+	cont.set_name("Marcelo");
+	cont.set_phone("11949335709");
+	std::cout << "Nome: " << cont.get_name() << std::endl;
+	std::cout << "Phone: " << cont.get_phone() << std::endl;
 	return (0);
 }
+

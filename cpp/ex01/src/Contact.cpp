@@ -1,35 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   megaphone.cpp                                      :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/16 12:44:20 by marcelodmac       #+#    #+#             */
-/*   Updated: 2025/03/24 10:37:30 by madias-m         ###   ########.fr       */
+/*   Created: 2025/03/24 11:48:10 by madias-m          #+#    #+#             */
+/*   Updated: 2025/03/24 12:51:08 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+// #include "Contact.hpp"
+#include "../inc/phonebook.h"
 
-int main(int argc, char **argv)
+const char	*Contact::get_name(void)
 {
-	int i;
-	int j;
-	
-    if (argc > 1)
-	{
-		j = 0;
-		while (argv[++j])
-		{
-			i = -1;
-			while (argv[j][++i])
-				argv[j][i] = ::toupper(argv[j][i]);
-			std::cout << argv[j];
-		}
-		std::cout << std::endl;
-	}
-	else
-		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *\n"; 
-	return (0);
+	return (this->Name);
+}
+
+void	Contact::set_name(const char *name)
+{
+	this->Name = name;
+}
+
+const char	*Contact::get_phone(void)
+{
+	return (this->Phone);
+}
+
+void	Contact::set_phone(const char *phone)
+{
+	this->Phone = phone;
 }
