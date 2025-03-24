@@ -1,6 +1,6 @@
 W_FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = phonebook
-SRC = main.cpp Contact.cpp 
+SRC = main.cpp Contact.cpp PhoneBook.cpp
 SRC_PATH = ./src/
 OBJ = $(SRC:.cpp=.o)
 INC = -I ./inc/ 
