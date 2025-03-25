@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:50:59 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/24 16:38:40 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/24 22:43:27 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ class Contact {
 		std::string	Nickname;
 		std::string	Phone_Number;
 		std::string	Darkest_Secret;
+		void		trunc(std::string value);
 };
 
 #endif

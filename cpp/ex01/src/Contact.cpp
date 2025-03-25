@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:48:10 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/24 16:50:29 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/24 22:51:51 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,14 +64,22 @@ void	Contact::set_darkest_secret(std::string darkestSecret)
 
 void	Contact::preview(void)
 {
-	std::cout << "|";
-	
+	trunc(this->Fist_Name);
+	trunc(this->Last_Name);
+	trunc(this->Nickname);
+	std::cout << "|" << std::endl;
 }
 
-void	trunc(std::string value, int size)
+void	Contact::trunc(std::string value)
 {
 	int i;
 
 	i = 0;
-	while ()
+	std::cout << "|";
+	while (value.c_str()[i] && i < 9)
+		std::cout << value.c_str()[i++];
+	if (value.c_str()[i++])
+		std::cout << '.';
+	while (i++ <= 9)
+		std::cout << ' ';
 }
