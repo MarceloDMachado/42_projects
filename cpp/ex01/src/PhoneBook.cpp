@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:37:34 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/24 16:43:49 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:18:49 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,21 +64,35 @@ void	PhoneBook::add_contact(void)
 	this->Contacts[this->ContactsCount++ % 8] = new_contact;
 }
 
+
+static	void	show_header(void)
+{
+	std::cout << "|INDEX     ";
+	std::cout << "|FIRST NAME";
+	std::cout << "|LAST NAME ";
+	std::cout << "|NICKNAME  |";
+	std::cout << std::endl;	
+}
+
 void	PhoneBook::show_contacts(void)
 {
 	int index;
 	
-	std::cout << "|index     ";
-	std::cout << "|first name";
-	std::cout << "|last name ";
-	std::cout << "|nickname  |";
-	std::cout << std::endl;
-	
+	show_header();
 	index = 0;
 	while (index < this->ContactsCount)
 	{
 		std::cout << "|" << index << "         ";
 		this->Contacts[index++].preview();
 	}
-	
+	while (index < 0 || index >= this->ContactsCount)
+	{
+		std::cout << "Enter an index to show all contact details: ";
+		std::cin >> index;
+		if (index < 0 || index >= this->ContactsCount)
+			std::cout << "Invalid index!\n";
+		else
+			this->Contacts[index].print_contact();
+	}
 }
+

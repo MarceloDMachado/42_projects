@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:50:59 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/24 22:43:27 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:18:09 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ class Contact {
 		std::string	get_darkest_secret(void);
 		void		set_darkest_secret(std::string darkestSecret);
 		void		preview(void);
+		void		print_contact(void);
 	private: 
-		std::string	Fist_Name;
+		std::string	First_Name;
 		std::string	Last_Name;
 		std::string	Nickname;
 		std::string	Phone_Number;
 		std::string	Darkest_Secret;
-		void		trunc(std::string value);
 };
 
 #endif

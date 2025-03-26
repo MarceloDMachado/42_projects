@@ -6,20 +6,21 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:48:10 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/26 11:05:06 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/26 14:18:12 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/phonebook.h"
 
+
 std::string	Contact::get_first_name(void)
 {
-	return (this->Fist_Name);
+	return (this->First_Name);
 }
 
 void	Contact::set_first_name(std::string firstName)
 {
-	this->Fist_Name = firstName;
+	this->First_Name = firstName;
 }
 
 std::string Contact::get_last_name(void)
@@ -62,15 +63,7 @@ void	Contact::set_darkest_secret(std::string darkestSecret)
 	this->Darkest_Secret = darkestSecret;
 }
 
-void	Contact::preview(void)
-{
-	trunc(this->Fist_Name);
-	trunc(this->Last_Name);
-	trunc(this->Nickname);
-	std::cout << "|" << std::endl;
-}
-
-void	Contact::trunc(std::string value)
+static void	trunc(std::string value)
 {
 	int i;
 
@@ -85,4 +78,21 @@ void	Contact::trunc(std::string value)
 	}
 	while (i++ <= 9)
 		std::cout << ' ';
+}
+
+void	Contact::preview(void)
+{
+	trunc(this->First_Name);
+	trunc(this->Last_Name);
+	trunc(this->Nickname);
+	std::cout << "|" << std::endl;
+}
+
+void	Contact::print_contact(void)
+{
+	std::cout << "FIRST NAME: " << this->First_Name << std::endl;
+	std::cout << "LAST NAME: " << this->Last_Name << std::endl;
+	std::cout << "NICKNAME: " << this->Nickname << std::endl;
+	std::cout << "PHONE NUMBER: " << this->Phone_Number << std::endl;
+	std::cout << "DARKEST SECRET: " << this->Darkest_Secret << std::endl;
 }
