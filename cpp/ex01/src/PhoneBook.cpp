@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:37:34 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/26 14:18:49 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/26 16:05:55 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,24 +41,25 @@ void	PhoneBook::add_contact(void)
 	Contact 	new_contact;
 	std::string	input;
 
+	std::cin.ignore();
 	std::cout << "Whats your first name?\n";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	new_contact.set_first_name(input);
 
 	std::cout << "Whats your last name?\n";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	new_contact.set_last_name(input);
 
 	std::cout << "Whats your nickname?\n";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	new_contact.set_nickname(input);
 
 	std::cout << "Whats your phone number?\n";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	new_contact.set_phone_number(input);
 
 	std::cout << "Whats your darkest secret?\n";
-	std::cin >> input;
+	std::getline(std::cin, input);
 	new_contact.set_darkest_secret(input);
 	
 	this->Contacts[this->ContactsCount++ % 8] = new_contact;
@@ -88,6 +89,7 @@ void	PhoneBook::show_contacts(void)
 	while (index < 0 || index >= this->ContactsCount)
 	{
 		std::cout << "Enter an index to show all contact details: ";
+		std::cin.ignore();
 		std::cin >> index;
 		if (index < 0 || index >= this->ContactsCount)
 			std::cout << "Invalid index!\n";
