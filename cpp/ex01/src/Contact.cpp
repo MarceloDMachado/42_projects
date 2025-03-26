@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 11:48:10 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/24 22:51:51 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/26 11:05:06 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,11 @@ void	Contact::trunc(std::string value)
 	std::cout << "|";
 	while (value.c_str()[i] && i < 9)
 		std::cout << value.c_str()[i++];
-	if (value.c_str()[i++])
+	if (value.c_str()[i])
+	{
 		std::cout << '.';
+		i++;
+	}
 	while (i++ <= 9)
 		std::cout << ' ';
 }
