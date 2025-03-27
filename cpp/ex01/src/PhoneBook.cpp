@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:37:34 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/27 13:18:27 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/27 13:26:24 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ void	PhoneBook::add_contact(void)
 	receive_data_input("Whats your darkest secret?\n", &new_contact, &Contact::set_darkest_secret);
 	
 	this->Contacts[this->ContactsCount++ % 8] = new_contact;
+	if (this->ContactsCount > 8)
+		this->ContactsCount = 8;
 }
 
 
