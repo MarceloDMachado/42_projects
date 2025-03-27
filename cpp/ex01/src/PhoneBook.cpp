@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/24 14:37:34 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/26 16:05:55 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/27 11:58:27 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,12 +89,13 @@ void	PhoneBook::show_contacts(void)
 	while (index < 0 || index >= this->ContactsCount)
 	{
 		std::cout << "Enter an index to show all contact details: ";
-		std::cin.ignore();
 		std::cin >> index;
 		if (index < 0 || index >= this->ContactsCount)
-			std::cout << "Invalid index!\n";
+		std::cout << "Invalid index!\n";
 		else
-			this->Contacts[index].print_contact();
+		this->Contacts[index].print_contact();
+		std::cin.clear();
 	}
+	std::cin.ignore();
 }
 
