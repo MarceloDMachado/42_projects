@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 10:42:17 by marcelodmac       #+#    #+#             */
-/*   Updated: 2025/03/28 15:03:14 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/28 15:11:15 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class Zombie
 		~Zombie();
 		void	announce(void);
 	private:
-		Zombie(){};
 		std::string name;
 };
 

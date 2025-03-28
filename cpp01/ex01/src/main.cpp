@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 10:40:50 by marcelodmac       #+#    #+#             */
-/*   Updated: 2025/03/28 16:46:20 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/28 17:58:22 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ int main(void)
     while (--n >= 0)
 		zombie[n].announce();
 	delete[] zombie;
-    return (1);
+    return (0);
 }

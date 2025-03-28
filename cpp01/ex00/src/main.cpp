@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 10:40:50 by marcelodmac       #+#    #+#             */
-/*   Updated: 2025/03/28 14:53:50 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/28 17:58:29 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,5 @@ int main(void)
     zombie->announce();
     delete zombie;
     randomChump("abacate");
-    return (1);
+    return (0);
 }
