@@ -6,21 +6,23 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 10:42:17 by marcelodmac       #+#    #+#             */
-/*   Updated: 2025/03/28 11:49:49 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/28 14:58:28 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string>
-#include <iostream>
+#ifndef ZOMBIE_HPP
+# define ZOMBIE_HPP
+
+#include "../inc/Zombie.h"
 
 class Zombie
 {
-    public:
-        Zombie(){};
-        void    announce(void);
-        Zombie  *newZombie(std::string name);
-        void    randomChump(std::string name);
-    private:
-        std::string name;
-        Zombie(std::string name);
+	public:
+		Zombie(std::string name);
+		void	announce(void);
+	private:
+		Zombie(){};
+		std::string name;
 };
+
+#endif

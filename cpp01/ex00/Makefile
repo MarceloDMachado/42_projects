@@ -1,16 +1,17 @@
 W_FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = zombies
-SRC = main.cpp Zombie.cpp
+SRC = main.cpp Zombie.cpp randomChump.cpp newZombie.cpp
 SRC_PATH = ./src/
+INC = -I ./inc/
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	c++ $(W_FLAGS) -o $(NAME) $(OBJ)
+	c++ $(W_FLAGS) -o $(NAME) $(OBJ) $(INC)
 
 %.o: $(SRC_PATH)%.cpp
-	c++ $(W_FLAGS) -c $< -o $@
+	c++ $(W_FLAGS) -c $< -o $@ $(INC)
 
 clean:
 	rm -f $(OBJ)
