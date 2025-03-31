@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 10:44:54 by marcelodmac       #+#    #+#             */
-/*   Updated: 2025/03/28 18:01:34 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/03/31 14:38:59 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,3 +26,9 @@ Zombie::~Zombie(void)
 {
     std::cout << this->name << ": Aaargh!" << std::endl;
 }
+
+void	Zombie::set_name(std::string name)
+{
+    this->name = name;
+}
+
