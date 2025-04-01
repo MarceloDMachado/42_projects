@@ -1,30 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Weapon.hpp                                         :+:      :+:    :+:   */
+/*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/03/31 16:09:19 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/01 13:11:47 by madias-m         ###   ########.fr       */
+/*   Created: 2025/04/01 11:58:02 by madias-m          #+#    #+#             */
+/*   Updated: 2025/04/01 13:05:48 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WEAPON_HPP
-# define WEAPON_HPP
+#include "HumanB.hpp"
 
-#include "../inc/Weapon.h"
+HumanB::HumanB(){}
 
-class Weapon
+HumanB::HumanB(std::string name)
 {
-	private:
-		std::string	type;
-	public:
-		Weapon(void);
-		Weapon(std::string type);
-		std::string	getType(void);
-		void		setType(std::string type);
-		
-};
+	this->name = name;
+}
 
-#endif
+void	HumanB::attack(void)
+{
+	std::cout << this->name << "attacks with their " << this->weapon.getType() << std::endl;
+}
+
+void	HumanB::setWeapon(Weapon weapon)
+{
+	this->weapon = weapon;
+}

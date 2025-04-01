@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:12:30 by madias-m          #+#    #+#             */
-/*   Updated: 2025/03/31 16:13:08 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/04/01 11:48:43 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 # define WEAPON_H
 
 #include <string>
+#include "../src/Weapon.hpp"
+
 
 #endif
