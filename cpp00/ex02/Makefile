@@ -1,5 +1,5 @@
 W_FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = phonebook
+NAME = bank
 SRC = tests.cpp Account.cpp
 SRC_PATH = ./
 OBJ = $(SRC:.cpp=.o)
