@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:08:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/01 13:02:03 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/05 15:24:59 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,6 @@
 
 int main(void)
 {
-	// Weapon	weapon;
-
-	// weapon.setType("Knife");
-	// HumanA humanA("humanA", weapon);
-	
-	// humanA.attack();
-
 	{
 		Weapon club = Weapon("crude spiked club");
 		HumanA bob("Bob", club);
