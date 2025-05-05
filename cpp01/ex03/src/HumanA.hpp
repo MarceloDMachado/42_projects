@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:58:05 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/01 12:20:22 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/05 16:47:40 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,10 @@
 class HumanA
 {
 	private:
-		HumanA();
 		std::string	name;
-		Weapon		weapon;
+		Weapon&		weapon;
 	public:
-		HumanA(std::string name, Weapon weapon);
+		HumanA(std::string name, Weapon& weapon);
 		void		attack(void);
 		
 };
