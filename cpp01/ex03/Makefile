@@ -1,5 +1,5 @@
 W_FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = reference
+NAME = violence
 SRC = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
 SRC_PATH = ./src/
 INC = -I ./inc/
