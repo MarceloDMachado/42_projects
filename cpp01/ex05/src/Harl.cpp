@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:46:38 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/06 22:01:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/07 11:58:15 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,14 @@ void    Harl::error(void)
 
 void    Harl::complain(std::string level)
 {
-    std::map<std::string, void (Harl::*)(void)> myPrivateMethodsMap;
+    static std::map<std::string, void (Harl::*)(void)> myPrivateMethodsMap;
     myPrivateMethodsMap["debug"] = &Harl::debug;
     myPrivateMethodsMap["info"] = &Harl::info;
     myPrivateMethodsMap["warning"] = &Harl::warning;
     myPrivateMethodsMap["error"] = &Harl::error;
 
     if (myPrivateMethodsMap.find(level) != myPrivateMethodsMap.end())
-        (this->*(myPrivateMethodsMap[level]))();
+        (this->*myPrivateMethodsMap[level])();
+    else
+        std::cout << "There is no harl level for: \"" << level << "\""<< std::endl;
 }
