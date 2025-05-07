@@ -6,13 +6,14 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:45:18 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/05 22:47:21 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:24:30 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstring>
 
 std::string substitute(const char *line, char *s1, char *s2)
 {
@@ -52,10 +53,12 @@ int main(int argc, char **argv)
     std::string line;
     while (std::getline(inputFile, line))
         newFile.append(substitute(line.c_str(), argv[2], argv[3])).append("\n");
-
-    std::cout << newFile << std::endl;
-
     inputFile.close();
+    
+    std::ofstream outFile(std::string(argv[1]).append(".replace"));
+    outFile << newFile << std::endl;
+
+    outFile.close();
     
     return (0);
 }
