@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:45:18 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/07 10:24:30 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/07 10:33:31 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,11 @@ int main(int argc, char **argv)
     inputFile.close();
     
     std::ofstream outFile(std::string(argv[1]).append(".replace"));
+    if (!outFile.is_open())
+    {
+        std::cerr << "Error: cannot write on " << std::string(argv[1]).append(".replace") << std::endl;
+        return (1);
+    }
     outFile << newFile << std::endl;
 
     outFile.close();
