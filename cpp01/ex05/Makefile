@@ -1,5 +1,5 @@
 W_FLAGS = -Wall -Wextra -Werror -std=c++98
-NAME = sifl
+NAME = Harl
 SRC = main.cpp Harl.cpp
 SRC_PATH = ./src/
 INC = -I ./inc/
