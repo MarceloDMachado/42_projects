@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:46:38 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/06 21:53:24 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/06 22:01:57 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void    Harl::warning(void)
 
 void    Harl::error(void)
 {
-    std::cout << "[ERROR] Example of error message" << std::endl;
+    std::cout << "[ERROR] Example of error message!!!" << std::endl;
 }
 
 void    Harl::complain(std::string level)
