@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:46:38 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/07 11:58:15 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/10 12:52:54 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,39 @@ void    Harl::error(void)
     std::cout << "[ERROR] Example of error message!!!" << std::endl;
 }
 
+int		get_index(std::string *strArray, std::string find, int max)
+{
+	int	i;
+
+	i = 0;
+	while (i <= max)
+	{
+		if (strArray[i].compare(find) == 0)
+			return (i);
+		else
+			i++;
+	}
+	return (-42);
+}
+
 void    Harl::complain(std::string level)
 {
-    static std::map<std::string, void (Harl::*)(void)> myPrivateMethodsMap;
-    myPrivateMethodsMap["debug"] = &Harl::debug;
-    myPrivateMethodsMap["info"] = &Harl::info;
-    myPrivateMethodsMap["warning"] = &Harl::warning;
-    myPrivateMethodsMap["error"] = &Harl::error;
-
-    if (myPrivateMethodsMap.find(level) != myPrivateMethodsMap.end())
-        (this->*myPrivateMethodsMap[level])();
-    else
-        std::cout << "There is no harl level for: \"" << level << "\""<< std::endl;
+	int 		i;
+	void		(Harl::*funcArray[4])(void) = {
+		&Harl::debug,
+        &Harl::info,
+        &Harl::warning,
+        &Harl::error
+    };
+    std::string	levelArray[5] = {
+        "debug",
+        "info",
+        "warning",
+        "error"
+    };
+	i = get_index(levelArray, level, 3);
+	if (i == -42)
+		std::cout << "Error: Could not find the level: \"" << level << "\"\n";
+	else
+		(this->*funcArray[i])();
 }
