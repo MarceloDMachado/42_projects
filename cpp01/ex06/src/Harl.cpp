@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:46:38 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/07 14:00:42 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/10 13:08:57 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,50 +41,54 @@ std::string to_lower(const char *str)
     return (result);
 }
 
-int     get_index(std::string level)
+int		get_index(std::string *strArray, std::string find, int max)
 {
-    int i;
-    std::string methods[5] = {"debug", "info", "warning", "error"};
+	int	i;
 
-    i = 0;
-    while (i < 4)
-    {
-        if (methods[i].compare(level) == 0)
-            return (i);
-        i++;
-    }
-    return (-1);
+	i = 0;
+	while (i <= max)
+	{
+		if (strArray[i].compare(find) == 0)
+			return (i);
+		else
+			i++;
+	}
+	return (-42);
 }
 
 void    Harl::complain(std::string level)
 {
-    int index;
-    static std::map<std::string, void (Harl::*)(void)> myPrivateMethodsMap;
-    myPrivateMethodsMap.insert(std::make_pair("debug", &Harl::debug));
-    myPrivateMethodsMap.insert(std::make_pair("info", &Harl::info));
-    myPrivateMethodsMap.insert(std::make_pair("warning", &Harl::warning));
-    myPrivateMethodsMap.insert(std::make_pair("error", &Harl::error));
-    
+    int 		index;
+	void		(Harl::*funcArray[4])(void) = {
+		&Harl::debug,
+        &Harl::info,
+        &Harl::warning,
+        &Harl::error
+    };
+    std::string	levelArray[5] = {
+        "debug",
+        "info",
+        "warning",
+        "error"
+    };
     level = to_lower(level.c_str());
-    if (myPrivateMethodsMap.find(level) == myPrivateMethodsMap.end())
+    index = get_index(levelArray, level, 3);
+    if (index == -42)
     {
         std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
         return ;
     }
-    index = get_index(level);
     switch (index)
     {
         case 0:
-            (this->*myPrivateMethodsMap["debug"])();
-            index++;
+            (this->*funcArray[index++])();
         case 1:
-            (this->*myPrivateMethodsMap["info"])();
-            index++;
+            (this->*funcArray[index++])();
         case 2:
-            (this->*myPrivateMethodsMap["warning"])();
-            index++;
+            (this->*funcArray[index++])();
         case 3:
-            (this->*myPrivateMethodsMap["error"])();
-            index++;
+            (this->*funcArray[index++])();
     }
 }
+
+
