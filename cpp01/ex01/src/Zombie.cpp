@@ -6,11 +6,11 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 10:44:54 by marcelodmac       #+#    #+#             */
-/*   Updated: 2025/03/31 14:38:59 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:41:37 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Zombie.h"
+#include "../inc/Zombie.hpp"
 
 Zombie::Zombie(std::string name)
 {
