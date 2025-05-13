@@ -6,11 +6,11 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:46:38 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/13 12:41:56 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:44:41 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Harl.hpp"
+#include "Harl.hpp"
 
 void    Harl::debug(void)
 {
