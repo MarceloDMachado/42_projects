@@ -1,21 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanB.h                                           :+:      :+:    :+:   */
+/*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/01 11:57:53 by madias-m          #+#    #+#             */
-/*   Updated: 2025/04/01 12:33:09 by madias-m         ###   ########.fr       */
+/*   Created: 2025/03/31 16:09:19 by madias-m          #+#    #+#             */
+/*   Updated: 2025/05/13 11:46:00 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_H
-# define HUMANB_H
+#ifndef WEAPON_HPP
+# define WEAPON_HPP
 
-#include <iostream>
 #include <string>
-#include "Weapon.h"
-#include "../src/HumanB.hpp"
+
+class Weapon
+{
+	private:
+		std::string	type;
+	public:
+		Weapon(void);
+		Weapon(std::string type);
+		const std::string	getType(void);
+		void				setType(std::string type);
+};
 
 #endif

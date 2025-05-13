@@ -6,11 +6,11 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/01 11:58:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/05 21:34:17 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:47:46 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanB.hpp"
+#include "../inc/HumanB.hpp"
 
 HumanB::HumanB(){}
 

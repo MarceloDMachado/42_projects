@@ -6,13 +6,13 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/31 16:08:36 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/05 15:24:59 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:46:43 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/Weapon.h"
-#include "../inc/HumanA.h"
-#include "../inc/HumanB.h"
+#include "../inc/Weapon.hpp"
+#include "../inc/HumanA.hpp"
+#include "../inc/HumanB.hpp"
 
 int main(void)
 {
