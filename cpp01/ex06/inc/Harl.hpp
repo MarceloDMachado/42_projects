@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/06 20:46:59 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/06 21:04:51 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:44:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 #include <iostream>
 #include <string>
-#include <map>
 
 class Harl
 {
