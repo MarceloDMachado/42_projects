@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/05 21:45:18 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/07 22:05:52 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/13 12:31:40 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,12 @@ int main(int argc, char **argv)
     std::string newFile;
     std::string line;
     while (std::getline(inputFile, line))
-        newFile.append(substitute(line.c_str(), argv[2], argv[3])).append("\n");
+	{
+		newFile.append(substitute(line.c_str(), argv[2], argv[3]));
+		if (!inputFile.eof())
+			newFile.append("\n");
+	}
+	
     inputFile.close();
     
     std::ofstream outFile(std::string(argv[1]).append(".replace"));
