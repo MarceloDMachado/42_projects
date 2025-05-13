@@ -6,14 +6,15 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/28 10:42:17 by marcelodmac       #+#    #+#             */
-/*   Updated: 2025/03/28 15:11:15 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/13 11:37:20 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ZOMBIE_HPP
 # define ZOMBIE_HPP
 
-#include "../inc/Zombie.h"
+#include <string>
+#include <iostream>
 
 class Zombie
 {
