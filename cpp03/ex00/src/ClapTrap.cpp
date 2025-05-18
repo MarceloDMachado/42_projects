@@ -6,18 +6,27 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:30:26 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/18 15:22:14 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/18 16:37:42 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
-ClapTrap::ClapTrap(void):hit_points(10), energy_points(10), attack_damage(0){}
-
-ClapTrap::ClapTrap(std::string name)
+ClapTrap::ClapTrap(void)
 {
-	*this = ClapTrap();
+	this->hit_points = 10;
+	this->energy_points = 10;
+	this->attack_damage = 0;
+	std::cout << "ClapTrap without a name has been created" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name):name(name)
+{
 	this->name = name;
+	this->hit_points = 10;
+	this->energy_points = 10;
+	this->attack_damage = 0;
+	std::cout << "ClapTrap " << this->name << " has been created" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(ClapTrap const& other)
@@ -29,15 +38,20 @@ ClapTrap& ClapTrap::operator=(ClapTrap const& other)
 		this->energy_points = other.getEnergyPoints();
 		this->attack_damage = other.getAttackDamage();
 	}
+	std::cout << "ClapTrap " << this->name << " has been created" << std::endl;
 	return (*this);
 }
 
 ClapTrap::ClapTrap(ClapTrap const& other)
 {
 	*this = other;
+	std::cout << "ClapTrap " << other.getName() << " has been copied";
 }
 
-ClapTrap::~ClapTrap(void){}
+ClapTrap::~ClapTrap(void)
+{
+	std::cout << "ClapTrap " << this->name << " is gone..." << std::endl;
+}
 
 void	ClapTrap::attack(const std::string& target)
 {
