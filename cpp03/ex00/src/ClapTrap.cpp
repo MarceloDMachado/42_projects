@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/13 14:30:26 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/18 16:39:12 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/18 17:13:17 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ClapTrap::ClapTrap(void)
 	std::cout << "ClapTrap without a name has been created" << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name):name(name)
+ClapTrap::ClapTrap(std::string name)
 {
 	this->name = name;
 	this->hit_points = 10;
