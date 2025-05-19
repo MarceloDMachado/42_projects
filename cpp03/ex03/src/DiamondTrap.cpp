@@ -6,25 +6,26 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 02:04:34 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/19 02:09:49 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/19 12:56:12 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void)
+DiamondTrap::DiamondTrap(void):ClapTrap("default_clap_name")
 {
-	this->hit_points = 100;
-	this->energy_points = 50;
-	this->attack_damage = 20;
+	this->hit_points = FragTrap::hit_points;
+	this->energy_points = ScavTrap::energy_points;
+	this->attack_damage = FragTrap::attack_damage;
 	std::cout << "DiamondTrap without a name has been created" << std::endl;
 }
 
-DiamondTrap::DiamondTrap(std::string name):ScavTrap(name)
+DiamondTrap::DiamondTrap(std::string name):ClapTrap(name + "_clap_name")
 {
-	this->hit_points = 100;
-	this->energy_points = 50;
-	this->attack_damage = 20;
+    this->name = name;
+	this->hit_points = FragTrap::hit_points;
+	this->energy_points = ScavTrap::energy_points;
+	this->attack_damage = FragTrap::attack_damage;
 	std::cout << "DiamondTrap " << this->name << " has been created" << std::endl;
 }
 
@@ -54,5 +55,5 @@ DiamondTrap::~DiamondTrap()
 
 void	DiamondTrap::whoAmI(void)
 {
-	std::cout << this->name << ": ueh" << std::endl;
+	std::cout << "Am I " << this->name << "or Am I " << ClapTrap::name << "?"<<std::endl;
 }

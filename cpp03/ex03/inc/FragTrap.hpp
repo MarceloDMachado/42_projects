@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:41:27 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/18 17:17:59 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/19 11:43:16 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <iostream>
 #include <string>
 
-class FragTrap : public ClapTrap
+class FragTrap : virtual public ClapTrap
 {
     public:
         FragTrap(void);
