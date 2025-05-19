@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 02:04:34 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/19 12:56:12 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/19 14:56:30 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 DiamondTrap::DiamondTrap(void):ClapTrap("default_clap_name")
 {
-	this->hit_points = FragTrap::hit_points;
-	this->energy_points = ScavTrap::energy_points;
-	this->attack_damage = FragTrap::attack_damage;
+	this->hit_points = 100;
+	this->energy_points = 50;
+	this->attack_damage = 30;
 	std::cout << "DiamondTrap without a name has been created" << std::endl;
 }
 
 DiamondTrap::DiamondTrap(std::string name):ClapTrap(name + "_clap_name")
 {
     this->name = name;
-	this->hit_points = FragTrap::hit_points;
-	this->energy_points = ScavTrap::energy_points;
-	this->attack_damage = FragTrap::attack_damage;
+	this->hit_points = 100;
+	this->energy_points = 50;
+	this->attack_damage = 30;
 	std::cout << "DiamondTrap " << this->name << " has been created" << std::endl;
 }
 

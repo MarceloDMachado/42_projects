@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 02:04:21 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/19 11:31:51 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/19 14:48:55 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <iostream>
 #include <string>
 
-class DiamondTrap : public FragTrap, public ScavTrap
+class DiamondTrap : public ScavTrap, public FragTrap
 {
     private:
         std::string name;        
