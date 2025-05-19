@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 02:04:34 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/19 14:56:30 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/19 15:16:04 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,5 @@ DiamondTrap::~DiamondTrap()
 
 void	DiamondTrap::whoAmI(void)
 {
-	std::cout << "Am I " << this->name << "or Am I " << ClapTrap::name << "?"<<std::endl;
+	std::cout << "Am I " << this->name << " or Am I " << ClapTrap::name << "?"<<std::endl;
 }
