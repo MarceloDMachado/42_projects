@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 17:53:34 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/19 22:20:56 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:28:15 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class Cat : public Animal
 		Cat& operator=(Cat const& other);
 		~Cat();
 		void	makeSound(void) const;
-        
+		Brain	getBrain(void) const;      
 };
 
 #endif

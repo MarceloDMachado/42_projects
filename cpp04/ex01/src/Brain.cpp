@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 21:41:00 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/19 22:18:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:26:07 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,4 +47,9 @@ Brain&	Brain::operator=(Brain const& other)
 Brain::~Brain(void)
 {
 	std::cout << "A brain has been deleted" << std::endl;
+}
+
+std::string*	Brain::getIdeas(void)
+{
+	return (this->ideas);
 }

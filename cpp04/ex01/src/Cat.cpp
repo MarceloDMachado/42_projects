@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/19 17:52:51 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/20 00:31:59 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/20 15:28:29 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,9 @@ Cat::~Cat(void)
 void    Cat::makeSound(void) const
 {
     std::cout << "miau" << std::endl;
+}
+
+Brain   Cat::getBrain(void) const
+{
+    return (*this->brain);
 }
