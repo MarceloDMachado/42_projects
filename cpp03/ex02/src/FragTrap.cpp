@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:41:15 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/21 15:38:29 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:43:19 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ FragTrap::~FragTrap()
 	std::cout << "FragTrap " << this->name << " is gone..." << std::endl;
 }
 
-void	FragTrap::attack(const std::string &target)
+void	FragTrap::attack(std::string const& target)
 {
 	if (this->energy_points > 0)
 	{
