@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:41:27 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/19 11:43:21 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:36:23 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class ScavTrap : virtual public ClapTrap
         ScavTrap(ScavTrap const& other);
         ScavTrap& operator=(ScavTrap const& other);
         ~ScavTrap(void);
+        void	attack(const std::string &target);
         void    guardGate(void);
 };
 
