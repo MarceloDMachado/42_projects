@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/18 16:41:15 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/18 17:21:03 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/21 15:38:29 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,17 @@ FragTrap::FragTrap(FragTrap const& other)
 FragTrap::~FragTrap()
 {
 	std::cout << "FragTrap " << this->name << " is gone..." << std::endl;
+}
+
+void	FragTrap::attack(const std::string &target)
+{
+	if (this->energy_points > 0)
+	{
+		std::cout << "FragTrap " << this->name << " attacks -> " << target << std::endl;
+		this->energy_points--;
+	}
+	else
+		std::cout << "FragTrap " << this->name << " tried to attack " << target << ", but has not energy for that" << std::endl;
 }
 
 void	FragTrap::highFivesGuys(void)
