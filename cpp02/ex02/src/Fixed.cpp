@@ -6,15 +6,13 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:16:03 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/13 00:39:07 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/05/23 14:45:17 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Fixed.hpp"
 
-Fixed::Fixed(void) : rawValue(0)
-{
-}
+Fixed::Fixed(void) : rawValue(0){}
 
 Fixed::Fixed(const Fixed& other)
 {
@@ -31,10 +29,7 @@ Fixed::Fixed(float const n)
 	this->rawValue = roundf(n * 256);
 }
 
-Fixed::~Fixed(void)
-{
-	
-}
+Fixed::~Fixed(void){}
 
 Fixed& Fixed::operator=(const Fixed& other)
 {
@@ -57,60 +52,68 @@ Fixed&	Fixed::operator--(void)
 
 Fixed	Fixed::operator++(int)
 {
-	Fixed temp = *this;
+	Fixed	temp = *this;
 	operator++();
 	return (temp);
 }
 
 Fixed	Fixed::operator--(int)
 {
-	Fixed temp = *this;
+	Fixed	temp = *this;
 	operator--();
 	return (temp);
 }
 
 Fixed	Fixed::operator+(Fixed const& other) const
 {
-	return (Fixed(this->getRawBits() + other.getRawBits()));
+	Fixed	result;
+	result.setRawBits(this->getRawBits() + other.getRawBits());
+	return (result);
 }
 
 Fixed	Fixed::operator-(Fixed const& other) const
 {
-	return (Fixed(this->getRawBits() - other.getRawBits()));
+	Fixed	result;
+	result.setRawBits(this->getRawBits() - other.getRawBits());
+	return (result);
 }
-
+fixedC = fixedA * fixedB
 Fixed	Fixed::operator*(Fixed const& other) const
 {
-	return (Fixed(this->getRawBits() * other.getRawBits() >> this->fract));
+	Fixed	result;
+	result.setRawBits((this->getRawBits() * other.getRawBits()) >> this->fract);
+	return (result);
 }
 
 Fixed	Fixed::operator/(Fixed const& other) const
 {
-	return (Fixed((this->getRawBits() >> this->fract) / other.getRawBits()));
+	Fixed	result;
+	result.setRawBits((this->getRawBits() * 256 / other.getRawBits()));
+	return (result);
 }
 
 bool	Fixed::operator>(Fixed const& other) const {
-	return this->getRawBits() > other.getRawBits();
+	return (this->getRawBits() > other.getRawBits());
 }
 
 bool	Fixed::operator<(Fixed const& other) const {
-	return this->getRawBits() < other.getRawBits();
+	return (this->getRawBits() < other.getRawBits());
 }
 
 bool	Fixed::operator>=(Fixed const& other) const {
-	return this->getRawBits() >= other.getRawBits();
+	return (this->getRawBits() >= other.getRawBits());
 }
 
 bool	Fixed::operator<=(Fixed const& other) const {
-	return this->getRawBits() <= other.getRawBits();
+	return (this->getRawBits() <= other.getRawBits());
 }
 
 bool	Fixed::operator==(Fixed const& other) const {
-	return this->getRawBits() == other.getRawBits();
+	return (this->getRawBits() == other.getRawBits());
 }
 
 bool	Fixed::operator!=(Fixed const& other) const {
-	return this->getRawBits() != other.getRawBits();
+	return (this->getRawBits() != other.getRawBits());
 }
 
 int		Fixed::getRawBits(void) const
