@@ -6,11 +6,12 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:27:30 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/11 16:01:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/16 15:44:47 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
+#include "../inc/Form.hpp"
 
 int main(void)
 {

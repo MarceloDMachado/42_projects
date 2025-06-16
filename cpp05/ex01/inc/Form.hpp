@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:28:35 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/16 15:19:23 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/16 15:52:33 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 #include <iostream>
 #include <stdexcept>
 #include "Bureaucrat.hpp"
+
+class Bureaucrat;
 
 class Form
 {
