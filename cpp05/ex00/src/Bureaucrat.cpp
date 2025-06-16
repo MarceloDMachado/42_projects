@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 12:14:37 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/11 14:56:51 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/11 15:57:06 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,40 @@ int			Bureaucrat::getGrade(void) const
 void		Bureaucrat::setGrade(int n)
 {
 	if (n > 150)
-		throw GradeTooHighException("GradeTooHighException");
+		throw GradeTooHighException("Error: Grade cannot be great than 150");
 	if (n < 1)
-		throw GradeTooLowException("GradeTooLowException");
+		throw GradeTooLowException("Error: Grade cannot be lower than 1");
 	this->grade = n;
+}
+
+Bureaucrat&	Bureaucrat::operator++(void)
+{
+	setGrade(this->grade - 1);
+	return (*this);
+}
+
+Bureaucrat&	Bureaucrat::operator--(void)
+{
+	setGrade(this->grade + 1);
+	return (*this);
+}
+
+Bureaucrat	Bureaucrat::operator++(int)
+{
+	Bureaucrat temp = *this;
+	++(*this);
+	return (temp);
+}
+
+Bureaucrat	Bureaucrat::operator--(int)
+{
+	Bureaucrat temp = *this;
+	--(*this);
+	return (temp);
+}
+
+std::ostream&	operator<<(std::ostream& o, Bureaucrat const& rhs)
+{
+	o << rhs.getName() << ", bureaucrat grade " << rhs.getGrade();
+	return (o);
 }
