@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/05/12 18:16:03 by madias-m          #+#    #+#             */
-/*   Updated: 2025/05/23 14:45:17 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/11 15:34:30 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ Fixed	Fixed::operator-(Fixed const& other) const
 	result.setRawBits(this->getRawBits() - other.getRawBits());
 	return (result);
 }
-fixedC = fixedA * fixedB
+
 Fixed	Fixed::operator*(Fixed const& other) const
 {
 	Fixed	result;
