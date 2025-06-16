@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:28:45 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/16 15:17:08 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/16 16:06:07 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,16 +60,16 @@ void    Form::beSigned(Bureaucrat bureaucrat)
 {
     if (bureaucrat.getGrade() >= this->GRADE_TO_SIGN)
 	{
-		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because his grade is too low";
+		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because his grade is too low" << std::endl;
 		return ;
 	}
 	if (this->isSigned)
 	{
-		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because the form is already signed";
+		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because the form is already signed" << std::endl;
 		return ;
 	}
     this->isSigned = true;
-	std::cout << bureaucrat.getName() << " signed " << this->getName();
+	std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
 }
 
 std::string Form::getName(void) const
@@ -94,6 +94,6 @@ int		Form::getGradeToExecute(void) const
 
 std::ostream&	operator<<(std::ostream& o, Form const& rhs)
 {
-	o << "Form: " << rhs.getName() << ", Grade to sign: " << rhs.getGradeToSign() << ", Grade to execute: " << rhs.getGradeToExecute() << "is signed: " << rhs.getIsSigned();
+	o << "Form: " << rhs.getName() << ", Grade to sign: " << rhs.getGradeToSign() << ", Grade to execute: " << rhs.getGradeToExecute() << " is signed: " << rhs.getIsSigned();
 	return (o);
 }
