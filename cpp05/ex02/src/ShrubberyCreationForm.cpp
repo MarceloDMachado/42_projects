@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:25:48 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 14:58:33 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 15:05:39 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,6 @@ ShrubberyCreationForm::~ShrubberyCreationForm(void){}
 
 void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 {
-	std::cout << "Trying to execute contract";
+	std::cout << executor.getName() << " is trying to execute contract";
 }
 

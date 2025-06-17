@@ -6,12 +6,14 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:27:30 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 13:22:26 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 15:04:44 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/AForm.hpp"
+#include "../inc/PresidentialPardonForm.hpp"
+#include "../inc/RobotomyRequestForm.hpp"
+#include "../inc/ShrubberyCreationForm.hpp"
 
 int main(void) {
     std::cout << "===== Welcome to the Bureaucratic Office Simulator! =====" << std::endl;
@@ -45,8 +47,8 @@ int main(void) {
 
     // Create forms with different signing requirements
     std::cout << "\n--- Creating Forms ---" << std::endl;
-    AForm taxForm("Tax AForm", 100);          // Requires grade 100 to sign
-    AForm contract("Top-Secret Contract", 1); // Requires grade 1 to sign
+    PresidentialPardonForm taxForm("Tax AForm");          // Requires grade 100 to sign
+    ShrubberyCreationForm contract("Top-Secret Contract"); // Requires grade 1 to sign
 
     std::cout << taxForm << std::endl;
     std::cout << contract << std::endl;
@@ -61,14 +63,14 @@ int main(void) {
     // Test invalid form creation
     std::cout << "\n--- Testing Invalid Forms ---" << std::endl;
     try {
-        AForm invalidForm("Invalid AForm", 151); // Grade too low
+        RobotomyRequestForm invalidForm("Invalid AForm"); // Grade too low
     }
     catch (AForm::GradeTooLowException& e) {
         std::cout << "ERROR: " << e.what() << std::endl;
     }
 	
     try {
-        AForm invalidForm("Invalid AForm", 0); // Grade too high
+        RobotomyRequestForm invalidForm("Invalid AForm"); // Grade too high
     }
     catch (AForm::GradeTooHighException& e) {
         std::cout << "ERROR: " << e.what() << std::endl;
