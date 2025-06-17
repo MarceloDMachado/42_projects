@@ -6,12 +6,12 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:27:30 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 12:35:17 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 13:22:26 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/Bureaucrat.hpp"
-#include "../inc/Form.hpp"
+#include "../inc/AForm.hpp"
 
 int main(void) {
     std::cout << "===== Welcome to the Bureaucratic Office Simulator! =====" << std::endl;
@@ -45,8 +45,8 @@ int main(void) {
 
     // Create forms with different signing requirements
     std::cout << "\n--- Creating Forms ---" << std::endl;
-    Form taxForm("Tax Form", 100);          // Requires grade 100 to sign
-    Form contract("Top-Secret Contract", 1); // Requires grade 1 to sign
+    AForm taxForm("Tax AForm", 100);          // Requires grade 100 to sign
+    AForm contract("Top-Secret Contract", 1); // Requires grade 1 to sign
 
     std::cout << taxForm << std::endl;
     std::cout << contract << std::endl;
@@ -61,16 +61,16 @@ int main(void) {
     // Test invalid form creation
     std::cout << "\n--- Testing Invalid Forms ---" << std::endl;
     try {
-        Form invalidForm("Invalid Form", 151); // Grade too low
+        AForm invalidForm("Invalid AForm", 151); // Grade too low
     }
-    catch (Form::GradeTooLowException& e) {
+    catch (AForm::GradeTooLowException& e) {
         std::cout << "ERROR: " << e.what() << std::endl;
     }
 	
     try {
-        Form invalidForm("Invalid Form", 0); // Grade too high
+        AForm invalidForm("Invalid AForm", 0); // Grade too high
     }
-    catch (Form::GradeTooHighException& e) {
+    catch (AForm::GradeTooHighException& e) {
         std::cout << "ERROR: " << e.what() << std::endl;
     }
 
