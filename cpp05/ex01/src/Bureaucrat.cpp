@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 12:14:37 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/16 12:08:03 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:23:22 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ Bureaucrat	Bureaucrat::operator--(int)
 	return (temp);
 }
 
-void	Bureaucrat::signForm(Form form)
+void	Bureaucrat::signForm(Form& form)
 {
 	form.beSigned(*this);
 }

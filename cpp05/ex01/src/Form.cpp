@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:28:45 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/16 16:06:07 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:21:39 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void    Form::checkGradeToSign(int n)
 
 void    Form::beSigned(Bureaucrat bureaucrat)
 {
-    if (bureaucrat.getGrade() >= this->GRADE_TO_SIGN)
+    if (bureaucrat.getGrade() > this->GRADE_TO_SIGN)
 	{
 		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because his grade is too low" << std::endl;
 		return ;

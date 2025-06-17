@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:27:30 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/16 16:06:19 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:35:17 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,6 @@ int main(void) {
         std::cout << "Promoting the intern..." << std::endl;
         ++intern;
         std::cout << intern << std::endl;
-
-        std::cout << "Demoting the director..." << std::endl;
-        --director;
-        std::cout << director << std::endl;
 
         std::cout << "Attempting to promote the director beyond grade 1..." << std::endl;
         ++director; // Already at grade 1, should throw exception
@@ -70,7 +66,7 @@ int main(void) {
     catch (Form::GradeTooLowException& e) {
         std::cout << "ERROR: " << e.what() << std::endl;
     }
-
+	
     try {
         Form invalidForm("Invalid Form", 0); // Grade too high
     }

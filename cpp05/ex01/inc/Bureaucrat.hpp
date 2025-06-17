@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:01:55 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/16 15:52:20 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 12:23:30 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ class Bureaucrat
 		std::string	getName(void) const;
 		int	getGrade(void) const;
 		void	setGrade(int n);
-		void	signForm(Form form);
+		void	signForm(Form& form);
 		class GradeTooHighException : public std::exception
 		{
     		private:
