@@ -1,6 +1,6 @@
 W_FLAGS = -Wall -Wextra -Werror -std=c++98
 NAME = bureaucrat
-SRC = main.cpp Bureaucrat.cpp AForm.cpp
+SRC = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
 SRC_PATH = ./src/
 INC = -I ./inc/
 OBJ = $(SRC:.cpp=.o)

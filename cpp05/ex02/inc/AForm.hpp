@@ -22,16 +22,16 @@ class Bureaucrat;
 
 class AForm
 {
-	protected:
+	private:
 		std::string const	NAME;
 		bool				isSigned;
 		int const			GRADE_TO_SIGN;
 		int const			GRADE_TO_EXECUTE;
+	protected:
 		void				checkGradeToSign(int n);
 	public:
 		AForm(void);
 		AForm(std::string name);
-		AForm(std::string name, int gradeToSign);
 		AForm(const AForm& other);
 		AForm& operator=(const AForm& other);
 		virtual ~AForm(void);

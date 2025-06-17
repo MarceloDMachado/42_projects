@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:28:45 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 13:21:58 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:50:22 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,6 @@ AForm::AForm(void):NAME("DEFAULT_FORM"),GRADE_TO_SIGN(150),GRADE_TO_EXECUTE(150)
 
 AForm::AForm(std::string name):NAME(name),GRADE_TO_SIGN(150),GRADE_TO_EXECUTE(150)
 {
-    this->isSigned = false;
-}
-
-AForm::AForm(std::string name, int gradeToSign):NAME(name),GRADE_TO_SIGN(gradeToSign),GRADE_TO_EXECUTE(150)
-{
-    checkGradeToSign(gradeToSign);
-    this->isSigned = false;
-}
-
-AForm::AForm(std::string name, int gradeToSign, int gradeToExecute):NAME(name),GRADE_TO_SIGN(gradeToSign),GRADE_TO_EXECUTE(gradeToExecute)
-{
-    checkGradeToSign(gradeToSign);
     this->isSigned = false;
 }
 

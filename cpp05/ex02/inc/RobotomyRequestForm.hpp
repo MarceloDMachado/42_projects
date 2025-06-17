@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:24:25 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 14:40:06 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:57:47 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 
 class RobotomyRequestForm : public AForm
 {
+	private:
+		std::string const	NAME;
+		bool				isSigned;
+		int const			GRADE_TO_SIGN;
+		int const			GRADE_TO_EXECUTE;
     public:
 		RobotomyRequestForm(void);
 		RobotomyRequestForm(std::string name);
-		RobotomyRequestForm(std::string name, int gradeToSign);
-		RobotomyRequestForm(std::string name, int gradeToSign, int gradeToExecute); // não precisa
 		RobotomyRequestForm(const RobotomyRequestForm& other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 		~RobotomyRequestForm(void);

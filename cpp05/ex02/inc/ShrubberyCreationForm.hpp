@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:24:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 14:40:35 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 14:57:41 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,14 @@
 
 class ShrubberyCreationForm : public AForm
 {
+	private:
+		std::string const	NAME;
+		bool				isSigned;
+		int const			GRADE_TO_SIGN;
+		int const			GRADE_TO_EXECUTE;
     public:
 		ShrubberyCreationForm(void);
 		ShrubberyCreationForm(std::string name);
-		ShrubberyCreationForm(std::string name, int gradeToSign);
-		ShrubberyCreationForm(std::string name, int gradeToSign, int gradeToExecute); // não precisa
 		ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 		~ShrubberyCreationForm(void);
