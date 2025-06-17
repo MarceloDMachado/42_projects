@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:24:25 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 14:57:47 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 15:04:01 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm(const RobotomyRequestForm& other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 		~RobotomyRequestForm(void);
-		void	execute(Bureaucrat const& executor) const = 0;
+		void	execute(Bureaucrat const& executor) const;
 };
 
 

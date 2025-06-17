@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:24:47 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 14:49:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/06/17 15:03:51 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ class PresidentialPardonForm : public AForm
 		PresidentialPardonForm(const PresidentialPardonForm& other);
 		PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
 		~PresidentialPardonForm(void);
-		void	execute(Bureaucrat const& executor) const = 0;
+		void	execute(Bureaucrat const& executor) const;
 };
 
 #endif
