@@ -6,13 +6,14 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:24:02 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 15:04:04 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/07/25 22:06:36 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SHRUBBERYCREATIONFORM_HPP
 # define SHRUBBERYCREATIONFORM_HPP
 
+#include <fstream>
 #include "AForm.hpp"
 
 class ShrubberyCreationForm : public AForm
@@ -22,9 +23,11 @@ class ShrubberyCreationForm : public AForm
 		bool				isSigned;
 		int const			GRADE_TO_SIGN;
 		int const			GRADE_TO_EXECUTE;
-    public:
+		std::string			target;
 		ShrubberyCreationForm(void);
-		ShrubberyCreationForm(std::string name);
+		void				plantShrubbery(void) const;
+	public:
+		ShrubberyCreationForm(std::string target);
 		ShrubberyCreationForm(const ShrubberyCreationForm& other);
 		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
 		~ShrubberyCreationForm(void);
