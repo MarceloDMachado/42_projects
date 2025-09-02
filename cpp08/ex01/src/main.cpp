@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 14:28:18 by madias-m          #+#    #+#             */
-/*   Updated: 2025/09/02 14:51:06 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/09/02 14:56:54 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int main() {
     test_negative_and_large_numbers();
     test_large_input();
 
-    std::cout << "✅ Todos os testes passaram!\n";
+    std::cout << "✅ Working Perfectly!\n";
     return 0;
 }
 
