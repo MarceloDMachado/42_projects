@@ -29,6 +29,7 @@ class AForm
 		int const			GRADE_TO_EXECUTE;
 	protected:
 		void				checkGradeToSign(int n);
+		void				checkGradeToExecute(int n) const;
 	public:
 		AForm(void);
 		AForm(std::string name);

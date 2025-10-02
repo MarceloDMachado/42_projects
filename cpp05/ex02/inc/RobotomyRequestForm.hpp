@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:24:25 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 15:04:01 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:37:43 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,20 @@
 class RobotomyRequestForm : public AForm
 {
 	private:
-		std::string const	NAME;
-		bool				isSigned;
-		int const			GRADE_TO_SIGN;
-		int const			GRADE_TO_EXECUTE;
+		std::string const			NAME;
+		bool						isSigned;
+		static int const			GRADE_TO_SIGN = 72;
+		static int const			GRADE_TO_EXECUTE = 45;
+		std::string					target;
     public:
 		RobotomyRequestForm(void);
-		RobotomyRequestForm(std::string name);
+		RobotomyRequestForm(std::string target);
 		RobotomyRequestForm(const RobotomyRequestForm& other);
 		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
 		~RobotomyRequestForm(void);
+		void	makeDrillingNoises(void) const;
 		void	execute(Bureaucrat const& executor) const;
+
 };
 
 

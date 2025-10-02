@@ -6,23 +6,23 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:29:10 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 15:05:30 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:15:04 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/PresidentialPardonForm.hpp"
 
-PresidentialPardonForm::PresidentialPardonForm(void):NAME("default"),GRADE_TO_SIGN(25),GRADE_TO_EXECUTE(5)
+PresidentialPardonForm::PresidentialPardonForm(void):NAME("default")
 {
     this->isSigned = false;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string name):NAME(name),GRADE_TO_SIGN(25),GRADE_TO_EXECUTE(5)
+PresidentialPardonForm::PresidentialPardonForm(std::string name):NAME(name)
 {
     this->isSigned = false;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other):NAME(other.NAME),GRADE_TO_SIGN(25),GRADE_TO_EXECUTE(5)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& other):NAME(other.NAME)
 {
     *this = other;
 }

@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:28:45 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 14:50:22 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/10/01 16:17:02 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,14 @@ void    AForm::checkGradeToSign(int n)
         throw AForm::GradeTooLowException("Could not create a form. Grade too low");
     if (n < 1)
         throw AForm::GradeTooHighException("Could not create a form. Grade too high");
+}
+
+void    AForm::checkGradeToExecute(int n) const
+{
+    if (n > this->GRADE_TO_EXECUTE)
+        throw AForm::GradeTooLowException("Could not execute a form. Grade too low");
+    if (n < 1)
+        throw AForm::GradeTooHighException("Could not execute a form. Grade too high");
 }
 
 void    AForm::beSigned(Bureaucrat bureaucrat)

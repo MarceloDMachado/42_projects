@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/03 18:01:55 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 13:21:17 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/09/22 13:29:13 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,12 @@ class Bureaucrat
 		Bureaucrat	operator++(int);
 		Bureaucrat	operator--(int);
 		~Bureaucrat(void);
-		std::string	getName(void) const;
-		int	getGrade(void) const;
-		void	setGrade(int n);
-		void	signForm(AForm& form);
-		class GradeTooHighException : public std::exception
+		std::string		getName(void) const;
+		int				getGrade(void) const;
+		void			setGrade(int n);
+		void			signForm(AForm& form);
+		void			executeForm(AForm const & form);
+		class 			GradeTooHighException : public std::exception
 		{
     		private:
     		    std::string message;
@@ -49,7 +50,7 @@ class Bureaucrat
     		    ~GradeTooHighException(void) throw() {};
     		    const char* what() const throw() {return (this->message.c_str());};
 		};
-		class GradeTooLowException : public std::exception
+		class 			GradeTooLowException : public std::exception
 		{
     		private:
     		    std::string message;
