@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:26:06 by madias-m          #+#    #+#             */
-/*   Updated: 2025/10/01 16:40:58 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/10/02 14:50:38 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ RobotomyRequestForm::RobotomyRequestForm(void):NAME("default")
     this->isSigned = false;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target):NAME("Robotomy Form")
+RobotomyRequestForm::RobotomyRequestForm(std::string target):NAME("Robotomy Form"), target(target)
 {
     this->isSigned = false;
 }
@@ -30,8 +30,10 @@ RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other):NAME(
 RobotomyRequestForm& RobotomyRequestForm::operator=(const RobotomyRequestForm& other)
 {
     if (this != &other)
+    {
         this->isSigned = other.isSigned;
         this->target = other.target;
+    }
     return (*this);
 }
 
@@ -54,4 +56,6 @@ void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
     std::srand(static_cast<unsigned int>(std::time(NULL)));
     if (std::rand() % 2)
         std::cout << this->target << " has been robotomized successfully!" << std::endl;
+    else
+        std::cout << this->target << " has not been robotomized successfully! D:" << std::endl;
 }

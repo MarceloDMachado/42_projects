@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:28:45 by madias-m          #+#    #+#             */
-/*   Updated: 2025/10/01 16:17:02 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/10/02 15:07:27 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ int		AForm::getGradeToExecute(void) const
 
 std::ostream&	operator<<(std::ostream& o, AForm const& rhs)
 {
-	o << "AForm: " << rhs.getName() << ", Grade to sign: " << rhs.getGradeToSign() << ", Grade to execute: " << rhs.getGradeToExecute() << " is signed: " << rhs.getIsSigned();
+	o << "AForm: " << rhs.getName() << ", Grade to sign: " << rhs.getGradeToSign() << ", Grade to execute: " << rhs.getGradeToExecute() << ", is signed: " << rhs.getIsSigned();
 	return (o);
 }

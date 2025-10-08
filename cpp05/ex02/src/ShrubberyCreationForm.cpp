@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:25:48 by madias-m          #+#    #+#             */
-/*   Updated: 2025/10/01 16:11:32 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/10/02 15:17:29 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,8 @@ ShrubberyCreationForm::ShrubberyCreationForm(void):NAME("default")
     this->isSigned = false;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target):NAME("ShrubberyCreationForm")
+ShrubberyCreationForm::ShrubberyCreationForm(std::string target):NAME("ShrubberyCreationForm"),target(target)
 {
-    this->target = target;
     this->isSigned = false;
 }
 
@@ -50,10 +49,10 @@ void	ShrubberyCreationForm::execute(Bureaucrat const& executor) const
 
 void    ShrubberyCreationForm::plantShrubbery(void) const 
 {
-    std::ofstream file(std::string(target).append("_shrubbery"));
+    std::ofstream file(std::string(target).append("_shrubbery").c_str());
 
     file << " " << std::endl;
-    file << "                  _{\\ _{\\{\\/}/}/}__" << std::endl;
+    file << "              _{\\ _{\\{\\/}/}/}__" << std::endl;
     file << "             {/{/\\}{/{/\\}(\\}{/\\} _" << std::endl;
     file << "            {/{/\\}{/{/\\}(_)\\}{/{/\\}  _" << std::endl;
     file << "         {\\{/(\\}\\}{/{/\\}\\}{/){/\\}\\} /\\}" << std::endl;
@@ -74,7 +73,7 @@ void    ShrubberyCreationForm::plantShrubbery(void) const
     file << "              (_)  \\.-'.-/" << std::endl;
     file << "          __...--- |'-.-'| --...__" << std::endl;
     file << "   _...--\"   .-'   |'-.-'|  ' -.  ""--..__" << std::endl;
-    file << " -\"    ' .  . '    |.'-._| '  . .  '   jro" << std::endl;
+    file << " -\"    ' .  . '    |.'-._| '  . .  '   " << std::endl;
     file << " .  '-  '    .--'  | '-.'|    .  '  . '" << std::endl;
     file << "          ' ..     |'-_.-|" << std::endl;
     file << "  .  '  .       _.-|-._ -|-._  .  '  ." << std::endl;

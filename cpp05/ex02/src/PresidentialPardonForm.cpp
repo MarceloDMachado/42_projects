@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:29:10 by madias-m          #+#    #+#             */
-/*   Updated: 2025/10/01 16:15:04 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/10/02 15:03:43 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ PresidentialPardonForm::PresidentialPardonForm(void):NAME("default")
     this->isSigned = false;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(std::string name):NAME(name)
+PresidentialPardonForm::PresidentialPardonForm(std::string target):NAME("PresidentialForm"),target(target)
 {
     this->isSigned = false;
 }
@@ -36,9 +36,15 @@ PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPard
 
 PresidentialPardonForm::~PresidentialPardonForm(void){}
 
+void    PresidentialPardonForm::writePardonNote(void) const
+{
+    std::cout << this->target << "has been pardoned by Zaphod Beeblebrox." << std::endl;
+}
+
 void	PresidentialPardonForm::execute(Bureaucrat const& executor) const
 {
-	std::cout << executor.getName() << " is trying to execute contract";
+	checkGradeToExecute(executor.getGrade());
+    writePardonNote();
 }
 
 
