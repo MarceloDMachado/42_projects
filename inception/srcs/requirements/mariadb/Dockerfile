@@ -15,4 +15,6 @@ RUN apk update && \
 
 WORKDIR /usr/local/bin/
 
+EXPOSE 3306
+
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
