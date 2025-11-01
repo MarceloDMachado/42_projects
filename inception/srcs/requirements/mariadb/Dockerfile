@@ -4,7 +4,10 @@ ENV MARIADB_DATA_DIR=/var/lib/mysql \
     MARIADB_RUN_DIR=/run/mysqld \
     MARIADB_LOG_DIR=/var/log/mysql
 
-COPY ./tools/ /usr/local/bin/
+WORKDIR /usr/local/bin/
+
+COPY ./tools/ .
+COPY ./conf/99_my.cnf /etc/my.cnf
 
 # openrc
 RUN apk update && \
@@ -12,8 +15,6 @@ RUN apk update && \
     mkdir -p $MARIADB_DATA_DIR $MARIADB_RUN_DIR $MARIADB_LOG_DIR && \
     chown -R mysql:mysql $MARIADB_DATA_DIR $MARIADB_RUN_DIR $MARIADB_LOG_DIR && \
     chmod +x /usr/local/bin/entrypoint.sh
-
-WORKDIR /usr/local/bin/
 
 EXPOSE 3306
 
