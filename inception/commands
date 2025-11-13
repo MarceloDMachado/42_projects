@@ -1,0 +1,8 @@
+docker run -d  --name ftmariadb -p 3306:3306 -e MYSQL_ROOT_PASSWORD=root ftmariadb
+
+mysql -h 127.0.0.1 -P 3306 -u app_user -p
+
+mysql -u root -p -e "SHOW VARIABLES LIKE 'port';"
+
+docker run -d --name ftnginx -p 8443:443 ftnginx
+

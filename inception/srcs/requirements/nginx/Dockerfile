@@ -9,7 +9,7 @@ RUN rm -rf /etc/nginx/conf.d/*
 
 WORKDIR /var/www/html
 
-COPY ./html/ /var/www/html
+# COPY ./html/ /var/www/html
 COPY ./conf/nginx.conf /etc/nginx/nginx.conf
 
 RUN openssl req -x509 -nodes -days 365 \
