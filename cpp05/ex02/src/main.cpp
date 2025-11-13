@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:27:30 by madias-m          #+#    #+#             */
-/*   Updated: 2025/10/02 15:06:23 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/11/13 00:34:09 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,60 +16,73 @@
 #include "../inc/RobotomyRequestForm.hpp"
 #include "../inc/ShrubberyCreationForm.hpp"
 
+// ANSI color codes
+#define RESET       "\033[0m"
+#define BOLD        "\033[1m"
+#define RED         "\033[31m"
+#define GREEN       "\033[32m"
+#define YELLOW      "\033[33m"
+#define BLUE        "\033[34m"
+#define MAGENTA     "\033[35m"
+#define CYAN        "\033[36m"
+#define GRAY        "\033[90m"
+
 int main() {
     try {
-        std::cout << "=== Teste Bureaucrat ===" << std::endl;
+        std::cout << BOLD << BLUE << "=== Bureaucrat Test ===" << RESET << std::endl;
         Bureaucrat high("Alice", 1);
         Bureaucrat low("Bob", 150);
 
-        std::cout << high << std::endl;
-        std::cout << low << std::endl;
+        std::cout << GREEN << high << RESET << std::endl;
+        std::cout << GREEN << low << RESET << std::endl;
 
-        std::cout << "\n=== Teste ShrubberyCreationForm ===" << std::endl;
+        std::cout << "\n" << BOLD << CYAN << "=== ShrubberyCreationForm Test ===" << RESET << std::endl;
         ShrubberyCreationForm shrub("garden");
-        std::cout << shrub << std::endl;
+        std::cout << MAGENTA << shrub << RESET << std::endl;
 
         try {
             low.signForm(shrub);
             low.executeForm(shrub);
         } catch (std::exception &e) {
-            std::cerr << e.what() << std::endl;
+            std::cerr << RED << "[Error] " << e.what() << RESET << std::endl;
         }
 
         high.signForm(shrub);
         high.executeForm(shrub);
 
-        std::cout << "\n=== Teste RobotomyRequestForm ===" << std::endl;
+        std::cout << "\n" << BOLD << CYAN << "=== RobotomyRequestForm Test ===" << RESET << std::endl;
         RobotomyRequestForm robo("Bender");
-        std::cout << robo << std::endl;
+        std::cout << MAGENTA << robo << RESET << std::endl;
 
         try {
-            high.executeForm(robo); // tentar executar sem assinar
+            high.executeForm(robo); // attempt to execute without signing
         } catch (std::exception &e) {
-            std::cerr << e.what() << std::endl;
+            std::cerr << RED << "[Error] " << e.what() << RESET << std::endl;
         }
 
         high.signForm(robo);
-        for (int i = 0; i < 5; i++) { // testar probabilidade de 50%
+        for (int i = 0; i < 5; i++) { // test 50% success rate
             high.executeForm(robo);
         }
 
-        std::cout << "\n=== Teste PresidentialPardonForm ===" << std::endl;
+        std::cout << "\n" << BOLD << CYAN << "=== PresidentialPardonForm Test ===" << RESET << std::endl;
         PresidentialPardonForm pardon("Marvin");
-        std::cout << pardon << std::endl;
+        std::cout << MAGENTA << pardon << RESET << std::endl;
 
         try {
-            low.signForm(pardon); // sem permissão
+            low.signForm(pardon); // not allowed
         } catch (std::exception &e) {
-            std::cerr << e.what() << std::endl;
+            std::cerr << RED << "[Error] " << e.what() << RESET << std::endl;
         }
 
         high.signForm(pardon);
         high.executeForm(pardon);
 
     } catch (std::exception &e) {
-        std::cerr << "Erro geral: " << e.what() << std::endl;
+        std::cerr << RED << BOLD << "[Fatal Error] " << e.what() << RESET << std::endl;
     }
+
+    std::cout << "\n" << GREEN << "Program finished successfully." << RESET << std::endl;
 
     return 0;
 }
