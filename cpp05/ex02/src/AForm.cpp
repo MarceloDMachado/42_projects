@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:28:45 by madias-m          #+#    #+#             */
-/*   Updated: 2025/10/02 15:07:27 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:24:06 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,12 @@ AForm::AForm(std::string name):NAME(name),GRADE_TO_SIGN(150),GRADE_TO_EXECUTE(15
 {
     this->isSigned = false;
 }
+
+AForm::AForm(std::string name, int gradeToSing, int gradeToExecute):NAME(name), GRADE_TO_SIGN(gradeToSing), GRADE_TO_EXECUTE(gradeToExecute)
+{
+    this->isSigned = false;
+}
+
 
 AForm::AForm(const AForm& other):NAME(other.NAME),GRADE_TO_SIGN(other.GRADE_TO_SIGN),GRADE_TO_EXECUTE(other.GRADE_TO_EXECUTE)
 {
@@ -56,7 +62,7 @@ void    AForm::beSigned(Bureaucrat bureaucrat)
 {
     if (bureaucrat.getGrade() > this->GRADE_TO_SIGN)
 	{
-		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because his grade is too low" << std::endl;
+		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because his grade is too low ❌" << std::endl;
 		return ;
 	}
 	if (this->isSigned)
@@ -65,7 +71,7 @@ void    AForm::beSigned(Bureaucrat bureaucrat)
 		return ;
 	}
     this->isSigned = true;
-	std::cout << bureaucrat.getName() << " signed " << this->getName() << std::endl;
+	std::cout << bureaucrat.getName() << " signed " << this->getName() << " ✅"<< std::endl;
 }
 
 std::string AForm::getName(void) const

@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:24:47 by madias-m          #+#    #+#             */
-/*   Updated: 2025/10/02 15:02:36 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/11/17 14:00:04 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 class PresidentialPardonForm : public AForm
 {
 	private:
-		std::string const			NAME;
 		bool						isSigned;
 		static int const			GRADE_TO_SIGN = 25;
 		static int const			GRADE_TO_EXECUTE = 5;

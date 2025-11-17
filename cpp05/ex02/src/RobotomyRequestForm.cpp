@@ -6,23 +6,24 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/17 13:26:06 by madias-m          #+#    #+#             */
-/*   Updated: 2025/10/02 14:50:38 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/11/17 16:27:26 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/RobotomyRequestForm.hpp"
 
-RobotomyRequestForm::RobotomyRequestForm(void):NAME("default")
+RobotomyRequestForm::RobotomyRequestForm(void): AForm("Default Robotomy Form Name", GRADE_TO_SIGN, GRADE_TO_EXECUTE)
 {
     this->isSigned = false;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(std::string target):NAME("Robotomy Form"), target(target)
+RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("Robotomy Form", GRADE_TO_SIGN, GRADE_TO_EXECUTE), target(target)
 {
+    std::srand(static_cast<unsigned int>(std::time(NULL)));
     this->isSigned = false;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other):NAME(other.NAME)
+RobotomyRequestForm::RobotomyRequestForm(const RobotomyRequestForm& other): AForm("Robotomy Form", other.GRADE_TO_SIGN, other.GRADE_TO_EXECUTE), target(other.target)
 {
     *this = other;
 }
@@ -50,12 +51,11 @@ void    RobotomyRequestForm::makeDrillingNoises(void) const
 void	RobotomyRequestForm::execute(Bureaucrat const& executor) const
 {
 	checkGradeToExecute(executor.getGrade());
-    std::cout << executor.getName() << " executed " << this->NAME << std::endl;
+    std::cout << executor.getName() << " executed Robotomy Form ✅" << std::endl;
 
     makeDrillingNoises();
-    std::srand(static_cast<unsigned int>(std::time(NULL)));
-    if (std::rand() % 2)
-        std::cout << this->target << " has been robotomized successfully!" << std::endl;
+    if (std::rand() % 2 == 0)
+        std::cout << this->target << " has been robotomized SUCCESSFULLY! 🤖" << std::endl;
     else
-        std::cout << this->target << " has not been robotomized successfully! D:" << std::endl;
+        std::cout << this->target << " has not been robotomized!" << std::endl;
 }
