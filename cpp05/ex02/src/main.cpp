@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:27:30 by madias-m          #+#    #+#             */
-/*   Updated: 2025/11/17 16:28:18 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/11/18 17:20:39 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,8 +89,8 @@ int main() {
         std::cout << GREEN << low << RESET << std::endl;
 
         testShrubbery(high, low);
-		// testRobotomy(high, low);
-		// testPardon(high, low);
+		testRobotomy(high, low);
+		testPardon(high, low);
     } catch (std::exception &e) {
         std::cerr << RED << BOLD << "[Fatal Error] " << e.what() << RESET << std::endl;
     }
