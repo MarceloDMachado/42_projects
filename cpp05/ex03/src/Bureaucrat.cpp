@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 12:14:37 by madias-m          #+#    #+#             */
-/*   Updated: 2025/11/17 16:25:06 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/11/19 14:19:10 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,6 +88,7 @@ Bureaucrat	Bureaucrat::operator--(int)
 
 void	Bureaucrat::signForm(AForm& form)
 {
+	std::cout << this->NAME << " is trying to sign form " << form.getName() << " ⚠️" << std::endl; 
 	form.beSigned(*this);
 }
 
@@ -97,7 +98,7 @@ void	Bureaucrat::executeForm(AForm const & form)
 	if (form.getIsSigned())
 		form.execute(*this);
 	else
-		std::cout << "The contract " << form.getName() << " is not signed and could not be executed!" << std::endl;
+		std::cout << "The contract " << form.getName() << " is not signed and could not be executed! ❌" << std::endl;
 }
 
 

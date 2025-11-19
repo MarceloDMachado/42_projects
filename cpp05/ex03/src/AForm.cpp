@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/16 11:28:45 by madias-m          #+#    #+#             */
-/*   Updated: 2025/11/17 16:43:28 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/11/19 13:00:45 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,27 +44,24 @@ AForm::~AForm(void){}
 
 void    AForm::checkGradeToSign(int n)
 {
-    if (n > 150)
-        throw AForm::GradeTooLowException("Could not create a form. Grade too low");
-    if (n < 1)
-        throw AForm::GradeTooHighException("Could not create a form. Grade too high");
+    if (n > this->GRADE_TO_SIGN)
+        throw AForm::GradeTooLowException("Could not sign the form. Grade too low");
 }
 
 void    AForm::checkGradeToExecute(int n) const
 {
     if (n > this->GRADE_TO_EXECUTE)
-        throw AForm::GradeTooLowException("Could not execute a form. Grade too low");
-    if (n < 1)
-        throw AForm::GradeTooHighException("Could not execute a form. Grade too high");
+        throw AForm::GradeTooLowException("Could not execute the form. Grade too low");
 }
 
 void    AForm::beSigned(Bureaucrat bureaucrat)
 {
-    if (bureaucrat.getGrade() > this->GRADE_TO_SIGN)
-	{
-		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because his grade is too low ❌" << std::endl;
-		return ;
-	}
+    checkGradeToSign(bureaucrat.getGrade());
+    // if (bureaucrat.getGrade() > this->GRADE_TO_SIGN)
+	// {
+	// 	std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because his grade is too low ❌" << std::endl;
+	// 	return ;
+	// }
 	if (this->isSigned)
 	{
 		std::cout << bureaucrat.getName() << " couldn't sign " << this->getName() << " because the form is already signed" << std::endl;
