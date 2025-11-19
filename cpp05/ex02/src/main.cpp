@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:27:30 by madias-m          #+#    #+#             */
-/*   Updated: 2025/11/18 17:20:39 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/11/19 12:52:59 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,15 @@ void	testShrubbery(Bureaucrat& highGrade, Bureaucrat& lowGrade)
 	std::cout << "\n" << BOLD << CYAN << "=== ShrubberyCreationForm Test ===" << RESET << std::endl;
     ShrubberyCreationForm shrub("garden");
     std::cout << MAGENTA << shrub << RESET << std::endl;
-
+    
     try {
+        std::cout << lowGrade << std::endl;
         lowGrade.signForm(shrub);
         lowGrade.executeForm(shrub);
     } catch (std::exception &e) {
         std::cerr << RED << "[Error] " << e.what() << RESET << std::endl;
     }
-
+    std::cout << std::endl;
     highGrade.signForm(shrub);
     highGrade.executeForm(shrub);
 }
@@ -51,7 +52,8 @@ void	testRobotomy(Bureaucrat& highGrade, Bureaucrat& lowGrade)
     std::cout << MAGENTA << robo << RESET << std::endl;
 
 	try {
-	    lowGrade.signForm(robo); // attempt to execute without signing
+        std::cout << lowGrade << std::endl;
+	    lowGrade.signForm(robo);
 	} catch (std::exception &e) {
 	    std::cerr << RED << "[Error] " << e.what() << RESET << std::endl;
 	}
