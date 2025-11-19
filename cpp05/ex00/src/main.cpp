@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:27:30 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/11 16:01:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/11/19 12:06:30 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,39 @@
 
 int main(void)
 {
-    Bureaucrat b2("b2");
-    Bureaucrat b3("b3", 1);
+    Bureaucrat joao("Joao");
+    Bureaucrat maria("Maria", 1);
 
-	std::cout << b2++ << std::endl;
-	std::cout << --b3 << std::endl;
+	std::cout << std::endl;
 	
+	std::cout << "Joao inital grade: " << joao << std::endl;
+	std::cout << "Maria inital grade: " << maria << std::endl;
+
+	joao++;
+	--maria;
+
+	std::cout << std::endl;
+
+	std::cout << "Joao new grade: " << joao << std::endl;
+	std::cout << "Maria new grade: " << maria << std::endl;
+	
+	std::cout << std::endl;
     try 
     {
-        Bureaucrat b4("b4", -51);
-        Bureaucrat b5("b5", 151);
+        Bureaucrat	gradeTooHigh("tooHigh", -51);
     }
-	catch (Bureaucrat::GradeTooHighException& e)
+	catch (std::exception& e)
 	{
-		std::cout << "GradeTooHighException: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
+	}
+	
+	std::cout << std::endl;
+	try
+	{
+		Bureaucrat	gradeTooLow("tooLow", 151);
 	}
 	catch (Bureaucrat::GradeTooLowException& e)
 	{
-		std::cout << "GradeTooLowException: " << e.what() << std::endl;
+		std::cout << e.what() << std::endl;
 	}
 }
