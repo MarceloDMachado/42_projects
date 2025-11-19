@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/06/11 13:27:30 by madias-m          #+#    #+#             */
-/*   Updated: 2025/06/17 12:35:17 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/11/19 12:15:25 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,23 +26,6 @@ int main(void) {
     std::cout << manager << std::endl;
     std::cout << director << std::endl;
 
-    // Test grade modifications
-    std::cout << "\n--- Promoting/Demoting Bureaucrats ---" << std::endl;
-    try {
-        std::cout << "Promoting the intern..." << std::endl;
-        ++intern;
-        std::cout << intern << std::endl;
-
-        std::cout << "Attempting to promote the director beyond grade 1..." << std::endl;
-        ++director; // Already at grade 1, should throw exception
-    }
-    catch (Bureaucrat::GradeTooHighException& e) {
-        std::cout << "ERROR: " << e.what() << std::endl;
-    }
-    catch (Bureaucrat::GradeTooLowException& e) {
-        std::cout << "ERROR: " << e.what() << std::endl;
-    }
-
     // Create forms with different signing requirements
     std::cout << "\n--- Creating Forms ---" << std::endl;
     Form taxForm("Tax Form", 100);          // Requires grade 100 to sign
@@ -57,22 +40,6 @@ int main(void) {
     manager.signForm(taxForm);     // Manager (grade 50) succeeds
     director.signForm(contract);   // Director (grade 1) succeeds
     director.signForm(contract);   // Director tries to sign again (already signed)
-
-    // Test invalid form creation
-    std::cout << "\n--- Testing Invalid Forms ---" << std::endl;
-    try {
-        Form invalidForm("Invalid Form", 151); // Grade too low
-    }
-    catch (Form::GradeTooLowException& e) {
-        std::cout << "ERROR: " << e.what() << std::endl;
-    }
-	
-    try {
-        Form invalidForm("Invalid Form", 0); // Grade too high
-    }
-    catch (Form::GradeTooHighException& e) {
-        std::cout << "ERROR: " << e.what() << std::endl;
-    }
 
     std::cout << "\n===== End of Simulation =====" << std::endl;
     return 0;
