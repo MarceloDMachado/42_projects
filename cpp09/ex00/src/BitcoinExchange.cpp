@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:50:26 by madias-m          #+#    #+#             */
-/*   Updated: 2025/09/08 15:34:38 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/12/10 17:30:20 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,22 +118,21 @@ bool BitcoinExchange::isValidValue(const std::string &value, float &val) const
 {
 	std::istringstream iss(value);
 
+	char	remaining;
+	
 	if (!(iss >> val))
 		return (false);
-
-	char remaining;
 	if (iss >> remaining)
 		return (false);
-
 	if (val < 0)
 	{
 		std::cerr << "Error: not a positive number." << std::endl;
 		return (false);
 	}
 
-	if (val >= 2147483647)
+	if (val >= (float) 2147483647)
 	{
-		std::cerr << "Error: too large a number." << std::endl;
+		std::cerr << "Error: too large a number." << std::endl;	
 		return (false);
 	}
 	return (true);
@@ -160,39 +159,25 @@ void	BitcoinExchange::processInput(const std::string &fileName)
 		std::cerr << "Error: could not open file." << std::endl;
 		return;
 	}
-	std::string line;
+	std::string	line;
 	std::getline(fileStream, line);
 	while (std::getline(fileStream, line))
 	{
 		if (line.empty())
 			continue;
-		size_t delimiterPos = line.find(" | ");
+		size_t	delimiterPos = line.find(" | ");
 		if (delimiterPos == std::string::npos)
 		{
 			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
-
-		std::string date = line.substr(0, delimiterPos);
-		std::string valueStr = line.substr(delimiterPos + 3);
-		float value;
+		float		value;
+		std::string	date = line.substr(0, delimiterPos);
+		std::string	valueStr = line.substr(delimiterPos + 3);
 		
-		if (!isValidDate(date))
-		{
-			std::cerr << "Error: bad input => " << date << std::endl;
+		if (!isValidDate(date) || !isValidValue(valueStr, value))
 			continue;
-		}
-
-		if (!isValidValue(valueStr, value))
-		{
-			std::cerr << "Error: bad input => " << date << std::endl;
-			continue;
-		}
-
-		float rate = getExchangeRate(date);
-		float result = value * rate;
-
-		std::cout << date << " => " << value << " = " << result << std::endl;
+		std::cout << date << " => " << value << " = " << (value * getExchangeRate(date)) << std::endl;
 	}
 	fileStream.close();
 }
