@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:44:15 by madias-m          #+#    #+#             */
-/*   Updated: 2025/09/08 15:14:29 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/12/11 14:33:48 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class BitcoinExchange
         std::map<std::string, float> Database;
 
         bool	isValidDate(const std::string &date) const;
-        bool	isValidValue(const std::string &value, float &val) const;
+        bool	isValidValue(const std::string &value, long double &val) const;
         float	getExchangeRate(const std::string &date) const;
 };
 

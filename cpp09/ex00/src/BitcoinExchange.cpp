@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:50:26 by madias-m          #+#    #+#             */
-/*   Updated: 2025/12/10 17:30:20 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/12/11 14:35:27 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,7 +114,7 @@ bool BitcoinExchange::isValidDate(const std::string &date) const
 	return (true);
 }
 
-bool BitcoinExchange::isValidValue(const std::string &value, float &val) const
+bool BitcoinExchange::isValidValue(const std::string &value, long double &val) const
 {
 	std::istringstream iss(value);
 
@@ -129,8 +129,7 @@ bool BitcoinExchange::isValidValue(const std::string &value, float &val) const
 		std::cerr << "Error: not a positive number." << std::endl;
 		return (false);
 	}
-
-	if (val >= (float) 2147483647)
+	if (val > 2147483647)
 	{
 		std::cerr << "Error: too large a number." << std::endl;	
 		return (false);
@@ -171,9 +170,9 @@ void	BitcoinExchange::processInput(const std::string &fileName)
 			std::cerr << "Error: bad input => " << line << std::endl;
 			continue;
 		}
-		float		value;
-		std::string	date = line.substr(0, delimiterPos);
-		std::string	valueStr = line.substr(delimiterPos + 3);
+		long double			value;
+		std::string			date = line.substr(0, delimiterPos);
+		std::string			valueStr = line.substr(delimiterPos + 3);
 		
 		if (!isValidDate(date) || !isValidValue(valueStr, value))
 			continue;
