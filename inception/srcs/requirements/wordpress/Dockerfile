@@ -1,56 +1,39 @@
-FROM alpine:3.22.2
-
-ENV WORDPRESS_VERSION=6.7.1 \
-    PHP_FPM_USER=www-data \
-    PHP_FPM_GROUP=www-data \
-    PHP_INI_DIR=/etc/php83 \
-    WORDPRESS_PATH=/var/www/html
+FROM alpine:3.22
 
 RUN apk add --no-cache \
     php83 \
     php83-fpm \
     php83-mysqli \
-    php83-json \
-    php83-openssl \
     php83-curl \
-    php83-dom \
-    php83-exif \
-    php83-fileinfo \
-    php83-gd \
-    php83-intl \
-    php83-mbstring \
     php83-xml \
-    php83-zip \
-    php83-session \
-    php83-simplexml \
+    php83-zlib \
+    php83-mbstring \
+    php83-opcache \
+    php83-phar \
+    php83-pecl-redis \
     php83-tokenizer \
-    php83-pecl-imagick \
-    curl \
-    tar \
-    unzip \
-    shadow
+    php83-ctype \
+    envsubst \
+    wget
 
-RUN mkdir -p ${WORDPRESS_PATH} && \
-    adduser -S ${PHP_FPM_USER} -G ${PHP_FPM_GROUP}
+WORKDIR /var/www/html/wordpress
 
-WORKDIR ${WORDPRESS_PATH}
+RUN addgroup -g 1000 inception \
+    && adduser -D -H -s /bin/ash -G www-data www-data \
+    && addgroup www-data inception \
+    && chown -R www-data:inception ./
 
-RUN curl -o /tmp/wordpress.tar.gz -fSL https://wordpress.org/wordpress-${WORDPRESS_VERSION}.tar.gz && \
-    tar -xzf /tmp/wordpress.tar.gz -C /tmp && \
-    cp -R /tmp/wordpress/* ${WORDPRESS_PATH}/ && \
-    chown -R ${PHP_FPM_USER}:${PHP_FPM_GROUP} ${WORDPRESS_PATH} && \
-    rm -rf /tmp/wordpress /tmp/wordpress.tar.gz && \
-    chown -R ${PHP_FPM_USER}:${PHP_FPM_GROUP} /var/log/php83
+RUN wget https://wordpress.org/latest.tar.gz \
+    && tar -xzf latest.tar.gz -C /var/www/html/
 
-RUN sed -i "s|^user = nobody|user = ${PHP_FPM_USER}|" /etc/php83/php-fpm.d/www.conf && \
-    sed -i "s|^group = nobody|group = ${PHP_FPM_GROUP}|" /etc/php83/php-fpm.d/www.conf && \
-    sed -i "s|^listen = 127.0.0.1:9000|listen = 0.0.0.0:9000|" /etc/php83/php-fpm.d/www.conf && \
-    sed -i "s|^;listen.owner = nobody|listen.owner = ${PHP_FPM_USER}|" /etc/php83/php-fpm.d/www.conf && \
-    sed -i "s|^;listen.group = nobody|listen.group = ${PHP_FPM_GROUP}|" /etc/php83/php-fpm.d/www.conf && \
-    sed -i "s|^;listen.mode = 0660|listen.mode = 0660|" /etc/php83/php-fpm.d/www.conf
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar -O wp-cli \
+    && chmod +x wp-cli \
+    && mv wp-cli /bin
 
-EXPOSE 9000
+COPY ./conf/www.conf /etc/php83/php-fpm.d/my_www.conf
 
-USER ${PHP_FPM_USER}
+COPY ./tools/entrypoint.sh /run/wordpress/entrypoint.sh
 
-CMD ["php-fpm83", "-F"]
+RUN chmod +x /run/wordpress/entrypoint.sh
+
+CMD ["/run/wordpress/entrypoint.sh"]
