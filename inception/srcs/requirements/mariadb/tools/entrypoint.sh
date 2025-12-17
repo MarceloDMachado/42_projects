@@ -1,6 +1,6 @@
 #!/bin/ash
 
-envsubst '$MARIADB_PORT' < /etc/my.cnf.d/99_my.cnf > /etc/my.cnf.d/mariadb-server.cnf
+envsubst '$MARIADB_PORT' < /etc/my.cnf.d/99_my.cnf.template > /etc/my.cnf.d/mariadb-server.cnf
 
 mariadbd --user=mysql --skip-networking > /dev/null 2>&1 &
 pid=$!

@@ -20,7 +20,7 @@ fi
 if [ ! -f /etc/php83/php-fpm.d/www/conf ];
 then
 	envsubst '$WORDPRESS_PORT' \
-	< /etc/php83/php-fpm.d/my_www.conf \
+	< /etc/php83/php-fpm.d/my_www.conf.template \
 	> /etc/php83/php-fpm.d/www.conf;
 fi
 
@@ -45,15 +45,7 @@ then
 
 	wp-cli theme activate twentytwentyfour --allow-root
 
-	wp-cli plugin install redis-cache --activate --allow-root
-
-	wp-cli config set WP_REDIS_HOST "$REDIS_HOST" --allow-root;
-	wp-cli config set WP_REDIS_PORT "$REDIS_PORT" --allow-root;
 	wp-cli config set WP_CACHE true --raw --allow-root;
-
-	wp-cli option set redis_cache_expiration 300 --allow-root
-
-	wp-cli redis enable --allow-root
 
 	chown -R www-data:inception ./
 fi

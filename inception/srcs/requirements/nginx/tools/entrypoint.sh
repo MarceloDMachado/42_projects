@@ -8,7 +8,7 @@ then
 		$WORDPRESS_PORT \
 		$ADMINER_HOST \
 		$ADMINER_PORT' \
-		< /etc/nginx/my_nginx.conf \
+		< /etc/nginx/my_nginx.conf.template \
 		> /etc/nginx/nginx.conf;
 fi
 

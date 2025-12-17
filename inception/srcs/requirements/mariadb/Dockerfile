@@ -12,7 +12,7 @@ RUN mkdir -p /var/log/mysql \
 
 RUN mariadb-install-db --user=mysql --basedir=/usr --datadir=/var/lib/mysql
 
-COPY ./conf/99_my.cnf /etc/my.cnf.d/
+COPY ./conf/99_my.cnf /etc/my.cnf.d/99_my.cnf.template
 
 COPY ./tools/entrypoint.sh /run/mariadb/entrypoint.sh
 

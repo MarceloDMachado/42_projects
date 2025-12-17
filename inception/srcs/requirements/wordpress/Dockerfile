@@ -22,7 +22,7 @@ RUN addgroup -g 1000 inception \
     && adduser -D -H -s /bin/ash -G www-data www-data \
     && addgroup www-data inception \
     && chown -R www-data:inception ./
-
+    
 RUN wget https://wordpress.org/latest.tar.gz \
     && tar -xzf latest.tar.gz -C /var/www/html/
 
@@ -30,7 +30,7 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
     && chmod +x wp-cli \
     && mv wp-cli /bin
 
-COPY ./conf/www.conf /etc/php83/php-fpm.d/my_www.conf
+COPY ./conf/www.conf /etc/php83/php-fpm.d/my_www.conf.template
 
 COPY ./tools/entrypoint.sh /run/wordpress/entrypoint.sh
 

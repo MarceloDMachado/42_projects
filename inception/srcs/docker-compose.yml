@@ -1,5 +1,3 @@
-version: "3.9"
-
 secrets:
   mariadb_user_password:
     file: ../secrets/mariadb_user_password.txt
@@ -13,25 +11,25 @@ secrets:
   wordpress_root_password:
     file: ../secrets/wordpress_root_password.txt
 
-  services:
-    mariadb:
-      container_name: mariadb
-      expose:
-        - ${MARIADB_PORT}
-      healthcheck:
-        test: [
-          "CMD-SHELL", 
-          "mariadb-admin ping \
-          -h$MARIADB_HOST \
-          -P$MARIADB_PORT \
-          -u$MARIADB_USER \
-          -p$$(cat /run/secrets/mariadb_user_password) \
-          --silent"
-        ]
-        interval: 10s
-        timeout: 5s
-        retries: 5
-        start_period: 5s
+services:
+  mariadb:
+    container_name: mariadb
+    expose:
+      - ${MARIADB_PORT}
+    healthcheck:
+      test: [
+        "CMD-SHELL", 
+        "mariadb-admin ping \
+        -h$MARIADB_HOST \
+        -P$MARIADB_PORT \
+        -u$MARIADB_USER \
+        -p$$(cat /run/secrets/mariadb_user_password) \
+        --silent"
+      ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 5s
     build:
       context: ./requirements/mariadb
       dockerfile: Dockerfile
@@ -48,7 +46,6 @@ secrets:
       - mariadb_user_password
       - mariadb_root_password
     restart: on-failure
-
   wordpress:
     container_name: wordpress
     expose:
@@ -68,8 +65,6 @@ secrets:
       WORDPRESS_USER_EMAIL: ${WORDPRESS_USER_EMAIL}
       WORDPRESS_ROOT: ${WORDPRESS_ROOT}
       WORDPRESS_ROOT_EMAIL: ${WORDPRESS_ROOT_EMAIL}
-      REDIS_HOST: ${REDIS_HOST}
-      REDIS_PORT: ${REDIS_PORT}
     secrets:
       - mariadb_user_password
       - wordpress_user_password
@@ -82,7 +77,6 @@ secrets:
     depends_on:
       mariadb:
         condition: service_healthy
-
   nginx:
     container_name: nginx
     expose:
