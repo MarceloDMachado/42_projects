@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 15:17:13 by madias-m          #+#    #+#             */
-/*   Updated: 2025/09/08 15:17:41 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/12/11 15:21:40 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	BitcoinExchange btc;
+	BitcoinExchange	btc;
 	btc.loadData("data.csv");
 	btc.processInput(argv[1]);
 

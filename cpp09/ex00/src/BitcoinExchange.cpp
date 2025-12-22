@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:50:26 by madias-m          #+#    #+#             */
-/*   Updated: 2025/12/11 14:35:27 by madias-m         ###   ########.fr       */
+/*   Updated: 2025/12/21 21:05:33 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ BitcoinExchange::~BitcoinExchange(void)
     
 }
 
-void BitcoinExchange::loadData(const std::string &filename)
+void	BitcoinExchange::loadData(const std::string &filename)
 {
 	size_t			delimiter;
 	float			rate;
@@ -57,7 +57,7 @@ void BitcoinExchange::loadData(const std::string &filename)
 			continue ;
 		date = line.substr(0, delimiter);
 		rateStr = line.substr(delimiter + 1);
-		std::istringstream iss(rateStr);
+		std::istringstream	iss(rateStr);
 		if (!(iss >> rate))
 		{
 			std::cerr << "Warning: invalid rate in database: " << rateStr << std::endl;
@@ -73,7 +73,7 @@ void BitcoinExchange::loadData(const std::string &filename)
 	file.close();
 }
 
-bool isLeapYear(int year) {
+bool	isLeapYear(int year) {
     if (year % 400 == 0)
         return (true);
     if (year % 100 == 0)
@@ -83,12 +83,12 @@ bool isLeapYear(int year) {
     return (false);
 }
 
-bool BitcoinExchange::isValidDate(const std::string &date) const
+bool	BitcoinExchange::isValidDate(const std::string &date) const
 {
 	int	year;
-	int month;
-	int day;
-	int daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+	int	month;
+	int	day;
+	int	daysInMonth[] = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
 	
 	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
 		return (false);
@@ -114,11 +114,10 @@ bool BitcoinExchange::isValidDate(const std::string &date) const
 	return (true);
 }
 
-bool BitcoinExchange::isValidValue(const std::string &value, long double &val) const
+bool	BitcoinExchange::isValidValue(const std::string &value, long double &val) const
 {
-	std::istringstream iss(value);
-
-	char	remaining;
+	std::istringstream	iss(value);
+	char				remaining;
 	
 	if (!(iss >> val))
 		return (false);
@@ -129,7 +128,7 @@ bool BitcoinExchange::isValidValue(const std::string &value, long double &val) c
 		std::cerr << "Error: not a positive number." << std::endl;
 		return (false);
 	}
-	if (val > 2147483647)
+	if (val > 1000)
 	{
 		std::cerr << "Error: too large a number." << std::endl;	
 		return (false);
@@ -137,15 +136,14 @@ bool BitcoinExchange::isValidValue(const std::string &value, long double &val) c
 	return (true);
 }
 
-float BitcoinExchange::getExchangeRate(const std::string &date) const
+float	BitcoinExchange::getExchangeRate(const std::string &date) const
 {
-	if (this->Database.empty())
-		return (0.0f);
-	std::map<std::string, float>::const_iterator it = this->Database.lower_bound(date);
-	if (it != this->Database.end() && it->first == date)
+	std::map<std::string, float>::const_iterator	it = this->Database.lower_bound(date);
+	
+	if (it != this->Database.end())
 		return (it->second);
-	if (it != this->Database.begin())
-		return ((--it)->second);
+	// if (it != this->Database.begin()) it++
+		// return ((--it)->second);
 	return (0.0f);
 }
 
