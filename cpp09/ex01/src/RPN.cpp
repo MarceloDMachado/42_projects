@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 10:42:09 by madias-m          #+#    #+#             */
-/*   Updated: 2025/09/10 11:37:52 by madias-m         ###   ########.fr       */
+/*   Updated: 2026/01/07 09:38:39 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,34 +22,74 @@ RPN::RPN(RPN const& other)
 	*this = other;
 }
 
-RPN::RPN(std::string valuesString)
-{
-	std::stringstream	iss(valuesString);
-    char*				validChars[2] = {"0123456789", "/*+-"};
-    char    			index = 0;
-	char				current;
-
-	while (iss >> current)
-	{
-		if (strchr(validChars[index], current))
-			this->ValueStack.push(current);
-	}
-
-	
-	
-}
-
-
 RPN RPN::operator=(RPN const& other)
 {
-    if (this != &other)
-        this->ValueStack = other.ValueStack;
+	(void) other;
     return (*this);
 }
 
-RPN::~RPN(void)
+RPN::~RPN(void) { }
+
+bool	isOp(char c)
 {
-    
+	return (strchr("/*+-", c));
 }
+
+int		getResult(char op, int a, int b)
+{
+	switch (op) 
+	{
+    	case '+':
+			return (a + b);
+    	case '-':
+			return (a - b);
+    	case '*':
+			return (a * b);
+    	case '/':
+		{
+        	if (!a || !b) 
+				throw std::runtime_error("Error");
+        	return (a / b);
+		}
+    }
+    throw std::runtime_error("Error");
+}
+
+int	RPN::calcRPN(const std::string& valuesString) const
+{
+	if (valuesString.empty())
+		throw std::runtime_error("Error");
+	
+	char				validChars[11] = "0123456789";
+	std::stringstream	iss(valuesString);
+	std::stack<int>		stack;
+	std::string 		token;
+	
+	while (iss >> token)
+	{
+		char	token_char = token.c_str()[0];
+		if (token.size() == 1 && strchr(validChars, token_char))
+			stack.push(token_char - 48);
+		else if (token.size() == 1 && isOp(token_char))
+		{
+			if (stack.size() < 2) 
+				throw std::runtime_error("Error");
+			int	b = stack.top();
+			stack.pop();
+			int	a = stack.top();
+			stack.pop();
+			int	result = getResult(token_char, a, b);
+			stack.push(result);
+		}
+		else
+			throw std::runtime_error("Error");
+	}
+	if (stack.size() != 1)
+		throw std::runtime_error("Error");
+	return (stack.top());
+}
+
+
+
 
 
