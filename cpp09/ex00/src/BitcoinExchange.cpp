@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:50:26 by madias-m          #+#    #+#             */
-/*   Updated: 2025/12/21 21:05:33 by madias-m         ###   ########.fr       */
+/*   Updated: 2026/01/07 08:22:34 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,14 +142,12 @@ float	BitcoinExchange::getExchangeRate(const std::string &date) const
 	
 	if (it != this->Database.end())
 		return (it->second);
-	// if (it != this->Database.begin()) it++
-		// return ((--it)->second);
 	return (0.0f);
 }
 
 void	BitcoinExchange::processInput(const std::string &fileName)
 {
-	std::ifstream fileStream(fileName.c_str());
+	std::ifstream	fileStream(fileName.c_str());
 	
 	if (!fileStream.is_open())
 	{
