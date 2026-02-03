@@ -151,7 +151,7 @@ void						PmergeMe::vectorInsert(void)
 	
 	main.insert(main.end(), this->_vect.begin(), this->_vect.begin() + pair);
 	for (size_t i = pair * 2 - 1; i < this->_vect.size(); i += pair)
-		main.insert(main.end(), it + i + 1 - this->_level, it + i + i);
+		main.insert(main.end(), it + i + 1 - this->_level, it + i + 1);
 	this->vectorInsertions(main, 3);
 	main.insert(main.end(), this->_vect.begin() + size, this->_vect.end());
 	this->_vect = main;
@@ -167,9 +167,9 @@ void						PmergeMe::vectorMerge(void)
 	{
 		if (this->_vect[i - this->_level] <= this->_vect[i])
 			continue ;
-		size_t a = i + 1 - pair;
-		size_t b = i + 1 - this->_level;
-		std::vector<int>::iterator it = this->_vect.begin();
+		size_t 						a = i + 1 - pair;
+		size_t 						b = i + 1 - this->_level;
+		std::vector<int>::iterator	it = this->_vect.begin();
 		std::swap_ranges(it + a, it + b, it + b);
 	}
 	this->_level *= 2;
@@ -232,10 +232,10 @@ void						PmergeMe::dequeInsertions(std::deque<int> &main, const size_t &index)
 
 void						PmergeMe::dequeInsert(void)
 {
-	std::deque<int>::iterator	it = this->_deq.begin();
 	std::deque<int>				main;
+	std::deque<int>::iterator	it = this->_deq.begin();
 	size_t						pair = this->_level * 2;
-	size_t						size = this->_deq.size() / this->_level * this->_level;
+	size_t						size = (this->_deq.size() / this->_level) * this->_level;
 	
 	main.insert(main.end(), this->_deq.begin(), this->_deq.begin() + pair);
 	for (size_t i = pair * 2 - 1; i < this->_deq.size(); i += pair)
