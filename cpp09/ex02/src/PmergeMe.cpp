@@ -124,7 +124,7 @@ void						PmergeMe::vectorInsertions(std::vector<int> &main, const size_t &index
 	if (main.size() >= this->_vect.size() / this->_level * this->_level)
 		return ;
 	std::pair<int, int>	jacob = this->jacobSthal(index);
-	size_t				inserts = jacob.second - jacob. first;
+	size_t				inserts = jacob.second - jacob.first;
 	size_t				actual_b = jacob.second + 1;
 	for (int i = inserts; i > 0; --i)
 	{
@@ -184,25 +184,25 @@ void						PmergeMe::vectorMerge(void)
 std::deque<int>::iterator	PmergeMe::dequeBinarySearch(std::deque<int> &main, const int &target, const size_t &length)
 {
 	size_t	low = 0;
-	size_t	high = length / this->_level - 1;
 	size_t	pos = 0;
+	size_t	high = length / this->_level - 1;
 
 	while (low <= high)
 	{
 		size_t	mid = low + (high - low) / 2;
 		if (mid > length)
-			return main.begin();
+			return (main.begin());
 		pos	= (mid == 0) ? this->_level - 1 : mid * this->_level - 1;
 		if (main[pos] == target)
-			return main.begin() + (mid * this->_level);
+			return (main.begin() + (mid * this->_level));
 		if (main[pos] < target)
 			low = mid + 1;
 		else
 			high = mid - 1;
 	}
 	if (main[pos + this->_level] < target)
-		return main.begin() + (low * this->_level);
-	return main.begin() + (low * this->_level - this->_level);
+		return (main.begin() + (low * this->_level));
+	return (main.begin() + (low * this->_level - this->_level));
 }
 
 void						PmergeMe::dequeInsertions(std::deque<int> &main, const size_t &index)
@@ -215,15 +215,14 @@ void						PmergeMe::dequeInsertions(std::deque<int> &main, const size_t &index)
 	
 	for (int i = inserts; i > 0; --i)
 	{
-		actual_b--;
-		size_t	j = (actual_b * 2 - 1) * this->_level - 1;
+		size_t	j = (--actual_b * 2 - 1) * this->_level - 1;
 		if (j >= this->_deq.size())
 			continue ;
-		std::deque<int>::iterator	mit;
+		size_t						total_as = this->_deq.size() / 2 / this->_level;
+		size_t						ignore = total_as - actual_b + 1;
+		size_t						limit = main.size() - ignore;
 		std::deque<int>::iterator	it = this->_deq.begin();
-		size_t	total_as = this->_deq.size() / 2 / this->_level;
-		size_t	ignore = total_as = actual_b + 1;
-		size_t	limit = main.size() - ignore;
+		std::deque<int>::iterator	mit;
 		
 		mit = this->dequeBinarySearch(main, this->_deq[j], limit);
 		main.insert(mit, it + j - this->_level + 1, it + j + 1);

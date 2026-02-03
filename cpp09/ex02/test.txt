@@ -1,1 +1,2 @@
 ./PmergeMe `jot -r 5 1 100 | tr '\n' ' '`
+./PmergeMe `shuf -i 1-100 -n 5 | tr '\n' ' '`
