@@ -83,7 +83,7 @@ void						PmergeMe::sort(char **list)
 	vectorClock.second = static_cast<double>(std::clock() - vectorClock.first);
 	
 	dequeClock.first = std::clock();
-	dequeMerge();
+	this->dequeMerge();
 	dequeClock.second = static_cast<double>(std::clock() - dequeClock.first);
 
 	std::cout << "After:\t"; 
