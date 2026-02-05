@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 21:54:03 by madias-m          #+#    #+#             */
-/*   Updated: 2026/02/02 21:30:57 by madias-m         ###   ########.fr       */
+/*   Updated: 2026/02/05 13:56:50 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ class   PmergeMe
 	
 		std::vector<int>			_vect;
 		std::deque<int>				_deq;
-		size_t						_level;
+		size_t						_order;
 
 		
 		void						vectorMerge(void);

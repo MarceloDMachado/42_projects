@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/14 22:07:38 by madias-m          #+#    #+#             */
-/*   Updated: 2026/02/02 21:47:23 by madias-m         ###   ########.fr       */
+/*   Updated: 2026/02/05 13:54:34 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,10 @@ int main(int argc, char **argv) {
 	try {
 		if (argc < 2)
 			throw std::runtime_error("no input");
-
 		PmergeMe().sort(&argv[1]);
-
 	} catch (std::exception &e) {
 		std::cerr << "Error: " << e.what() << std::endl;
-		return EXIT_FAILURE;
+		return (1);
 	}
-
-	return EXIT_SUCCESS;
+	return (0);
 }
