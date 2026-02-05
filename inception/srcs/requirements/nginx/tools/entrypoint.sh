@@ -5,9 +5,7 @@ then
 	envsubst '$NGINX_PORT \
 		$WORDPRESS_DOMAIN \
 		$WORDPRESS_HOST \
-		$WORDPRESS_PORT \
-		$ADMINER_HOST \
-		$ADMINER_PORT' \
+		$WORDPRESS_PORT' \
 		< /etc/nginx/my_nginx.conf.template \
 		> /etc/nginx/nginx.conf;
 fi
