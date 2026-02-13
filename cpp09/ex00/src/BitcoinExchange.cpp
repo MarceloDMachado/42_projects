@@ -6,7 +6,7 @@
 /*   By: madias-m <madias-m@student.42sp.org.br>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/02 20:50:26 by madias-m          #+#    #+#             */
-/*   Updated: 2026/01/07 08:22:34 by madias-m         ###   ########.fr       */
+/*   Updated: 2026/02/13 10:21:57 by madias-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,7 +170,12 @@ void	BitcoinExchange::processInput(const std::string &fileName)
 		std::string			date = line.substr(0, delimiterPos);
 		std::string			valueStr = line.substr(delimiterPos + 3);
 		
-		if (!isValidDate(date) || !isValidValue(valueStr, value))
+		if (!isValidDate(date))
+		{
+			std::cerr << "Error: bad input => " << line << std::endl;
+			continue;
+		}
+		if (!isValidValue(valueStr, value))
 			continue;
 		std::cout << date << " => " << value << " = " << (value * getExchangeRate(date)) << std::endl;
 	}
